@@ -1,0 +1,119 @@
+% main.tex
+% Fichero principal de transparencias (incluye a todos los demás).
+
+% Compilar a .pdf con LaTeX (pdflatex)
+% Es necesario instalar Beamer (paquete latex-beamer en Debian)
+%
+
+% Gráficos:
+% Los gráficos pueden suministrarse en PNG, JPG, TIF, PDF, MPS
+% Los EPS deben convertirse a PDF (usar epstopdf)
+%
+
+
+\documentclass{beamer}
+\usetheme{Warsaw}
+\useoutertheme{infolines}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{format/libresoft-bg-soft.png}}
+\usepackage[spanish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{graphics}
+\usepackage{amssymb} % Simbolos matematicos
+
+%\definecolor{libresoftgreen}{RGB}{162,190,43}
+%\definecolor{libresoftblue}{RGB}{0,98,143}
+
+%\setbeamercolor{titlelike}{bg=libresoftgreen}
+
+%% Metadatos del PDF.
+\hypersetup{
+  pdftitle={Aplicaciones Telemáticas},
+  pdfauthor={Jesús M. González Barahona, Gregorio Robles},
+  pdfcreator={GSyC, Universidad Rey Juan Carlos},
+  pdfproducer=PDFLaTeX,
+  pdfsubject={},
+}
+%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include-only                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\includeonly{presentacion, html}
+%\includeonly{html}
+%\includeonly{html5}
+
+%% Prácticas
+\includeonly{html}
+%\includeonly{css}
+%\includeonly{css3}
+%\includeonly{html5}
+%\includeonly{gapi}
+
+\AtBeginSection[]
+{
+\begin{frame}<beamer>
+\begin{center}
+{\Huge \insertsection}
+\end{center}
+\end{frame}
+}
+
+\begin{document}
+
+\title{Aplicaciones Telemáticas (2014-2015)}
+\subtitle{Grado en Ingeniería Telemática (URJC)}
+\author{Jesús M. González Barahona, Gregorio Robles Martínez}
+\institute{\url{http://gsyc.es/~jgb}~~~\url{http://gsyc.es/~grex/} \\
+GSyC, Universidad Rey Juan Carlos}
+
+%\date{Enero 2015}
+
+\frame{
+\maketitle
+\begin{center}
+\includegraphics[width=6cm]{format/gsyc-urjc}
+\end{center}
+}
+
+
+% Si el titulo o el autor se quieren acortar para los pies de página
+% se pueden redefinir aquí:
+%\title{Titulo corto}
+%\author{Autores abreviado}
+
+
+%% LICENCIA DE REDISTRIBUCION DE LAS TRANSPAS
+\frame{
+~
+\vspace{3cm}
+
+\begin{flushright}
+\copyright 2002-2015 Jesús M. González Barahona, Gregorio Robles. \\
+
+Algunos derechos reservados. Este artículo se distribuye bajo
+la licencia ``Reconocimiento-CompartirIgual 3.0 España'' de Creative Commons,
+disponible en \\
+{\small \url{http://creativecommons.org/licenses/by-sa/3.0/es/deed.es}}
+
+Este documento (o uno muy similar) está disponible en \\
+\url{http://cursosweb.github.io}
+\end{flushright}
+}
+%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% lista de temas                                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{presentacion-apps}
+\include{html}
+\include{css}
+\include{css3}
+\include{html5}
+\include{gapi}
+
+
+\end{document}

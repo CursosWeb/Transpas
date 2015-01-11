@@ -1,0 +1,270 @@
+% $Id$
+%
+
+
+\section{HTML: HyperText Markup Language}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Basic structure of a document}
+
+\begin{verbatim}
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> Tittle </title>
+ </head>
+ <body>
+  <p>This is a paragraph</p>
+ </body>
+</html>
+\end{verbatim}
+
+\textbf{Ejercicio:} Escribe una página HTML simple, y mírala en el navegador.
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Basic structure of a document (2)}
+
+[Nota: en general, se describirá HTML5]
+
+\begin{itemize}
+\item \verb|<!DOCTYPE html>| es la marca de HTML5
+\item En HTML 4.x era más complicado...
+\item En general, cada elemento se abre y se cierra
+\item La estructura de un documento es un árbol \\
+  (cada elemento va dentro de otro)
+\item Elemento raíz: HTML
+\item Elementos bajo HTML: HEAD (indicaciones) y BODY (contenidos) 
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Sintaxis básica}
+
+Sintaxis similar a la de XML:
+
+\begin{itemize}
+\item Etiquetas (elementos, marcas): 
+\begin{verbatim}
+<p> ... </p> 
+<p/>
+\end{verbatim}
+
+\item Atributos: 
+\begin{verbatim}
+<p id="abstract">
+\end{verbatim}
+\item Las etiquetas han de estar ``encapsuladas'': \\
+  se cierran en orden inverso al que se abrieron \\
+  (esto es, van siempre ``unas dentro de otras'', son contenedores)
+\item Las etiquetas son nodos en el árbol, \\
+  los atributos anotaciones de los nodos
+\item Caracteres ``escapados'': \verb|&lt;| ($<$) \verb|&gt;| ($>$)
+\end{itemize}
+
+\textbf{Ejercicio:} Escribe una página HTML con cabecera (que tenga al menos un título) y cuerpo, con las dos sintaxis de etiquetas, y con elementos que tengan atributos.
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Elemento HTML}
+
+\begin{itemize}
+\item Sintaxis básica:
+
+\begin{verbatim}
+<html lang="es">
+\end{verbatim}
+
+\item ``lang'' es el idioma (primario) del texto
+
+\item Contiene un elemento HEAD y un elemento BODY
+\end{itemize}
+
+\begin{flushright}
+Language tags in HTML and XML: \\
+\url{http://www.w3.org/International/articles/language-tags/} \\
+\end{flushright}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Elemento HEAD}
+
+Información para el navegador y para bots.
+
+Ejemplo:
+
+\begin{verbatim}
+<head>
+  <meta charset="utf-8" />
+  <title>El titulo</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+  <link rel="alternate" type="application/atom+xml"
+                        title="Canal RSS"
+                        href="canal.rss" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Elemento HEAD (2)}
+
+\begin{itemize}
+\item META:
+  \begin{itemize}
+  \item juego de caracteres \\
+    (simplifica versiones pre-HTML5, \verb|http-equiv|)
+  \item  description
+  \end{itemize}
+\item LINK puede apuntar a complementos para la página
+  \begin{itemize}
+  \item rel="stylesheet": hoja de estilo CSS
+  \end{itemize} 
+\item LINK puede apuntar a otros recursos relacionados
+  \begin{itemize}
+  \item \verb|rel="alternate"|: contenido equivalente de otros tipos (type) \\
+    o en otros idiomas (hreflang)
+  \item \verb|rel="author"|: autor
+  \item \verb|rel="next"|, \verb|rel="prev"|: anterior, posterior
+  \item \verb|rel="shortcut icon"|: icono de la página
+  \item Otros: license, nofollow, search, tag, etc.
+  \end{itemize} 
+\item Otros: STYLE, SCRIPT (CSS o JavaScript embebidos)
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Elementos en BODY}
+
+\begin{itemize}
+\item H1 - H6: cabeceras (headings)
+\item P: parrafos de texto
+\item A: ancla (anchor) (absoluto a url, absoluto a recurso, relativo)
+\begin{verbatim}
+<a href="http://linkedsite/url.html">Documento</a>
+<a href="/url.html">Documento en mismo sitio</a>
+<a href="url.html">Documento en mismo sitio y "dir"</a>
+\end{verbatim}
+
+\item UL, OL, DL: listas (sin ordenar, ordenadas, de definiciones)
+\begin{verbatim}
+<ul>
+  <li>Un elemento</li>
+  <li>Otro elemento</li>
+</ul>
+\end{verbatim}
+
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Elementos en BODY (2)}
+
+\begin{itemize}
+\item Tabla
+\begin{verbatim}
+<table>
+ <tr>
+  <td>Primera fila, primera columna</td>
+  <td>Primera fila, segunda columna</td>
+ </tr>
+ <tr>
+  <td>Segunda fila, primera columna</td>
+  <td>Segunda fila, segunda columna</td>
+ </tr>
+</table> 
+\end{verbatim}
+
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Elementos en BODY (3)}
+
+\begin{itemize}
+\item DIV: contenedor genérico (referncias para CSS)
+\item HEADER, FOOTER, NAV, ARTICLE, SECTION, ASIDE: \\
+  elementos de sección
+\item IMG: imágenes
+\begin{verbatim}
+<img src="gsyc-bg.png" alt="Logo de GSyC">
+<img src="gsyc-bg.png" alt="Logo de GSyC" width="300" height="240">
+\end{verbatim}
+
+\item MAP, AREA: mapa de imagen en el lado del cliente
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Elementos en BODY (4)}
+
+\begin{itemize}
+\item FORM, FIELDSET, LABEL, INPUT
+
+\begin{verbatim}
+<form action="recurso" method="post">
+  <fieldset>
+    <legend>Formulario</legend>
+ 
+    <label>Nombre</label>
+    <input type="text" name="nombre"><br />
+ 
+    <label>Apellido</label>
+    <input type="text" name="apellido"><br />
+ 
+    <input type="submit" name="persona">
+ </fieldset>
+</form>
+\end{verbatim}
+
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Material complementario}
+
+\begin{itemize}
+\item HyperText Markup Language (Wikibook): \\
+  \url{http://en.wikibooks.org/wiki/HTML_Programming}
+\item HTML5: A tutorial for beginners: \\
+  \url{http://www.html-5-tutorial.com/}
+\item Dive into HTML5: \\
+  \url{http://diveintohtml5.info}
+\item HTML5 (Wikipedia): \\
+  \url{http://en.wikipedia.org/wiki/HTML5}
+\item Web Fundametals (Code Academy): \\
+  \url{http://www.codecademy.com/tracks/web}
+\end{itemize}
+
+
+\end{frame}
+
