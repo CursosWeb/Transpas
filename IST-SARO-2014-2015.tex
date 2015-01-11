@@ -27,7 +27,7 @@
 
 %% Metadatos del PDF.
 \hypersetup{
-  pdftitle={Desarrollo de Aplicaciones Telemáticas},
+  pdftitle={Servicios y Aplicaciones en Redes de Ordenadores},
   pdfauthor={Jesús M. González Barahona, Gregorio Robles},
   pdfcreator={GSyC, Universidad Rey Juan Carlos},
   pdfproducer=PDFLaTeX,
@@ -40,16 +40,30 @@
 % include-only                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\includeonly{presentacion, html}
-%\includeonly{html}
-%\includeonly{html5}
+\includeonly{presentacion-web,cookies,python}
+%\includeonly{cookies}
+%\includeonly{rest}
+%\includeonly{mvc}
+%\includeonly{xml}
+%\includeonly{css}
+%\includeonly{www-novedades}
+%\includeonly{www-applications}
+%\includeonly{caso-comunidades}
+%\includeonly{complex-www-sites}
+%\includeonly{ldap,webdav}
+%\includeonly{webdav}
+%\includeonly{xml,webdav}
+%\includeonly{streaming}
+%\includeonly{streaming, sdp}
+%\includeonly{streaming,smil}
+%\includeonly{smil}
+%\includeonly{security-intro,security-ipsec,security-ssl}
+%\includeonly{webdav,security-ssl}
 
 %% Prácticas
-\includeonly{html}
-%\includeonly{css}
-%\includeonly{css3}
-%\includeonly{html5}
-%\includeonly{gapi}
+%\includeonly{python}
+%\includeonly{sql}
+%\includeonly{django}
 
 \AtBeginSection[]
 {
@@ -62,8 +76,8 @@
 
 \begin{document}
 
-\title{Desarrollo de Aplicaciones Telemáticas (2014-2015)}
-\subtitle{Grado en Ingeniería Tecnologías de Telecomunicación (URJC)}
+\title{Servicios y Aplicaciones en Redes de Ordenadores (2014-2015)}
+\subtitle{Grado en Sistemas de Telecomunicación (URJC)}
 \author{Jesús M. González Barahona, Gregorio Robles Martínez}
 \institute{\url{http://gsyc.es/~jgb}~~~\url{http://gsyc.es/~grex/} \\
 GSyC, Universidad Rey Juan Carlos}
@@ -90,7 +104,8 @@ GSyC, Universidad Rey Juan Carlos}
 \vspace{3cm}
 
 \begin{flushright}
-\copyright 2002-2015 Jesús M. González Barahona, Gregorio Robles. \\
+\copyright 2002-2015 Jesús M. González Barahona, Gregorio Robles y
+Jorge Ferrer. \\
 
 Algunos derechos reservados. Este artículo se distribuye bajo
 la licencia ``Reconocimiento-CompartirIgual 3.0 España'' de Creative Commons,
@@ -112,12 +127,16 @@ Este documento (o uno muy similar) está disponible en \\
 % lista de temas                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{presentacion-apps}
-\include{html}
+\include{presentacion-web}
+\include{cookies}
+\include{rest}
+\include{mvc}
+\include{xml}
+\include{www-novedades}
 \include{css}
-\include{css3}
-\include{html5}
-\include{gapi}
 
+\include{python}
+\include{sql}
+\include{django}
 
 \end{document}
