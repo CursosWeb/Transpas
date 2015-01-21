@@ -4,80 +4,45 @@
 
 \section{Prácticas: Introducción a Python}
 
-%-----------------------    ---------------------------------
-\usebackgroundtemplate{\includegraphics[width=13cm]{figs/yoda.jpg}}
 
 \begin{frame}
-\frametitle{Python}
+\frametitle{Características}
 
-\end{frame}
-\usebackgroundtemplate{}
-
-
-\subsection{Transparencias principales}
-
-\begin{frame}
-\frametitle{Transparencias principales}
-
-\begin{center}
-{\Huge Transparencias principales}
-
-{\footnotesize (las que veremos en clase)}
-\end{center}
-\end{frame}
-
-
-\begin{frame}[fragile]
-
-\frametitle{Hola Mundo}
-
+Python es un lenguaje:
 \begin{itemize}
-\item Desde la shell, accede al intérprete de Python:
-
-\begin{footnotesize}
-\begin{verbatim}
-$ python
->>>
-\end{verbatim}
-\end{footnotesize}
-\item Y ya podemos introducir instrucciones en Python:
-
-\begin{footnotesize}
-\begin{verbatim}
->>> print "hola mundo"
-hola mundo
-\end{verbatim}
-\end{footnotesize}
-
-\item A partir de ahora obviaremos generalmente los $>>>$ del intérprete.
-
+\item de alto nivel
+\item interpretado
+\item orientado a objetos (todo son objetos)
+\item dinámicamente tipado (frente a estáticamente tipado)
+\item fuertemente tipado (frente a débilmente tipado)
+\item sensible a mayúsculas/minúsculas
 \end{itemize}
 
 \end{frame}
 
 
-
 \begin{frame}[fragile]
 
-\frametitle{Más ejemplos}
+\frametitle{Un pequeño ejemplo}
 
 \begin{itemize}
 \item Podemos usar Python como calculadora\\
-(ojo: 3/2=1)
+(ojo: $3/2=1$)
 
-\item Verás que Python es sensible mayúsculas
-
-\item En Python hay diferentes tipos de datos
-
-\item Los comentarios se indican con \verb=#=
+\item Sensible a mayúsculas / minúsculas
+%\item
+% deberia admitir caracteres españoles, desde interprete sí, desde
+% programa no
+\item Comentarios: \verb=#=
 
 \end{itemize}
 
 \begin{footnotesize}
 \begin{verbatim}
+#!/usr/bin/python
 print "hola mundo"    # esto es un comentario
-euros = 415
-pesetas = euros * 166.386
+euros=415
+pesetas=euros*166.386
 print str(euros) + " euros son "+ str(pesetas) + " pesetas"
 \end{verbatim}
 \end{footnotesize}
@@ -91,23 +56,22 @@ print str(euros) + " euros son "+ str(pesetas) + " pesetas"
 
 \begin{itemize}
 \item ¡En Python NO hay llaves ni \verb|begin-end| para encerrar bloques
-  de código!
-\item Un mayor nivel de sangrado indica que comienza un bloque,
+  de código! Un mayor nivel de sangrado indica que comienza un bloque,
   y un menor nivel indica que termina un bloque.
   
 \item Ejemplo:
 
   \begin{footnotesize}
 \begin{verbatim}
-# Ejemplo de dos funciones en Python
-def a_centigrado(faren):
-    """Convierte grados farenheit en grados centígrados"""
-    return (faren - 32) * (5.0/9)
+#!/usr/bin/python
+def a_centigrado(x):
+    """Convierte grados farenheit en grados centigrados"""
+    return (x-32)*(5/9.0)
 
 
-def a_farenheit(cels):
+def a_farenheit(x):
     """Convierte grados centígrados en grados farenheit"""
-    return (cels * 1.8) + 32
+    return (x*1.8)+32
 \end{verbatim}
   \end{footnotesize}
 \end{itemize}
@@ -123,14 +87,15 @@ Sentencia \verb|if|:
 
 \begin{footnotesize}
 \begin{verbatim}
-entero = 3
-if entero:
+#!/usr/bin/python
+x = 3
+if x :
      print 'verdadero'
 else:
      print 'falso'
 \end{verbatim}
 \end{footnotesize}
-Nótese como el caracter \verb|:| introduce cada bloque de sentencias. Si hay \verb|:|, entonces la siguiente línea estará indentada.
+Nótese como el caracter \verb|:| introduce cada bloque de sentencias.
 %se pueden poner parentesis en la condición, como en C, pero no necesario
 \end{frame}
 
@@ -152,13 +117,20 @@ Puede haber caracteres especiales\\
 
 \item El operador \verb|+| concatena cadenas, y el \verb|*| las repite
   un número entero de veces
+\item Se puede acceder a los caracteres de cadenas mediante índices y
+  rodajas como en las listas. Pero las cadenas son inmutables
 \end{itemize}
 \end{frame}
+
+
 
 
 \begin{frame}[fragile]
 \frametitle{Listas}
 
+
+
+\vspace{-6mm}
 \begin{itemize}
 \item Tipo de datos predefinido en Python, va mucho más allá de los
   arrays
@@ -168,13 +140,13 @@ Puede haber caracteres especiales\\
 \end{itemize}
   \begin{footnotesize}
 \begin{verbatim}
-colores = ['rojo','amarillo']
-colores.append('verde')
-print colores
-print colores[2]
-print len(colores)
+a=['rojo','amarillo']
+a.append('verde')
+print a
+print a[2]
+print len(a)
 
-cosas = ['uno', 2, 3.0]
+b=['uno',2, 3.0]
 
 \end{verbatim}
   \end{footnotesize}
@@ -184,7 +156,6 @@ cosas = ['uno', 2, 3.0]
 
 
 \begin{frame}[fragile]
-\frametitle{Más sobre listas}
 
 \begin{itemize}
 \item El primer elemento tiene índice 0.
@@ -203,28 +174,27 @@ cosas = ['uno', 2, 3.0]
 
 
 \begin{frame}[fragile]
-\frametitle{Ejemplos de listas}
-
   \begin{footnotesize}
 \begin{verbatim}
-lista = [0, 1, 2, 3, 4]
-print lista      # [0, 1, 2, 3, 4]
-print lista[1]   # 1 
-print lista[0:2] # [0, 1]
-print lista[3:]  # [3, 4]
-print lista[-1]  # 4
-print lista[:-1] # [0, 1, 2, 3]
-print lista[:-2] # [0, 1, 2]
+#!/usr/bin/python
+a=[0,1,2,3,4]
+print a      # [0, 1, 2, 3, 4]
+print a[1]   # 1 
+print a[0:2] # [0,1]
+print a[3:]  # [3,4]
+print a[-1]  # 4
+print a[:-1] # [0, 1, 2, 3]
+print a[:-2] # [0, 1, 2]
 \end{verbatim}
   \end{footnotesize}
   \begin{center}
-¡La misma sintaxis se aplica a las cadenas!
+La misma sintaxis se aplica a las cadenas
   \end{center}
 
   \begin{footnotesize}
 \begin{verbatim}
-cadena = "niño"
-print cadena[-1]
+a="niño"
+print a[-1]
 \end{verbatim}
   \end{footnotesize}
 
@@ -239,25 +209,23 @@ Sentencia \verb|for|:
 
 \begin{footnotesize}
 \begin{verbatim}
->>> amigos = ['ana', 'jacinto', 'guillermo']
->>> for invitado in amigos:
-...     print invitado, len(invitado)
+>>> a = ['cat', 'window', 'defenestrate']
+>>> for x in a:
+...     print x, len(x)
 ... 
-ana 3
-jacinto 7
-guillermo 9 
+cat 3
+window 6
+defenestrate 12
+>>> a = ['had', 'a', 'little', 'lamb']
+>>> for i in range(len(a)):
+...     print i, a[i]
+... 
+0 had
+1 a
+2 little
+3 lamb
 \end{verbatim}
 \end{footnotesize}
-
-%>>> a = ['had', 'a', 'little', 'lamb']
-%>>> for i in range(len(a)):
-%...     print i, a[i]
-%... 
-%0 had
-%1 a
-%2 little
-%3 lamb
-
 
 \end{frame}
 
@@ -280,33 +248,8 @@ guillermo 9
 \end{frame}
 
 
-\begin{frame}[fragile]
-\frametitle{Más sobre diccionarios}
-  \begin{footnotesize}
-\begin{verbatim}
-paises = {'de': 'Alemania', 'fr': 'Francia', 'es': 'España'}
-print paises; print paises["fr"]
-
-extensiones = {}
-extensiones['py'] = 'python'
-extensiones['txt'] = 'texto plano'
-extensiones['ps'] = 'PostScript'
-
-for pais in paises: # iteramos por el diccionario
-   print pais, paises[pais]
-
-del paises['fr']   # borra esta llave (y su valor)
-print len(paises) # devuelve el número de elementos en el diccionario
-paises.clear()  # vacía el diccionario
-
-\end{verbatim}
-  \end{footnotesize}
-
-\end{frame}
-
 
 \begin{frame}[fragile]
-\frametitle{Sobre los diccionarios}  
 
   \begin{itemize}
   \item Asignar valor a una clave existente reemplaza el antiguo 
@@ -321,79 +264,49 @@ paises.clear()  # vacía el diccionario
 
 \end{frame}
 
-\begin{frame}
-\frametitle{Python - Características principales}
-
-Parémonos a ver las características de Python. Python es:
-\begin{itemize}
-\item de alto nivel
-\item interpretado (no compilado)
-\item orientado a objetos (todo son objetos)
-\item dinámicamente tipado (frente a estáticamente tipado)
-\item fuertemente tipado (frente a débilmente tipado)
-\item sensible a mayúsculas/minúsculas
-\end{itemize}
-
-\end{frame}
-
-
 
 \begin{frame}[fragile]
-\frametitle{Utilizando un editor o un IDE (I)}
-
-\begin{itemize}
-  \item Usar el intérprete de Python para programar es tedioso
-  \item Es mejor utilizar cualquier editor de texto (p.ej., gedit) o un IDE (como Eclipse)
-  \item Lo que crearemos son ficheros de texto plano.
-  \item Se puede añadir información en la parte superior del fichero para indicar a la shell que es un fichero en Python y con caracteres UTF-8 (y así añadir eñes y tildes, p.ej.).
-\end{itemize}
-
-\begin{footnotesize}
+\frametitle{Más sobre diccionarios}
+  \begin{footnotesize}
 \begin{verbatim}
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+pais={'de': 'Alemania', 'fr': 'Francia', 'es': 'España'}
+print pais; print pais["fr"]
 
-print "¡Hola Mundo!"
+extension={}
+extension['py']='python'
+extension['txt']='texto plano'
+extension['ps']='PostScript'
+
+for x in pais.keys():
+   print x, pais[x]
+
+del pais['fr']   
+print len(pais)
+print pais.has_key('es')
+pais.clear()
 
 \end{verbatim}
-\end{footnotesize}
+  \end{footnotesize}
 
 \end{frame}
+
 
 
 \begin{frame}[fragile]
-\frametitle{Utilizando un editor o un IDE (y II)}
-
+\frametitle{Importar módulos}
 
 \begin{itemize}
-  \item Si lo guardamos como hola.py, se ejecuta desde la línea de comandos como:
-\begin{footnotesize}
-\begin{verbatim}
-$ python hola.py
-\end{verbatim}
-\end{footnotesize}
-
-  \item Podemos darle permisos de ejecución al fichero:
-\begin{footnotesize}
-\begin{verbatim}
-$ chmod +x hola.py
-\end{verbatim}
-\end{footnotesize}
-
-  \item Y entonces, se ejecuta desde la línea de comandos como:
-\begin{footnotesize}
-\begin{verbatim}
-$ ./hola.py
-\end{verbatim}
-\end{footnotesize}
-
-
-  
+\item \verb|import nombre-módulo               | \\permite acceder a los
+  símbolos del módulo con la sintaxis \verb|nombre-módulo.X|
+\item \verb|from nombre-módulo import a, b, c  | \\incorpora
+  los símbolos a, b, c al espacio de nombres, siendo accesibles
+  directamente (sin cualificarlos con el nombre del módulo)
+\item \verb|from nombre-módulo import *        | \\incorpora los
+  símbolos del módulo al espacio de nombres, siendo accesibles
+  directamente (sin cualificarlos con el nombre del módulo).
 \end{itemize}
-
 \end{frame}
-
-
 
 \begin{frame}[fragile]
 \frametitle{Ficheros}
@@ -421,20 +334,23 @@ modo:
 
 
 \begin{frame}[fragile]
-\frametitle{Ejemplos de uso de ficheros}
 
 \begin{footnotesize}
 \begin{verbatim}
 #!/usr/bin/python
-fich=open("/tmp/prueba","w")
+fich=open('/tmp/prueba','w')
 fich.write("lunes\n")
 fich.close()
 
-fich=open("/tmp/prueba","a")
+fich=open('/tmp/prueba','a')
 fich.write("martes\n")
 fich.close()
 
-fich=open("/etc/hosts","r")
+fich=open('/etc/hosts','r')
+maquinas=fich.read()
+fich.close()
+
+fich=open('/etc/hosts','r')
 maquinas=fich.readlines()
 fich.close()
 
@@ -444,227 +360,6 @@ for maquina in maquinas:
 \end{verbatim}
 \end{footnotesize}
 \end{frame}
-
-
-
-\begin{frame}[fragile]
-\frametitle{Un programa en Python}
-
-\begin{footnotesize}
-\begin{verbatim}
-def sum(sumando1, sumando2):
-    """Sums two integer/floats
-
-    Returns integer/float."""
-
-    return sumando1 + sumando2
-
-if __name__ == "__main__":
-    primero = int(raw_input("Please enter an integer/float: "))
-    segundo = int(raw_input("Please enter another integer/float: "))
-    print sum(primero, segundo) 
-
-\end{verbatim}
-\end{footnotesize}
-
-Ejecución:
-\begin{footnotesize}
-\begin{verbatim}
-    $ python suma.py
-\end{verbatim}
-\end{footnotesize}
- 
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-\frametitle{El atributo \_\_name\_\_ de un módulo}
-
-Los módulos son objetos, con ciertos atributos predefinidos.
-
-El atributo \verb|__name__|:
-\begin{itemize}
-\item si el módulo es importado (con \verb|import|), contiene el
-  nombre del fichero, sin trayecto ni extensión
-\item si el módulo es un programa que se ejecuta sólo, contiene el
-  valor \verb|__main__|
-\end{itemize}
-
-Puede escribirse ejecución condicionada a cómo se use el módulo:
-\begin{footnotesize}
-\begin{verbatim}
-if __name__ == "__main__": 
-    ...
-\end{verbatim}
-\end{footnotesize}
-  
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Importar módulos}
-
-\begin{itemize}
-\item \verb|import nombre-módulo               | \\permite acceder a los
-  símbolos del módulo con la sintaxis \verb|nombre-módulo.X|
-\item \verb|from nombre-módulo import a, b, c  | \\incorpora
-  los símbolos a, b, c al espacio de nombres, siendo accesibles
-  directamente (sin cualificarlos con el nombre del módulo)
-\item \verb|from nombre-módulo import *        | \\incorpora los
-  símbolos del módulo al espacio de nombres, siendo accesibles
-  directamente (sin cualificarlos con el nombre del módulo).
-\end{itemize}
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-\frametitle{PEP 8 (Python Enhancement Proposal \#8)}
-
-\begin{itemize}
-  \item Guía de estilo para programar en Python
-  \item Es (todavía) más estricta que el propio intérprete
-  \item Mejora la legibilidad y mantenibilidad del código
-  \item Parcialmente, se puede comprobar con \texttt{pep8}
-\begin{footnotesize}
-\begin{verbatim}
-$ pep8 pepe.py
-pepe.py:248:30: E225 missing whitespace around operator
-pepe.py.py:248:80: E501 line too long (97 > 79 characters)
-[...]
-\end{verbatim}
-\end{footnotesize}
-\end{itemize}
-\end{frame}
-
-
-\subsection{Consideraciones adicionales}
-
-\begin{frame}[fragile]
-\frametitle{Consideraciones adicionales}
-
-\begin{center}
-{\Huge Consideraciones Adicionales}
-
-{\footnotesize (transparencias de referencia)}
-
-\end{center}
-
-
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Ámbito de las variables}
-\begin{itemize}
-\item 
-Las variable declaradas fuera de una función son globales
-\end{itemize}
-%01
-%    """Ejemplo para hablar del ámbito"""
-  \begin{footnotesize}
-\begin{verbatim}
-#!/usr/bin/python
-numero = 5
-def f(parametro):
-    return parametro + numero
-print f(3)    # 8
-\end{verbatim}
-  \end{footnotesize}
-
-\begin{itemize}
-\item 
-Las variable declaradas dentro de una función son locales
-\end{itemize}
-
-%02
-  \begin{footnotesize}
-\begin{verbatim}
-#!/usr/bin/python
-def f(parametro):
-    numero = 5
-    return parametro + numero
-print f(3)
-print numero    # ERROR: numero es de ambito local
-\end{verbatim}
-  \end{footnotesize}
-
-
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Más sobre ámbito de variables}
-
-\begin{itemize}
-\item 
-Dentro de una función se puede ver una variable global\\
-pero no modificar
-\end{itemize}
-%03
-  \begin{footnotesize}
-\begin{verbatim}
-#!/usr/bin/python
-numero = 5
-def f(parametro):
-    numero = numero-1    #ERROR: no se puede modificar variable global
-    return paramentro + numero
-    
-print f(3)
-\end{verbatim}
-  \end{footnotesize}
-
-\begin{itemize}
-\item 
-A menos que se use la sentencia \verb|global|
-\end{itemize}
-
-
-
- %04 
-  \begin{footnotesize}
-\begin{verbatim}
-#!/usr/bin/python
-numero = 5
-def f(parametro):
-    global numero   # permite modificar una variable global
-    numero = numero-1   
-    return parametro + numero
-print f(3)    # 7
-print numero  # 4
-\end{verbatim}
-  \end{footnotesize}
-
-
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Más sobre ámbito de variables}
-\begin{itemize}
-  
-\item  Un poco más complicado:
-
-\end{itemize}
-
-
-  \begin{footnotesize}
- %06 
-\begin{verbatim}
-#!/usr/bin/python
-numero = 5
-def f(parametro):
-    numero = 4   # ahora numero es variable local
-    return parametro + numero
-    
-print f(3)   # 7
-print numero # 5
-
-\end{verbatim}
-  \end{footnotesize}
-
-\end{frame}
-
 
 
 
@@ -709,8 +404,6 @@ En Python la declaración de variables es implícita \\(no hay declaración explíci
 \end{frame}
 
 
-
-
 \begin{frame}[fragile]
 \frametitle{Tuplas}
 
@@ -726,12 +419,12 @@ Sí puede comprobarse la existencia con el operador \verb|in|.
 
 \begin{footnotesize}
 \begin{verbatim}
->>> tupla = ("a", "b", "mpilgrim", "z", "example") 
->>> tupla[0]                                       
+>>> t = ("a", "b", "mpilgrim", "z", "example") 
+>>> t[0]                                       
 'a'
->>> 'a' in tupla
+>>> 'a' in t
 1
->>> tupla[0] =  "b"
+>>> t[0] =  "b"
 Traceback (most recent call last):
   File "<stdin>", line 1, in ?
 TypeError: object doesn't support item assignment
@@ -752,9 +445,9 @@ Utilidad de las tuplas:
 \item Se usan en el formateo de cadenas
 \end{itemize} 
 
-\verb|tuple(lista)| devuelve una tupla con los elementos de la lista \verb|lista|
+\verb|tuple(li)| devuelve una tupla con los elementos de la lista \verb|li|
 
-\verb|list(tupla)| devuelve una lista con los elementos de la tupla \verb|tupla|
+\verb|list(t)| devuelve una lista con los elementos de la tupla \verb|t|
 
 \end{frame} 
 
@@ -839,58 +532,28 @@ asignado un valor.
 \begin{footnotesize}
 \begin{verbatim}
 #!/usr/bin/python
-sum_elementos = 3 + 4 + 17
-media = suma_elementos / 3    # deletreamos mal la variable
-print media   # y el compilador nos avisa con un error
+sum_elementos= 3 + 4 + 17
+media=suma_elementos / 3    # deletreamos mal la variable
+print media;   # y el compilador nos avisa con un error
 \end{verbatim}
 \end{footnotesize}
-adi
+
+
 
 \end{frame}
 
 
 \begin{frame}[fragile]
 \frametitle{Operaciones sobre cadenas}
+\verb|join()| devuelve una cadena que engloba a todos los elementos de la lista.\\
+\verb|split()| devuelve una lista dividiendo una cadena\\
+\verb|upper()| devuelve la cadena en mayúsculas\\
+\verb|lower()| devuelve la cadena en minúsculas\\
 
-\begin{itemize}
-\item \verb|join()| devuelve una cadena que engloba a todos los elementos de la lista.\\
-\item \verb|split()| devuelve una lista dividiendo una cadena\\
-\item \verb|upper()| devuelve la cadena en mayúsculas\\
-\item \verb|lower()| devuelve la cadena en minúsculas\\
-\end{itemize}
-
-Estas funciones de biblioteca, como todas, podemos encontrarlas
-en la \emph{python library reference}
+Estas funciones de biblioteca, como todas,\\ podemos encontrarlas
+en la \emph{python library reference}\\
 (disponible en el web en muchos formatos)
 
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-
-\frametitle{Más sobre cadenas}  
-
-  \begin{footnotesize}
-\begin{verbatim}
-#!/usr/bin/python
-
-cadena = "más vale pájaro en mano"
-print cadena.split()
-print cadena.upper()
-
-otra_cadena = "que,cocodrilo,en,tobillo"
-print otra_cadena.split(',')
-
-lista = ['rojo', 'amarillo', 'verde']
-print lista.join()
-
-\end{verbatim}
-  \end{footnotesize}
-
-
-
-  
 \end{frame}
 
 \begin{frame}[fragile]
@@ -944,20 +607,46 @@ print lista.join()
 
 
 
+\begin{frame}[fragile]
+
+\frametitle{Más sobre cadenas}  
+
+  \begin{footnotesize}
+\begin{verbatim}
+#!/usr/bin/python
+import string
+a="más vale pájaro en mano"
+print string.split(a)
+print string.upper(a)
+
+b="que,cocodrilo,en,tobillo"
+print string.split(b,',')
+
+c=['rojo','amarillo','verde']
+print string.join(c)
+
+\end{verbatim}
+  \end{footnotesize}
+
+
+
+  
+\end{frame}
+
+
+
 
 \begin{frame}[fragile]
-\frametitle{Recogiendo datos del usuario con raw\_input}
-
 \begin{footnotesize}
 \begin{verbatim}
 #!/usr/bin/python
-entero = int(raw_input("Please enter an integer: "))
-if entero < 0:
-     entero = 0
+x = int(raw_input("Please enter an integer: "))
+if x < 0:
+     x = 0
      print 'Negative changed to zero'
-elif entero == 0:
+elif x == 0:
      print 'Zero'
-elif entero == 1:
+elif x == 1:
      print 'Single'
 else:
      print 'More'
@@ -974,7 +663,118 @@ No existe \verb|switch/case|
 
 
 
+\begin{frame}[fragile]
+\frametitle{Ambito de las variables}
+\begin{itemize}
+\item 
+Las variable declaradas fuera de una función son globales
+\end{itemize}
+%01
+%    """Ejemplo para hablar del ámbito"""
+  \begin{footnotesize}
+\begin{verbatim}
+#!/usr/bin/python
+c=5
+def f(x):
+    return x+c
 
+print f(3)    # 8
+\end{verbatim}
+  \end{footnotesize}
+
+\begin{itemize}
+\item 
+Las variable declaradas dentro de una función son locales
+\end{itemize}
+
+%02
+  \begin{footnotesize}
+\begin{verbatim}
+#!/usr/bin/python
+def f(x):
+    c=5
+    return x+c
+print f(3)
+print c    # ERROR: c es de ambito local
+\end{verbatim}
+  \end{footnotesize}
+
+
+
+
+\begin{itemize}
+\item 
+Dentro de una función se puede ver una variable global\\
+pero no modificar
+\end{itemize}
+%03
+  \begin{footnotesize}
+\begin{verbatim}
+#!/usr/bin/python
+c=5
+def f(x):
+    c=c-1    #ERROR: no se puede modificar variable global
+    return x+c
+    
+print f(3)
+\end{verbatim}
+  \end{footnotesize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\begin{itemize}
+\item 
+A menos que se use la sentencia \verb|global|
+\end{itemize}
+
+
+
+ %04 
+  \begin{footnotesize}
+\begin{verbatim}
+#!/usr/bin/python
+c=5
+def f(x):
+    global c   #permite modificar una variable global
+    c=c-1   
+    return x+c
+    
+print f(3)    #7
+print c       #4
+\end{verbatim}
+  \end{footnotesize}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{itemize}
+  
+\item  Un poco más complicado:
+
+\end{itemize}
+
+
+  \begin{footnotesize}
+ %06 
+\begin{verbatim}
+#!/usr/bin/python
+c=5
+def f(x):
+    c=4   #ahora c es variable local
+    return x+c
+    
+print f(3)   # 7
+print c      # 5
+
+\end{verbatim}
+  \end{footnotesize}
+
+\end{frame}
 
 
 
@@ -991,13 +791,13 @@ No existe \verb|switch/case|
 
 \begin{footnotesize}
 \begin{verbatim}
->>> lista
+>>> li
 ['a', 'b', 'mpilgrim', 'z', 'example']
->>> lista.append("new")               
->>> lista
+>>> li.append("new")               
+>>> li
 ['a', 'b', 'mpilgrim', 'z', 'example', 'new']
->>> lista.insert(2, "new")           
->>> lista
+>>> li.insert(2, "new")           
+>>> li
 ['a', 'b', 'new', 'mpilgrim', 'z', 'example', 'new']
 \end{verbatim}
 \end{footnotesize}
@@ -1008,8 +808,6 @@ No existe \verb|switch/case|
 
 
 \begin{frame}[fragile]
-\frametitle{Más sobre listas}
-
 \begin{itemize}
 \item \verb|index()| busca en la lista un elemento y devuelve el
   índice de la primera aparición del elemento en la lista. Si no
@@ -1020,17 +818,17 @@ No existe \verb|switch/case|
 
 \begin{footnotesize}
 \begin{verbatim}
->>> lista
+>>> li
 ['a', 'b', 'new', 'mpilgrim', 'z', 'example', 'new']
->>> lista.index("example") 
+>>> li.index("example") 
 5
->>> lista.index("new")     
+>>> li.index("new")     
 2
->>> lista.index("c")       
+>>> li.index("c")       
 Traceback (innermost last):
   File "<interactive input>", line 1, in ?
 ValueError: list.index(x): x not in list
->>> "c" in lista           
+>>> "c" in li           
 0
 \end{verbatim}
 \end{footnotesize}
@@ -1041,7 +839,6 @@ ValueError: list.index(x): x not in list
 
 
 \begin{frame}[fragile]
-\frametitle{Más sobre listas}
 
 \begin{itemize}
 \item \verb|remove()| elimina la primera aparición de un elemento en
@@ -1052,19 +849,19 @@ ValueError: list.index(x): x not in list
 
 \begin{footnotesize}
 \begin{verbatim}
- >>> lista
- ['patatas', 'bravas', 'alioli', 'huevo', 'tortilla', 'chorizo']
->>> lista.remove("alioli") 
->>> lista
-['patatas', 'bravas', 'huevo', 'tortilla', 'chorizo']
->>> lista.remove("oreja")   
+ >>> li
+['a', 'b', 'new', 'mpilgrim', 'z', 'new', 'two', 'elements']
+>>> li.remove("new") 
+>>> li
+['a', 'b', 'mpilgrim', 'z', 'new', 'two', 'elements']
+>>> li.remove("c")   
 Traceback (innermost last):
   File "<interactive input>", line 1, in ?
-ValueError: list.remove(x): orija not in list
->>> lista.pop()         
-'chorizo'
->>> lista
- ['patatas', 'bravas', 'alioli', 'huevo', 'tortilla']
+ValueError: list.remove(x): x not in list
+>>> li.pop()         
+'elements'
+>>> li
+['a', 'b', 'mpilgrim', 'z', 'new', 'two'] 
 \end{verbatim}
 \end{footnotesize}
 
@@ -1073,7 +870,6 @@ ValueError: list.remove(x): orija not in list
 
 
 \begin{frame}[fragile]
-\frametitle{Más sobre listas}
 
 \begin{itemize}
 \item El operador \verb|+| concatena dos listas, devolviendo una nueva
@@ -1084,15 +880,15 @@ ValueError: list.remove(x): orija not in list
 
 \begin{footnotesize}
 \begin{verbatim}
->>> lista = ['patatas', 'bravas', 'alioli']
->>> lista = lista + ['huevo', 'tortilla'] 
->>> lista
-['patatas', 'bravas', 'alioli', 'huevo', 'tortilla']
->>> lista += ['chorizo']                
->>> lista
-['patatas', 'bravas', 'alioli', 'huevo', 'tortilla', 'chorizo']
->>> lista = [1, 2] * 3              
->>> lista
+>>> li = ['a', 'b', 'mpilgrim']
+>>> li = li + ['example', 'new'] 
+>>> li
+['a', 'b', 'mpilgrim', 'example', 'new']
+>>> li += ['two']                
+>>> li
+['a', 'b', 'mpilgrim', 'example', 'new', 'two']
+>>> li = [1, 2] * 3              
+>>> li
 [1, 2, 1, 2, 1, 2]
 \end{verbatim}
 \end{footnotesize}
@@ -1104,7 +900,6 @@ ValueError: list.remove(x): orija not in list
 
 
 \begin{frame}[fragile]
-\frametitle{Más sobre listas}
 
 \begin{itemize}
 \item \verb|sort()| ordena una lista. Puede recibir opcionalmente un
@@ -1135,6 +930,62 @@ sobre la que se aplican.
 
 
 
+\begin{frame}[fragile]
+\frametitle{Un programa en Python}
+
+\begin{footnotesize}
+\begin{verbatim}
+def buildConnectionString(params):
+    """Build a connection string from a dictionary of parameters.
+
+    Returns string."""
+    return ";".join(["%s=%s" % (k, v) for k, v in params.items()])
+
+if __name__ == "__main__":
+    myParams = {"server":"mpilgrim", \
+                "database":"master", \
+                "uid":"sa", \
+                "pwd":"secret" \
+                }
+    print buildConnectionString(myParams) 
+\end{verbatim}
+\end{footnotesize}
+
+Ejecución:
+\begin{footnotesize}
+\begin{verbatim}
+xterm$ python odbchelper.py
+server=mpilgrim;uid=sa;database=master;pwd=secret
+\end{verbatim}
+\end{footnotesize}
+ 
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{El atributo \_\_name\_\_ de un módulo}
+
+Los módulos son objetos, con ciertos atributos predefinidos.
+
+El atributo \verb|__name__|:
+\begin{itemize}
+\item si el módulo es importado (con \verb|import|), contiene el
+  nombre del fichero, sin trayecto ni extensión
+\item si el módulo es un programa que se ejecuta sólo, contiene el
+  valor \verb|__main__|
+\end{itemize}
+
+Puede escribirse ejecución condicionada a cómo se use el módulo:
+\begin{footnotesize}
+\begin{verbatim}
+if __name__ == "__main__": 
+    ...
+\end{verbatim}
+\end{footnotesize}
+  
+\end{frame}
+
 
 
 
@@ -1145,9 +996,9 @@ sobre la que se aplican.
 \item Pueden hacerse también tuplas de variables:
 \begin{footnotesize}
 \begin{verbatim}
->>> tupla = ('a', 'b', 'e')
->>> (primero, segundo, tercero) = tupla
->>> primero
+>>> v = ('a', 'b', 'e')
+>>> (x, y, z) = v 
+>>> x
 'a'
 \end{verbatim}
 \end{footnotesize}
@@ -1279,6 +1130,16 @@ while 1:
 \end{frame}
 
 
+
+
+\begin{frame}[fragile]
+\frametitle{Los nulos también tienen nombre}
+ 
+Sentencia nula: \verb|pass|
+
+Valor nulo: \verb|None| 
+
+\end{frame}
 
 
 \begin{frame}[fragile]
@@ -1638,13 +1499,13 @@ def interseccion(m, b):
   Devuelve la interseccion de la curva M{y=m*x+b} con el eje X. 
   Se trata del punto en el que la curva cruza el eje X (M{y=0}).
 
-  @type  m: número
+  @type  m: numero
   @param m: La pendiente de la curva
-  @type  b: número
+  @type  b: numero
   @param b: La intersección con el eje Y
 
-  @rtype:   número
-  @return:  la interseccíoin con el eje X de la curva M{y=m*x+b}.
+  @rtype:   numero
+  @return:  la interseccion con el eje X de la curva M{y=m*x+b}.
   """
   return -b/m
 \end{verbatim}
@@ -1652,4 +1513,89 @@ def interseccion(m, b):
   
 \end{frame}
 
+\begin{frame}
+\frametitle{Orientación a objetos}
 
+\begin{itemize}
+\item Modelo de clases clásico
+\item En cada módulo (fichero) una o varias clases
+\item Todo en Python es un objeto (incluso una función)
+\item Los métodos de una clase se declaran como funciones
+\item Método \_\_init\_\_: inicialización en el momento de la instanciación
+\item Argumento ``self'' pasado a cada método: referencia al propio objeto
+\item Todos los métodos incluyen un argumento ``self''
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Orientación a objetos (ejemplo)}
+
+\begin{verbatim}
+class aClass (parentClass)
+   """Description of the class"""
+
+   def method1 (self)
+      """Description of method1"""
+      codeForMethod1
+
+   def __init__ (self, arg)
+      """Description for initialization"""
+      codeForInit
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Orientación a objetos (ejemplo 2)}
+
+\begin{verbatim}
+# Instantiation
+anObject = aClass (arg)
+# Calling method1
+anObject.method1 ()
+# Calling a parent method
+anObject.methodParent ()
+\end{verbatim}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Referencias}
+
+\begin{itemize}
+\item \url{http://www.python.org/doc}
+
+Documentación en línea de Python (incluyendo un Tutorial, los manuales de referencia, HOWTOS, etc. Usa la versión para Python 2.x
+
+\item \url{http://www.diveintopython.org/}
+
+``Dive into Python'', por Mark Pilgrim. Libro para aprender Python, orientado a quien ya sabe programa con lenguajes orientados a objetos.
+
+\item \url{http://wiki.python.org/moin/BeginnersGuide/Programmers}
+
+Otros textos sobre Python, de interés especialmente para quien ya sabe programar en otros lenguajes.
+
+\item \url{http://python.net/~goodger/projects/pycon/2007/idiomatic/}
+
+``Code Like a Pythonista: Idiomatic Python'', por David Goodger
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Referencias (2)}
+
+\begin{itemize}
+\item \url{http://en.wikibooks.org/wiki/Python_Programming}
+
+``Python Programming'', Wikibook sobre programación en Python.
+
+\item \url{http://en.wikipedia.org/wiki/Python_(programming_language)}
+
+Python en la Wikipedia
+
+\end{itemize}
+
+\end{frame}
