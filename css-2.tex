@@ -4,16 +4,40 @@
 \section{Hojas de estilo CSS}
 
 
+%% LICENCIA DE REDISTRIBUCION DE LAS TRANSPAS
+\frame{
+~
+\vspace{1cm}
+
+\begin{flushright}
+\copyright Javier Eguiluz - Librosweb.es \\
+\copyright Gregorio Robles - Universidad Rey Juan Carlos \\
+\vspace{1cm}
+
+Algunos derechos reservados. Este artículo se distribuye bajo
+la licencia ``Reconocimiento-NoComercial-NoObrasDerivadas 3.0 España'' de Creative Commons,
+disponible en \\
+{\small \url{http://creativecommons.org/licenses/by-nc-nd/3.0/es/deed.es}}
+\vspace{1cm}
+
+Este documento se basa en el libro de librosweb.es \\
+disponible en http://www.librosweb.es/css/ \\
+Se ha pedido explícitamente autorización al autor original \\
+para realizar esta obra derivada con fines educativos.
+\end{flushright}
+}
+
+
 %%---------------------------------------------------------------
 
 \begin{frame}
 \frametitle{¿Qué es CSS?}
 
 \begin{itemize}
-  \item Es un lenguaje de hojas de estilos creado para {\bf controlar el aspecto} o presentación de los documentos electrónicos definidos con HTML
-  \item Es la mejor forma de {\bf separar los contenidos y su presentación} y es imprescindible para crear páginas web complejas
+  \item Es un lenguaje de hojas de estilos creado para controlar el aspecto o presentación de los documentos electrónicos definidos con HTML y XHTML
+  \item Es la mejor forma de separar los contenidos y su presentación y es imprescindible para crear páginas web complejas
   \begin{itemize}
-    \item Obliga a crear documentos HTML bien definidos y con significado completo (también llamados \emph{documentos semánticos})
+    \item Obliga a crear documentos HTML/XHTML bien definidos y con significado completo (también llamados "documentos semánticos")
     \item Mejora la accesibilidad del documento
     \item Reduce la complejidad de su mantenimiento
     \item Permite visualizar el mismo documento en infinidad de dispositivos diferentes
@@ -29,8 +53,9 @@
 
 {\footnotesize
 \begin{verbatim}
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
  <title>Ejemplo de estilos sin CSS</title>
@@ -57,8 +82,9 @@
 
 {\footnotesize
 \begin{verbatim}
-<!DOCTYPE html">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
 <title>Ejemplo de estilos con CSS</title>
@@ -81,10 +107,7 @@
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{CSS en un documento HTML}
-
-Se pueden integrar instrucciones CSS de varias maneras en un documento
-HTML:
+\frametitle{Incluir un CSS en un documento (X)HTML}
 
 \begin{enumerate}
   \item Incluir CSS en el mismo documento HTML
@@ -106,8 +129,8 @@ HTML:
 \end{center}
 
 \begin{itemize}
-  \item {\bf Regla}: cada uno de los estilos que componen una hoja de estilos CSS. Cada regla está compuesta de una parte de ``selectores'', un símbolo de ``llave de apertura'' (\{), otra parte denominada ``declaración'' y por último, un símbolo de ``llave de cierre'' (\}).
-  \item {\bf Selector}: indica el elemento o elementos HTML a los que se aplica la regla CSS.
+  \item Regla: cada uno de los estilos que componen una hoja de estilos CSS. Cada regla está compuesta de una parte de "selectores", un símbolo de ''llave de apertura'' (\{), otra parte denominada ''declaración'' y por último, un símbolo de ''llave de cierre'' (\}).
+  \item Selector: indica el elemento o elementos HTML a los que se aplica la regla CSS.
 \end{itemize}
 
 \end{frame}
@@ -124,37 +147,120 @@ HTML:
 \end{center}
 
 \begin{itemize}
-  \item {\bf Declaración}: especifica los estilos que se aplican a los elementos. Está compuesta por una o más propiedades CSS.
-  \item {\bf Propiedad}: característica que se modifica en el elemento seleccionado, como por ejemplo su tamaño de letra, su color de fondo, etc.
-  \item {\bf Valor}: establece el nuevo valor de la característica modificada en el elemento.
+  \item Declaración: especifica los estilos que se aplican a los elementos. Está compuesta por una o más propiedades CSS.
+  \item Propiedad: característica que se modifica en el elemento seleccionado, como por ejemplo su tamaño de letra, su color de fondo, etc.
+  \item Valor: establece el nuevo valor de la característica modificada en el elemento.
 \end{itemize}
 
-CSS 2.1 define 115 propiedades, mientras que CSS 3 define 239 propiedades.
+CSS 2.1 define 115 propiedades y CSS 3 define 239 propiedades.
 
 \end{frame}
 
 %%---------------------------------------------------------------
-%
-%\begin{frame}
-%\frametitle{Sintaxis}
-%
-%\begin{itemize}
-%  \item Sucesión de palabras sin ningún carácter que las separe (paréntesis, comas, barras, etc.) el valor de la propiedad se debe indicar tal y como se muestra y con esas palabras en el mismo orden.
-%  \item Sucesión de valores separados por una barra simple el valor de la propiedad debe tomar uno y sólo uno de los valores indicados
-%  \item Sucesión de valores separados por una barra doble el valor de la propiedad puede tomar uno o más valores de los indicados y en cualquier orden.
-%  \item Cada valor o agrupación de valores se puede indicar el tipo de valor: opcional, obligatorio, múltiple o restringido.
-%  \item Más: * = cero o más veces; + = una o más veces; ? = opcional; {n1, n2} = entre n1 y n2 veces
-%\end{itemize}
-%
-%\end{frame}
+
+\begin{frame}
+\frametitle{Medios CSS}
+
+\begin{itemize}
+  \item Permiten definir diferentes estilos para diferentes medios o dispositivos: pantallas, impresoras, móviles, proyectores, etc.
+  \item Define algunas propiedades específicamente para determinados medios: la paginación y los saltos de página para los medios impresos o el volumen y tipo de voz para los medios de audio.
+  \item Ejemplos:
+  \begin{itemize}
+    \item screen: Pantallas de ordenador
+    \item print: Impresoras y navegadores en el modo ''Vista Previa para Imprimir''
+    \item handheld:	Dispositivos de mano: móviles, PDA, etc.
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Formas de indicar el medio}
+
+\begin{enumerate}
+  \item Reglas de tipo @media
+{\footnotesize
+    \begin{verbatim}
+@media print {
+  body { font-size: 10pt }
+}
+@media screen {
+  body { font-size: 13px }
+}
+    \end{verbatim}
+}
+  \item Reglas de tipo @import
+{\footnotesize
+    \begin{verbatim}
+@import url("estilos_basicos.css") screen;
+@import url("estilos_impresora.css") print;
+    \end{verbatim}
+}
+  \item Medios definidos con la etiqueta
+{\footnotesize
+    \begin{verbatim}
+<link rel="stylesheet" type="text/css" media="screen" href="basico.css" />
+<link rel="stylesheet" type="text/css" media="print, handheld" href="especial.css" />
+    \end{verbatim}
+}
+  \item Medios definidos mezclando varios métodos
+{\footnotesize
+    \begin{verbatim}
+<link rel="stylesheet" type="text/css"  media="screen" href="basico.css" />
+@import url("estilos_seccion.css") screen;
+@media print {
+  /* Estilos específicos para impresora */
+}
+    \end{verbatim}
+}
+\end{enumerate}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Comentarios}
+
+\begin{itemize}
+  \item El comienzo de un comentario se indica mediante los caracteres /* y el final del comentario se indica mediante */
+    \begin{verbatim}
+/* Este es un comentario en CSS */
+    \end{verbatim}
+  \item Pueden ocupar tantas líneas como sea necesario, pero no se puede incluir un comentario dentro de otro comentario
+    \begin{verbatim}
+/* Este es un
+   comentario CSS de varias
+   lineas */
+    \end{verbatim}
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Sintaxis}
+
+\begin{itemize}
+  \item Sucesión de palabras sin ningún carácter que las separe (paréntesis, comas, barras, etc.) el valor de la propiedad se debe indicar tal y como se muestra y con esas palabras en el mismo orden.
+  \item Sucesión de valores separados por una barra simple el valor de la propiedad debe tomar uno y sólo uno de los valores indicados
+  \item Sucesión de valores separados por una barra doble el valor de la propiedad puede tomar uno o más valores de los indicados y en cualquier orden.
+  \item Cada valor o agrupación de valores se puede indicar el tipo de valor: opcional, obligatorio, múltiple o restringido.
+  \item Más: * = cero o más veces; + = una o más veces; ? = opcional; {n1, n2} = entre n1 y n2 veces
+\end{itemize}
+
+\end{frame}
 
 
 %%---------------------------------------------------------------
 
-\subsubsection*{Selectores}
+\section{Selectores}
 
 \begin{frame}
-\frametitle{Selectores}
+\frametitle{}
 
 \begin{itemize}
   \item A un mismo elemento HTML se le pueden aplicar varias reglas 
@@ -188,8 +294,7 @@ CSS 2.1 incluye una docena de tipos diferentes de selectores, que permiten selec
 \frametitle{Selector Universal}
 
 \begin{itemize}
-  \item No se utiliza habitualmente
-  \item Generalmente es equivalente para poner estilo a $<body>$
+  \item No se utiliza habitualmente, ya que es difícil que un mismo estilo se pueda aplicar a todos los elementos de una página.
   \item Se suele combinar con otros selectores y además, forma parte de algunos hacks muy utilizados
 \end{itemize}
 
@@ -391,6 +496,47 @@ ad</em> litora...</p>
 
 %%---------------------------------------------------------------
 
+\begin{frame}[fragile]
+\frametitle{Selectores avanzados}
+
+\begin{enumerate}
+  \item Selector de hijos
+\begin{verbatim}
+p > span { color: blue; }
+\end{verbatim}
+  \item Selector adyacente
+\begin{verbatim}
+p + p { text-indent: 1.5em; }
+\end{verbatim}
+  \item Selector de atributos
+\begin{verbatim}
+a[class="externo"] { color: blue; }
+a[class~="externo"] { color: blue; }
+*[lang=en] { ... }
+*[lang|="es"] { color : red }
+\end{verbatim}
+\end{enumerate}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Colisión de estilos}
+
+El método seguido por CSS para resolver las colisiones de estilos se muestra a continuación:
+
+\begin{enumerate}
+  \item Determinar todas las declaraciones que se aplican al elemento para el medio CSS seleccionado.
+  \item Ordenar las declaraciones según su origen (CSS de navegador, de usuario o de diseñador) y su prioridad (palabra clave !important).
+  \item Ordenar las declaraciones según lo específico que sea el selector. Cuanto más genérico es un selector, menos importancia tienen sus declaraciones.
+  \item Si después de aplicar las normas anteriores existen dos o más reglas con la misma prioridad, se aplica la que se indicó en último lugar.
+\end{enumerate}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
 \begin{frame}
 \frametitle{Colisión de estilos (simplificado)}
 
@@ -401,11 +547,9 @@ ad</em> litora...</p>
 
 \end{frame}
 
-
-
 %%---------------------------------------------------------------
 
-\subsubsection*{Unidades y colores}
+\section{Unidades y colores}
 
 \begin{frame}
 \frametitle{Unidades de medida}
@@ -447,7 +591,7 @@ Normalmente se utilizan píxel y porcentajes para definir el layout del documento
 
 %%---------------------------------------------------------------
 
-\subsubsection*{El Modelo de Cajas}
+\section{El Modelo de Cajas}
 
 \begin{frame}
 \frametitle{El modelo de cajas}
@@ -513,89 +657,70 @@ Ejemplo de http://www.alistapart.com/ después de forzar a que todas las cajas mu
 \frametitle{Partes que componen cada caja}
 
 \begin{itemize}
-  \item {\bf Contenido} (content): se trata del contenido HTML del elemento (las palabras de un párrafo, una imagen, el texto de una lista de elementos, etc.)
-  \item {\bf Relleno} (padding): espacio libre opcional existente entre el contenido y el borde.
-  \item {\bf Borde} (border): línea que encierra completamente el contenido y su relleno.
-  \item {\bf Imagen de fondo} (background image): imagen que se muestra por detrás del contenido y el espacio de relleno.
-  \item {\bf Color de fondo} (background color): color que se muestra por detrás del contenido y el espacio de relleno.
-  \item {\bf Margen} (margin): separación opcional existente entre la caja y el resto de cajas adyacentes.
+  \item Contenido (content): se trata del contenido HTML del elemento (las palabras de un párrafo, una imagen, el texto de una lista de elementos, etc.)
+  \item Relleno (padding): espacio libre opcional existente entre el contenido y el borde.
+  \item Borde (border): línea que encierra completamente el contenido y su relleno.
+  \item Imagen de fondo (background image): imagen que se muestra por detrás del contenido y el espacio de relleno.
+  \item Color de fondo (background color): color que se muestra por detrás del contenido y el espacio de relleno.
+  \item Margen (margin): separación opcional existente entre la caja y el resto de cajas adyacentes.
 \end{itemize}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Margen, relleno, bordes y modelo de cajas (I)}
-
-\begin{itemize}
-  \item El margen, el relleno y los bordes establecidos a un elemento determinan la anchura y altura final del elemento
-\end{itemize}
-
-{\footnotesize
-\begin{verbatim}
-div {
-  width: 300px;
-  padding-left:  50px;
-  padding-right: 50px;
-  margin-left:   30px;
-  margin-right:  30px;
-  border: 10px solid black;
-}
-\end{verbatim}
-}
-
-
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Margen, relleno, bordes y modelo de cajas (y II)}
-
-\begin{center}
-\begin{figure}[p]
-\includegraphics[width=0.75\textwidth]{img/f0414.png}
-\end{figure}
-\end{center}
-
-De esta forma, la anchura del elemento en pantalla sería igual a la suma de la anchura original, los márgenes, los bordes y los rellenos:
-
-30px + 10px + 50px + 300px + 50px + 10px + 30px = 480 píxel
 
 \end{frame}
 
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Visualización}
+\frametitle{Orden de visualización}
 
 \begin{itemize}
-  \item CSS define otras cuatro propiedades para controlar su visualización: display, visibility, overflow y z-index.
-  \item La propiedad display permite ocultar completamente un elemento haciendo que desaparezca de la página. Como el elemento oculto no se muestra, el resto de elementos de la página se mueven para ocupar su lugar.
-  \item La propiedad display también permite modificar el comportamiento de un elemento a bloque (block) o en línea (inline).
-  \item La propiedad visibility permite hacer invisible un elemento, lo que significa que el navegador crea la caja del elemento pero no la muestra. En este caso, el resto de elementos de la página no modifican su posición, ya que aunque la caja no se ve, sigue ocupando sitio.
+  \item El relleno y el margen son transparentes, por lo que en el espacio ocupado por el relleno se muestra el color o imagen de fondo (si están definidos)
+  \item En el espacio ocupado por el margen se muestra el color o imagen de fondo de su elemento padre (si están definidos)
+  \item Si ningún elemento padre tiene definido un color o imagen de fondo, se muestra el color o imagen de fondo de la propia página (si están definidos)
+  \item Si una caja define tanto un color como una imagen de fondo, la imagen tiene más prioridad y es la que se visualiza
+  \item Si la imagen de fondo no cubre totalmente la caja del elemento o si la imagen tiene zonas transparentes, también se visualiza el color de fondo. 
 \end{itemize}
 
 \end{frame}
 
-
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Diferencias entre display y visibility}
+\frametitle{Propiedad width}
 
 \begin{center}
-\begin{figure}[p]
-\includegraphics[width=0.8\textwidth]{img/f0522.png}
-\end{figure}
+  \begin{table}
+   \begin{tabular}{p{1.8cm}p{7.8cm}}
+Propiedad &\bf{width} \\ \hline
+Valores & $<medida>$ | $<porcentaje>$ | auto | inherit \\ \hline
+Se aplica a & Todos los elementos, salvo los elementos en línea que no sean imágenes, las filas de tabla y los grupos de filas de tabla \\ \hline
+Valor inicial & auto \\ \hline
+Descripción & Establece la anchura de un elemento \\ \hline
+  \end{tabular}
+   \caption{Definición de la propiedad width de CSS}
+ \end{table}
 \end{center}
 
 \end{frame}
 
+%%---------------------------------------------------------------
 
+\begin{frame}
+\frametitle{Propiedad height}
+
+\begin{center}
+  \begin{table}
+   \begin{tabular}{p{1.8cm}p{7.8cm}}
+Propiedad &\bf{height} \\ \hline
+Valores & $<medida>$ | $<porcentaje>$ | auto | inherit \\ \hline
+Se aplica a & Todos los elementos, salvo los elementos en línea que no sean imágenes, las columnas de tabla y los grupos de columnas de tabla \\ \hline
+Valor inicial & auto \\ \hline
+Descripción & Establece la altura de un elemento \\ \hline
+  \end{tabular}
+   \caption{Definición de la propiedad height de CSS}
+ \end{table}
+\end{center}
+
+\end{frame}
 
 %%---------------------------------------------------------------
 
@@ -611,9 +736,28 @@ Se aplica a & Todos los elementos, salvo margin-top y margin-bottom que sólo se 
 Valor inicial & 0 \\ \hline
 Descripción & Establece cada uno de los márgenes horizontales y verticales de un elemento \\  \hline
   \end{tabular}
-    \caption{Definición de la propiedad \emph{margin-top}, \emph{margin-right}, \emph{margin-bottom}, \emph{margin-left} de CSS}
+    \caption{Definición de la propiedad margin-top, margin-right, margin-bottom, margin-left de CSS}
  \end{table}
 \end{center}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Márgenes}
+
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.45\textwidth]{img/f0428.png}
+\end{figure}
+\end{center}
+
+\begin{itemize}
+  \item En vez de utilizar la etiqueta <blockquote> de HTML, debería utilizarse la propiedad margin-left de CS
+  \item Los márgenes verticales (margin-top y margin-bottom) sólo se pueden aplicar a los elementos de bloque y las imágenes, mientras que los márgenes laterales (margin-left y margin-right) se pueden aplicar a cualquier elemento
+\end{itemize}
 
 \end{frame}
 
@@ -652,323 +796,6 @@ La notación {1, 4} de la definición anterior significa que la propiedad margin a
 \end{itemize}
 
 \end{frame}
-
-%%---------------------------------------------------------------
-\subsubsection*{Enlaces}
-
-\begin{frame}
-\frametitle{Pseudo-clases}
-
-Como con los atributos id o class no es posible aplicar diferentes estilos a un mismo elemento en función de su estado, CSS introduce un nuevo concepto llamado pseudo-clases. En enlaces:
-
-\begin{itemize}
-  \item {\bf :link}: enlaces que apuntan a páginas o recursos que aún no han sido visitados por el usuario.
-  \item {\bf :visited}: enlaces que apuntan a recursos que han sido visitados anteriormente por el usuario. El historial de enlaces visitados se borra automáticamente cada cierto tiempo y el usuario también puede borrarlo manualmente.
-  \item {\bf :hover}: enlace sobre el que el usuario ha posicionado el puntero del ratón.
-  \item {\bf :active}: enlace que está pinchando el usuario. Los estilos sólo se aplican desde que el usuario pincha el botón del ratón hasta que lo suelta.
-\end{itemize}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Imágenes según el estilo del enlace}
-
-\begin{itemize}
-  \item En ocasiones, puede resultar útil incluir un pequeño icono al lado de un enlace para indicar el tipo de contenido que enlaza.
-  \item Este tipo de imágenes son puramente decorativas en vez de imágenes de contenido, por lo que se deberían añadir con CSS y no con elementos de tipo $<img>$. Utilizando la propiedad background (y background-image) se puede personalizar el aspecto de los enlaces para que incluyan un pequeño icono a su lado.
-  \item La técnica consiste en mostrar una imagen de fondo sin repetición en el enlace y añadir el padding necesario al texto del enlace para que no se solape con la imagen de fondo.
-\end{itemize}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Imágenes según el estilo del enlace (II)}
-
-\begin{footnotesize}
-\begin{verbatim}
-a { margin: 1em 0; float: left; clear: left; }
- 
-.rss {
-  color: #E37529;
-  padding: 0 0 0 18px;
-  background: #FFF url(imagenes/rss.gif) no-repeat left center;
-}
- 
-.pdf {
-  padding: 0 0 0 22px;
-  background: #FFF url(imagenes/pdf.png) no-repeat left center;
-}
- 
-<a href="#">Enlace con el estilo por defecto</a>
-<a class="rss" href="#">Enlace a un archivo RSS</a>
-<a class="pdf" href="#">Enlace a un documento PDF</a>
-\end{verbatim}
-\end{footnotesize}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Imágenes según el estilo del enlace (y III)}
-
-
-\begin{center}
-\begin{figure}[p]
-\includegraphics[width=0.8\textwidth]{img/f0704.png}
-\end{figure}
-\end{center}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Mostrar los enlaces como si fueran botones}
-
-\begin{footnotesize}
-\begin{verbatim}
-a { margin: 1em 0; float: left; clear: left; }
-a.boton {
-  text-decoration: none;
-  background: #EEE;
-  color: #222;
-  border: 1px outset #CCC;
-  padding: .1em .5em;
-}
-a.boton:hover {
-  background: #CCB;
-}
-a.boton:active {
-  border: 1px inset #000;
-}
-<a class="boton" href="#">Guardar</a>
-<a class="boton" href="#">Enviar</a>
-\end{verbatim}
-\end{footnotesize}
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Posicionamiento y visualización}
-
-\begin{itemize}
-  \item Los navegadores crean y posicionan de forma automática todas las cajas que forman cada página HTML
-  \item El diseñador puede modificar la posición en la que se muestra cada caja.
-  \item Existen {\bf cuatro tipos de posicionamiento} definidos para las cajas
-\end{itemize}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Tipos de elementos (I)}
-
-El estándar HTML clasifica a todos sus elementos en dos grandes grupos:
-
-Elementos de línea:
-
-\begin{itemize}
-  \item Los elementos en línea (``inline elements'' en inglés) no empiezan necesariamente en nueva línea y sólo ocupan el espacio necesario para mostrar sus contenidos.
-
-\end{itemize}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Tipos de elementos (II)}
-
-Elementos de bloque:
-
-\begin{itemize}
-  \item Los elementos de bloque (``block elements'' en inglés) siempre empiezan en una nueva línea y ocupan todo el espacio disponible hasta el final de la línea
-\end{itemize}
-
-\begin{center}
-\begin{figure}[p]
-\includegraphics[width=0.8\textwidth]{img/f0501.png}
-\end{figure}
-\end{center}
-
-Por sus características, los elementos de bloque no pueden insertarse dentro de elementos en línea y tan sólo pueden aparecer dentro de otros elementos de bloque. En cambio, un elemento en línea puede aparecer tanto dentro de un elemento de bloque como dentro de otro elemento en línea.
-
-\end{frame}
-
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Tipos de posicionamiento}
-
-\begin{itemize}
-  \item {\bf Normal o estático}: posicionamientosi no se indica lo contrario.
-  \item{\bf Relativo}: consiste en posicionar una caja según el posicionamiento normal y después desplazarla respecto de su posición original.
-  \item {\bf Absoluto}: la posición de una caja se establece de forma absoluta respecto de su elemento contenedor y el resto de elementos de la página ignoran la nueva posición del elemento.
-  \item {\bf Fijo}: variante del posicionamiento absoluto que convierte una caja en un elemento inamovible, de forma que su posición en la pantalla siempre es la misma independientemente del resto de elementos e independientemente de si el usuario sube o baja la página en la ventana del navegador.
-  \item {\bf Flotante}: desplaza las cajas todo lo posible hacia la izquierda o hacia la derecha de la línea en la que se encuentran.
-\end{itemize}
-
-\end{frame}
-
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Crear un menú vertical}
-
-\begin{enumerate}
-  \item Definir anchura del menú
-  \item Eliminar las viñetas automáticas y todos los márgenes y espaciados aplicados por defecto
-  \item Añadir un borde al menú de navegación y establecer el color de fondo y los bordes de cada elemento del menú
-  \item Aplicar estilos a los enlaces: mostrarlos como un elemento de bloque para que ocupen todo el espacio de cada $<$li> del menú, añadir un espacio de relleno y modificar los colores y la decoración por defecto
-\end{enumerate}
-
-
-\begin{center}
-\begin{figure}[p]
-\includegraphics[width=0.6\textwidth]{img/f0908.png}
-\end{figure}
-\end{center}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Menú horizontal básico}
-
-\begin{enumerate}
-  \item Aplicar los estilos CSS básicos para establecer el estilo del menú (similares a los del menú vertical)
-  \item  Establecer la anchura de los elementos del menú. Si el menú es de anchura variable y contiene cinco elementos, se asigna una anchura del 20\% a cada elemento
-  \item Establecer los bordes de los elementos que forman el menú
-  \item Se elimina el borde derecho del último elemento de la lista, para evitar el borde duplicado
-\end{enumerate}
-
-
-\begin{center}
-\begin{figure}[p]
-\includegraphics[width=0.8\textwidth]{img/f0909.png}
-\end{figure}
-\end{center}
-
-\end{frame}
-
-
-
-%%---------------------------------------------------------------
-%%---------------------------------------------------------------
-
-
-
-\subsection*{Consideraciones adicionales}
-
-\begin{frame}[fragile]
-\frametitle{Consideraciones adicionales}
-
-\begin{center}
-{\Huge Consideraciones Adicionales}
-
-{\footnotesize (transparencias de referencia)}
-
-\end{center}
-
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-
-
-\begin{frame}
-\frametitle{Orden de visualización}
-
-\begin{itemize}
-  \item El relleno y el margen son transparentes, por lo que en el espacio ocupado por el relleno se muestra el color o imagen de fondo (si están definidos)
-  \item En el espacio ocupado por el margen se muestra el color o imagen de fondo de su elemento padre (si están definidos)
-  \item Si ningún elemento padre tiene definido un color o imagen de fondo, se muestra el color o imagen de fondo de la propia página (si están definidos)
-  \item Si una caja define tanto un color como una imagen de fondo, la imagen tiene más prioridad y es la que se visualiza
-  \item Si la imagen de fondo no cubre totalmente la caja del elemento o si la imagen tiene zonas transparentes, también se visualiza el color de fondo. 
-\end{itemize}
-
-\end{frame}
-
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Propiedad width}
-
-\begin{center}
-  \begin{table}
-   \begin{tabular}{p{1.8cm}p{7.8cm}}
-Propiedad &\bf{width} \\ \hline
-Valores & $<medida>$ | $<porcentaje>$ | auto | inherit \\ \hline
-Se aplica a & Todos los elementos, salvo los elementos en línea que no sean imágenes, las filas de tabla y los grupos de filas de tabla \\ \hline
-Valor inicial & auto \\ \hline
-Descripción & Establece la anchura de un elemento \\ \hline
-  \end{tabular}
-   \caption{Definición de la propiedad \emph{width} de CSS}
- \end{table}
-\end{center}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Propiedad height}
-
-\begin{center}
-  \begin{table}
-   \begin{tabular}{p{1.8cm}p{7.8cm}}
-Propiedad &\bf{height} \\ \hline
-Valores & $<medida>$ | $<porcentaje>$ | auto | inherit \\ \hline
-Se aplica a & Todos los elementos, salvo los elementos en línea que no sean imágenes, las columnas de tabla y los grupos de columnas de tabla \\ \hline
-Valor inicial & auto \\ \hline
-Descripción & Establece la altura de un elemento \\ \hline
-  \end{tabular}
-   \caption{Definición de la propiedad \emph{height} de CSS}
- \end{table}
-\end{center}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-
-\begin{frame}
-\frametitle{Márgenes}
-
-
-\begin{center}
-\begin{figure}[p]
-\includegraphics[width=0.45\textwidth]{img/f0428.png}
-\end{figure}
-\end{center}
-
-\begin{itemize}
-  \item En vez de utilizar la etiqueta $<blockquote>$ de HTML, debería utilizarse la propiedad margin-left de CS
-  \item Los márgenes verticales (margin-top y margin-bottom) sólo se pueden aplicar a los elementos de bloque y las imágenes, mientras que los márgenes laterales (margin-left y margin-right) se pueden aplicar a cualquier elemento
-\end{itemize}
-
-\end{frame}
-
 
 %%---------------------------------------------------------------
 
@@ -1168,7 +995,7 @@ Descripción & Establece el estilo completo de cada uno de los cuatro bordes de l
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Propiedad \emph{shorthand} para borde (global)}
+\frametitle{Propiedad shorthand para borde (global)}
 
 \begin{center}
   \begin{table}
@@ -1201,6 +1028,49 @@ h1 {
 }
 \end{verbatim}
 \end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Margen, relleno, bordes y modelo de cajas (I)}
+
+\begin{itemize}
+  \item El margen, el relleno y los bordes establecidos a un elemento determinan la anchura y altura final del elemento
+\end{itemize}
+
+{\footnotesize
+\begin{verbatim}
+div {
+  width: 300px;
+  padding-left:  50px;
+  padding-right: 50px;
+  margin-left:   30px;
+  margin-right:  30px;
+  border: 10px solid black;
+}
+\end{verbatim}
+}
+
+
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Margen, relleno, bordes y modelo de cajas (y II)}
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.75\textwidth]{img/f0414.png}
+\end{figure}
+\end{center}
+
+De esta forma, la anchura del elemento en pantalla sería igual a la suma de la anchura original, los márgenes, los bordes y los rellenos:
+
+30px + 10px + 50px + 300px + 50px + 10px + 30px = 480 píxel
 
 \end{frame}
 
@@ -1331,7 +1201,7 @@ Descripción& Controla la forma en la que se visualiza la imagen de fondo: perman
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Propiedad \emph{shorthand} background}
+\frametitle{Propiedad ''shorthand" background}
 
 \begin{center}
   \begin{table}
@@ -1352,7 +1222,87 @@ Descripción& Establece todas las propiedades del fondo de un elemento \\ \hline
 
 
 %%---------------------------------------------------------------
-\subsubsection*{Posicionamiento y visualización}
+\section{Posicionamiento y visualización}
+
+\begin{frame}
+\frametitle{Posicionamiento y visualización}
+
+\begin{itemize}
+  \item Cuando los navegadores descargan el contenido HTML y CSS de las páginas web, aplican un procesamiento muy complejo antes de mostrar las páginas en la pantalla del usuario
+  \item Para cumplir con el modelo de cajas, los navegadores crean una caja para representar a cada elemento de la página HTML.
+  \item Existen cinco tipos de posicionamientos definidos para las cajas y se presentan otras propiedades que afectan a la forma en la que se visualizan las cajas.
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Tipos de elementos (I)}
+
+El estándar HTML clasifica a todos sus elementos en dos grandes grupos:
+
+Elementos de línea:
+
+\begin{itemize}
+  \item Los elementos en línea ("inline elements" en inglés) no empiezan necesariamente en nueva línea y sólo ocupan el espacio necesario para mostrar sus contenidos.
+
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Tipos de elementos (II)}
+
+Elementos de bloque:
+
+\begin{itemize}
+  \item Los elementos de bloque ("block elements" en inglés) siempre empiezan en una nueva línea y ocupan todo el espacio disponible hasta el final de la línea
+\end{itemize}
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.8\textwidth]{img/f0501.png}
+\end{figure}
+\end{center}
+
+Por sus características, los elementos de bloque no pueden insertarse dentro de elementos en línea y tan sólo pueden aparecer dentro de otros elementos de bloque. En cambio, un elemento en línea puede aparecer tanto dentro de un elemento de bloque como dentro de otro elemento en línea.
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Posicionamiento}
+
+\begin{itemize}
+  \item Los navegadores crean y posicionan de forma automática todas las cajas que forman cada página HTML
+  \item El diseñador puede modificar la posición en la que se muestra cada caja.
+  \item Existen 4 tipos de posicionamiento diferente
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Tipos de posicionamiento}
+
+\begin{itemize}
+  \item Posicionamiento normal o estático: posicionamientosi no se indica lo contrario.
+  \item Posicionamiento relativo: consiste en posicionar una caja según el posicionamiento normal y después desplazarla respecto de su posición original.
+  \item Posicionamiento absoluto: la posición de una caja se establece de forma absoluta respecto de su elemento contenedor y el resto de elementos de la página ignoran la nueva posición del elemento.
+  \item Posicionamiento fijo: variante del posicionamiento absoluto que convierte una caja en un elemento inamovible, de forma que su posición en la pantalla siempre es la misma independientemente del resto de elementos e independientemente de si el usuario sube o baja la página en la ventana del navegador.
+  \item Posicionamiento flotante: desplaza las cajas todo lo posible hacia la izquierda o hacia la derecha de la línea en la que se encuentran.
+\end{itemize}
+
+\end{frame}
+
 
 %%---------------------------------------------------------------
 
@@ -1422,7 +1372,7 @@ Descripción& Indican el desplazamiento horizontal y vertical del elemento respec
   \item Utilizado por defecto por los navegadores
   \item Sólo se tiene en cuenta si el elemento es de bloque o en línea, sus propiedades width y height y su contenido.
   \item Las cajas se muestran una debajo de otra comenzando desde el principio del elemento contenedor. La distancia entre las cajas se controla mediante los márgenes verticales.
-  \item Si un elemento se encuentra dentro de otro, el elemento padre se llama ``elemento contenedor'' y determina tanto la posición como el tamaño de todas sus cajas interiores.
+  \item Si un elemento se encuentra dentro de otro, el elemento padre se llama "elemento contenedor" y determina tanto la posición como el tamaño de todas sus cajas interiores.
 \end{itemize}
 
 
@@ -1441,7 +1391,7 @@ Descripción& Indican el desplazamiento horizontal y vertical del elemento respec
 \frametitle{Posicionamiento normal (o estático) (y II)}
 
 \begin{itemize}
-  \item Los elementos en línea forman los ``contextos de formato en línea''. Las cajas se muestran una detrás de otra de forma horizontal comenzando desde la posición más a la izquierda de su elemento contenedor.
+  \item Los elementos en línea forman los "contextos de formato en línea". Las cajas se muestran una detrás de otra de forma horizontal comenzando desde la posición más a la izquierda de su elemento contenedor.
   \item Si las cajas en línea ocupan más espacio del disponible en su propia línea, el resto de cajas se muestran en las líneas inferiores. 
   \item Si las cajas en línea ocupan un espacio menor que su propia línea, se puede controlar la distribución de las cajas mediante la propiedad text-align para centrarlas, alinearlas a la derecha o justificarlas.
 \end{itemize}
@@ -1660,7 +1610,7 @@ Descripción& Establece el tipo de posicionamiento flotante del elemento \\ \hlin
 
 \begin{itemize}
   \item La propiedad clear indica el lado del elemento HTML que no debe ser adyacente a ninguna caja posicionada de forma flotante. Si se indica el valor left, el elemento se desplaza de forma descendente hasta que pueda colocarse en una línea en la que no haya ninguna caja flotante en el lado izquierdo.
-  \item La especificación oficial de CSS explica este comportamiento como ``un desplazamiento descendente hasta que el borde superior del elemento esté por debajo del borde inferior de cualquier elemento flotante hacia la izquierda''.
+  \item La especificación oficial de CSS explica este comportamiento como "un desplazamiento descendente hasta que el borde superior del elemento esté por debajo del borde inferior de cualquier elemento flotante hacia la izquierda".
 \end{itemize}
 
 \end{frame}
@@ -1687,6 +1637,34 @@ Descripción& Indica el lado del elemento que no debe ser adyacente a ninguna caj
 
 \end{frame}
 
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Visualización}
+
+\begin{itemize}
+  \item CSS define otras cuatro propiedades para controlar su visualización: display, visibility, overflow y z-index.
+  \item La propiedad display permite ocultar completamente un elemento haciendo que desaparezca de la página. Como el elemento oculto no se muestra, el resto de elementos de la página se mueven para ocupar su lugar.
+  \item La propiedad display también permite modificar el comportamiento de un elemento a bloque (block) o en línea (inline).
+  \item La propiedad visibility permite hacer invisible un elemento, lo que significa que el navegador crea la caja del elemento pero no la muestra. En este caso, el resto de elementos de la página no modifican su posición, ya que aunque la caja no se ve, sigue ocupando sitio.
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Diferencias entre display y visibility}
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.8\textwidth]{img/f0522.png}
+\end{figure}
+\end{center}
+
+\end{frame}
 
 
 %%---------------------------------------------------------------
@@ -1843,137 +1821,9 @@ Descripción& Establece el nivel tridimensional en el que se muestra el elemento 
 
 \end{frame}
 
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Selectores avanzados}
-
-\begin{enumerate}
-  \item Selector de hijos
-\begin{verbatim}
-p > span { color: blue; }
-\end{verbatim}
-  \item Selector adyacente
-\begin{verbatim}
-p + p { text-indent: 1.5em; }
-\end{verbatim}
-  \item Selector de atributos
-\begin{verbatim}
-a[class="externo"] { color: blue; }
-a[class~="externo"] { color: blue; }
-*[lang=en] { ... }
-*[lang|="es"] { color : red }
-\end{verbatim}
-\end{enumerate}
-
-\end{frame}
-
-
 
 %%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Colisión de estilos}
-
-El método seguido por CSS para resolver las colisiones de estilos se muestra a continuación:
-
-\begin{enumerate}
-  \item Determinar todas las declaraciones que se aplican al elemento para el medio CSS seleccionado.
-  \item Ordenar las declaraciones según su origen (CSS de navegador, de usuario o de diseñador) y su prioridad (palabra clave !important).
-  \item Ordenar las declaraciones según lo específico que sea el selector. Cuanto más genérico es un selector, menos importancia tienen sus declaraciones.
-  \item Si después de aplicar las normas anteriores existen dos o más reglas con la misma prioridad, se aplica la que se indicó en último lugar.
-\end{enumerate}
-
-\end{frame}
-
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Medios CSS}
-
-\begin{itemize}
-  \item Permiten definir diferentes estilos para diferentes medios o dispositivos: pantallas, impresoras, móviles, proyectores, etc.
-  \item Define algunas propiedades específicamente para determinados medios: la paginación y los saltos de página para los medios impresos o el volumen y tipo de voz para los medios de audio.
-  \item Ejemplos:
-  \begin{itemize}
-    \item screen: Pantallas de ordenador
-    \item print: Impresoras y navegadores en el modo ``Vista Previa para Imprimir''
-    \item handheld:	Dispositivos de mano: móviles, PDA, etc.
-  \end{itemize}
-\end{itemize}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Formas de indicar el medio}
-
-\begin{enumerate}
-  \item Reglas de tipo @media
-{\footnotesize
-    \begin{verbatim}
-@media print {
-  body { font-size: 10pt }
-}
-@media screen {
-  body { font-size: 13px }
-}
-    \end{verbatim}
-}
-  \item Reglas de tipo @import
-{\footnotesize
-    \begin{verbatim}
-@import url("estilos_basicos.css") screen;
-@import url("estilos_impresora.css") print;
-    \end{verbatim}
-}
-  \item Medios definidos con la etiqueta
-{\footnotesize
-    \begin{verbatim}
-<link rel="stylesheet" type="text/css" media="screen" href="basico.css" />
-<link rel="stylesheet" type="text/css" media="print, handheld" href="especial.css" />
-    \end{verbatim}
-}
-  \item Medios definidos mezclando varios métodos
-{\footnotesize
-    \begin{verbatim}
-<link rel="stylesheet" type="text/css"  media="screen" href="basico.css" />
-@import url("estilos_seccion.css") screen;
-@media print {
-  /* Estilos específicos para impresora */
-}
-    \end{verbatim}
-}
-\end{enumerate}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Comentarios}
-
-\begin{itemize}
-  \item El comienzo de un comentario se indica mediante los caracteres /* y el final del comentario se indica mediante */
-    \begin{verbatim}
-/* Este es un comentario en CSS */
-    \end{verbatim}
-  \item Pueden ocupar tantas líneas como sea necesario, pero no se puede incluir un comentario dentro de otro comentario
-    \begin{verbatim}
-/* Este es un
-   comentario CSS de varias
-   lineas */
-    \end{verbatim}
-\end{itemize}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-\subsubsection*{Texto}
+\section{Texto}
 
 \begin{frame}
 \frametitle{Tipografía}
@@ -2145,7 +1995,7 @@ Descripción& Establece el estilo alternativo de la letra utilizada para el texto
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Propiedad \emph{short-hand} font}
+\frametitle{Propiedad "short-hand" font}
 
 \begin{center}
   \begin{table}
@@ -2167,7 +2017,7 @@ Descripción& Permite indicar de forma directa todas las propiedades de la tipogr
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{Propiedad \emph{short-hand} font (y II)}
+\frametitle{Propiedad "short-hand" font (y II)}
 
 \begin{itemize}
   \item El orden en el que se deben indicar las propiedades del texto es el siguiente:
@@ -2195,14 +2045,7 @@ font: normal 1.2em/1em helvetica, arial, sans-serif;
 \frametitle{Texto}
 
 \begin{itemize}
-  \item Además de las propiedades relativas a la tipografía del texto, CSS define numerosas propiedades que determinan la apariencia del texto en su conjunto.
-  \item Estas propiedades adicionales permiten controlar
-  \begin{itemize}
-    \item la alineación del texto,
-    \item el interlineado,
-    \item la separación entre palabras,
-    \item etc.
-  \end{itemize}
+  \item Además de las propiedades relativas a la tipografía del texto, CSS define numerosas propiedades que determinan la apariencia del texto en su conjunto. Estas propiedades adicionales permiten controlar al alineación del texto, el interlineado, la separación entre palabras, etc.
 \end{itemize}
 
 \end{frame}
@@ -2414,7 +2257,7 @@ Descripción& Establece el tratamiento de los espacios en blanco del texto \\ \hl
 El significado de cada uno de los valores es el siguiente:
 \begin{itemize}
   \item normal: comportamiento por defecto de HTML.
-  \item pre: se respetan los espacios en blanco y las nuevas líneas (exactamente igual que la etiqueta $<pre>$). Si la línea es muy larga, se sale del espacio asignado para ese contenido.
+  \item pre: se respetan los espacios en blanco y las nuevas líneas (exactamente igual que la etiqueta <pre>). Si la línea es muy larga, se sale del espacio asignado para ese contenido.
   \item nowrap: elimina los espacios en blanco y las nuevas líneas. Si la línea es muy larga, se sale del espacio asignado para ese contenido.
   \item pre-wrap: se respetan los espacios en blanco y las nuevas líneas, pero ajustando cada línea al espacio asignado para ese contenido.
   \item pre-line: elimina los espacios en blanco y respeta las nuevas líneas, pero ajustando cada línea al espacio asignado para ese contenido.
@@ -2423,10 +2266,113 @@ El significado de cada uno de los valores es el siguiente:
 \end{frame}
 
 
+%%---------------------------------------------------------------
+\section{Enlaces}
+
+\begin{frame}
+\frametitle{Pseudo-clases en enlaces}
+
+Como con los atributos id o class no es posible aplicar diferentes estilos a un mismo elemento en función de su estado, CSS introduce un nuevo concepto llamado pseudo-clases. En concreto, CSS define las siguientes cuatro pseudo-clases:
+
+\begin{itemize}
+  \item :link, aplica estilos a los enlaces que apuntan a páginas o recursos que aún no han sido visitados por el usuario.
+  \item :visited, aplica estilos a los enlaces que apuntan a recursos que han sido visitados anteriormente por el usuario. El historial de enlaces visitados se borra automáticamente cada cierto tiempo y el usuario también puede borrarlo manualmente.
+  \item :hover, aplica estilos al enlace sobre el que el usuario ha posicionado el puntero del ratón.
+  \item :active, aplica estilos al enlace que está pinchando el usuario. Los estilos sólo se aplican desde que el usuario pincha el botón del ratón hasta que lo suelta.
+\end{itemize}
+
+\end{frame}
+
 
 %%---------------------------------------------------------------
 
-\subsubsection*{Listas}
+\begin{frame}
+\frametitle{Imágenes según el estilo del enlace}
+
+\begin{itemize}
+  \item En ocasiones, puede resultar útil incluir un pequeño icono al lado de un enlace para indicar el tipo de contenido que enlaza.
+  \item Este tipo de imágenes son puramente decorativas en vez de imágenes de contenido, por lo que se deberían añadir con CSS y no con elementos de tipo $<img>$. Utilizando la propiedad background (y background-image) se puede personalizar el aspecto de los enlaces para que incluyan un pequeño icono a su lado.
+  \item La técnica consiste en mostrar una imagen de fondo sin repetición en el enlace y añadir el padding necesario al texto del enlace para que no se solape con la imagen de fondo.
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Imágenes según el estilo del enlace (II)}
+
+\begin{footnotesize}
+\begin{verbatim}
+a { margin: 1em 0; float: left; clear: left; }
+ 
+.rss {
+  color: #E37529;
+  padding: 0 0 0 18px;
+  background: #FFF url(imagenes/rss.gif) no-repeat left center;
+}
+ 
+.pdf {
+  padding: 0 0 0 22px;
+  background: #FFF url(imagenes/pdf.png) no-repeat left center;
+}
+ 
+<a href="#">Enlace con el estilo por defecto</a>
+<a class="rss" href="#">Enlace a un archivo RSS</a>
+<a class="pdf" href="#">Enlace a un documento PDF</a>
+\end{verbatim}
+\end{footnotesize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Imágenes según el estilo del enlace (y III)}
+
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.8\textwidth]{img/f0704.png}
+\end{figure}
+\end{center}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Mostrar los enlaces como si fueran botones}
+
+\begin{footnotesize}
+\begin{verbatim}
+a { margin: 1em 0; float: left; clear: left; }
+a.boton {
+  text-decoration: none;
+  background: #EEE;
+  color: #222;
+  border: 1px outset #CCC;
+  padding: .1em .5em;
+}
+a.boton:hover {
+  background: #CCB;
+}
+a.boton:active {
+  border: 1px inset #000;
+}
+<a class="boton" href="#">Guardar</a>
+<a class="boton" href="#">Enviar</a>
+\end{verbatim}
+\end{footnotesize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\section{Listas}
 
 \begin{frame}
 \frametitle{Propiedad list-style-type}
@@ -2495,7 +2441,7 @@ Descripción& Permite reemplazar las viñetas automáticas por una imagen personali
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Propiedad \emph{shorthand} list-style}
+\frametitle{Propiedad "shorthand" list-style}
 
 \begin{center}
   \begin{table}
@@ -2514,6 +2460,48 @@ Descripción& Propiedad que permite establecer de forma simultánea todas las opci
 \end{frame}
 
 
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Crear un menú vertical}
+
+\begin{enumerate}
+  \item Definir anchura del menú
+  \item Eliminar las viñetas automáticas y todos los márgenes y espaciados aplicados por defecto
+  \item Añadir un borde al menú de navegación y establecer el color de fondo y los bordes de cada elemento del menú
+  \item Aplicar estilos a los enlaces: mostrarlos como un elemento de bloque para que ocupen todo el espacio de cada <li> del menú, añadir un espacio de relleno y modificar los colores y la decoración por defecto
+\end{enumerate}
+
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.6\textwidth]{img/f0908.png}
+\end{figure}
+\end{center}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Menú horizontal básico}
+
+\begin{enumerate}
+  \item Aplicar los estilos CSS básicos para establecer el estilo del menú (similares a los del menú vertical)
+  \item  Establecer la anchura de los elementos del menú. Si el menú es de anchura variable y contiene cinco elementos, se asigna una anchura del 20\% a cada elemento
+  \item Establecer los bordes de los elementos que forman el menú
+  \item Se elimina el borde derecho del último elemento de la lista, para evitar el borde duplicado
+\end{enumerate}
+
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.8\textwidth]{img/f0909.png}
+\end{figure}
+\end{center}
+
+\end{frame}
 
 
 %%---------------------------------------------------------------
