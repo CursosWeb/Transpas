@@ -1,0 +1,82 @@
+%
+%
+
+%%-----------------------------------------------------
+%%-----------------------------------------------------
+\section{Localizando a quien se deje}
+
+%%-----------------------------------------------------
+\begin{frame}
+\frametitle{Escenario}
+
+{\Large
+Queremos saber quien está en nuestro edificio:
+
+\begin{itemize}
+\item Con el mínimo esfuerzo nuestro posible.
+\item Con el mínimo esfuerzo por parte de quienes están en el edificio.
+\itme Pero podemos suponer una colaboración por su parte \\
+(están interesados en que se sepa que están).
+\item El edificio no es muy grande, y está aislado.
+\item Una solución aproximada es suficiente.
+\end{itemize}
+}
+
+{\huge
+\begin{center}
+¿Ideas?
+\end{center}
+}
+\end{frame}
+
+%%-----------------------------------------------------
+\begin{frame}
+\frametitle{¿Y si usamos WiFi?}
+
+{\Large
+\begin{itemize}
+\item Casi todos llevan teléfono
+\item Casi todos llevan WiFi activado
+\item Cada teléfono usa una MAC WiFi distinta
+\item Podemos pedir un registro de MACs (app web simple)
+\end{itemize}
+}
+
+\vspace{1cm}
+
+{\huge
+\begin{center}
+¿Cómo sabemos quién está en el edificio?
+\end{center}
+}
+
+\end{frame}
+
+%%-----------------------------------------------------
+\begin{frame}
+\frametitle{Detectando MACs en nuestra red WiFi}
+
+{\Large
+
+\begin{itemize}
+\item Si somos el punto de acceso (AP), sabemos todas las MAC conectadas
+\item Si escuchamos en un canal, recibimos todas las MAC que emiten
+\item Pero la electrónica y el software tienen que permitirlo
+\end{itemize}
+}
+
+El caso de Android:
+
+\begin{itemize}
+\item Si tenemos acceso root (eg, CyanogenMod), tenemos un kernel Linux.
+\item La electrónica y el software permiten modo AP.
+\item Podemos ver todo lo que ve el kernel
+\item De hecho, para muchas cosas no hace falta estar en modo AP.
+\end{itemize}
+
+\begin{flushright}
+{\small
+  \url{https://github.com/rorist/android-network-discovery}
+}
+\end{flushright}
+\end{frame}

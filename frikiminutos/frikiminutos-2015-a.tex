@@ -1,29 +1,16 @@
-% main.tex
-% Fichero principal de transparencias (incluye a todos los demás).
-
 % Compilar a .pdf con LaTeX (pdflatex)
 % Es necesario instalar Beamer (paquete latex-beamer en Debian)
 %
 
-% Gráficos:
-% Los gráficos pueden suministrarse en PNG, JPG, TIF, PDF, MPS
-% Los EPS deben convertirse a PDF (usar epstopdf)
-%
+
 \documentclass{beamer}
 \usetheme{Warsaw}
-\beamertemplatenavigationsymbolsempty
-\setbeamertemplate{headline}{}
-%\useoutertheme{infolines}
+\useoutertheme{infolines}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{format/libresoft-bg-soft.png}}
 \usepackage[spanish]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{graphics}
 \usepackage{amssymb} % Simbolos matematicos
-
-\newcommand{\asignatura}{Desarrollo de Aplicaciones Telemáticas}
-\newcommand{\grado}{Grado en Ingeniería Tecnologías de Telecomunicación (URJC)}
-\newcommand{\curso}{2014-15}
-\newcommand{\horario}{L (13:00-15:00) y M (13:00-15:00)}
 
 %\definecolor{libresoftgreen}{RGB}{162,190,43}
 %\definecolor{libresoftblue}{RGB}{0,98,143}
@@ -32,11 +19,11 @@
 
 %% Metadatos del PDF.
 \hypersetup{
-  pdftitle={\asignatura~\curso},
-  pdfauthor={Jesús M. González Barahona, Gregorio Robles},
+  pdftitle={Frikiminutos 2015 (enero--abril)},
+  pdfauthor={JesÃºs M. GonzÃ¡lez Barahona, Gregorio Robles},
   pdfcreator={GSyC, Universidad Rey Juan Carlos},
   pdfproducer=PDFLaTeX,
-  pdfsubject={\asignatura~\curso},
+  pdfsubject={},
 }
 %%
 
@@ -45,17 +32,7 @@
 % include-only                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\includeonly{presentacion-dat-at}
-%\includeonly{presentacion, html}
-%\includeonly{html}
-%\includeonly{html5}
-
-%% Prácticas
-%\includeonly{html}
-%\includeonly{css}
-%\includeonly{css3}
-%\includeonly{html5}
-%\includeonly{gapi}
+%\includeonly{presentacion}
 
 \AtBeginSection[]
 {
@@ -68,21 +45,24 @@
 
 \begin{document}
 
-\title[\asignatura~\curso]{\asignatura~(\curso)}
-\subtitle{\grado}
-\author[GSyC]{Jesús M. González Barahona, Gregorio Robles Martínez}
-\institute[http://cursosweb.github.io/]{\url{http://cursosweb.github.io} \\
+\title{Frikiminutos 2015 (enero--abril)}
+\subtitle{ETSIT -- URJC}
+\author{JesÃºs M. GonzÃ¡lez Barahona, Gregorio Robles MartÃ­nez}
+\institute{\url{http://gsyc.es/~jgb}~~~\url{http://gsyc.es/~grex/} \\
 GSyC, Universidad Rey Juan Carlos}
 
 %\date{Enero 2015}
 
 \frame{
 \maketitle
+\begin{center}
+\includegraphics[width=6cm]{../format/gsyc-urjc}
+\end{center}
 }
 
 
-% Si el titulo o el autor se quieren acortar para los pies de página
-% se pueden redefinir aquí:
+% Si el titulo o el autor se quieren acortar para los pies de pÃ¡gina
+% se pueden redefinir aquÃ­:
 %\title{Titulo corto}
 %\author{Autores abreviado}
 
@@ -93,14 +73,14 @@ GSyC, Universidad Rey Juan Carlos}
 \vspace{3cm}
 
 \begin{flushright}
-\copyright 2002-2015 Jesús M. González Barahona, Gregorio Robles. \\
+\copyright 2015 Gregorio Robles, JesÃºs M. GonzÃ¡lez Barahona. \\
 
-Algunos derechos reservados. Este artículo se distribuye bajo
-la licencia ``Reconocimiento-CompartirIgual 3.0 España'' de Creative Commons,
+Algunos derechos reservados. Este artÃ­culo se distribuye bajo
+la licencia ``Reconocimiento-CompartirIgual 3.0 EspaÃ±a'' de Creative Commons,
 disponible en \\
 {\small \url{http://creativecommons.org/licenses/by-sa/3.0/es/deed.es}}
 
-Este documento (o uno muy similar) está disponible en \\
+Este documento (o uno muy similar) estÃ¡ disponible en \\
 \url{http://cursosweb.github.io} \\
 \end{flushright}
 }
@@ -115,12 +95,9 @@ Este documento (o uno muy similar) está disponible en \\
 % lista de temas                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{presentacion-dat-at}
-\include{html}
-\include{css}
-\include{css3}
-\include{html5}
-\include{gapi}
+\include{localizacion-wifi}
+\include{servicios-localizacion}
+\include{wayback-machine}
 
 
 \end{document}

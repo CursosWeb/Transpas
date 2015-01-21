@@ -13,7 +13,7 @@
 \usetheme{Warsaw}
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{headline}{}
-%\useoutertheme{infolines}
+\useoutertheme{infolines}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{format/libresoft-bg-soft.png}}
 \usepackage[spanish]{babel}
 \usepackage[latin1]{inputenc}
@@ -40,22 +40,37 @@
 }
 %%
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % include-only                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\includeonly{presentacion-sat-saro}
-%\includeonly{presentacion, html}
-%\includeonly{html}
-%\includeonly{html5}
+\includeonly{presentacion-sat-saro,cookies,python}
+%\includeonly{cookies}
+%\includeonly{rest}
+%\includeonly{mvc}
+%\includeonly{xml}
+%\includeonly{css}
+%\includeonly{www-novedades}
+%\includeonly{www-applications}
+%\includeonly{caso-comunidades}
+%\includeonly{complex-www-sites}
+%\includeonly{ldap,webdav}
+%\includeonly{webdav}
+%\includeonly{xml,webdav}
+%\includeonly{streaming}
+%\includeonly{streaming, sdp}
+%\includeonly{streaming,smil}
+%\includeonly{smil}
+%\includeonly{security-intro,security-ipsec,security-ssl}
+%\includeonly{webdav,security-ssl}
 
 %% Prácticas
-%\includeonly{html}
-%\includeonly{css}
-%\includeonly{css3}
-%\includeonly{html5}
-%\includeonly{gapi}
+%\includeonly{python}
+%\includeonly{sql}
+%\includeonly{django}
+
 
 \AtBeginSection[]
 {
@@ -65,6 +80,7 @@
 \end{center}
 \end{frame}
 }
+
 
 \begin{document}
 
@@ -76,8 +92,13 @@ GSyC, Universidad Rey Juan Carlos}
 
 %\date{Enero 2015}
 
+
 \frame{
 \maketitle
+
+\begin{center}
+\includegraphics[width=6cm]{format/gsyc-urjc}
+\end{center}
 }
 
 
@@ -93,7 +114,8 @@ GSyC, Universidad Rey Juan Carlos}
 \vspace{3cm}
 
 \begin{flushright}
-\copyright 2002-2015 Jesús M. González Barahona, Gregorio Robles. \\
+\copyright 2002-2015 Jesús M. González Barahona, Gregorio Robles y
+Jorge Ferrer. \\
 
 Algunos derechos reservados. Este artículo se distribuye bajo
 la licencia ``Reconocimiento-CompartirIgual 3.0 España'' de Creative Commons,
@@ -106,17 +128,25 @@ Este documento (o uno muy similar) está disponible en \\
 }
 %%
 
+%\frame{
+%\tableofcontents
+%}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % lista de temas                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{presentacion-sat-saro}
-%\include{html}
-%\include{css}
-%\include{css3}
-%\include{html5}
-%\include{gapi}
+\include{cookies}
+\include{rest}
+\include{mvc}
+\include{xml}
+\include{www-novedades}
+\include{css}
 
+\include{python}
+\include{sql}
+\include{django}
 
 \end{document}

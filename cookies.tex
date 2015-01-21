@@ -1,0 +1,168 @@
+% $Id$
+%
+
+
+\section{Cookies HTTP}
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Cookies}
+
+\begin{itemize}
+\item Forma de mantener estado en un protocolo sin estado (HTTP)
+\item Forma de almacenar datos en el lado del cliente
+\item Dos versiones principales:
+  \begin{itemize}
+  \item Versión 0 (Netscape)
+  \item Version 1 (RFC 2109 / RFC 2965)
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Cabeceras HTTP para cookies (version 0)}
+
+\begin{itemize}
+\item Set-Cookie: De servidor a navegador \\
+
+\begin{verbatim}
+  Set-Cookie: statusmessages="deleted"; Path=/; 
+    Expires=Wed, 31-Dec-97 23:59:59 GMT
+\end{verbatim}
+
+\begin{itemize}
+\item Nombre de la cookie: statusmessages
+\item Valor: "deleted"
+\item Path: / (todo el sitio del que se recibió)
+\item Expira: 31-Dec-97 23:59:59 GMT
+\end{itemize}
+
+\item Cookie: De navegador a servidor \\
+
+\begin{verbatim}
+  Cookie: statusmessages="deleted"
+\end{verbatim}
+
+\begin{itemize}
+\item Nombre de la cookie: statusmessages
+\item Valor: "deleted"
+\end{itemize}
+
+\end{itemize}
+
+RFC 2965 (version 1) tiene: ``Cookie'', ``Cookie2'' y ``Set-Cookie2''
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Estructura de Set-Cookie}
+
+\begin{itemize}
+\item Nombre y valor (obligatorios)
+  \begin{itemize}
+  \item Uso normal: ``nombre=valor''
+  \item También valor nulo: ``nombre=''
+\end{itemize}
+\item Fecha de expiración
+  \begin{itemize}
+  \item ``Expires=fecha''
+  \item Si no tiene, cookie no persistente (sólo en memoria)
+  \end{itemize}
+\item Path: camino para el que es válida
+  \begin{itemize}
+  \item ``Path=/camino''
+  \item Prefijo de caminos válidos
+  \end{itemize}
+\item Domain: dominio para el que es válida
+  \begin{itemize}
+  \item El servidor ha de estar en el dominio indicado
+  \item Si no se indica, servidor que sirve la cookie
+  \end{itemize}
+\item Seguridad: se necesita SSL para enviar la cookie
+  \begin{itemize}
+  \item Campo ``Secure'' 
+  \end{itemize}
+\item Campos separados por ``;''
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Estructura de Cookie}
+
+\begin{itemize}
+\item Lista de pares nombre - valor
+\item Cada par corresponde a un ``Set-Cookie''
+\item Se envían las cookies válidas para el dominio y el path de la petición HTTP
+\item Si no se especificó dominio en ``Set-Cookie'', el del servidor
+\item Si no se especificó camino en ``Set-Cookie'', todo
+\end{itemize}
+
+\begin{verbatim}
+Cookie: user=jgb; last=5; edited=False
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Límites para las cookies}
+
+\begin{itemize}
+\item Originalmente: 20 cookies del mismo dominio
+\item La mayoría de los navegadores: 30 o 50 cookies del mismo dominio
+\item Cada cookie: como mucho 4 Kbytes
+\end{itemize}
+
+
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Gestión de sesión en HTTP}
+
+\begin{itemize}
+\item Mediante cookies: normalmente, identificador de sesión en la cookie
+
+\begin{verbatim}
+Set-Cookie: session=ab34cd-34fd3a-ef2365
+\end{verbatim}
+
+\item Reescritura de urls: se añade identificador a la url
+
+\begin{verbatim}
+http://sitio.com/path;session=ab34cd-34fd3a-ef2365
+\end{verbatim}
+
+\item Campos escondidos en formularios HTML
+
+\begin{verbatim}
+<form method="post" action="http://sitio.com/path">
+  <input type="hidden" name="session" value="ab34cd-34fd3a-ef2365">
+  ...
+  <input type="submit">
+</form>
+\end{verbatim}
+
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Referencias}
+
+\begin{itemize}
+\item Persistent Client State HTTP Cookies \\
+  (especificación original de Netscape) \\
+  \url{http://curl.haxx.se/rfc/cookie_spec.html}
+\item RFC 2109: HTTP State Management Mechanism \\
+  \url{http://tools.ietf.org/html/rfc2109}
+
+\item RFC 2965: HTTP State Management Mechanism \\
+  \url{http://tools.ietf.org/html/rfc2965}
+\end{itemize}
+\end{frame}
