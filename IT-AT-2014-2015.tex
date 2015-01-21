@@ -13,12 +13,19 @@
 
 \documentclass{beamer}
 \usetheme{Warsaw}
-\useoutertheme{infolines}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{headline}{}
+%\useoutertheme{infolines}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{format/libresoft-bg-soft.png}}
 \usepackage[spanish]{babel}
 \usepackage[latin1]{inputenc}
 \usepackage{graphics}
 \usepackage{amssymb} % Simbolos matematicos
+
+\newcommand{\asignatura}{Aplicaciones Telemáticas}
+\newcommand{\grado}{Grado en Ingeniería Telemática (URJC)}
+\newcommand{\curso}{2014-15}
+\newcommand{\horario}{X (13:00-15:00) y J (13:00-15:00)}    
 
 %\definecolor{libresoftgreen}{RGB}{162,190,43}
 %\definecolor{libresoftblue}{RGB}{0,98,143}
@@ -27,11 +34,11 @@
 
 %% Metadatos del PDF.
 \hypersetup{
-  pdftitle={Aplicaciones Telemáticas},
+  pdftitle={\asignatura~\curso},
   pdfauthor={Jesús M. González Barahona, Gregorio Robles},
   pdfcreator={GSyC, Universidad Rey Juan Carlos},
   pdfproducer=PDFLaTeX,
-  pdfsubject={},
+  pdfsubject={\asignatura~\curso},
 }
 %%
 
@@ -40,12 +47,12 @@
 % include-only                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\includeonly{presentacion, html}
+\includeonly{presentacion-dat-at}
 %\includeonly{html}
 %\includeonly{html5}
 
 %% Prácticas
-\includeonly{html}
+%\includeonly{html}
 %\includeonly{css}
 %\includeonly{css3}
 %\includeonly{html5}
@@ -62,19 +69,16 @@
 
 \begin{document}
 
-\title{Aplicaciones Telemáticas (2014-2015)}
-\subtitle{Grado en Ingeniería Telemática (URJC)}
-\author{Jesús M. González Barahona, Gregorio Robles Martínez}
-\institute{\url{http://gsyc.es/~jgb}~~~\url{http://gsyc.es/~grex/} \\
+\title{\asignatura~(\curso)}
+\subtitle{\grado}
+\author[GSyC]{Jesús M. González Barahona, Gregorio Robles Martínez}
+\institute[http://cursosweb.github.io/]{\url{http://cursoweb.github.io} \\
 GSyC, Universidad Rey Juan Carlos}
 
 %\date{Enero 2015}
 
 \frame{
 \maketitle
-\begin{center}
-\includegraphics[width=6cm]{format/gsyc-urjc}
-\end{center}
 }
 
 
@@ -108,7 +112,7 @@ Este documento (o uno muy similar) está disponible en \\
 % lista de temas                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{presentacion-apps}
+\include{presentacion-dat-at}
 \include{html}
 \include{css}
 \include{css3}
