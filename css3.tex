@@ -1,0 +1,180 @@
+% $Id$
+%
+
+\section{Hojas de estilo CSS3}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{¿Qué es CSS3?}
+
+\begin{itemize}
+  \item CSS3 ofrece una gran variedad de maneras nuevas para el diseño de hojas de estilo
+  \item Al ser tan amplio el desarrollo de CSS3, se ha dividido en módulos:
+  \begin{itemize}
+    \item El modelo de caja
+    \item Listas
+    \item Presentación de hipervículos
+    \item Voz
+    \item Fondos y bordes
+    \item Efectos de texto
+    \item ...
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{CSS3 todavía en desarrollo}
+
+\begin{itemize}
+  \item Hay módulos, la mayoría, cuya especificación no está terminada
+  \item Hay módulos terminados, pero los navegadores no los implementan
+  \item Es muy importante conocer el estado de la implementación en navegadores
+  \item Hay navegadores que tienen reglas específicas (temporales)
+  \begin{itemize}
+    \item Comprobar si está implementado en \url{http://caniuse.com/}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{¿Qué hay de nuevo en CSS3?}
+
+\begin{itemize}
+  \item La buena noticia son que CSS3
+  \begin{itemize}
+    \item es {\bf compatible hacia atrás}
+    \item Mantiene la {\bf misma filosofía}
+  \end{itemize}
+  \item Básicamente, CSS3 añade nuevos selectores y propiedades
+  \item Algunas son funcionalidades nuevas (animaciones o gradientes),
+y otras permiten diseños más sencillos (p.ej. el uso de columnas)
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Especificidades de navegadores}
+
+P.ej. border-radius:
+
+\begin{footnotesize}
+\begin{verbatim}
+.box {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+\end{verbatim}
+\end{footnotesize}
+
+(¡imaginaos lo que era antes conseguir bordes redondeados!)
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Módulo Selectores}
+
+\begin{itemize}
+  \item first-child: primer elemento de la etiqueta padre
+  \item last-child: último elemento de la etiqueta padre
+  \item nth-child: selecciona múltiples elementos según su posición en el árbol
+\end{itemize}
+
+\begin{footnotesize}
+\begin{verbatim}
+p:first-child {
+    background-color: yellow;
+}
+box:last-child {
+    padding: 12px;
+} 
+\end{verbatim}
+\end{footnotesize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Módulo Colores}
+
+\begin{itemize}
+  \item opacity: indica la opacidad de un elemento
+  \item rgba: indica la opacidad de un color con el 'alpha'
+\end{itemize}
+
+\begin{footnotesize}
+\begin{verbatim}
+  /* red with opacity */
+ .box1 {background-color: rgba(255,0,0,0.3);}  
+  /* green with opacity */
+ .box2 {background-color: rgba(0,255,0,0.3);}  
+  /* blue with opacity */
+ .box3 {background-color: rgba(0,0,255,0.3);}  
+\end{verbatim}
+\end{footnotesize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Módulo Fuentes}
+
+\begin{itemize}
+  \item @font-face: permite utilizar fuentes no instaladas en el cliente
+\end{itemize}
+
+\begin{footnotesize}
+\begin{verbatim}
+@font-face {
+  font-family: "Essays 1743";
+  font-weight: bold;
+  src: url("f/Essays1743-bold.woff") format("woff");
+}
+\end{verbatim}
+\end{footnotesize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Módulo Fondos}
+
+\begin{itemize}
+  \item Se puede añadir más de una imagen como fondo
+  \item border-radius: se pueden añadir bordes redondeados
+  \item box-shadow: incluye sombras en cajas
+\end{itemize}
+
+\end{frame}
+
+% 1 - CSS2
+% 2 - bordes redondeados
+% 3 - text shadow abbr
+% 4 - shadow
+% 5 - transparente
+% 6 - gradiente
+% 7 - rgba en los bordes
+% 8 - rotate (añadiendo algo de margen)
+% 9 - scale
