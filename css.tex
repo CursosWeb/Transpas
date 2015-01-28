@@ -262,10 +262,10 @@ Al resto de elementos $<span>$ de la página que no están dentro de un elemento $
 ¿Qué elementos se seleccionarían con estos tipos de selectores?
 
 \begin{itemize}
-  \item p a span em { text-decoration: underline; }
-  \item p, a, span, em { text-decoration: underline; }
-  \item p a { color: red; }
-  \item p * a { color: red; }
+  \item p a span em \{ text-decoration: underline; \}
+  \item p, a, span, em \{ text-decoration: underline; \}
+  \item p a \{ color: red; \}
+  \item p * a \{ color: red; \}
 \end{itemize}
 
 \end{frame}
@@ -327,10 +327,10 @@ ad</em> litora...</p>
 ¿Qué elementos se seleccionarían con estos tipos de selectores?
 
 \begin{itemize}
-  \item p.aviso { ... }
-  \item p .aviso { ... }
-  \item p, .aviso { ... }
-  \item *.aviso { ... }
+  \item p.aviso \{ ... \}
+  \item p .aviso \{ ... \}
+  \item p, .aviso \{ ... \}
+  \item *.aviso \{ ... \}
 \end{itemize}
 
 \end{frame}
@@ -364,10 +364,10 @@ ad</em> litora...</p>
 ¿Qué elementos se seleccionarían con estos tipos de selectores?
 
 \begin{itemize}
-  \item p\#aviso { ... }
-  \item p \#aviso { ... }
-  \item p, \#aviso { ... }
-  \item *\#aviso { ... }
+  \item p\#aviso \{ ... \}
+  \item p \#aviso \{ ... \}
+  \item p, \#aviso \{ ... \}
+  \item *\#aviso \{ ... \}
 \end{itemize}
 
 ¿Tienen sentido estos selectores? ¿Cuándo?
@@ -382,9 +382,9 @@ ad</em> litora...</p>
 ¿Qué elementos se seleccionarían con estos tipos de selectores?
 
 \begin{itemize}
-  \item .aviso .especial { ... }
-  \item div.aviso span.especial { ... }
-  \item ul\#menuPrincipal li.destacado a\#inicio { ... }
+  \item .aviso .especial \{ ... \}
+  \item div.aviso span.especial \{ ... \}
+  \item ul\#menuPrincipal li.destacado a\#inicio \{ ... \}
 \end{itemize}
 
 \end{frame}
@@ -444,6 +444,46 @@ Normalmente se utilizan píxel y porcentajes para definir el layout del documento
 \end{itemize}
 
 \end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Tipos de elementos (I)}
+
+El estándar HTML clasifica a todos sus elementos en dos grandes grupos:
+
+Elementos de línea:
+
+\begin{itemize}
+  \item Los elementos en línea (``inline elements'' en inglés) no empiezan necesariamente en nueva línea y sólo ocupan el espacio necesario para mostrar sus contenidos.
+
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Tipos de elementos (II)}
+
+Elementos de bloque:
+
+\begin{itemize}
+  \item Los elementos de bloque (``block elements'' en inglés) siempre empiezan en una nueva línea y ocupan todo el espacio disponible hasta el final de la línea
+\end{itemize}
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.8\textwidth]{figs/f0501.png}
+\end{figure}
+\end{center}
+
+Por sus características, los elementos de bloque no pueden insertarse dentro de elementos en línea y tan sólo pueden aparecer dentro de otros elementos de bloque. En cambio, un elemento en línea puede aparecer tanto dentro de un elemento de bloque como dentro de otro elemento en línea.
+
+\end{frame}
+
+
 
 %%---------------------------------------------------------------
 
@@ -653,6 +693,35 @@ La notación {1, 4} de la definición anterior significa que la propiedad margin a
 
 \end{frame}
 
+
+\begin{frame}
+\frametitle{Posicionamiento y visualización}
+
+\begin{itemize}
+  \item Los navegadores crean y posicionan de forma automática todas las cajas que forman cada página HTML
+  \item El diseñador puede modificar la posición en la que se muestra cada caja.
+  \item Existen {\bf cuatro tipos de posicionamiento} definidos para las cajas
+\end{itemize}
+
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Tipos de posicionamiento}
+
+\begin{itemize}
+  \item {\bf Normal o estático}: posicionamientosi no se indica lo contrario.
+  \item{\bf Relativo}: consiste en posicionar una caja según el posicionamiento normal y después desplazarla respecto de su posición original.
+  \item {\bf Absoluto}: la posición de una caja se establece de forma absoluta respecto de su elemento contenedor y el resto de elementos de la página ignoran la nueva posición del elemento.
+  \item {\bf Fijo}: variante del posicionamiento absoluto que convierte una caja en un elemento inamovible, de forma que su posición en la pantalla siempre es la misma independientemente del resto de elementos e independientemente de si el usuario sube o baja la página en la ventana del navegador.
+  \item {\bf Flotante}: desplaza las cajas todo lo posible hacia la izquierda o hacia la derecha de la línea en la que se encuentran.
+\end{itemize}
+
+\end{frame}
+
 %%---------------------------------------------------------------
 \subsubsection*{Enlaces}
 
@@ -757,73 +826,6 @@ a.boton:active {
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Posicionamiento y visualización}
-
-\begin{itemize}
-  \item Los navegadores crean y posicionan de forma automática todas las cajas que forman cada página HTML
-  \item El diseñador puede modificar la posición en la que se muestra cada caja.
-  \item Existen {\bf cuatro tipos de posicionamiento} definidos para las cajas
-\end{itemize}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Tipos de elementos (I)}
-
-El estándar HTML clasifica a todos sus elementos en dos grandes grupos:
-
-Elementos de línea:
-
-\begin{itemize}
-  \item Los elementos en línea (``inline elements'' en inglés) no empiezan necesariamente en nueva línea y sólo ocupan el espacio necesario para mostrar sus contenidos.
-
-\end{itemize}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Tipos de elementos (II)}
-
-Elementos de bloque:
-
-\begin{itemize}
-  \item Los elementos de bloque (``block elements'' en inglés) siempre empiezan en una nueva línea y ocupan todo el espacio disponible hasta el final de la línea
-\end{itemize}
-
-\begin{center}
-\begin{figure}[p]
-\includegraphics[width=0.8\textwidth]{figs/f0501.png}
-\end{figure}
-\end{center}
-
-Por sus características, los elementos de bloque no pueden insertarse dentro de elementos en línea y tan sólo pueden aparecer dentro de otros elementos de bloque. En cambio, un elemento en línea puede aparecer tanto dentro de un elemento de bloque como dentro de otro elemento en línea.
-
-\end{frame}
-
-
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Tipos de posicionamiento}
-
-\begin{itemize}
-  \item {\bf Normal o estático}: posicionamientosi no se indica lo contrario.
-  \item{\bf Relativo}: consiste en posicionar una caja según el posicionamiento normal y después desplazarla respecto de su posición original.
-  \item {\bf Absoluto}: la posición de una caja se establece de forma absoluta respecto de su elemento contenedor y el resto de elementos de la página ignoran la nueva posición del elemento.
-  \item {\bf Fijo}: variante del posicionamiento absoluto que convierte una caja en un elemento inamovible, de forma que su posición en la pantalla siempre es la misma independientemente del resto de elementos e independientemente de si el usuario sube o baja la página en la ventana del navegador.
-  \item {\bf Flotante}: desplaza las cajas todo lo posible hacia la izquierda o hacia la derecha de la línea en la que se encuentran.
-\end{itemize}
-
-\end{frame}
-
-
 
 %%---------------------------------------------------------------
 
@@ -875,13 +877,13 @@ Por sus características, los elementos de bloque no pueden insertarse dentro de 
 
 
 
-\subsection*{Consideraciones adicionales}
+\subsection*{CSS: Consideraciones adicionales}
 
 \begin{frame}[fragile]
-\frametitle{Consideraciones adicionales}
+\frametitle{CSS: Consideraciones adicionales}
 
 \begin{center}
-{\Huge Consideraciones Adicionales}
+{\Huge CSS \\ Consideraciones Adicionales}
 
 {\footnotesize (transparencias de referencia)}
 
