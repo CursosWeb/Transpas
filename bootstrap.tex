@@ -1,0 +1,124 @@
+% $Id$
+%
+
+\section{Bootstrap}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{¿Qué es Bootstrap?}
+
+\begin{itemize}
+  \item Bootstrap es un framework libre para desarrollo web
+  \item Realizado por ingenieros de Twitter
+  \item Incluye plantillas HTML y CSS con tipografías, formas, botones, cuadros, barras de navegación, carruseles de imágenes y muchas otras
+  \item También existe la posibilidad de utilizar plugins de JavaScript
+  \item Aunque su preferencia es \emph{mobile first}, permite crear diseños que se ven bien en múltiples dispositivos (\emph{responsive design})
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Ventajas de Bootstrap (para ingenieros)}
+
+\begin{itemize}
+  \item Es sencillo y rápido
+  \item Se adapta a distintos dispositivos (\emph{responsive design})
+  \item Proporciona un diseño consistente
+  \item Es compatible con los navegadores modernos
+  \item Es software libre
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ficheros de Bootstrap}
+
+\begin{footnotesize}
+\begin{verbatim}
+bootstrap/
+|--- css/
+|   |--- bootstrap.css
+|   |--- bootstrap.css.map
+|   |--- bootstrap.min.css
+|   |--- bootstrap-theme.css
+|   |--- bootstrap-theme.css.map
+|   |--- bootstrap-theme.min.css
+|--- js/
+|   |--- bootstrap.js
+|   |--- bootstrap.min.js
+|--- fonts/
+    |--- glyphicons-halflings-regular.eot
+    |--- glyphicons-halflings-regular.svg
+    |--- glyphicons-halflings-regular.ttf
+    |--- glyphicons-halflings-regular.woff
+    |--- glyphicons-halflings-regular.woff2
+\end{verbatim}
+\end{footnotesize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{La plantilla de Bootstrap}
+
+
+\begin{footnotesize}
+\begin{verbatim}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Basic Bootstrap Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+  <h1>Hello, world!</h1>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+\end{verbatim}
+\end{footnotesize}
+
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Bootstrap en CDN}
+
+\begin{footnotesize}
+\begin{verbatim}
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" 
+href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script 
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+</script>
+
+<!-- Latest compiled JavaScript -->
+<script 
+ src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+</script>
+\end{verbatim}
+\end{footnotesize}
+
+Con un CDN (Content Delivery Network) no hace falta tener Bootstrap en nuestros
+archivos. Además, si un usuario ya ha descargado esas URLs, probablemente
+las tenga ya en la caché del navegador (con el consiguiente ahorro de tiempo).
+
+\end{frame}
+
