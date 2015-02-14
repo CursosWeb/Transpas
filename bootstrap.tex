@@ -98,6 +98,12 @@ bootstrap/
 \begin{frame}[fragile]
 \frametitle{Bootstrap en CDN}
 
+\begin{itemize}
+  \item Con un CDN (Content Delivery Network) no hace falta tener Bootstrap en nuestros
+archivos. Además, si un usuario ya ha descargado esas URLs, probablemente
+las tenga ya en la caché del navegador (con el consiguiente ahorro de tiempo).
+\end{itemize}
+
 \begin{footnotesize}
 \begin{verbatim}
  <!-- Latest compiled and minified CSS -->
@@ -116,9 +122,234 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 \end{verbatim}
 \end{footnotesize}
 
-Con un CDN (Content Delivery Network) no hace falta tener Bootstrap en nuestros
-archivos. Además, si un usuario ya ha descargado esas URLs, probablemente
-las tenga ya en la caché del navegador (con el consiguiente ahorro de tiempo).
 
 \end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Mobile first}
+
+% Info: https://developer.mozilla.org/es/docs/M%C3%B3vil/Viewport_meta_tag
+
+\begin{itemize}
+  \item Sobre meta viewport FIXME
+\end{itemize}
+
+\begin{footnotesize}
+\begin{verbatim}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+\end{verbatim}
+\end{footnotesize}
+
+\begin{itemize}
+  \item Se puede inhabilitar el zoom en dispositivos móviles con \texttt{user-scalable=no}
+  \item Los usuarios sólo podrán hacer \emph{scroll} y tendrá una apariencia nativa.
+  \item Usar con precaución. No vale para todas las aplicaciones
+\end{itemize}
+
+\begin{footnotesize}
+\begin{verbatim}
+<meta name="viewport" content="width=device-width, initial-scale=1, 
+maximum-scale=1, user-scalable=no">
+\end{verbatim}
+\end{footnotesize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Contenedores}
+
+\begin{itemize}
+   \item Bootstrap requiere tener un elemento contenedor que cubra contenidos y el sistema de rejilla.
+   \item Para un contenedor responsivo de tamaño fijo, usa \texttt{.container}
+\end{itemize}
+
+\begin{footnotesize}
+\begin{verbatim}
+<div class="container">
+  ...
+</div>
+\end{verbatim}
+\end{footnotesize}
+
+\begin{itemize}
+  \item Si se desea un contenedor con el ancho total (del \emph{viewport}), se ha de usar \texttt{.container-fluid}
+\end{itemize}
+
+\begin{footnotesize}
+\begin{verbatim}
+<div class="container-fluid">
+  ...
+</div>
+\end{verbatim}
+\end{footnotesize}
+
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{El sistema de rejilla (I)}
+
+El diseño de páginas basado en rejilla se realiza mediante filas y
+columnas donde se colocan los contenidos. Así funciona la rejilla de Bootstrap:
+
+\begin{itemize}
+
+  \item Filas, dentro un contenedor, agrupan horizontalmente varias columnas, que son las que tienen contenido
+  \item La pantalla se divide en 12 columnas
+  \item Las columnas definen su anchura especificando cuántas columnas de la fila ocupan
+  \item Hay clases CSS (como por ejemplo .row y .col-xs-4) para crear rejillas rápidamente
+  \item Hay padding entre columnas. En la primera y última columnas, las filas (elementos .row) aplican márgenes negativos
+
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{El sistema de rejilla (y II)}
+
+FIXME
+
+% Ejemplos: http://getbootstrap.com/examples/grid/
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Responsive design}
+
+FIMXE
+
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Media queries}
+
+Bootstrap utiliza \emph{media queries} para establecer puntos de ruptura en los que la rejilla se transforma para adaptarse a cada dispositivo.
+
+\begin{footnotesize}
+\begin{verbatim}
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { ... }
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { ... }
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { ... }
+\end{verbatim}
+\end{footnotesize}
+
+
+Se pueden utilizar también \emph{media queries} que definen la propiedad max-width y restringen los dispositivos a los que se aplican los estilos:
+
+\begin{footnotesize}
+\begin{verbatim}
+@media (max-width: @screen-xs-max) { ... }
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg-min) { ... }
+\end{verbatim}
+\end{footnotesize}
+
+
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Otras clases}
+
+Bootstrap viene con una serie de estilos (generalmente en formato de clase CSS)
+por defecto, entre otros:
+
+\begin{itemize}
+  \item \texttt{table}
+  \item \texttt{form}
+  \item \texttt{img-responsive}
+  \item ...
+\end{itemize}
+
+FIXME
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{JavaScript}
+
+Con Bootstrap vienen una serie de \emph{plug-ins} de JavaScript, como:
+
+\begin{itemize}
+  \item transitions.js: efectos de transición
+  \item modal.js: diálogos simples y flexibles
+  \item dropdown.js: menús desplegables
+  \item scrollspy.js: según vamos bajando en la página, actualiza la \emph{navbar}
+  \item tab.js: pestañas
+  \item tooltip.js y popover.js: cajas con consejos o más información
+  \item alert.js: alertas
+  \item button.js: botones
+  \item collapse.js: permite mostrar/ocultar elementos
+  \item carousel.js: el (ya famoso carrusel)
+  \item affix.js: Menú de navegación lateral
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Bootlint}
+
+\begin{itemize}
+  \item Herramienta que detecta algunos errores comunes el HTML de diseños \texttt{Bootstrap}
+  \item Comprueba que las instancias de componentes Bootstrap han sido correctamente estructurados
+  \item Analiza también la inclusión de ciertas etiquetas $<meta>$, la declaración DOCTYPE HTML5, etc.
+  \item Página web: \url{https://github.com/twbs/bootlint}
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Otros sitios de interés}
+
+
+
+\begin{itemize}
+  \item Bootsnipp: Cientos de componentes adicionales \\
+        \url{http://www.bootsnipp.com}
+  \item Startboostrap: Plantillas y temas Bootstrap (gratis) \\
+        \url{http://startbootstrap.com/}  
+  \item WrapBoostrap: Plantillas y temas Boostrap (de pago) \\
+        \url{https://wrapbootstrap.com/}
+  \item BootTheme: Generador (no libre) de diseños Bootstrap \\
+        \url{http://www.boottheme.com/}
+\end{itemize}
+
+\end{frame}
+
 
