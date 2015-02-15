@@ -134,7 +134,9 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 % Info: https://developer.mozilla.org/es/docs/M%C3%B3vil/Viewport_meta_tag
 
 \begin{itemize}
-  \item Sobre meta viewport FIXME
+  \item En los navegadores, el \emph{viewport} es la parte visible de un documento
+  \item Si el documento es mayor que el área de visualización, el usuario puede cambiar la vista desplazándose
+  \item Con una propiedad de etiqueta meta, podemos indicar la escala inicial del \emph{viewport}
 \end{itemize}
 
 \begin{footnotesize}
@@ -218,9 +220,13 @@ columnas donde se colocan los contenidos. Así funciona la rejilla de Bootstrap:
 \begin{frame}[fragile]
 \frametitle{El sistema de rejilla (y II)}
 
-FIXME
-
 % Ejemplos: http://getbootstrap.com/examples/grid/
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.99\textwidth]{figs/grid.png}
+\end{figure}
+\end{center}
 
 \end{frame}
 
@@ -230,7 +236,21 @@ FIXME
 \begin{frame}[fragile]
 \frametitle{Responsive design}
 
-FIMXE
+Mobile and desktop:
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.99\textwidth]{figs/grid-responsive.png}
+\end{figure}
+\end{center}
+
+Mobile, tablet, and desktop:
+
+\begin{center}
+\begin{figure}[p]
+\includegraphics[width=0.99\textwidth]{figs/grid-responsive2.png}
+\end{figure}
+\end{center}
 
 \end{frame}
 
@@ -285,11 +305,11 @@ por defecto, entre otros:
 \begin{itemize}
   \item \texttt{table}
   \item \texttt{form}
+  \item \texttt{buttons}
   \item \texttt{img-responsive}
-  \item ...
+  \item \texttt{helper} classes
+  \item y otras utilidades responsivas
 \end{itemize}
-
-FIXME
 
 \end{frame}
 
@@ -340,6 +360,8 @@ Con Bootstrap vienen una serie de \emph{plug-ins} de JavaScript, como:
 
 
 \begin{itemize}
+  \item Listado de recursos sobre Bootstrap \\
+        \url{http://bootsnipp.com/resources}
   \item Bootsnipp: Cientos de componentes adicionales \\
         \url{http://www.bootsnipp.com}
   \item Startboostrap: Plantillas y temas Bootstrap (gratis) \\
