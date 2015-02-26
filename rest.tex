@@ -1,0 +1,402 @@
+% $Id$
+%
+
+%%---------------------------------------------------------------
+%%---------------------------------------------------------------
+\section{REST: Representational State Transfer}
+
+%%---------------------------------------------------------------
+%\begin{frame}
+%\frametitle{Servicios Web}
+
+%\begin{itemize}
+%\item Servicio web (\emph{web service}): \\
+%      conjunto de protocolos y estándares 
+%      que sirven para intercambiar datos entre aplicaciones.
+
+%\item Enfoques sobre servicios web:
+
+%\begin{itemize}
+%\item Tradicional: Basado en estándares como SOAP, WS-*, ...
+%\item Informal (POX, STRESTful): Arquitectura ad-hoc usando XML, JSON, ...
+%\item RESTful: siguen las restricciones del estilo arquitectural de la web. 
+%   Emplean XML, JSON y cualquier tipo MIME que sea útil
+%\end{itemize}
+%\end{itemize}
+
+%\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{REST: El estilo arquitectural de la web}
+
+\begin{itemize}
+\item REST: REpresentational State Transfer
+
+\item Estilo arquitectural para sistemas distribuidos
+  \begin{itemize}
+  \item Ampliamente extendido en la web estática (ficheros y directorios)
+  \item Parcialmente extendido en la web programática (aplicaciones y servicios web)
+  \end{itemize}
+\item Basado en un conjunto de normas...
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{REST: 1. Cada recurso debe tener una URL}
+
+Un recurso puede ser cualquier tipo de información que quiere hacerse visible en la web: documentos, imágenes, servicios, gente
+
+~
+
+\url{http://example.com/profiles}
+
+\url{http://example.com/profiles/juan}
+
+\url{http://example.com/posts/2007/10/11/ventajas_rest}
+
+\url{http://example.com/posts?f=2007/10/11&t=2007/11/17}
+
+\url{http://example.com/shop/4554/}
+
+\url{http://example.com/shop/4554/products}
+
+\url{http://example.com/shop/4554/products/15}
+
+\url{http://example.com/orders/juan/15}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{REST: 1. Cada recurso debe tener una URL}
+
+Dos tipos de recursos:
+
+\begin{itemize}
+  \item Colecciones, como http://example.com/resources/
+  \item Elementos, como http://example.com/resources/142
+\end{itemize}
+
+Los métodos tienen un significado ligeramente diferente se trate de
+una colección o un elemento.
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{REST: 2. Los recursos tienen hiperenlaces a otros recursos}
+
+Los formatos más usados (XHTML, Atom, ...) ya lo permiten.
+También aplica a los formatos inventados por nosotros mismos
+
+\begin{verbatim}
+<profiles self="http://example.com/profiles">
+ <profile type="moderator" 
+       self="http://example.com/profiles/123">
+  <name>Pepito Pérez</name>
+  <company ref="http://example.com/companies/321">
+    Compañía XYZ</company>
+  </profile>
+...
+</profiles>
+\end{verbatim}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{REST: 3. Conjunto limitado y estándar de métodos}
+
+\begin{itemize}
+\item GET:  Obtener información (quizá de caché)
+  \begin{itemize}
+  \item No cambia estado, idempotente
+  \end{itemize}
+\item PUT: Actualizar o crear un recurso conocida su URL 
+  \begin{itemize}
+  \item Cambia estado, idempotente
+  \end{itemize}
+\item POST: Crear un recurso conociendo la URL de un constructor de recursos
+  \begin{itemize}
+  \item Cambia estado, NO idempotente
+  \end{itemize}
+\item DELETE: Borrar un recurso conocida su URL
+  \begin{itemize}
+  \item Cambia estado, idempotente
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{REST: 4. Múltiples representaciones por recurso}
+
+Las representaciones muestran el estado actual del recurso en un formato dado
+
+\begin{verbatim}
+GET /profile/1234
+Host: example.com
+Accept: text/html
+
+GET /profile/1234
+Host: example.com
+Accept: text/x-vcard
+
+GET /profile/1234
+Host: example.com
+Accept: application/mi-vocabulario-propio+xml
+\end{verbatim}
+
+
+\end{frame}
+%%---------------------------------------------------------------
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{REST: 5. Comunicación sin estado}
+
+\begin{itemize}
+\item En REST hay estado, pero sólo en los recursos, no en la aplicación (o sesión). 
+
+\item Una petición del cliente al servidor debe contener TODA la información necesaria para entender la misma. 
+
+\item No puede basarse en información previa asociada a la comunicación (por ejemplo, información de sesión). 
+
+\item No puede haber datos de sesiones del cliente en el servidor. El servidor sólo guarda y maneja el estado de los recursos que aloja. 
+
+\item Es el cliente el que debe guardar su estado (y enviárselo al servidor). Sin embargo, las cookies no son una buena implementación desde el punto de vista REST.
+
+\item Esto permite escalabilidad (servidores más sencillos). Implica mayor ancho de banda, pero facilita las \emph{cachés}.
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{REST: Ventajas de REST}
+
+\begin{itemize}
+\item Maximiza la reutilización
+  \begin{itemize}
+  \item Todos los recursos tienen identificadores = hacen más grande la Web
+  \item La visibilidad de los recursos que forman una aplicación/servicio permite usos no previstos
+  \end{itemize}
+\item Minimiza el acoplamiento y permite la evolución
+  \begin{itemize}
+  \item La interfaz uniforme esconde detalles de implementación
+  \item El uso de hipertexto permite que sólo la primera URL usada para acceder acople un sistema a otro
+  \end{itemize}
+\item Elimina condiciones de fallo parcial
+  \begin{itemize}
+  \item Fallo del servidor no afecta al cliente
+  \item El estado siempre puede ser recuperado como un recurso
+  \end{itemize}
+\item Escalado sin límites
+  \begin{itemize}
+  \item Los servicios pueden ser replicados en cluster, cacheados y ayudados por sistemas intermediarios
+  \end{itemize}
+\item Unifica los mundos de las aplicaciones web y servicios web. El mismo código puede servir para los dos fines.
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Funcionalidades de HTTP no tan conocidas}
+
+\begin{itemize}
+\item Códigos de respuesta estandarizados: los entiende un navegador, los proxies, o nuestras propias aplicaciones
+  \begin{itemize}
+  \item Information: 1xx, Success 2xx, Redirection 3xx, Client Error 4xx, Server Error 5xx
+  \end{itemize}
+\item Negociación de contenido: la misma URL puede mandar la representación más adecuada al cliente (HTML, Atom, texto)
+\item Redirecciones
+\item Cacheado (incluyendo mecanismos para especificar el periodo de validez y expiraciones)
+  \begin{itemize}
+  \item Dos tipos: browser, proxy
+  \item Cabecera HTTP: Cache-Control
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Funcionalidades de HTTP no tan conocidas (2)}
+
+\begin{itemize}
+\item Compresión
+\item División de la respuesta en partes (Chunking)
+\item GET condicional (sólo se envía la respuesta si ha habido cambios)
+  \begin{itemize}
+  \item Permite ahorrar ancho de banda, procesado en el cliente y (posiblemente) procesado en el servidor
+  \item Dos mecanismos:
+    \begin{itemize}
+    \item ETag y If-None-Match: identificador asociado al estado de un recurso. Ejemplo: hash de la representación en un formato dado
+    \item Last-Modifed y If-Modified-Since: fecha de última actualización
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Ejemplo de interacción HTTP: Petición}
+
+\begin{verbatim}
+GET / HTTP/1.1
+Host: www.ejemplo.com
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; 
+   en-US; rv:1.8.1.3)...
+Accept: text/xml,application/xml,application/xhtml+xml,
+   text/html;q=0.9...
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+If-None-Match: "4c083-268-423f1dc5"
+If-Modified-Since: "4c083-268-423f1dc5"
+Keep-Alive: 300
+Connection: keep-alive
+Cookie: [...]
+Cache-Control: max-age=0
+\end{verbatim}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Ejemplo de interacción HTTP: Respuesta}
+
+\begin{verbatim}
+HTTP/1.x 200 OK
+Date: Thu, 17 May 2007 14:06:30 GMT
+Server: Microsoft-IIS/6.0
+ETag: "4c083-268-423f1dc6"
+Last-Modified: Mon, 21 Mar 2005 19:17:26 GMT
+Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Content-Length: 16850
+\end{verbatim}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Mecanismos de seguridad}
+
+\begin{itemize}
+\item Autenticación:
+  \begin{itemize}
+  \item HTTP Basic
+  \item HTTP Digest
+  \item OAuth
+  \end{itemize}
+\item Importante: los mecanismos de autenticación de HTTP son extensibles
+\item Cifrado y firma digital: SSL
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Límites actuales de REST en la web}
+
+\begin{itemize}
+\item Obliga a los desarrolladores a pensar diferente
+\item Carencia de soporte de PUT y DELETE en navegadores y cortado en cortafuegos
+\item Mecanismos de seguridad limitados (en comparación con WS-Security): está mejorando rápidamente
+\item La negociación de contenidos no funciona del todo bien en la práctica
+\item Algunos piden un método más: PATCH
+\item Poca documentación
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Ejemplos RESTful}
+
+\begin{itemize}
+\item En la web  
+  \begin{itemize}
+  \item Todos los sitios web estáticos
+  \item Servicios web de sólo lectura
+  \item Servicios web Google (GData)
+  \item Aplicaciones web hechas con Ruby Rails 1.2+
+  \end{itemize}
+\item Estándares basados en REST
+  \begin{itemize}
+  \item Atom Publishing Protocol
+  \item WebDAV
+  \item Amazon S3
+  \item GData (basado en Atom Publisihg Protocol)
+  \item OpenSearch (basado en Atom Publisihg Protocol)
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Conclusiones}
+
+\begin{itemize}
+\item REST es un estilo arquitectural para aplicaciones distribuidas
+\item Introduce restricciones que producen propiedades deseables a cambio
+  \begin{itemize}
+  \item Estas propiedades han permitido la expansión con éxito de la web
+  \item Las restricciones también pueden aplicarse a las aplicaciones y servicios web desarrollados para mantener las propiedades
+  \end{itemize}
+\item Los protocolos de la web, HTTP y URL, facilitan el desarrollo de arquitecturas RESTful y permiten explotar sus propiedades
+\item REST no es el único estilo arquitectural
+  \begin{itemize}
+  \item Es posible eliminar restricciones si no nos importa perder propiedades
+  \item Hay otros estilos arquitecturales con otras propiedades. Ejemplo: RPC
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Referencias}
+
+\begin{itemize}
+\item ``RESTful Web Services'',  Leonard Richardson, Sam Ruby, O'Reilly Press
+\item ``Architectural Styles and the Design of Network-based Software Architectures'' (Capítulo 5) \\
+  \url{http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}
+\item Atom Publishing Protocol: \\
+  \url{http://tools.ietf.org/html/rfc5023}
+\end{itemize}
+\end{frame}
+

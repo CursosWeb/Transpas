@@ -1,0 +1,87 @@
+% $Id$
+%
+
+
+\section{Arquitectura modelo-vista-controlador}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{¿Qué es la arquitectura MVC?}
+
+
+\begin{itemize}
+\item Patrón de arquitectura que separa la lógica de aplicación de la interfaz de usuario
+\item Modelo: Conocimiento (datos).
+\item Vista: Representación del modelo (filtrado, actualización)
+\item Controlador: Enlace entre el usuario y la aplicación. Permite que las vistas sean presentadas al usuario.
+\item Ejemplo: HTML (modelo), CSS (vista), navegador (controlador)
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{MVC en aplicaciones web (1)}
+
+\begin{quotation}
+The model is any of the logic or the database or any of the data itself. The view is simply how you lay the data out, how it is displayed. [...]
+
+The controller in a web app is a bit more complicated, because it has two parts. The first part is the web server (such as a servlet container) that maps incoming HTTP URL requests to a particular handler for that request. The second part is those handlers themselves, which are in fact often called ``controllers''.[...]
+\end{quotation}
+
+\begin{flushright}
+``The Importance of Model-View Separation'', Terence Parr \\
+  (continúa)
+\end{flushright}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{MVC en aplicaciones web (2)}
+
+
+\begin{itemize}
+\item Modelo: \\ Descripción de la base de datos
+\item Vista: \\ Interfaz de usuario (HTML) que presenta el modelo al usuario
+\item Controlador: \\ Recibe indicaciones del usuario, indica cambios al modelo, elige vista para mostrar resultados
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{MVC en Django}
+
+\begin{itemize}
+\item Vista: Qué data se muestra al usuario (no cómo se muestra) \\
+  funciones en views.py
+\item Vistas delegan la presentación en plantillas (templates)
+\item Modelo: Descripción de los datos \\
+  clases en models.py
+\item Controlador: maquinaria de Django \\
+  incluyendo urls.py
+\item Django como ``plataforma MTV'': \\
+  modelo, plantilla (template), vista
+\end{itemize}
+
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Referencias}
+
+\begin{itemize}
+\item MVC, Xerox PARC 1978-79: \\
+  \url{http://heim.ifi.uio.no/~trygver/themes/mvc/mvc-index.html}
+\item ``The Importance of Model-View Separation. A Conversation with Terence Parr'', by Bill Venners \\
+  \url{http://www.artima.com/lejava/articles/stringtemplate.html}
+\end{itemize}
+\end{frame}

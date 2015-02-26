@@ -1,0 +1,749 @@
+% $Id$
+%
+
+
+\section{Introducción a XML}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Introducción}
+
+
+\begin{itemize}
+\item XML: Extensible Markup Language
+\item Norma promovida por el W3C (1998)
+\item Es un dialecto simplificado de SGML (Standarized General Markup
+  Language)
+\item Pretende ser razonablemente simple
+\item Se está usando en varios nuevos estándares: MathML, SMIL,
+  (Synchronized Multimedia Integration Language), DocBook/XML, 
+  XHTML, RSS, etc.
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Características}
+
+\begin{itemize}
+\item Lenguaje de marcado: etiquetas de componentes según su semántica
+\item Puede especificarse que un documento ha de estar organizado de
+  cierta forma
+\item Estructura jerárquica
+\item Sintaxis básica:
+  \begin{itemize}
+  \item Marcas: 
+\begin{verbatim}
+<p> ... </p> 
+<p/>
+\end{verbatim}
+  \item Atributos: 
+\begin{verbatim}
+<article lang="es">
+\end{verbatim}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Fichero XML sencillo}
+
+\begin{verbatim}
+<?xml version="1.0" ?>
+
+<document>
+Este es el documento
+</document>
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ejemplo más complejo}
+
+Estructura muy simplificada de DocBook:
+
+\begin{verbatim}
+<?xml version="1.0" ?>
+<article>
+  <artheader>
+    <title>El lenguaje XML</title>
+    <author>Tim Ray</author>
+  </artheader>
+  <sect1>
+    <para>...</para>
+  </sect1>
+  <sect2>
+    <para>...</para>
+  </sect2>
+</article>
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Definición y validación}
+
+\begin{itemize}
+\item XML ofrece la posibilidad de definir lenguajes (también llamados vocabularios) de etiquetas
+\item La definición de un lenguaje XML especifica:
+  \begin{itemize}
+  \item Elementos del lenguaje
+  \item Anidamiento de los elementos
+  \item Atributos para cada elemento
+  \item Atributos por defecto, atributos obligatorios
+  \end{itemize}
+\item El objetivo es poder validar que un documento XML tiene la información que se espera y con la estructura correcta.
+\end{itemize}
+
+\end{frame}
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Definición y validación}
+
+\begin{itemize}
+\item Sistemas de definir lenguajes XML
+  \begin{itemize}
+  \item DTD (Document Type Definition): Estándar clásico
+  \item XML Schema: Nuevo estándar. Muy completo y complejo
+  \item RelaxNG: Alternativa al nuevo estándar. Más sencillo
+  \end{itemize}
+\item Cada documento XML debe tener una referencia a su definición al principio del fichero (si tiene una)
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ejemplos de lenguajes}
+
+DocBook XML:
+
+\begin{verbatim}
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE article PUBLIC 
+   "-//Norman Walsh//DTD DocBk XML V3.1//EN"
+   "/usr/lib/sgml/dtd/docbook-xml/docbookx.dtd">
+\end{verbatim}
+
+LaEspiral Document:
+
+\begin{verbatim}
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE article PUBLIC 
+   "-//laespiral.org//DTD LE-document 1.1//EN"
+   "http://.../xml/styles/LE-document-1.1.dtd">
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Especificación (ejemplo)}
+
+\begin{verbatim}
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE joke [
+   <!ELEMENT joke (start, end+)>
+   <!ATTLIST joke title CDATA #IMPLIED>
+   <!ELEMENT start (#PCDATA)>
+   <!ELEMENT end (#PCDATA)>
+  ]>
+
+<joke title="Van dos''>
+  <start>Van dos por una calle</start>
+  <end>y se cae el del medio</end>
+  <end>y luego vienen</end>
+</joke>
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Bibliotecas para proceso XML}
+
+Tipos de bibliotecas disponibles:
+
+\begin{itemize}
+\item DOM
+  \begin{itemize}
+  \item Document Object Model
+  \item Lee todo el documento, y permite recorrer el árbol de
+    elementos
+  \item Permite modificar el documento XML
+  \end{itemize}
+\item SAX
+  \begin{itemize}
+  \item Standard API for XML
+  \item Procesa el documento según está disponible
+  \item Es my rápido y requiere menos memoria, pero es sólo para lectura
+  \end{itemize}
+\item Otras: variantes de DOM y SAX más sencillas pero no estándar
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Usos típicos de XML en aplicaciones web}
+
+Gestión de interfaz de usuario en navegador:
+
+\begin{itemize}
+\item Manipulación de árbol DOM de la página HTML
+\item Realizada normalmente mediante JavaScript
+\item Interfaces de usuario mucho más ricas
+\item Normalmente: combinación con código de aplicación web
+\end{itemize}
+
+Intercambio de datos entre aplicaciones web:
+
+\begin{itemize}
+\item Fuente para distintos formatos de documento \\
+  (ej: documentos en Docbook servidos en HTML, ePub, etc.)
+\item Canales (feeds) de una web
+\item Interfaz para bases de datos (XPath, etc.)
+\item Web semántica (RDF, RDFa)
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{DOM de documento HTML en JavaScript (1)}
+
+\begin{itemize}
+\item node.parentNode: nodo padre
+\item node.childNodes[1]: segundo nodo hijo
+\item node.firstChild, x.lastChild: primer, último nodo hijo
+\item document.getElementsByTagName(tag): \\
+  vector con todos los elementos con etiqueta tag \\
+  $<tag>XXX</tag>$
+\item document.getElementById(id): \\
+  elemento con identificador id \\
+  $<tag id=''id''>XXX</tag>$
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{DOM de documento HTML en JavaScript (2)}
+
+\begin{itemize}
+\item x.nodeValue: valor del nodo
+\item x.innerHTML: HTML que ``cuelga'' del nodo
+\item node.setAttribute('attr', val): \\
+  asignar a atributo 'attr' a valor val
+\item document.createElement(tag) \\
+  crear nodo tag
+\item document.createTextNode \\
+  crear nodo con texto
+\item node.appendChild(newnode) \\
+  añade newnode como hijo de node
+\item node.removeChild(remnode) \\
+  elimina hijo remnode de node
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{DOM de documento HTML en JavaScript: ejemplo (1)}
+
+\begin{verbatim}
+<html>
+  <head>
+    <script type="text/javascript" charset="utf-8">
+      function change()
+      {
+      document.getElementById('another').innerHTML =
+         'Changed!';
+      }
+    </script>
+  </head>
+\end{verbatim}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{DOM de documento HTML en JavaScript: ejemplo (2)}
+
+\begin{verbatim}
+<body>
+  <h1>Simple DOM demo</h1>
+  <p>First sentence</p>
+  <p id="sentence">Second sentence, with id "sentence"</p>
+  <p id="another">Another sentence, with id "another"</p>
+  <p>Text of the sentence with id "sentence":
+    <script type="text/javascript" charset="utf-8">
+      document.write(
+        document.getElementById('sentence').innerHTML
+        );
+    </script>
+  </p>
+\end{verbatim}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{DOM de documento HTML en JavaScript: ejemplo (3)}
+
+\begin{verbatim}
+    <p>Text of the second sentence:
+      <script type="text/javascript" charset="utf-8">
+        document.write(
+          document.getElementsByTagName('p')[1].innerHTML
+          );
+      </script>
+    </p>
+    <form>
+      <input type="button" onclick="change()"
+        value="Change" />
+    </form>
+  </body>
+</html>
+\end{verbatim}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Preparación de documentos}
+
+\begin{itemize}
+\item Los documentos se escriben en un lenguaje XML (por ejemplo 
+   Docbook)
+\item Usando hojas de estilo XSL (Extensible Style Language) 
+  pueden obtenerse diversos formatos
+\item Ventajas
+  \begin{itemize}
+  \item Ayuda en la estructuración del texto
+  \item Simplifica el tratamiento automático
+  \item Simplifica la validación
+  \item Se separa el contenido de la presentación
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Canales (feeds) de una web}
+
+\begin{itemize}
+\item Introducido por Netscape en 1999, para definir ``canales'' (feeds)
+\item Permite a los sitios web publicar una lista de las novedades del sitio
+\item Esta lista es accedida por aplicaciones lectores de feeds
+\item Los usuarios pueden subscribirse a los feeds y recibir avisos de los cambios
+\item Lenguajes XML empleados
+  \begin{itemize}
+  \item RSS 0.91 (Rich Site Summary)
+  \item RSS 0.9 y 1.0 (RDF Site Summary)
+  \item RSS 2.0 (Really Simple Syndication)
+  \item Atom 1.0
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ejemplo de canal RSS (1)}
+
+\begin{verbatim}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Menéame: publicadas</title>
+	
+  <link>http://meneame.net</link>
+  <image>
+    <title>Menéame: publicadas</title>
+    <link>http://meneame.net</link>
+    <url>http://meneame.net/img/mnm/eli-rss.png</url>
+  </image>
+  <description>Sitio colaborativo de publicación y comunicación entre 
+   blogs</description>
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ejemplo de canal RSS (2)}
+
+\begin{verbatim}
+  <pubDate>Sat, 22 Nov 2008 13:45:02 +0000</pubDate>
+  <item>
+    <title>¿Qué pasa cuando un familiar te pide que le montes un 
+      PC?</title>
+    <link>http://feedproxy.google.com/...-montes-pc</link>
+    <pubDate>Sat, 22 Nov 2008 12:55:03 +0000</pubDate>
+    <description>&lt;p&gt;Un breve relato que viene a ...
+    </description>
+  </item>
+  <item>...</item>
+  <item>...</item>
+</channel>
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Atom}
+
+\begin{itemize}
+\item Creado como evolución de RSS 2.0
+\item Mejoras que introduce:
+  \begin{itemize}
+  \item Identificación del tipo de contenido de los elementos summary y content
+  \item Incorpora XML namespaces para permitir extender Atom con otros vocabularios XML
+  \end{itemize}
+\item Mucho más apropiado para su interpretación por parte de programas:
+  \begin{itemize}
+  \item Esto está provocando su uso habitual en servicios web RESTful
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ejemplo de canal Atom (1)}
+
+\begin{verbatim}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Ejemplo</title>
+    <subtitle>Muy interesante</subtitle>
+    <link href="http://example.org/"/>
+    <updated>2003-12-13T18:30:02Z</updated>
+    <author>
+       <name>John Doe</name>
+       <email>johndoe@example.com</email>
+    </author>
+    <id>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6</id>
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ejemplo de canal Atom (2)}
+
+\begin{verbatim}
+    <entry>
+       <title>Atom-Powered Robots Run Amok</title>
+       <link href="http://example.org/2003/12/13/atom03"/>
+       <id>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a</id>
+       <updated>2003-12-13T18:30:02Z</updated>
+       <summary type="text">Some text.</summary>
+    </entry>
+</feed>
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Tipos de contenido en Atom}
+
+\begin{verbatim}
+ <content type="text">
+    Contenido del feed
+ </content>
+ <content type="html">
+    Contenido del &lt;em&gt;feed&lt;/em&gt;
+ </content>
+ <content type="xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <xhtml:div>
+      Contenido del <xhtml:em>feed</xhtml:em>
+    </xhtml:div>
+ </content>
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Web semántica: RDF}
+
+\begin{itemize}
+\item RDF: Resource Description Framework
+  \begin{itemize}
+  \item Mecanismo uniforme para especificar la semántica de un recurso
+    web, y su relación con otros.
+  \item Cada documento RDF es una serie de tripletes.
+  \end{itemize}
+\item Modelo de metadatos basado en declaraciones sobre recursos
+\item Sujeto (recurso), predicado (relación o aserción entre sujeto y
+  objeto) y objeto (o valor)
+\item Una colección de declaraciones RDF constituyen un grafo
+  orientado y etiquetado
+\item Es habitual que el recurso sea un URI, el objeto una cadena
+  Unicode, y el predicado un URI
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Otras tecnologías de la familia XML}
+
+\begin{itemize}
+\item XLink: enlaces entre documentos XML
+\item XSLT: conversión automática de XML a otros formatos
+\item XPath: localización dentro de un documento (``query'' sobre XML)
+
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{XML Namespaces}
+
+\begin{itemize}
+\item Permiten agrupar varios vocabularios XML en un único documento
+\item Resuelven el problema de colisiones entre etiquetas con el mismo nombre
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Ejemplo: Problema}
+
+Introducir en el canal de una web información geográfica
+\begin{itemize}
+\item Existen dos lenguajes XML distintos para cada información:
+  \begin{itemize}
+  \item RSS o Atom: Permiten dar información del canal y sus items
+  \item geoRSS: Permite especificar longitud y latitud
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ejemplo: Solución}
+
+\begin{verbatim}
+<rss xmlns:georss="http://www.georss.org/georss" 
+     version="2.0">
+<channel>
+  <item>
+    <title>En Málaga colocar publicidad en los parabrisas de
+     los coches se multará con hasta 750 euros</title>
+     <georss:point>36.7196745 -4.4200359</georss:point>
+     ...
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Uso de Namespaces en la práctica}
+
+\begin{itemize}
+\item El parser empleado debe soportar namespaces: la mayoría lo hacen ya
+\item Problema: el mecanismo de validación original de XML, los DTDs, no 
+  proporciona ninguna solución para validar documentos XML con namespaces
+  \begin{itemize}
+  \item Solución: usar XML Schema o RelaxNG
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Alternativa a XML: JSON}
+
+\begin{itemize}
+\item JavaScript Object Notation
+\item Definido en RFC 4627
+\item Internet media type: application/json.
+\item Permite representar estructuras de datos
+\item Específicamente pensado para aplicaciones AJAX
+\item Es un subconjunto de JavaScript (y de python)
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ejemplo de JSON}
+
+\begin{verbatim}
+{
+    "firstName": "John",
+    "lastName": "Smith",
+    "address": {
+        "streetAddress": "21 2nd Street",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": 10021
+    },
+    "phoneNumbers": [
+        "212 732-1234",
+        "646 123-4567"
+    ]
+}
+\end{verbatim}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Uso en la práctica de JSON}
+
+Existen intérpretes para casi cualquier lenguaje:
+\begin{itemize}
+\item JavaScript: La función eval() es capaz de intérpretarlo directamente
+\item Python: python-cjson, python-json, ...
+\item Java: JSON Tools, xstream, Restlet, ...
+\end{itemize}
+
+Extensiones:
+\begin{itemize}
+\item JSONT: Equivalente a XSLT para JSON
+\item JSONP: convierte el contenido en activo al incluir la invocación a una función JavaScript.
+\end{itemize}
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Ventajas e Inconvenientes}
+
+Ventajas
+\begin{itemize}
+\item Requiere menos caractereres para la misma información (consume menos ancho de banda)
+\item Es fácil escribir un intérprete rápido (incluso en un navegador)
+\item Fácil de leer por personas
+\end{itemize}
+
+Inconvenientes
+\begin{itemize}
+\item No tiene mecanismos de definición de lenguajes y validación
+\item No hay equivalentes a Atom, XSLT, ...
+\end{itemize}
+\end{frame}
+
+  
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Referencias}
+
+\begin{itemize}
+\item Introducción al XML, por Jaime Villate: \\
+  \url{http://gsyc.escet.urjc.es/actividades/linuxprog/xml/xml-notas.html}
+\item Especificación de XML: \\
+  \url{http://www.w3.org/TR/xml-spec.html}
+\item Especificación anotada de XML: \\
+  \url{http://www.xml.com/xml/pub/axml/axmlintro.html}
+\item Python and XML Processing: \\
+  \url{http://pyxml.sourceforge.net/topics/}
+\item SIG for XML Processing in Python: \\
+  \url{http://www.python.org/sigs/xml-sig/}
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Referencias II}
+
+\begin{itemize}
+\item Python/XML HOWTO: \\
+  \url{http://py-howto.sourceforge.net/xml-howto/}
+\item XML Linking Language (XLink): \\
+  \url{http://www.w3.org/TR/xlink/}
+\item XML Path Language (XPath): \\
+  \url{http://www.w3.org/TR/xpath}
+\item XPath Tutorial, por Miloslav Nic y Jiri Jirat: \\
+  \url{http://www.zvon.org/xxl/XPathTutorial/General/examples.html}
+\item XML Schema: \\
+  \url{http://www.w3.org/XML/Schema}
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Referencias III}
+
+\begin{itemize}
+\item Using W3C XML Schema, por  Eric van der Vlist: \\
+  \url{http://www.xml.com/pub/a/2000/11/29/schemas/part1.html}
+\item XSL Transformations (XSLT): \\
+  \url{http://www.w3.org/TR/xslt}
+\item Página DOM del W3C: \\
+  \url{http://www.w3.org/DOM/}
+\item Página de SAX:
+  \url{http://www.megginson.com/SAX/}
+\item Página de RDF:
+  \url{http://www.w3.org/RDF/}
+\item RSS 1.0: \\
+  \url{http://groups.yahoo.com/group/rss-dev/files/specification.html}
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Referencias IV}
+
+\begin{itemize}
+\item XML Namespaces: \\
+  \url{http://www.w3.org/TR/REC-xml-names/}
+\item XML Schema: \\
+  \url{http://www.w3.org/XML/Schema}
+\item Relax NG: \\
+  \url{http://relaxng.org}
+\item Atom (RFC4287): \\
+  \url{http://tools.ietf.org/html/rfc4287}
+\item W3C DOM -Introduction: \\
+  \url{http://www.quirksmode.org/dom/intro.html}
+\item JSON: \\
+  \url{http://json.org/}
+\end{itemize}
+\end{frame}
