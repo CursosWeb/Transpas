@@ -1,0 +1,233 @@
+%
+% $Id: $
+%
+%
+% Compilar a .pdf con LaTeX (pdflatex)
+% Es necesario instalar Beamer (paquete latex-beamer en Debian)
+%
+
+%
+% Gráficos:
+% Los gráficos pueden suministrarse en PNG, JPG, TIF, PDF, MPS
+% Los EPS deben convertirse a PDF (usar epstopdf)
+%
+
+\documentclass{beamer}
+\usetheme{Warsaw}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{format/libresoft-bg-soft.png}}
+\usepackage[spanish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{graphics}
+\usepackage{amssymb} % Simbolos matematicos
+
+%\definecolor{libresoftgreen}{RGB}{162,190,43}
+%\definecolor{libresoftblue}{RGB}{0,98,143}
+
+%\setbeamercolor{titlelike}{bg=libresoftgreen}
+
+%% Metadatos del PDF.
+\hypersetup{
+  pdftitle={Introducción práctica a las tecnologías web},
+  pdfauthor={Jesús M. González Barahona},
+  pdfcreator={GSyC/LibreSoft, Universidad Rey Juan Carlos},
+  pdfproducer=PDFLaTeX,
+  pdfsubject={Jornada de acogida a alumnos de ESO, Fuenlabrada 2015},
+}
+%%
+
+\begin{document}
+
+\title{Introducción práctica a las tecnologías web}
+\subtitle{Protagonizada por Mozilla WebMaker}
+\author{Jesús M. González Barahona}
+\institute{jgb@gsyc.es ~~~~~ \url{http://twitter.com/jgbarah} \\
+GSyC/LibreSoft, Universidad Rey Juan Carlos}
+
+\date{Jornadas de acogida a alumnos de ESO \\ Escuela de Telecomunicación \\
+  Universidad Rey Juan Carlos \\
+  Fuenlabrada, 24 de marzo de 2015}
+
+\frame{
+\maketitle
+\begin{center}
+\includegraphics[width=6cm]{format/gsyc-urjc}
+\end{center}
+}
+
+
+% Si el titulo o el autor se quieren acortar para los pies de página
+% se pueden redefinir aquí:
+%\title{Titulo corto}
+%\author{Autores abreviado}
+
+
+% LICENCIA DE REDISTRIBUCION DE LAS TRANSPAS
+\frame{
+~
+\vspace{4cm}
+
+\begin{flushright}
+\copyright 2015 Jesús M. González Barahona. \\
+
+  Algunos derechos reservados. \\
+  Este artículo se distribuye bajo la licencia \\
+  ``Reconocimiento-CompartirIgual 3.0 España'' \\
+  de Creative Commons, \\
+  disponible en \\
+  {\small \url{http://creativecommons.org/licenses/by-sa/3.0/es/deed.es}}
+\end{flushright}
+}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Antes de empezar...}
+
+{\large
+Vamos a usar:
+
+\begin{itemize}
+\item Firefox 3x \\
+  (pero otros navegadores modernos servirían)
+\item Herramientas de Mozilla Webmaker
+\item Alguna otra cosilla
+\end{itemize}
+\vspace{.5cm}
+
+\begin{flushright}
+\url{https://www.mozilla.org/firefox/}
+\url{https://webmaker.org/}
+\end{flushright}
+}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{¿Qué visitamos cuando vamos de visita?}
+
+{\large
+Firefox Lightbeam
+
+\vspace{.5cm}
+
+Visualización de los sitios con los que has conectado \\
+aunque ni hayas oido hablar de ellos
+
+\vspace{.5cm}
+
+Muchos de ellos son sitios que están trazando tu actividad
+
+\begin{flushright}
+\url{https://webmaker.org/private-eye}
+\end{flushright}
+}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{¿Qué descargamos cuando vemos una página?}
+
+
+{\Large
+
+Firefox Web Console
+
+\vspace{.5cm}
+
+Instalado con Mozilla Firefox
+
+\vspace{.5cm}
+
+Veamos el panel ``Network''...
+}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Cambia los sitios que visitas (bueno, casi...)}
+
+
+{\Large
+
+Mozilla X-Ray Goggles
+
+\vspace{.5cm}
+
+\begin{flushright}
+\url{https://webmaker.org/goggles}
+\end{flushright}
+
+}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Crea páginas web}
+
+
+{\Large
+
+Mozilla Thimble
+
+\vspace{.5cm}
+
+\begin{flushright}
+\url{https://thimble.webmaker.org/}
+\end{flushright}
+
+}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Crea apps para el móvil}
+
+
+{\Large
+
+Mozilla AppMaker
+
+\vspace{.5cm}
+
+\begin{flushright}
+\url{https://apps.webmaker.org/}
+\end{flushright}
+
+}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Crea multimedia ``de verdad''}
+
+
+{\Large
+
+Mozilla PopcornMaker
+
+\vspace{.5cm}
+
+\begin{flushright}
+\url{https://popcorn.webmaker.org/}
+\end{flushright}
+
+}
+
+\end{frame}
+
+
+\end{document}
