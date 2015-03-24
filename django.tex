@@ -268,7 +268,7 @@ class MyFirstAppData(models.Model):
   \end{itemize}
 \item Creación de tablas
 \begin{verbatim}
-$ python manage.py syncdb
+$ python manage.py migrate
 \end{verbatim}
 \end{itemize}
 
@@ -456,7 +456,7 @@ u'Jesus'
   \item django.contrib.auth
   \item django.contrib.contenttypes
   \end{itemize}
-\item Hay que crear las tablas pertinentes (manage.py syncdb)
+\item Hay que crear las tablas pertinentes (manage.py migrate)
 \end{itemize}
 \end{frame}
 
@@ -473,7 +473,7 @@ Versión simple:
   \item django.contrib.sessions (dependencia del anterior)
   \item ...y lo necesario para usuarios
   \end{itemize}
-\item Hay que crear las tablas pertinentes (manage.py syncdb)
+\item Hay que crear las tablas pertinentes (manage.py migrate)
 \item Enganche en urls.py
 \begin{verbatim}
 from django.contrib import admin
