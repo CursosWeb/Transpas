@@ -734,6 +734,28 @@ worker.terminate();
 
 \end{frame}
 
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{¿Cómo se ejecutan?)}
+
+\begin{itemize}
+  \item El código del Worker estará en un fichero JavaScript separado (p.ej., \texttt{worker.js})
+  \item Utiliza la misma interfaz de comunicación, con la salvedad de que en vez de realizarse sobre el objeto tipo \texttt{Worker} lo hace sobre sí mismo, con \emph{self}.
+  \item Recuerda: no puede acceder al DOM
+  \item Puede enviar varios mensajes, no tiene por qué ser un único
+\end{itemize}
+
+\begin{verbatim}
+self.onmessage = function(event) {
+	console.log("He recibido " + event.data);
+	salida = hacemosAlgo();
+	self.postMessage("Te devuelvo " + salida)
+}
+\end{verbatim}
+
+\end{frame}
+
 
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
@@ -865,22 +887,62 @@ connection.onmessage = function (e) {
 \end{itemize}
 \end{frame}
 
+
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\section{Firefox OS}
+\section{History API}
 
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{¿Qué es Firefox OS?}
+\frametitle{¿Qué es la History API?}
+
 
 \begin{itemize}
-  \item Sistema operativo basado en Linux para \emph{smartphones} y tabletas
-  \item Promovido por Mozilla (y otros \emph{partners} industriales
-  \item Basado completamente en estándares abiertos: HTML5, CSS3 y JavaScript
-  \item Incluye un modelo de privilegios y una API web abierta para comunicarse con el hardware del dispositivo
+  \item El objeto \texttt{window} del DOM proporciona acceso al historial del browser a través del objeto \texttt{history}
+  \item Tendremos métodos y propoiedades que nos permitan avanzar y retroceder a través del historial (esto lo hemos podido hacer desde (casi) siempre)
+  \item Podemos manipular el contenido del historial (¡nuevo en HTML5!)
 \end{itemize}
 
 \end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Moviéndonos en el historial}
+
+
+\begin{itemize}
+  \item Hacia atrás: window.history.back();
+  \item Hacia adelante: window.history.forward();
+  \item A un punto específico del historial: window.history.go(-2);
+  \item Longitudo de la pila: window.history.length;
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Manipulando el historial}
+
+
+\begin{itemize}
+  \item Añadir entradas en el historial: history.pushState();
+\begin{verbatim}
+var stateObj = { foo: "bar" };  // puede se cualquier cosa que puedas pasar a JSON.stringify.
+history.pushState(stateObj, "titulo pagina", "introducida.html");
+\end{verbatim}
+  \item Modificar entradas en el historial: history.replaceState();
+\begin{verbatim}
+var stateObj = { foo: "bar" };
+history.replaceState(stateObj, "titulo pagina", "nueva.html");
+\end{verbatim}
+  \item Evento \texttt{popstate}: se lanza cada vez que la entrada al historial cambia.  la propiedad state del evento popstate contiene una copia del historial de entradas del objeto estado.
+\end{itemize}
+
+\end{frame}
+
+
 

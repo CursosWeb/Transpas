@@ -338,11 +338,11 @@ Fuente: \url{http://archive.cloudera.com/cdh4/cdh/4/hue/sdk/sdk.html}
 Cuando se modifica el modelo, puede existir una inconsistencia con los datos en la base de datos. ¡Peligro: se pueden perder datos!
 
 \begin{itemize}
-  \item El proceso de migracinoes se encarga de la propagación de modificaciones en el modelo (p.ej., añadir/borrar un campo)
+  \item El proceso de migraciones se encarga de la propagación de modificaciones en el modelo (p.ej., añadir/borrar un campo)
   \item \texttt{makemigrations}: crea nuevas migraciones, basándose en los cambios a los modelos.
   \item \texttt{migrate}: aplica la migración, además de listar el estado.
 %  \item \texttt{sqlmigrate}: muestra las instrucciones SQL de la migración.
-  \item Los archivos para las migraciones se encuentran en el directorio \texttt{migrations} de las aplicaciones. Se crean automáticamente con \texttt{makemigrations}, aunque se pueden modificar a mano.
+  \item Los archivos para las migraciones se encuentran en el directorio \texttt{migrations} de las aplicaciones. Se crean automáticamente con \texttt{makemigrations}, aunque (luego) se pueden modificar a mano.
 \end{itemize}
 
 \end{frame}
@@ -658,7 +658,7 @@ def show_content(request, resource):
 \begin{frame}[fragile]
 \frametitle{Plantillas: uso en vistas}
 
-Directorios con plantillas: TEMPLATE\_DIRS en settings.py
+Directorios con plantillas: lista TEMPLATE\_DIRS en settings.py
  
 \begin{verbatim}
 from django.template.loader import get_template
