@@ -1,0 +1,251 @@
+% www-conceptos.tex
+% Asignatura de SAT
+
+\section{Ajax y tecnologías relacionadas}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Algunos palabros}
+
+{\Large
+\begin{itemize}
+\item DHTML
+\item SPA
+\item AJAX
+\item Web 2.0
+\item HTML5
+\item Mashup
+\end{itemize}
+}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{DHTML}
+
+{\Large
+\begin{itemize}
+\item Dynamic HTML
+\item Típicamente: combinación de HTML, CSS (presentación)
+  JavaScript y DOM (manipulación) 
+\item La aplicación corren en el cliente, pero recibe datos, y los
+  envía, del/al servidor
+\item Maneja datos normalmente usando DOM
+\item El estado típicamente se mantiene en el servidor
+\item Problemas debido a las diferencias de las APIs entre navegadores
+\end{itemize}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{SPA}
+
+{\Large
+\begin{itemize}
+\item Single page application
+\item Es un tipo de aplicación DHTML (sin intervención del servidor)
+\item La aplicación funciona completamente en el navegador
+\item Maneja los datos de la propia página usando DOM
+\item Los datos modificados se almacenan localmente
+\end{itemize}
+}
+
+\begin{flushright}
+Algunos ejemplos: \\
+\url{https://onepagelove.com/} \\
+\url{http://www.awwwards.com/websites/single-page/} \\
+\end{flushright}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Ajax}
+
+\begin{itemize}
+\item Asynchronous JavaScript and XML
+\item DHTML más XMLHttpRequest
+\item Principal cambio para el usuario: las páginas se actualizan, no
+  se recargan completamente
+\item Normalmente, intercambio de datos con el servidor vía XML (no
+  páginas completas HTML)
+\item Muchas acciones hechas localmente (cuando no hace falta nueva
+  información)
+\item Ejemplo de aplicación: Google Mail
+\end{itemize}
+
+\begin{flushright}
+Artículo original: \\
+{ \footnotesize
+\url{https://web.archive.org/web/20080702075113/http://www.adaptivepath.com/ideas/essays/archives/000385.php}
+}
+\end{flushright}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Web 2.0}
+
+\begin{itemize}
+\item Evolución del web de colección de sitios a plataforma
+  informática completa.
+\item Proporciona aplicaciones web a usuarios finales
+\item Supuestamente sustuirá a muchas aplicaciones de escritorio
+\item Explotación de ``efectos red'', por ejemplo con redes sociales
+  (arquitectura de participación)
+\item Ejemplos: Google AdSense, Flickr, blogs, wikis
+\item Ejemplos de tecnologías: CSS, XHTML, Ajax, RSS/ATOM, 
+\end{itemize}
+
+\begin{flushright}
+{\small
+\url{http://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html}
+}
+\end{flushright}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{HTML5}
+
+\begin{itemize}
+\item Última versión de HTML (octubre de 2014)
+\item Originalmente, trabajo del WHATWG, ahora también del W3C
+\item Incluye:
+  \begin{itemize}
+  \item Primera línea: \verb|<!DOCTYPE html>|
+  \item Nuevo marcado HTML: $<audio>$, $<video>$, 
+  \item DOM Scripting (JavaScript)
+  \item APIs: Canvas 2D, drag-and-drop, off-line storage database, microdata, WebGL, SVG,...
+  \end{itemize}
+\item Los navegadores modernos ya lo soportan
+\end{itemize}
+
+{\small
+\begin{flushright}
+\url{https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5} \\
+\url{http://en.wikipedia.org/wiki/HTML5} \\
+\url{http://www.html5rocks.com/en/} \\
+\end{flushright}
+}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Mashup}
+
+\begin{itemize}
+\item Combinación de contenidos (y funcionalidad) de varios sitios en
+  una aplicación web
+\item Combinación usando APIs de terceros ejecutadas en servidor,
+  feeds (Atom, RSS), JavaScript, etc.
+\item APIs populares: eBay, Amazon, Google, Windows Live, Yahoo
+\item Buena integración con otros conceptos de Web 2.0
+\item Puede haber mashups de mashups...
+\item Idea general: creación de aplicaciones mediante composición de
+  aplicaciones web
+\end{itemize}
+
+\end{frame}
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \begin{frame}[fragile]
+%% \frametitle{Ejemplo simple (mashup): Google gadgets}
+
+%% \begin{itemize}
+%% \item Código JavaScript que se baja al descargar una página
+%% \item Puede combinar varios servicios
+%% \item Se incluye fácilmente en HTML (mashup sin programar)
+%% \item Pueden arrastrarse directamente a Google Desktop
+%% \end{itemize}
+
+%% \begin{verbatim}
+%% <script src="http://gmodules.com/ig/ifr?
+%% url=http://ralph.feedback.googlepages.com/googlemap.xml&
+%% up_loc=Universidad%20Rey%20Juan%20Carlos,%20Mostoles,
+%% %20Spain&up_zoom=Street&up_view=Hybrid&synd=open&
+%% w=320&h=200&output=js">
+%% </script>
+%% \end{verbatim}
+
+%% \begin{flushright}
+%% \url{http://www.google.com/ig/directory?synd=open}
+%% \end{flushright}
+
+%% \end{frame}
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \begin{frame}
+%% \frametitle{Ejemplo simple (mashup): Google gadgets (2)}
+
+%% Implementación (todo puede hacerse con una herramienta):
+
+%% \begin{itemize}
+%% \item gadget.gmanifest (XML): metainformación
+%% \item main.xml (XML): interfaz de usuario, objetos visibles
+%% \item options.xml (XML): opciones (si las hay)
+%% \item Código (JavaScript, VBScript): funcionalidad (corre en el
+%%   navegador), usa la API de Google Desktop
+%% \item Imágenes: iconos, botones, gráficos, etc.
+%% \item Localización: ficheros con traducciones de la interfaz de usuario
+%% \end{itemize}
+
+
+%% \begin{flushright}
+%% \url{http://desktop.google.com/script.html}
+%% \end{flushright}
+
+%% \end{frame}
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \begin{frame}
+%% \frametitle{Ejemplo simple (mashup): Morfeo EzWeb}
+
+%% \begin{itemize}
+%% \item Django en el lado del servidor
+%% \item JavaScript en el lado del cliente
+%% \item Interconexión entre gadgets en el lado del cliente (publicación
+%%   / subcripción)
+%% \item Creación de aplicaciones combinando en el cliente y con
+%%   servidores
+%% \item Todo es software libre
+%% \end{itemize}
+
+
+%% \begin{flushright}
+%% \url{http://ezweb.morfeo-project.org/}
+%% \end{flushright}
+
+%% \end{frame}
+
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \begin{frame}
+%% \frametitle{Referencias}
+
+%% \begin{itemize}
+%% \item Web 2.0: \\
+%%   \url{http://en.wikipedia.org/wiki/Web_2.0}
+%% \item How To Make Your Own Web Mashup: \\
+%%   \url{http://programmableweb.com/howto}
+%% \end{itemize}
+
+
+%% \end{frame}
+
