@@ -1,4 +1,5 @@
 
+https://panopticlick.eff.org
 
 Cyanogen Mod
 
@@ -9,3 +10,9 @@ Paper.li
 WebGL
 
 Web Maker
+
+Meetup
+
+Tor
+
+Torflow https://torflow.uncharted.software/
