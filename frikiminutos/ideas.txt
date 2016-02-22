@@ -1,6 +1,4 @@
 
-https://panopticlick.eff.org
-
 Cyanogen Mod
 
 OpenHub
