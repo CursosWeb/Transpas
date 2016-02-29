@@ -112,8 +112,5 @@ Este documento (o uno muy similar) está disponible en \\
 \include{docker} % jgb
 \include{vm} % jgb
 \include{atom} % grex
-\include{coffeescript} % grex
-\include{webgl}
-\include{uml} % grex
-\include{tiempo-unix} % jgb
+
 \end{document}
