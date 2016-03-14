@@ -43,7 +43,7 @@
 \item Acceso a base de datos (correspondencia objeto-relacional)
 \item Seguridad (XSS, SQL Injection, ...)
 \item Componentes listos para usar (gestión de usuarios, sesiones, interfaz administración,...)
-\item Cache, internacionalización, plantillas, etc.
+\item \emph{Caché}, internacionalización, plantillas, etc.
 \end{itemize}
 
 \begin{flushright}
@@ -78,45 +78,48 @@
 \frametitle{Preparativos}
 
 \begin{itemize}
-\item Usaremos la versión 1.7.5
+\item Usaremos la versión 1.7.5 instalada en los laboratorios, aunque
+puede que durante el curso se actualice a una 1.9.*
 \item Disponible para Linux, *BSD, Windows, MacOS, etc.
-\item Descarga e instalación en \$DJANGO
-\item Descompresión desde la \emph{shell}:
+%\item Descarga e instalación en \$DJANGO
+%\item Descompresión desde la \emph{shell}:
+%\begin{verbatim}
+%tar xvzf Django-1.7.5.tar.gz
+%\end{verbatim}
+%\begin{flushright}
+%{\small
+%\url{http://docs.djangoproject.com/en/dev/topics/install/}
+%\url{http://www.djangoproject.com/download/1.7.5/tarball/}
+%}
+%\end{flushright}
+
+\item Comprobación (debe responder 1.7.5):
 \begin{verbatim}
-tar xvzf Django-1.7.5.tar.gz
+django-admin.py --version
 \end{verbatim}
 \end{itemize}
-\begin{flushright}
-{\small
-\url{http://docs.djangoproject.com/en/dev/topics/install/}
-\url{http://www.djangoproject.com/download/1.7.5/tarball/}
-}
-\end{flushright}
+
 
 \end{frame}
 
 
 %%---------------------------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Preparativos (y II)}
+%\begin{frame}[fragile]
+%\frametitle{Preparativos (y II)}
 
-\begin{itemize}
-\item Preparación de entorno (necesario si no se ha instalado en path ``habituales'', como p.ej. en el laboratorio):
-\begin{verbatim}
-export DJANGO=/home/al-..-../..../.../Django-1.7.5/
-   # Camino al directorio con fuentes descomprimidas
-export PATH=$DJANGO/django/bin:$PATH
-export PYTHONPATH=$DJANGO:$PYTHONPATH
-\end{verbatim}
-\item Comprobación (debe responder 1.7.5):
-\begin{verbatim}
-django-admin.py --version
-\end{verbatim}
-\item Incluir los tres exports anteriores en el fichero ~/.bashrc para que se ejecuten con cada nuevo terminal.
-\item Abrir un nuevo terminal y comprobar que funciona (ver paso anterior).
-\end{itemize}
-
-\end{frame}
+%\begin{itemize}
+%\item Preparación de entorno (necesario si no se ha instalado en path ``habituales'', como p.ej. en el laboratorio):
+%\begin{verbatim}
+%export DJANGO=/home/al-..-../..../.../Django-1.7.5/
+%   # Camino al directorio con fuentes descomprimidas
+%export PATH=$DJANGO/django/bin:$PATH
+%export PYTHONPATH=$DJANGO:$PYTHONPATH
+%\end{verbatim}
+%\item Incluir los tres exports anteriores en el fichero ~/.bashrc para que se ejecuten con cada nuevo terminal.
+%\item Abrir un nuevo terminal y comprobar que funciona (ver paso anterior).
+%\end{itemize}
+%
+%\end{frame}
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
@@ -161,9 +164,11 @@ $ python manage.py runserver 1234
 \item Aplicación:
   \begin{itemize}
   \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Python
-  \item \verb|models.py|: definición de las clases del modelo de datos
   \item \verb|views.py|: vistas (código invocado para cada recurso)
+  \item \verb|models.py|: definición de las clases del modelo de datos
+  \item \verb|admin.py|: registro de los modelos que se pueden gestionar vía web
   \item \verb|tests.py|: fichero para la implementación de tests
+  \item \verb|migrations/|: versiones (y \emph{migraciones}) de los modelos
   \end{itemize}
 \end{itemize}
 
@@ -177,12 +182,12 @@ $ python manage.py runserver 1234
 \item Fichero de configuración, en Python
 \item Configuración de la base de datos (usaremos SQLite3)
 \begin{verbatim}
-ENGINE = 'django.db.backends.sqlite3'
-NAME = 'myproject.sqlite'
-USER = ''
-PASSWORD = ''
-HOST = ''
-PORT = ''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 \end{verbatim}
 \item Aplicaciones instaladas
 \begin{verbatim}
