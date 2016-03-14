@@ -960,13 +960,16 @@ connection.onmessage = function (e) {
 \begin{itemize}
   \item Añadir entradas en el historial: history.pushState();
 \begin{verbatim}
-var stateObj = { foo: "bar" };  // puede se cualquier cosa que puedas pasar a JSON.stringify.
-history.pushState(stateObj, "titulo pagina", "introducida.html");
+var stateObj = { foo: "bar" };  
+   // puede ser cualquier cosa que puedas pasar a JSON.stringify.
+history.pushState(stateObj, "titulo pagina", 
+       "introducida.html");
 \end{verbatim}
   \item Modificar entradas en el historial: history.replaceState();
 \begin{verbatim}
 var stateObj = { foo: "bar" };
-history.replaceState(stateObj, "titulo pagina", "nueva.html");
+history.replaceState(stateObj, "titulo pagina", 
+       "nueva.html");
 \end{verbatim}
   \item Evento \texttt{popstate}: se lanza cada vez que la entrada al historial cambia.  la propiedad state del evento popstate contiene una copia del historial de entradas del objeto estado.
 \end{itemize}
