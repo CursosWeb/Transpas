@@ -223,7 +223,7 @@ Las versiones antiguas de Internet Explorer son especialmente ''particulares''.
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\subsection{El canvas}
+\section{Canvas}
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
@@ -237,7 +237,9 @@ Las versiones antiguas de Internet Explorer son especialmente ''particulares''.
 \end{itemize}
 
 \begin{verbatim}
-<canvas id="a" width="300" height="225"></canvas>
+  <canvas id="a" width="300" height="225">
+    Your browser does not support HTML5 canvas.
+  </canvas>
 \end{verbatim}
 
 \end{frame}
@@ -321,16 +323,16 @@ function draw_b() {
 
 %%---------------------------------------------------------------
 
-\begin{frame}
-\frametitle{Ejercicio: Pintemos un diagrama de coordenadas}
-
-\begin{center}
-\begin{figure}[p]
-\includegraphics[width=0.8\textwidth]{figs/diagramacoordenadas.png}
-\end{figure}
-\end{center}
-
-\end{frame}
+%\begin{frame}
+%\frametitle{Ejercicio: Pintemos un diagrama de coordenadas}
+%
+%\begin{center}
+%\begin{figure}[p]
+%\includegraphics[width=0.8\textwidth]{figs/diagramacoordenadas.png}
+%\end{figure}
+%\end{center}
+%
+%\end{frame}
 
 
 %%---------------------------------------------------------------
@@ -362,7 +364,7 @@ function draw_b() {
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\subsection{Local Storage}
+\section{Local Storage}
 
 %%---------------------------------------------------------------
 
@@ -410,16 +412,22 @@ interface Storage {
 Ejemplo de uso:
 \begin{verbatim}
 var foo = localStorage.getItem("bar");
-// ...
 localStorage.setItem("bar", foo);
 \end{verbatim}
 
-También valdría:
+También vale:
+\begin{verbatim}
+var foo = localStorage.bar;
+localStorage.bar = foo;
+\end{verbatim}
+
+
+También valdría (p.ej., para iterar con un \emph{for}):
 \begin{verbatim}
 var foo = localStorage["bar"];
-// ...
 localStorage["bar"] = foo;
 \end{verbatim}
+
 
 \end{frame}
 
@@ -454,7 +462,7 @@ interface Storage {
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\subsection{Navegación Off-line}
+\section{Navegación Off-line}
 
 %%---------------------------------------------------------------
 
@@ -555,20 +563,24 @@ NETWORK:
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\subsection{Detección de funcionalidad HTML5}
+\section{Detección de funcionalidad HTML5}
 
 %%---------------------------------------------------------------
 
 \begin{frame}
 \frametitle{Técnicas de detección de características HTML5}
 
+Dependiendo de la característica, hay que:
+
 \begin{enumerate}
   \item Comprobar si existe una propiedad en un objeto global (como window o navigator). P.ej. geolocalización.
   \item  Crear un elemento y entonces comprobar si existe una propiedad específica en ese elemento. P.ej. soporte para canvas.
   \item Crear un elemento, comprobor si existe un método específico en ese elemento y entonces llamar al método y comprobar el valor de retorno. P.ej. comprobar formatos de vídeo soportados
   \item Crear un elemento, poner un valor a una propiedad, y comprobar si la propiedad ha retenido ese valor. P.ej. comprobar los tipos de $<input>$ soportados
-  \item ... o utilizar la biblioteca JavaScript Modernizr
 \end{enumerate}
+
+... o simplemente se puede utilizar la biblioteca JavaScript Modernizr (que te abstrae de todo lo anterior)
+
 
 \end{frame}
 
@@ -591,10 +603,26 @@ donde \emph{ELEMENT} puede ser: canvas, canvastext, video, video.webm, video.ogg
 \end{frame}
 
 
+
+\begin{frame}
+\frametitle{Polyfills}
+
+\begin{itemize}
+  \item Si una característica HTML5 no está soportada por el navegador, podemos
+  usar \emph{polyfills}
+  \item Los \emph{polyfills} son bibliotecas, módulos externos que ofrecen funcionalidad
+  parecida a los que HTML5 ofrece de forma nativa.
+  \item Puede haber varios \emph{polyfills} para cada característica.
+  \item Se tienen que evaluar y probar de manera independiente.
+  \item Para probarlo, hace falta un navegador que no implemente HTML5 (p.ej. Konqueror para algunas funcionalidades)
+\end{itemize}
+
+\end{frame}
+
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\subsection{Geolocalización}
+\section{Geolocalización}
 
 
 %%---------------------------------------------------------------
@@ -661,7 +689,7 @@ timestamp	& DOMTimeStamp	& like a Date() object \\
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\subsection{Web Workers}
+\section{Web Workers}
 
 %%---------------------------------------------------------------
 
@@ -699,7 +727,7 @@ var worker = new Worker("worker.js");
   \end{verbatim}
 
   \item Se pasa un mensaje al Worker.
-  Normalmente este mensaje estará en formato JSON.
+  Normalmente este mensaje estará en formato JSON (con \emph{stringify}).
 
   \begin{verbatim}
 worker.postMessage("Hello World!");
@@ -718,15 +746,15 @@ worker.postMessage("Hello World!");
   \setcounter{enumi}{2}
 
   \item En caso de recibir un mensaje de respuesta, se captura el evento y se hace lo que queramos con los datos que
-recibidos (nota: generalmente recibiremos un JSON):
+recibidos (nota: generalmente recibiremos un JSON, al que se le pasa \emph{parse}):
   \begin{verbatim}
 worker.onmessage = function(event) {
-	console.log("Hemos recibido " + event.data);
-	hacemosAlgo();
+    console.log("Hemos recibido " + event.data);
+    hacemosAlgo();
 }
   \end{verbatim}
 
-  \item Se da por cerrado el Worker:
+  \item Se da por cerrado el Worker (cuidado, ¡orientación a eventos!):
   \begin{verbatim}
 worker.terminate();
   \end{verbatim}
@@ -737,20 +765,21 @@ worker.terminate();
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{¿Cómo se ejecutan?)}
+\frametitle{¿Cómo se ejecutan?}
 
 \begin{itemize}
   \item El código del Worker estará en un fichero JavaScript separado (p.ej., \texttt{worker.js})
   \item Utiliza la misma interfaz de comunicación, con la salvedad de que en vez de realizarse sobre el objeto tipo \texttt{Worker} lo hace sobre sí mismo, con \emph{self}.
   \item Recuerda: no puede acceder al DOM
   \item Puede enviar varios mensajes, no tiene por qué ser un único
+  \item Ejemplo de código de un \texttt{Workder} (en su fichero \emph{.js}):
 \end{itemize}
 
 \begin{verbatim}
 self.onmessage = function(event) {
-	console.log("He recibido " + event.data);
-	salida = hacemosAlgo();
-	self.postMessage("Te devuelvo " + salida)
+    console.log("He recibido " + event.data);
+    salida = hacemosAlgo();
+    self.postMessage("Te devuelvo " + salida)
 }
 \end{verbatim}
 
@@ -760,7 +789,7 @@ self.onmessage = function(event) {
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\subsection{WebSocket}
+\section{WebSocket}
 
 %%---------------------------------------------------------------
 
@@ -891,7 +920,7 @@ connection.onmessage = function (e) {
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\subsection{History API}
+\section{History API}
 
 %%---------------------------------------------------------------
 
