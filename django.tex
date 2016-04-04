@@ -318,139 +318,11 @@ Cuando se modifica el modelo, puede existir una inconsistencia con los datos en 
   \item \texttt{migrate}: aplica la migración, además de listar el estado.
 %  \item \texttt{sqlmigrate}: muestra las instrucciones SQL de la migración.
   \item Los archivos para las migraciones se encuentran en el directorio \texttt{migrations} de las aplicaciones. Se crean automáticamente con \texttt{makemigrations}, aunque (luego) se pueden modificar a mano.
+  \item \texttt{createsuperuser}: crea un usuario superusuario para poder entrar en el interfaz de admin admin
 \end{itemize}
 
 \end{frame}
 
-%%---------------------------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Otras acciones de gestión del proyecto}
-
-\begin{itemize}
-\item Ejecución en el contexto de Python con acceso al código de la aplicación
-\begin{verbatim}
-% python manage.py shell
-\end{verbatim}
-\item Validacion de modelos de datos
-\begin{verbatim}
-% python manage.py validate
-\end{verbatim}
-\item Exportación de datos de la base de datos
-\begin{verbatim}
-% python manage.py dumpdata
-\end{verbatim}
-\item Importación de datos en la base de datos
-\begin{verbatim}
-% python manage.py loaddata
-\end{verbatim}
-\end{itemize}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Seguridad}
-
-\begin{itemize}
-  \item Django viene con alguna protección de seguridad por defecto
-  \item Por ejemplo, CSRF: \emph{Cross-site request forgery} o falsificación de petición en sitios cruzados
-  \item Si el POST/PUT no incluye un csrf\_token creado con anterioridad por el servidor, da un error de seguridad
-  \item Se evita con el @csrf\_exempt para un método concreto en views.py,
-de la siguiente manera:
-\end{itemize}
-
-\begin{verbatim}
-@csrf_exempt
-def vista(request):
-    if request.method == "POST":
-        return HttpResponse("Has enviado " + request.body)
-\end{verbatim}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-\begin{frame}
-\frametitle{Consultas a la base de datos}
-
-\begin{itemize}
-\item Métodos para realizar consultas a la base de datos
-\item Acceso a entradas de la base de datos mediante el objeto 'objects' \\
-  (ej. MyFirstAppData.objects)
-\item Métodos:
-\begin{itemize}
-\item MyFirstAppData.save()
-\item MyFirstAppData.objects.all()
-\item MyFirstAppData.objects.filter(campo=valor)
-\item MyFirstAppData.objects.get(campo=valor) \\
-  Excepción si no lo encuentra
-\end{itemize}
-\end{itemize}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Acceso al modelo desde las vistas}
-
-\begin{itemize}
-\item Las vistas pueden usarse para leer y modificar al modelo
-\begin{verbatim}
-from django.http import HttpResponse,HttpResponseNotFound
-from content.models import Pages
-
-def show_content(request, resource):
-    try:
-        record = Pages.objects.get(name=resource)
-        return HttpResponse(record.page)
-    except Pages.DoesNotExist:
-        return HttpResponseNotFound(
-            'Page not found: /%s.' % resource
-            )
-\end{verbatim}
-\end{itemize}
-\end{frame}
-
-
-%%---------------------------------------------------------------
-\begin{frame}[fragile]
-\frametitle{La shell de Django}
-
-Acceso a la API de los objetos de nuestro proyecto
-
-\begin{verbatim}
-% python manage.py shell
->>> from myproject.myfirstapp.models import MyFirstAppData
->>> MyFirstAppData.objects.all()
-[]
->>> p = MyFirstAppData(name="Jesus",
-                       birthday="2009-05-05")
->>> p.save()
->>> p.id
-1
->>> MyFirstAppData.objects.filter(name="Jesus")
-...
->>> MyFirstAppData.objects.get(pk=1).name
-u'Jesus'
-\end{verbatim}
-
-\end{frame}
-
-
-%%---------------------------------------------------------------
-\begin{frame}
-\frametitle{Usuarios}
-
-\begin{itemize}
-\item INSTALLED\_APPS (en settings.py) ha de incluir:
-  \begin{itemize}
-  \item django.contrib.auth
-  \item django.contrib.contenttypes
-  \end{itemize}
-\item Hay que crear las tablas pertinentes (manage.py migrate)
-\end{itemize}
-\end{frame}
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
@@ -495,6 +367,88 @@ admin.site.register(Pages)
 \end{itemize}
 \end{frame}
 
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Consultas a la base de datos}
+
+\begin{itemize}
+\item Métodos para realizar consultas a la base de datos
+\item Acceso a entradas de la base de datos mediante el objeto 'objects' \\
+  (ej. MyFirstAppData.objects)
+\item Métodos:
+\begin{itemize}
+\item MyFirstAppData.save()
+\item MyFirstAppData.objects.all()
+\item MyFirstAppData.objects.filter(campo=valor)
+\item MyFirstAppData.objects.get(campo=valor) \\
+  Excepción si no lo encuentra
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Acceso al modelo desde las vistas}
+
+\begin{itemize}
+\item Las vistas pueden usarse para leer y modificar al modelo
+\begin{verbatim}
+from django.http import HttpResponse,HttpResponseNotFound
+from content.models import Pages
+
+def show_content(request, resource):
+    try:
+        record = Pages.objects.get(name=resource)
+        return HttpResponse(record.page)
+    except Pages.DoesNotExist:
+        return HttpResponseNotFound(
+            'Page not found: /%s.' % resource
+            )
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Seguridad}
+
+\begin{itemize}
+  \item Django viene con alguna protección de seguridad por defecto
+  \item Por ejemplo, CSRF: \emph{Cross-site request forgery} o falsificación de petición en sitios cruzados
+  \item Si el POST/PUT no incluye un csrf\_token creado con anterioridad por el servidor, da un error de seguridad
+  \item Se evita con el @csrf\_exempt para un método concreto en views.py,
+de la siguiente manera:
+\end{itemize}
+
+\begin{verbatim}
+@csrf_exempt
+def vista(request):
+    if request.method == "POST":
+        return HttpResponse("Has enviado " + request.body)
+\end{verbatim}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Usuarios}
+
+\begin{itemize}
+\item INSTALLED\_APPS (en settings.py) ha de incluir:
+  \begin{itemize}
+  \item django.contrib.auth
+  \item django.contrib.contenttypes
+  \end{itemize}
+\item Hay que crear las tablas pertinentes (manage.py migrate)
+\end{itemize}
+\end{frame}
+
+
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
 \frametitle{Acceso a información de usuario y logout}
@@ -514,6 +468,74 @@ def show_content(request, resource):
 (r'^logout', 'django.contrib.auth.views.logout'),
 \end{verbatim}
 \end{itemize}
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Login}
+
+\begin{itemize}
+\item Utilizamos view predefinida (entiende GET y POST)
+\item En urls.py:
+\begin{verbatim}
+url(r'^login', 'django.contrib.auth.views.login'),
+\end{verbatim}
+\item Necesita una plantilla registration/login.html:
+  \begin{itemize}
+  \item En settings.py:
+\begin{verbatim}
+TEMPLATE_DIRS = ('templates')
+\end{verbatim}
+  \item Creación de templates/registration/login.html
+  \end{itemize}
+\end{itemize}
+
+\begin{flushright}
+Info detallada: ``User authentication in Django''
+\end{flushright}
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{templates/registration/login.html}
+
+\begin{verbatim}
+<html><body>
+<form method="post" action="/login">
+{% csrf_token %}
+<table>
+  <tr><td>Username</td>
+      <td>{{ form.username }}</td></tr>
+  <tr><td>Password</td>
+      <td>{{ form.password }}</td></tr>
+</table>
+<input type="submit" value="login" />
+</form>
+</body></html>
+\end{verbatim}
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ficheros estáticos con Django}
+
+\begin{itemize}
+\item Los ficheros estáticos no se deberían servir con Django...
+\item (lo hace mucho mejor un servidor web como Apache o Cherokee)
+\item ...pero se pueden servir
+\item django.views.static.serve()
+
+\begin{verbatim}
+(r'^css/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': 'sfiles/css'}),
+\end{verbatim}
+
+\end{itemize}
+
 \end{frame}
 
 
@@ -684,52 +706,6 @@ def show_annotated_content(request, resource):
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Login}
-
-\begin{itemize}
-\item Utilizamos view predefinida (entiende GET y POST)
-\item En urls.py:
-\begin{verbatim}
-url(r'^login', 'django.contrib.auth.views.login'),
-\end{verbatim}
-\item Necesita una plantilla registration/login.html:
-  \begin{itemize}
-  \item En settings.py:
-\begin{verbatim}
-TEMPLATE_DIRS = ('templates')
-\end{verbatim}
-  \item Creación de templates/registration/login.html
-  \end{itemize}
-\end{itemize}
-
-\begin{flushright}
-Info detallada: ``User authentication in Django''
-\end{flushright}
-\end{frame}
-
-%%---------------------------------------------------------------
-\begin{frame}[fragile]
-\frametitle{templates/registration/login.html}
-
-\begin{verbatim}
-<html><body>
-<form method="post" action="/login">
-{% csrf_token %}
-<table>
-  <tr><td>Username</td>
-      <td>{{ form.username }}</td></tr>
-  <tr><td>Password</td>
-      <td>{{ form.password }}</td></tr>
-</table>
-<input type="submit" value="login" />
-</form>
-</body></html>
-\end{verbatim}
-\end{frame}
-
-
-%%---------------------------------------------------------------
-\begin{frame}[fragile]
 \frametitle{Plantillas: uso en urls.py}
 
 \begin{verbatim}
@@ -744,6 +720,59 @@ urlpatterns = patterns('',
 )
 \end{verbatim}
 \end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Otras acciones de gestión del proyecto}
+
+\begin{itemize}
+\item Ejecución en el contexto de Python con acceso al código de la aplicación
+\begin{verbatim}
+% python manage.py shell
+\end{verbatim}
+\item Validacion de modelos de datos
+\begin{verbatim}
+% python manage.py validate
+\end{verbatim}
+\item Exportación de datos de la base de datos
+\begin{verbatim}
+% python manage.py dumpdata
+\end{verbatim}
+\item Importación de datos en la base de datos
+\begin{verbatim}
+% python manage.py loaddata
+\end{verbatim}
+\end{itemize}
+
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{La shell de Django}
+
+Acceso a la API de los objetos de nuestro proyecto
+
+\begin{verbatim}
+% python manage.py shell
+>>> from myproject.myfirstapp.models import MyFirstAppData
+>>> MyFirstAppData.objects.all()
+[]
+>>> p = MyFirstAppData(name="Jesus",
+                       birthday="2009-05-05")
+>>> p.save()
+>>> p.id
+1
+>>> MyFirstAppData.objects.filter(name="Jesus")
+...
+>>> MyFirstAppData.objects.get(pk=1).name
+u'Jesus'
+\end{verbatim}
+
+\end{frame}
+
+
 
 %%---------------------------------------------------------------
 
@@ -809,26 +838,6 @@ Pizza.objects.filter(toppings__name='Mozzarela')
 
 \end{frame}
 
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Ficheros estáticos con Django}
-
-\begin{itemize}
-\item Los ficheros estáticos no se deberían servir con Django...
-\item (lo hace mucho mejor un servidor web como Apache o Cherokee)
-\item ...pero se pueden servir
-\item django.views.static.serve()
-
-\begin{verbatim}
-(r'^css/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': 'sfiles/css'}),
-\end{verbatim}
-
-\end{itemize}
-
-\end{frame}
 
 %%---------------------------------------------------------------
 
