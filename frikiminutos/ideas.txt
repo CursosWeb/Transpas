@@ -11,4 +11,3 @@ Tor
 
 Torflow https://torflow.uncharted.software/
 
-Leetspeak

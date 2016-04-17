@@ -1,0 +1,86 @@
+%
+%
+
+%%-----------------------------------------------------
+%%-----------------------------------------------------
+\section{Puestos a instalar... instala}
+
+%%-----------------------------------------------------
+\begin{frame}
+\frametitle{Bower}
+
+\begin{columns}[T]
+\begin{column}{.48\textwidth}
+\includegraphics[width=6.5cm]{figs/bower-logo}
+
+\end{column}%
+\hfill%
+\begin{column}{.50\textwidth}
+{\Large
+\begin{itemize}
+\item Gestión de paquetes para aplicaciones web
+\item JavaScript
+\item Proporciona enganches para otras herramientas
+\end{itemize}
+
+\vspace{.5cm}
+
+Más de 50.000 paquetes (abril 2016)
+\vspace{.5cm}
+
+\begin{flushright}
+  {\Large
+    \url{http://bower.io/}
+  }
+\end{flushright}
+
+}
+\end{column}%
+\end{columns}
+
+\end{frame}
+
+%%-----------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Instalación}
+
+{\Large
+\begin{verbatim}
+$ npm install bower
+[Instalacion en node_modules]
+
+$ node_modules/bower/bin/bower install jquery
+[Instalacion en bower_components/jquery]
+
+$ ls bower_components/jquery
+bower.json dist LICENSE.txt README.md src
+$ ls bower_components/jquery/dist/
+jquery.js jquery.min.js jquery.min.map
+\end{verbatim}
+}
+
+\end{frame}
+
+%%-----------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Otras opciones}
+
+{\Large
+\begin{verbatim}
+$ bower install
+[Installs depedencies in bower.json]
+$ bower init
+[Creates a bower.json]
+$ bower update jquery
+[Updates jquery to newest version]
+$ bower list
+[List local packages and possible updates]
+\end{verbatim}
+
+Search packages: \url{http://bower.io/search/} \\
+
+Más opciones: \url{http://bower.io/docs/api/} \\
+}
+
+\end{frame}
+
