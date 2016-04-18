@@ -1,0 +1,132 @@
+%%---------------------------------------------------------------
+%%---------------------------------------------------------------
+
+\section{Optimización}
+
+%%---------------------------------------------------------------
+%
+%\begin{frame}
+%\frametitle{}
+%
+%\begin{itemize}
+%  \item 
+%\end{itemize}
+%
+%\end{frame}
+
+
+%%---------------------------------------------------------------
+
+%\begin{frame}
+%\frametitle{}
+%
+%\begin{center}
+%\begin{figure}[p]
+%\includegraphics[width=0.65\textwidth]{figs/}
+%\end{figure}
+%\end{center}
+%
+%\begin{flushright}
+%{\tiny
+%Source: 
+%}
+%\end{flushright}
+%
+%\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{¿Por qué optimizar?}
+
+\begin{itemize}
+  \item Se ha realizado mucho trabajo de optimización en las máquinas de Javascript de los navegadores en los últimos años.
+  \item Sin embargo, JavaScript requiere que el desarrollador realiza optimizaciones que en otros lenguajes haría el compilador.
+  \item Cada vez que se encuentra una etiqueta $<script>$, el navegador se para, descarga
+el código JavaScript (si fuera necesario), y se ejecuta antes de procesar el resto
+de la página. 
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Carga y ejecución de JavaScript}
+
+\begin{itemize}
+  \item Pon todos los $<script>$ al final de la página, antes del $</body>$. De esta manera, hay contenido que se muestra que no tiene que esperar.
+  \item Agrupa los scripts. Cuantos menos $<script>$s tiene una página, antes cargará y se volverá interactiva. 
+  \item Utiliza técnicas para descargar JavaScript de manera no bloqueante:
+  \begin{itemize}
+    \item Utilizando el atributo \texttt{defer} de $<script>$ (sólo IE y Firefox 3.5+)
+    \item Crea elementos $<script>$ dinámicos
+    \item Descarga código JavaScript utilizando AJAX y luego inyecta el código en la página.
+  \end{itemize}
+  \item Maximiza el uso de la caché (y CDN) para scripts en JavaScript.
+\end{itemize}
+
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Trabajando con el DOM}
+
+\begin{itemize}
+  \item El acceso al DOM es caro. Minimiza el acceso al DOM. Intenta trabajar al máximo en JavaScript.
+  \item Realiza todos los cambios en una única vez. También (o especialmente) con los cambios de estilos.
+  \item Para accesos repetidos al DOM, utiliza variables locales.
+  \item Utiliza \texttt{document.getElementById} o el identificador en JQuery
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Algoritmos y control de flujo}
+
+\begin{itemize}
+  \item Los bucles \texttt{for}, \texttt{while} y \texttt{do-while} tienen características de potencia similares y ninguno es significativamente más rápido que los demás.
+  \item Se han de evitar los bucles \texttt{for-in}, a menos de que desconozcamos el número de propiedades de un objeto.
+  \item En general, \texttt{switch} es más eficiente que \texttt{if-else}, aunque no siempre es la mejor solución.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Manteniendo la responsividad del interfaz}
+
+\begin{itemize}
+  \item Ningún código de JavaScript es tan importante como para afectar negativamente la experiencia de usuario
+  \item Ningún script de JavaScript debería llevar más de 20 segundos.
+  \item Utiliza \texttt{Web workers} para ejecutar código JavaScript fuera el hilo de interfaz de usuario, evitando así su bloqueo
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Herramientas para optimizar}
+
+\begin{itemize}
+  \item Firebug Profiler: recoge información de cada función de JavaScript y de cuánto tiempo ha llevado su ejecución
+  \item JSLint: \url{http://www.jslint.com/lint.html}
+  \item Closure Tools: \url{https://developers.google.com/closure/compiler/}
+  \item YUI Compressor: \url{http://yui.github.io/yuicompressor/}
+\end{itemize}
+
+\end{frame}
+
+
