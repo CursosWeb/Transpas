@@ -518,26 +518,6 @@ Info detallada: ``User authentication in Django''
 
 
 
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Ficheros estáticos con Django}
-
-\begin{itemize}
-\item Los ficheros estáticos no se deberían servir con Django...
-\item (lo hace mucho mejor un servidor web como Apache o Cherokee)
-\item ...pero se pueden servir
-\item django.views.static.serve()
-
-\begin{verbatim}
-(r'^css/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': 'sfiles/css'}),
-\end{verbatim}
-
-\end{itemize}
-
-\end{frame}
-
 
 %%---------------------------------------------------------------
 \begin{frame}
@@ -655,27 +635,101 @@ Fuente: \url{http://archive.cloudera.com/cdh4/cdh/4/hue/sdk/sdk.html}
     ...
 {% endifnotequal %}
 \end{verbatim}
-\item block, extends: Herencia
+\item block: Indica bloques a redefinir en plantillas que hereden
+\item extends: Hereda de plantilla madre (sólo hace falta redefinir
+ \emph{blocks} que se quieren modificar)
 \end{itemize}
 \end{frame}
 
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Ficheros estáticos con Django}
+
+\begin{itemize}
+\item Los ficheros estáticos no se deberían servir con Django...
+\item (lo hace mucho mejor un servidor web como Apache o Cherokee)
+\item ...pero se pueden servir
+\item django.views.static.serve()
+
+\begin{verbatim}
+(r'^css/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': 'sfiles/css'}),
+\end{verbatim}
+
+\end{itemize}
+
+\end{frame}
+
+
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Ejemplo de plantilla}
+\frametitle{Ejemplo de plantilla ``madre'' (base.html) (I)}
+
+\begin{verbatim}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <title>
+    {% block title %}
+      My amazing site
+    {% endblock %}
+  </title>
+</head>
+\end{verbatim}
+
+(sigue en la siguiente transparencia)
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Ejemplo de plantilla ``madre'' (base.html) (II)}
+
+\begin{verbatim}
+<body>
+  <div id="sidebar">
+  {% block sidebar %}
+    <ul>
+     <li><a href="/">Home</a></li>
+     <li><a href="/blog/">Blog</a></li>
+    </ul>
+  {% endblock %}
+  </div>
+
+  <div id="content">
+     {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
+\end{verbatim}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Ejemplo de plantilla que hereda (plantilla.html)}
 
 \begin{verbatim}
 {% extends "base.html" %}
-{% block title %}{{ section.title }}{% endblock %}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
 {% block content %}
-<h1>{{ section.title }}</h1>
-{% for story in story_list %}
-<h2>
-  <a href="{{ story.get_absolute_url }}">
-    {{ story.headline|upper }}
-  </a>
-</h2>
-<p>{{ story.tease|truncatewords:"100" }}</p>
-{% endfor %}
+  <h1>{{ title }}</h1>
+  {% for story in story_list %}
+  <h2>
+    <a href="{{ story.get_absolute_url }}">
+      {{ story.headline|upper }}
+    </a>
+  </h2>
+  <p>{{ story.tease|truncatewords:"100" }}</p>
+  {% endfor %}
 {% endblock %}
 \end{verbatim}
 
