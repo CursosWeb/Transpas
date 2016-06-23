@@ -641,6 +641,24 @@ Fuente: \url{http://archive.cloudera.com/cdh4/cdh/4/hue/sdk/sdk.html}
 \end{itemize}
 \end{frame}
 
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Plantillas y CSRF}
+
+\begin{itemize}
+  \item Renderizando una plantilla con CSRF:
+\end{itemize}
+
+\begin{verbatim}
+from django.shortcuts import render
+
+def my_view(request):
+    contexto = {...}
+    # ...
+    return render(request, "plantilla.html", contexto)
+\end{verbatim}
+
+\end{frame}
 
 %%---------------------------------------------------------------
 
