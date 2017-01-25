@@ -32,11 +32,11 @@
 \frametitle{Hola Mundo}
 
 \begin{itemize}
-\item Desde la shell, accede al intérprete de Python:
+\item Desde la shell, accede al intérprete de Python 3:
 
 \begin{footnotesize}
 \begin{verbatim}
-$ python
+$ python3
 >>>
 \end{verbatim}
 \end{footnotesize}
@@ -44,7 +44,7 @@ $ python
 
 \begin{footnotesize}
 \begin{verbatim}
->>> print "hola mundo"
+>>> print("hola mundo")
 hola mundo
 \end{verbatim}
 \end{footnotesize}
@@ -75,10 +75,10 @@ hola mundo
 
 \begin{footnotesize}
 \begin{verbatim}
-print "hola mundo"    # esto es un comentario
+print("hola mundo")    # esto es un comentario
 euros = 415
 pesetas = euros * 166.386
-print str(euros) + " euros son "+ str(pesetas) + " pesetas"
+print(str(euros) + " euros son "+ str(pesetas) + " pesetas")
 \end{verbatim}
 \end{footnotesize}
 
@@ -125,9 +125,9 @@ Sentencia \verb|if|:
 \begin{verbatim}
 entero = 3
 if entero:
-     print 'verdadero'
+     print('verdadero')
 else:
-     print 'falso'
+     print('falso')
 \end{verbatim}
 \end{footnotesize}
 Nótese como el caracter \verb|:| introduce cada bloque de sentencias. Si hay \verb|:|, entonces la siguiente línea estará indentada.
@@ -143,12 +143,12 @@ Nótese como el caracter \verb|:| introduce cada bloque de sentencias. Si hay \ve
 \item No existe tipo \verb|char|
 \item 
 Comilla simple o doble \\
-\verb|print "hola"|  o \verb|print 'hola'|  \\
+\verb|print("hola")|  o \verb|print('hola')|  \\
 \verb|print 'me dijo "hola"'| \\
-más legible que \verb|print 'me dijo \'hola\''|
+más legible que \verb|print('me dijo \'hola\'')|
 \item 
 Puede haber caracteres especiales\\
-\verb|print "hola\nque tal"|   
+\verb|print("hola\nque tal")|   
 
 \item El operador \verb|+| concatena cadenas, y el \verb|*| las repite
   un número entero de veces
@@ -170,9 +170,9 @@ Puede haber caracteres especiales\\
 \begin{verbatim}
 colores = ['rojo','amarillo']
 colores.append('verde')
-print colores
-print colores[2]
-print len(colores)
+print(colores)
+print(colores[2])
+print(len(colores))
 
 cosas = ['uno', 2, 3.0]
 
@@ -208,13 +208,13 @@ cosas = ['uno', 2, 3.0]
   \begin{footnotesize}
 \begin{verbatim}
 lista = [0, 1, 2, 3, 4]
-print lista      # [0, 1, 2, 3, 4]
-print lista[1]   # 1 
-print lista[0:2] # [0, 1]
-print lista[3:]  # [3, 4]
-print lista[-1]  # 4
-print lista[:-1] # [0, 1, 2, 3]
-print lista[:-2] # [0, 1, 2]
+print(lista)      # [0, 1, 2, 3, 4]
+print(lista[1])   # 1 
+print(lista[0:2]) # [0, 1]
+print(lista[3:])  # [3, 4]
+print(lista[-1])  # 4
+print(lista[:-1]) # [0, 1, 2, 3]
+print(lista[:-2]) # [0, 1, 2]
 \end{verbatim}
   \end{footnotesize}
   \begin{center}
@@ -224,7 +224,7 @@ print lista[:-2] # [0, 1, 2]
   \begin{footnotesize}
 \begin{verbatim}
 cadena = "tortilla"
-print cadena[-1]
+print(cadena[-1])
 \end{verbatim}
   \end{footnotesize}
 
@@ -241,7 +241,7 @@ Sentencia \verb|for|:
 \begin{verbatim}
 >>> amigos = ['ana', 'jacinto', 'guillermo', 'jennifer']
 >>> for invitado in amigos:
-...     print invitado, len(invitado)
+...     print(invitado, len(invitado))
 ... 
 ana 3
 jacinto 7
@@ -252,7 +252,7 @@ jennifer 8
 
 %>>> a = ['had', 'a', 'little', 'lamb']
 %>>> for i in range(len(a)):
-%...     print i, a[i]
+%...     print(i, a[i])
 %... 
 %0 had
 %1 a
@@ -286,7 +286,7 @@ jennifer 8
   \begin{footnotesize}
 \begin{verbatim}
 paises = {'de': 'Alemania', 'fr': 'Francia', 'es': 'España'}
-print paises; print paises["fr"]
+print(paises); print(paises["fr"])
 
 extensiones = {}
 extensiones['py'] = 'python'
@@ -294,10 +294,10 @@ extensiones['txt'] = 'texto plano'
 extensiones['ps'] = 'PostScript'
 
 for pais in paises: # iteramos por el diccionario
-   print pais, paises[pais]
+   print(pais, paises[pais])
 
 del paises['fr']   # borra esta llave (y su valor)
-print len(paises) # devuelve el número de elementos en el diccionario
+print(len(paises)) # devuelve el número de elementos en el diccionario
 paises.clear()  # vacía el diccionario
 
 \end{verbatim}
@@ -351,10 +351,10 @@ Parémonos a ver las características de Python. Python es:
 
 \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-print "¡Hola Mundo!"
+print("¡Hola Mundo!")
 
 \end{verbatim}
 \end{footnotesize}
@@ -426,7 +426,7 @@ modo:
 
 \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 fich=open("/tmp/prueba","w")
 fich.write("lunes\n")
 fich.close()
@@ -440,7 +440,7 @@ maquinas=fich.readlines()
 fich.close()
 
 for maquina in maquinas:
-    print maquina,
+    print(maquina,)
 
 \end{verbatim}
 \end{footnotesize}
@@ -463,7 +463,7 @@ def sum(sumando1, sumando2):
 if __name__ == "__main__":
     primero = int(raw_input("Please enter an integer/float: "))
     segundo = int(raw_input("Please enter another integer/float: "))
-    print sum(primero, segundo) 
+    print(sum(primero, segundo)) 
 
 \end{verbatim}
 \end{footnotesize}
@@ -566,11 +566,11 @@ Las variable declaradas fuera de una función son globales
 %    """Ejemplo para hablar del ámbito"""
   \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 numero = 5
 def f(parametro):
     return parametro + numero
-print f(3)    # 8
+print(f(3))    # 8
 \end{verbatim}
   \end{footnotesize}
 
@@ -582,12 +582,12 @@ Las variable declaradas dentro de una función son locales
 %02
   \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 def f(parametro):
     numero = 5
     return parametro + numero
-print f(3)
-print numero    # ERROR: numero es de ambito local
+print(f(3))
+print(numero)    # ERROR: numero es de ambito local
 \end{verbatim}
   \end{footnotesize}
 
@@ -606,13 +606,13 @@ pero no modificar
 %03
   \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 numero = 5
 def f(parametro):
     numero = numero-1    #ERROR: no se puede modificar variable global
     return paramentro + numero
     
-print f(3)
+print(f(3))
 \end{verbatim}
   \end{footnotesize}
 
@@ -626,14 +626,14 @@ A menos que se use la sentencia \verb|global|
  %04 
   \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 numero = 5
 def f(parametro):
     global numero   # permite modificar una variable global
     numero = numero-1   
     return parametro + numero
-print f(3)    # 7
-print numero  # 4
+print(f(3))    # 7
+print(numero)  # 4
 \end{verbatim}
   \end{footnotesize}
 
@@ -652,14 +652,14 @@ print numero  # 4
   \begin{footnotesize}
  %06 
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 numero = 5
 def f(parametro):
     numero = 4   # ahora numero es variable local
     return parametro + numero
     
-print f(3)   # 7
-print numero # 5
+print(f(3))   # 7
+print(numero) # 5
 
 \end{verbatim}
   \end{footnotesize}
@@ -828,7 +828,7 @@ La declaración implícita de variables como en perl puede provocar resultados des
 #!/usr/bin/perl
 $sum_elementos= 3 + 4 + 17;
 $media=suma_elementos / 3;    # deletreamos mal la variable
-print $media;   # y provocamos resultado incorrecto
+print($media;)   # y provocamos resultado incorrecto
 \end{verbatim}
 \end{footnotesize}
 
@@ -839,10 +839,10 @@ asignado un valor.
 \end{itemize}
 \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 sum_elementos = 3 + 4 + 17
 media = suma_elementos / 3    # deletreamos mal la variable
-print media   # y el compilador nos avisa con un error
+print(media)   # y el compilador nos avisa con un error
 \end{verbatim}
 \end{footnotesize}
 adi
@@ -874,17 +874,17 @@ en la \emph{python library reference}
 
   \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 
 cadena = "más vale pájaro en mano"
-print cadena.split()
-print cadena.upper()
+print(cadena.split())
+print(cadena.upper())
 
 otra_cadena = "que,cocodrilo,en,tobillo"
-print otra_cadena.split(',')
+print(otra_cadena.split(','))
 
 lista = ['rojo', 'amarillo', 'verde']
-print lista.join()
+print(lista.join())
 
 \end{verbatim}
   \end{footnotesize}
@@ -925,14 +925,14 @@ print lista.join()
 %\begin{verbatim}
 %>>> uid = "sa"
 %>>> pwd = "secret"
-%>>> print pwd + " is not a good password for " + uid      
+%>>> print(pwd + " is not a good password for " + uid)      
 %secret is not a good password for sa
-%>>> print "%s is not a good password for %s" % (pwd, uid) 
+%>>> print("%s is not a good password for %s" % (pwd, uid)) 
 %secret is not a good password for sa
 %>>> userCount = 6
-%>>> print "Users connected: %d" % (userCount, )           
+%>>> print("Users connected: %d" % (userCount, ))           
 %Users connected: 6
-%>>> print "Users connected: " + userCount                 
+%>>> print("Users connected: " + userCount)          
 %Traceback (innermost last):
 %  File "<interactive input>", line 1, in ?
 %TypeError: cannot add type "int" to string
@@ -951,17 +951,17 @@ print lista.join()
 
 \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!-/usr/bin/python3
 entero = int(raw_input("Please enter an integer: "))
 if entero < 0:
      entero = 0
-     print 'Negative changed to zero'
+     print('Negative changed to zero')
 elif entero == 0:
-     print 'Zero'
+     print('Zero')
 elif entero == 1:
-     print 'Single'
+     print('Single')
 else:
-     print 'More'
+     print('More')
 \end{verbatim}
 \end{footnotesize}
   
@@ -1232,13 +1232,13 @@ Sentencia \verb|while|:
 \begin{verbatim}
 >>> a, b = 0, 1
 >>> while b < 1000:
-...     print b,
+...     print(b),
 ...     a, b = b, a+b
 ... 
 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
 \end{verbatim}
 \end{footnotesize}
-Nótese el efecto de un caracter \verb|,| al final de un \verb|print|
+Nótese el efecto de un caracter \verb|,| al final de un \verb|print()|
 
 Nótese otro modelo de asignación múltiple 
 
@@ -1255,10 +1255,10 @@ Nótese otro modelo de asignación múltiple
 
 \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!/usr/bin/python3
 a=10
 while a > 0:
-    print a,
+    print(a),
     a=a-1
 
 \end{verbatim}
@@ -1268,10 +1268,10 @@ equivale a
 
 \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!/usr/bin/python3
 a=10
 while 1:
-    print a,
+    print(a),
     if a==1:
         break
     a=a-1
@@ -1294,7 +1294,7 @@ while 1:
 
   \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!/usr/bin/python3
 import os
 os.system('ls -l')
 \end{verbatim}
@@ -1308,9 +1308,9 @@ os.system('ls -l')
 
   \begin{footnotesize}
 \begin{verbatim}
-#!/usr/bin/python
+#!/usr/bin/python3
 import sys
-print sys.argv[1:]
+print(sys.argv[1:])
 
 \end{verbatim}
   \end{footnotesize}
@@ -1345,7 +1345,7 @@ en la \\\emph{python library reference}
 
 %  \begin{footnotesize}
 %\begin{verbatim}
-%#!/usr/bin/python
+%#!-/usr/bin/python3
 %import pickle
 
 %cp={28:'madrid',08:'barcelona',33:'asturias'}
@@ -1358,7 +1358,7 @@ en la \\\emph{python library reference}
 %fich.close()
 
 %for x in codigos_postales.keys():
-%    print x,codigos_postales[x]
+%    print(x,codigos_postales[x])
 
 %\end{verbatim}
 %  \end{footnotesize}
@@ -1434,10 +1434,10 @@ en la \\\emph{python library reference}
   \begin{footnotesize}
 \begin{verbatim}
 
-#!/usr/bin/python
+#!/usr/bin/python3
 while 1:
     x=int(raw_input("Introduce un nº"))
-    print x
+    print(x)
 
 \end{verbatim}
   \end{footnotesize}
@@ -1456,13 +1456,13 @@ while 1:
   \begin{footnotesize}
 \begin{verbatim}
 
-#!/usr/bin/python
+#!-/usr/bin/python3
 while 1:
     try:
         x=int(raw_input("Introduce un nº:"))
-        print x
+        print(x)
     except ValueError:
-        print ("Número incorrecto")
+        print("Número incorrecto")
 
 \end{verbatim}
   \end{footnotesize}
@@ -1483,15 +1483,15 @@ while 1:
   \begin{footnotesize}
 \begin{verbatim}
 
-#!/usr/bin/python
+#!-/usr/bin/python3
 try:
     x=int(raw_input("Introduce un nº:"))
-    print x
+    print(x)
 except :     # para cualquier excepción
-    print ("Número incorrecto")
+    print("Número incorrecto")
 
 raise SystemExit
-print "nunca se ejecuta"
+print("nunca se ejecuta")
 \end{verbatim}
   \end{footnotesize}
 
