@@ -156,26 +156,11 @@ disponible en http://diveintohtml5.info/
 \begin{verbatim}
 Content-Type: text/html; charset="utf-8"
 \end{verbatim}
-  \item Si no se puede, en HTML5s:
+  \item Si no se puede, en HTML5:
 \begin{verbatim}
 <meta charset="utf-8" />
 \end{verbatim}
 
-\end{itemize}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Relaciones}
-
-\begin{itemize}
-  \item Hoja de estilo: rel=''stylesheet''
-  \item Feed: rel=''alternate''
-  \item Emoticono: rel=''shortcut icon''
-  \item Serie de páginas:  rel=''start'', rel=''prev'', rel=''next''
-  \item ...
 \end{itemize}
 
 \end{frame}
@@ -206,7 +191,7 @@ Content-Type: text/html; charset="utf-8"
 
 \begin{itemize}
   \item Las etiquetas desconocidas se muestran como si fueran ''inline''
-  \item Regla CSS para cambiar el comportamiento:
+  \item Regla CSS para cambiar el comportamiento (p.ej., en Bootstrap):
 \begin{verbatim}
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section {
@@ -219,6 +204,23 @@ Las versiones antiguas de Internet Explorer son especialmente ''particulares''.
 \end{itemize}
 
 \end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Relaciones}
+
+\begin{itemize}
+  \item Hoja de estilo: rel=''stylesheet''
+  \item Feed: rel=''alternate''
+  \item Emoticono: rel=''shortcut icon''
+  \item Serie de páginas:  rel=''start'', rel=''prev'', rel=''next''
+  \item ...
+\end{itemize}
+
+\end{frame}
+
 
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
@@ -234,6 +236,8 @@ Las versiones antiguas de Internet Explorer son especialmente ''particulares''.
   \item Se ha de especificar un tamaño (width y height)
   \item Requiere un id para poder manipularla
   \item El canvas siempre empieza vacío
+  \item Si el navegador no lo entiende, muestra el texto entre las etiquetas.
+  \item También es usado por WebGL para pintar gráficos 3D optimizados por hardware.
 \end{itemize}
 
 \begin{verbatim}
@@ -358,6 +362,19 @@ function draw_b() {
 \includegraphics[width=0.6\textwidth]{figs/drawImage.png}
 \end{figure}
 \end{center}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Más información}
+
+\begin{itemize}
+  \item Canvas HTML element: \url{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas}
+  \item Canvas API: \url{https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API}
+\end{itemize}
 
 \end{frame}
 
