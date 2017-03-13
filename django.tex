@@ -78,8 +78,8 @@
 \frametitle{Preparativos}
 
 \begin{itemize}
-\item Usaremos la versión 1.7.5 instalada en los laboratorios, aunque
-puede que durante el curso se actualice a una 1.9.*
+\item Usaremos la versión 1.8.14 instalada en los laboratorios, aunque
+puede que durante el curso se actualice a una 1.10.*
 \item Disponible para Linux, *BSD, Windows, MacOS, etc.
 %\item Descarga e instalación en \$DJANGO
 %\item Descompresión desde la \emph{shell}:
@@ -93,7 +93,7 @@ puede que durante el curso se actualice a una 1.9.*
 %}
 %\end{flushright}
 
-\item Comprobación (debe responder 1.7.5):
+\item Comprobación (debe responder 1.8.14):
 \begin{verbatim}
 django-admin.py --version
 \end{verbatim}
@@ -129,18 +129,23 @@ django-admin.py --version
 \item Creación (primero proyecto, luego aplicación)
 \begin{verbatim}
 $ cd dir-practica
-$ django-admin.py startproject myproject
+$ django-admin startproject myproject
 $ cd myproject
-$ python manage.py startapp myfirstapp
+$ python3 manage.py startapp myfirstapp
 \end{verbatim}
 \item Más opciones de manage.py
 \begin{verbatim}
-$ python manage.py --help
+$ python3 manage.py --help
 \end{verbatim}
 \item Ejecución de la aplicación (\url{http://localhost:1234})
 \begin{verbatim}
-$ python manage.py runserver 1234
+$ python3 manage.py runserver 1234
 \end{verbatim}
+%\item Creación de las bases de datos:
+%\begin{verbatim}
+%$ python3 manage.py migrate
+%\end{verbatim}
+
 \end{itemize}
 
 \end{frame}
@@ -209,12 +214,12 @@ INSTALLED_APPS = (
 \item Usa expresiones regulares para asociar URLs (sin parámetros) a vistas
 \item Ejemplo:
 \begin{verbatim}
-urlpatterns = patterns('',
+urlpatterns = [
   url(r'^$', 'myfirstapp.views.say_main',),
   url(r'^hello', 'myfirstapp.views.say_hello',),
   url(r'^bye/(.*)', 'myfirstapp.views.say_bye_to',),
   url(r'^num/(?P<num>[\d]+)', 'myfirstapp.views.say_num',),
-)
+]
 \end{verbatim}
 \end{itemize}
 
