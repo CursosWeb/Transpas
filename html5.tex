@@ -369,11 +369,11 @@ function draw_b() {
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Más información}
+\frametitle{Referencias sobre Canvas}
 
 \begin{itemize}
-  \item Canvas HTML element: \url{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas}
-  \item Canvas API: \url{https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API}
+  \item Canvas HTML element: \\ {\footnotesize \url{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas}}
+  \item Canvas API: \\ {\footnotesize \url{https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API}}
 \end{itemize}
 
 \end{frame}
@@ -477,105 +477,17 @@ interface Storage {
 
 
 %%---------------------------------------------------------------
-%%---------------------------------------------------------------
-
-\section{Navegación Off-line}
-
-%%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Funcionamiento básico}
+\frametitle{Referencias sobre Local Storage}
 
 \begin{itemize}
-  \item La página web de una aplicación off-line indicará una lista (llamada {\bf manifest}) donde se indicarán los archivos a descargarse
-  \item Un navegador que implemente aplicaciones offline HTML5 leerá la lista del manifiesto y descargará los archivos.
-  \item El navegador se encargará de tenerlos en caché y actualizarlos si hay cambios
-  \item Cuando se intente acceder a la aplicación web sin conexión, entonces el navegador web automáticamente utilizará las copias locales.
+  \item Local Storage API: \\ {\footnotesize \url{https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage}}
+  \item Ejemplos de uso: \\ {\footnotesize \url{https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API}}
 \end{itemize}
 
-(hay un flag en el DOM que indica si estamos on-line u off-line)
-
 \end{frame}
 
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{El manifiesto}
-
-¿Cómo se indica el manififesto en una página web?
-
-\begin{verbatim}
-<!DOCTYPE html>
-<html manifest="/cache.manifest">
-<body>
-...
-</body>
-</html>
-\end{verbatim}
-
-El content-type del manifiesto ha de ser: text/cache-manifest .manifest
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Un manifiesto sencillo}
-
-Si tenemos un único archivo HTML, no hace falta indicarlo en el
-manifiesto. Si son varios, entonces sí (además de indicar el manifiesto
-en cada una de las páginas).
-
-\begin{verbatim}
-CACHE MANIFEST
-/clock.css
-/clock.js
-/clock-face.jpg
-\end{verbatim}
-
-Todos estos elementos están en la sección \emph{explícita}: 
-se descargarán y guardarán en local.
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{La sección Network}
-
-\begin{verbatim}
-CACHE MANIFEST
-NETWORK:
-/tracking.cgi
-CACHE:
-/clock.css
-/clock.js
-/clock-face.jpg
-\end{verbatim}
-
-Elementos bajo la sección \emph{NETWORK} no se almacenan en local. La
-sección \emph{explícita} pasa a indicarse como \emph{CACHE}.
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{La sección fallback}
-
-Permite definir recursos que sustituyen a elementos en línea que por
-la razón que sea no pueden ser almacenados en local (o no se almacenaron
-con éxito): 
-
-\begin{verbatim}
-CACHE MANIFEST
-FALLBACK:
-/ /offline.html
-NETWORK:
-*
-\end{verbatim}
-
-\end{frame}
 
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
@@ -806,6 +718,107 @@ self.onmessage = function(event) {
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
+\section{History API}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{¿Qué es la History API?}
+
+
+\begin{itemize}
+  \item El objeto \texttt{window} del DOM proporciona acceso al historial del browser a través del objeto \texttt{history}
+  \item Tendremos métodos y propoiedades que nos permitan avanzar y retroceder a través del historial (esto lo hemos podido hacer desde (casi) siempre)
+  \item Podemos manipular el contenido del historial (¡nuevo en HTML5!)
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Moviéndonos en el historial}
+
+
+\begin{itemize}
+  \item Hacia atrás: window.history.back();
+  \item Hacia adelante: window.history.forward();
+  \item A un punto específico del historial: window.history.go(-2);
+  \item Longitudo de la pila: window.history.length;
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Manipulando el historial}
+
+
+\begin{itemize}
+  \item Añadir entradas en el historial: history.pushState();
+\begin{verbatim}
+var stateObj = { foo: "bar" };  
+   // puede ser cualquier cosa que puedas pasar a JSON.stringify.
+history.pushState(stateObj, "titulo pagina", 
+       "introducida.html");
+\end{verbatim}
+  \item Modificar entradas en el historial: history.replaceState();
+\begin{verbatim}
+var stateObj = { foo: "bar" };
+history.replaceState(stateObj, "titulo pagina", 
+       "nueva.html");
+\end{verbatim}
+  \item Evento \texttt{popstate}: se lanza cada vez que la entrada al historial cambia.  la propiedad state del evento popstate contiene una copia del historial de entradas del objeto estado.
+\end{itemize}
+
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+%%---------------------------------------------------------------
+
+%\section{Navegación Off-line: Service Workers}
+
+%%---------------------------------------------------------------
+
+%\begin{frame}
+%\frametitle{Funcionamiento básico}
+
+%\begin{itemize}
+%  \item navigator.onLine es una propiedad que mantiene un valor true (online) / false (offline)
+%  \item Esta propiedad se actualiza siempre que el usuario cambia a ``Modo sin conexión'' seleccionando el elemento de menú correspondiente (Archivo -> Trabajar sin conexión en Firefox).
+%  \item 
+%\end{itemize}
+
+%(hay un flag en el DOM que indica si estamos on-line u off-line) \\
+%(ojo: hay una manera antigua, app-caché, con un manifest que está \emph{deprecated})
+
+
+%\end{frame}
+
+%%---------------------------------------------------------------
+
+%\begin{frame}[fragile]
+%\frametitle{}
+%
+%\end{frame}
+
+%%---------------------------------------------------------------
+
+%\begin{frame}
+%\frametitle{Referencias sobre Navegación off-line}
+
+%\begin{itemize}
+%  \item : \\ {\footnotesize \url{}}
+%  \item : \\ {\footnotesize \url{}}
+%\end{itemize}
+
+
+%%---------------------------------------------------------------
+%%---------------------------------------------------------------
+
 \section{WebSocket}
 
 %%---------------------------------------------------------------
@@ -932,66 +945,5 @@ connection.onmessage = function (e) {
   \end{itemize}
 \end{itemize}
 \end{frame}
-
-
-%%---------------------------------------------------------------
-%%---------------------------------------------------------------
-
-\section{History API}
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{¿Qué es la History API?}
-
-
-\begin{itemize}
-  \item El objeto \texttt{window} del DOM proporciona acceso al historial del browser a través del objeto \texttt{history}
-  \item Tendremos métodos y propoiedades que nos permitan avanzar y retroceder a través del historial (esto lo hemos podido hacer desde (casi) siempre)
-  \item Podemos manipular el contenido del historial (¡nuevo en HTML5!)
-\end{itemize}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Moviéndonos en el historial}
-
-
-\begin{itemize}
-  \item Hacia atrás: window.history.back();
-  \item Hacia adelante: window.history.forward();
-  \item A un punto específico del historial: window.history.go(-2);
-  \item Longitudo de la pila: window.history.length;
-\end{itemize}
-
-\end{frame}
-
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Manipulando el historial}
-
-
-\begin{itemize}
-  \item Añadir entradas en el historial: history.pushState();
-\begin{verbatim}
-var stateObj = { foo: "bar" };  
-   // puede ser cualquier cosa que puedas pasar a JSON.stringify.
-history.pushState(stateObj, "titulo pagina", 
-       "introducida.html");
-\end{verbatim}
-  \item Modificar entradas en el historial: history.replaceState();
-\begin{verbatim}
-var stateObj = { foo: "bar" };
-history.replaceState(stateObj, "titulo pagina", 
-       "nueva.html");
-\end{verbatim}
-  \item Evento \texttt{popstate}: se lanza cada vez que la entrada al historial cambia.  la propiedad state del evento popstate contiene una copia del historial de entradas del objeto estado.
-\end{itemize}
-
-\end{frame}
-
 
 
