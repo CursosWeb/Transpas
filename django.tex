@@ -78,8 +78,8 @@
 \frametitle{Preparativos}
 
 \begin{itemize}
-\item Usaremos la versión 1.8.14 instalada en los laboratorios, aunque
-puede que durante el curso se actualice a una 1.10.*
+\item Usaremos una versión de Django 2.0 instalada en los laboratorios
+%, ya que es la versión \emph{LTS} (\emph{Long Term Support})
 \item Disponible para Linux, *BSD, Windows, MacOS, etc.
 %\item Descarga e instalación en \$DJANGO
 %\item Descompresión desde la \emph{shell}:
@@ -93,7 +93,7 @@ puede que durante el curso se actualice a una 1.10.*
 %}
 %\end{flushright}
 
-\item Comprobación (debe responder 1.8.14):
+\item Comprobación (debe responder 2.0.*):
 \begin{verbatim}
 django-admin.py --version
 \end{verbatim}
@@ -137,9 +137,9 @@ $ python3 manage.py startapp myfirstapp
 \begin{verbatim}
 $ python3 manage.py --help
 \end{verbatim}
-\item Ejecución de la aplicación (\url{http://localhost:1234})
+\item Ejecución de la aplicación (\url{http://localhost:8000})
 \begin{verbatim}
-$ python3 manage.py runserver 1234
+$ python3 manage.py runserver
 \end{verbatim}
 %\item Creación de las bases de datos:
 %\begin{verbatim}
@@ -152,30 +152,45 @@ $ python3 manage.py runserver 1234
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Ficheros creados en el armazón}
+\frametitle{Ficheros creados para un proyecto}
 
 \begin{itemize}
 \item Raíz:
   \begin{itemize}
   \item \verb|manage.py|: herramienta para gestionar el proyecto
   \end{itemize}
-\item Proyecto:
+\item Proyecto : \verb|myproject/|:
   \begin{itemize}
   \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Python
   \item \verb|settings.py|: configuración del proyecto
-  \item \verb|urls.py|: URLs de las aplicaciones del proyecto
+  \item \verb|urls.py|: URLs del proyecto
   \item \verb|wsgi.py|: fichero para servir Django mediante WSGI (p.ej. con Apache)
   \end{itemize}
-\item Aplicación:
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Ficheros creados para una aplicación}
+
+
+\begin{itemize}
+\item Raíz:
+  \begin{itemize}
+\item Aplicación (\verb|myfirstapp/|):
   \begin{itemize}
   \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Python
   \item \verb|views.py|: vistas (código invocado para cada recurso)
   \item \verb|models.py|: definición de las clases del modelo de datos
   \item \verb|admin.py|: registro de los modelos que se pueden gestionar vía web
+  \item \verb|apps.py|: 
   \item \verb|tests.py|: fichero para la implementación de tests
   \item \verb|migrations/|: versiones (y \emph{migraciones}) de los modelos
   \end{itemize}
 \end{itemize}
+
+Generalmente, también se crea un \verb|urls.py|, con las URLs de la aplicación.
 
 \end{frame}
 
@@ -205,30 +220,36 @@ INSTALLED_APPS = (
 
 \end{frame}
 
+
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Declaración de URLs}
+\frametitle{Declaración de URLs (proyecto)}
 
 \begin{itemize}
-\item En el fichero urls.py
-\item Usa expresiones regulares para asociar URLs (sin parámetros) a vistas
+\item En el fichero urls.py (del proyecto): \verb|myproject/urls.py|
 \item Ejemplo:
+
 \begin{verbatim}
+from django.urls import include, path
+from django.contrib import admin
+
 urlpatterns = [
-  url(r'^$', 'myfirstapp.views.say_main',),
-  url(r'^hello', 'myfirstapp.views.say_hello',),
-  url(r'^bye/(.*)', 'myfirstapp.views.say_bye_to',),
-  url(r'^num/(?P<num>[\d]+)', 'myfirstapp.views.say_num',),
+    path('myfirstapp/', include('myfirstapp.urls')),
+    path('admin/', admin.site.urls),
 ]
 \end{verbatim}
+
+\item \verb|include()| permite añadir otros \verb|urls.py| de aplicaciones
+\item 
+
 \end{itemize}
 
-\begin{flushright}
-{\small
-\url{http://es.wikipedia.org/wiki/Expresi\%C3\%B3n_regular}
-\url{https://docs.djangoproject.com/en/dev/topics/http/urls/}
-}
-\end{flushright}
+%\begin{flushright}
+%{\small
+%\url{http://es.wikipedia.org/wiki/Expresi\%C3\%B3n_regular}
+%\url{https://docs.djangoproject.com/en/dev/topics/http/urls/}
+%}
+%\end{flushright}
 
 
 \end{frame}
@@ -237,17 +258,66 @@ urlpatterns = [
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
+\frametitle{Declaración de URLs (aplicación)}
+
+\begin{itemize}
+\item En el fichero urls.py (de la aplicación): \verb|myfirstapp/urls.py|
+
+\item Ejemplo:
+\begin{verbatim}
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('hello', views.say_hello, name='hello'),
+    path('bye/<name>', views.say_bye_to, name='bye'),
+    path('number/<int:number>', views.say_number, name='number'),
+]
+\end{verbatim}
+\end{itemize}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Declaración de URLs: \verb|path()|}
+
+\verb|path(route, view, kwargs=None, name=None)|
+
+\begin{itemize}
+  \item \verb|route|: patrón de la URL.
+  \begin{itemize}
+    \item No tiene en cuenta si la petición es GET o POST, o el dominio
+    \item Se ejecuta la primera que se encuentra (i.e., el orden importa)
+  \end{itemize} 
+  \item \verb|view|: función \emph{vista} a la que se llama, pasándole:
+  \begin{itemize}
+    \item Como primer parámetro un objeto HttpRequest con la petición
+    \item Otros posibles parámetros como argumentos
+  \end{itemize} 
+  \item \verb|kwargs|: diccionario con parámetros adicionales a la vista.
+  \item \verb|name|: nombre de la URL (muy útil para plantillas).
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
 \frametitle{Views}
 
 \begin{itemize}
 \item Código invocado para una URL o conjunto de URLs
 \item Debe ser un método (o un objeto)
-\item Los métodos se definen en el fichero myfirstapp/views.py
+\item Los métodos se definen en el fichero \verb|myfirstapp/views.py|
 \item Ejemplo:
 \begin{verbatim}
 from django.http import HttpResponse
-def say_main(request):
-     return HttpResponse('<h1>My Application</h1>')
+
+def index(request):
+     return HttpResponse('<h1>Welcome to my App!</h1>')
 def say_hello(request):
      return HttpResponse('Hello!')
 def say_bye_to(request, name):
@@ -269,11 +339,17 @@ def say_number(request, number=0):
   \begin{itemize}
   \item Una clase por cada entidad (tabla) del modelo
   \item Un campo por cada dato (columna) de la entidad
+  \item __str__() da una representación del objeto (p.ej., un campo)
   \item Ejemplo:
 \begin{verbatim}
+from django.db import models
+
 class MyFirstAppData(models.Model):
     name = models.CharField(max_length=200)
     birthday = models.DateTimeField()
+    
+    def __str__(self):
+        return self.name
 \end{verbatim}
   \end{itemize}
 \item Creación de tablas
@@ -346,9 +422,9 @@ Versión simple:
 \item Enganche en urls.py
 \begin{verbatim}
 from django.contrib import admin
-admin.autodiscover()
-...
-(r'^admin/', include(admin.site.urls)),
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]    
 \end{verbatim}
 \end{itemize}
 \end{frame}
@@ -364,7 +440,7 @@ Ahora, proporcionemos interfaz para nuestra tabla Pages:
 \item Registra en él los modelos a manejar:
 \begin{verbatim}
 from django.contrib import admin
-from cms_users.content.models import Pages
+from .models import Pages
 
 admin.site.register(Pages)
 \end{verbatim}

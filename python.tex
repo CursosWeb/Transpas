@@ -76,9 +76,9 @@ hola mundo
 \begin{footnotesize}
 \begin{verbatim}
 print("hola mundo")    # esto es un comentario
-euros = 415
-pesetas = euros * 166.386
-print(str(euros) + " euros son "+ str(pesetas) + " pesetas")
+euro = 415
+pesetas = euro * 166.386
+print(str(euro) + " euro are "+ str(pesetas) + " pesetas")
 \end{verbatim}
 \end{footnotesize}
 
@@ -99,14 +99,14 @@ print(str(euros) + " euros son "+ str(pesetas) + " pesetas")
 
   \begin{footnotesize}
 \begin{verbatim}
-# Ejemplo de dos funciones en Python
-def a_centigrado(faren):
-    """Convierte grados farenheit en grados centígrados"""
+# Two Python functions
+def to_celsius(faren):
+    """Converts farenheit into celsius"""
     return (faren - 32) * (5.0/9)
 
 
-def a_farenheit(cels):
-    """Convierte grados centígrados en grados farenheit"""
+def to_farenheit(cels):
+    """Converts celsius into farenheit"""
     return (cels * 1.8) + 32
 \end{verbatim}
   \end{footnotesize}
@@ -123,11 +123,11 @@ Sentencia \verb|if|:
 
 \begin{footnotesize}
 \begin{verbatim}
-entero = 3
-if entero:
-     print('verdadero')
+integer = 3
+if integer:
+     print('True')
 else:
-     print('falso')
+     print('False')
 \end{verbatim}
 \end{footnotesize}
 Nótese como el caracter \verb|:| introduce cada bloque de sentencias. Si hay \verb|:|, entonces la siguiente línea estará indentada.
@@ -168,13 +168,13 @@ Puede haber caracteres especiales\\
 \end{itemize}
   \begin{footnotesize}
 \begin{verbatim}
-colores = ['rojo','amarillo']
-colores.append('verde')
-print(colores)
-print(colores[2])
-print(len(colores))
+colors = ['red', 'yellow']
+colors.append('green')
+print(colors)
+print(colors[2])
+print(len(colors))
 
-cosas = ['uno', 2, 3.0]
+things = ['string', 2, 3.0]
 
 \end{verbatim}
   \end{footnotesize}
@@ -207,14 +207,14 @@ cosas = ['uno', 2, 3.0]
 
   \begin{footnotesize}
 \begin{verbatim}
-lista = [0, 1, 2, 3, 4]
-print(lista)      # [0, 1, 2, 3, 4]
-print(lista[1])   # 1 
-print(lista[0:2]) # [0, 1]
-print(lista[3:])  # [3, 4]
-print(lista[-1])  # 4
-print(lista[:-1]) # [0, 1, 2, 3]
-print(lista[:-2]) # [0, 1, 2]
+a_list = [0, 1, 2, 3, 4]
+print(a_list)      # [0, 1, 2, 3, 4]
+print(a_list[1])   # 1 
+print(a_list[0:2]) # [0, 1]
+print(a_list[3:])  # [3, 4]
+print(a_list[-1])  # 4
+print(a_list[:-1]) # [0, 1, 2, 3]
+print(a_list[:-2]) # [0, 1, 2]
 \end{verbatim}
   \end{footnotesize}
   \begin{center}
@@ -223,8 +223,8 @@ print(lista[:-2]) # [0, 1, 2]
 
   \begin{footnotesize}
 \begin{verbatim}
-cadena = "tortilla"
-print(cadena[-1])
+a_string = "tortilla"
+print(a_string[-1])
 \end{verbatim}
   \end{footnotesize}
 
@@ -239,9 +239,9 @@ Sentencia \verb|for|:
 
 \begin{footnotesize}
 \begin{verbatim}
->>> amigos = ['ana', 'jacinto', 'guillermo', 'jennifer']
->>> for invitado in amigos:
-...     print(invitado, len(invitado))
+>>> friends = ['ana', 'jacinto', 'guillermo', 'jennifer']
+>>> for invited in friends:
+...     print(invited, len(invited))
 ... 
 ana 3
 jacinto 7
@@ -285,20 +285,20 @@ jennifer 8
 \frametitle{Más sobre diccionarios}
   \begin{footnotesize}
 \begin{verbatim}
-paises = {'de': 'Alemania', 'fr': 'Francia', 'es': 'España'}
-print(paises); print(paises["fr"])
+countries = {'de': 'Germany', 'fr': 'France', 'es': 'Spain'}
+print(countries); print(countries["fr"])
 
-extensiones = {}
-extensiones['py'] = 'python'
-extensiones['txt'] = 'texto plano'
-extensiones['ps'] = 'PostScript'
+extensions = {}
+extensions['py'] = 'python'
+extensions['txt'] = 'plain text'
+extensions['ps'] = 'PostScript'
 
-for pais in paises: # iteramos por el diccionario
-   print(pais, paises[pais])
+for tld in countries: # iterating through the dictionary
+   print(country, countries[tld])
 
-del paises['fr']   # borra esta llave (y su valor)
-print(len(paises)) # devuelve el número de elementos en el diccionario
-paises.clear()  # vacía el diccionario
+del countries['fr']   # removes the key (and its value)
+print(len(countries)) # returns the number of elements in the dict
+countries.clear()  # removes all entries in the dictionary
 
 \end{verbatim}
   \end{footnotesize}
@@ -370,7 +370,7 @@ print("¡Hola Mundo!")
   \item Si lo guardamos como hola.py, se ejecuta desde la línea de comandos como:
 \begin{footnotesize}
 \begin{verbatim}
-$ python hola.py
+$ python3 hola.py
 \end{verbatim}
 \end{footnotesize}
 
@@ -412,7 +412,7 @@ modo:
 
 \end{itemize}
 
-\item \verb|write(cadena)| escribe la cadena en el fichero  
+\item \verb|write(string)| escribe la cadena en el fichero  
 \item \verb|read()| devuelve el contenido del fichero
 \item \verb|readlines()| devuelve una lista con cada línea del fichero
 \item \verb|close()| cierra el fichero
@@ -427,16 +427,16 @@ modo:
 \begin{footnotesize}
 \begin{verbatim}
 #!-/usr/bin/python3
-fich=open("/tmp/prueba","w")
+fich = open("/tmp/prueba", "w")
 fich.write("lunes\n")
 fich.close()
 
-fich=open("/tmp/prueba","a")
+fich = open("/tmp/prueba", "a")
 fich.write("martes\n")
 fich.close()
 
-fich=open("/etc/hosts","r")
-maquinas=fich.readlines()
+fich = open("/etc/hosts", "r")
+maquinas = fich.readlines()
 fich.close()
 
 for maquina in maquinas:
@@ -471,7 +471,7 @@ if __name__ == "__main__":
 Ejecución:
 \begin{footnotesize}
 \begin{verbatim}
-    $ python suma.py
+    $ python3 suma.py
 \end{verbatim}
 \end{footnotesize}
  
@@ -609,7 +609,7 @@ pero no modificar
 #!-/usr/bin/python3
 numero = 5
 def f(parametro):
-    numero = numero-1    #ERROR: no se puede modificar variable global
+    numero = numero - 1    #ERROR: no se puede modificar variable global
     return paramentro + numero
     
 print(f(3))
@@ -630,7 +630,7 @@ A menos que se use la sentencia \verb|global|
 numero = 5
 def f(parametro):
     global numero   # permite modificar una variable global
-    numero = numero-1   
+    numero = numero - 1   
     return parametro + numero
 print(f(3))    # 7
 print(numero)  # 4
@@ -652,7 +652,7 @@ print(numero)  # 4
   \begin{footnotesize}
  %06 
 \begin{verbatim}
-#!-/usr/bin/python3
+#!/usr/bin/python3
 numero = 5
 def f(parametro):
     numero = 4   # ahora numero es variable local
