@@ -155,16 +155,16 @@ $ python3 manage.py runserver
 \frametitle{Ficheros creados para un proyecto}
 
 \begin{itemize}
-\item Raíz:
+  \item Raíz:
   \begin{itemize}
-  \item \verb|manage.py|: herramienta para gestionar el proyecto
+    \item \verb|manage.py|: herramienta para gestionar el proyecto
   \end{itemize}
-\item Proyecto : \verb|myproject/|:
+  \item Proyecto : \verb|myproject/|:
   \begin{itemize}
-  \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Python
-  \item \verb|settings.py|: configuración del proyecto
-  \item \verb|urls.py|: URLs del proyecto
-  \item \verb|wsgi.py|: fichero para servir Django mediante WSGI (p.ej. con Apache)
+    \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Python
+    \item \verb|settings.py|: configuración del proyecto
+    \item \verb|urls.py|: URLs del proyecto
+    \item \verb|wsgi.py|: fichero para servir Django mediante WSGI (p.ej. con Apache)
   \end{itemize}
 \end{itemize}
 
@@ -178,15 +178,16 @@ $ python3 manage.py runserver
 \begin{itemize}
 \item Raíz:
   \begin{itemize}
-\item Aplicación (\verb|myfirstapp/|):
-  \begin{itemize}
-  \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Python
-  \item \verb|views.py|: vistas (código invocado para cada recurso)
-  \item \verb|models.py|: definición de las clases del modelo de datos
-  \item \verb|admin.py|: registro de los modelos que se pueden gestionar vía web
-  \item \verb|apps.py|: 
-  \item \verb|tests.py|: fichero para la implementación de tests
-  \item \verb|migrations/|: versiones (y \emph{migraciones}) de los modelos
+  \item Aplicación (\verb|myfirstapp/|):
+    \begin{itemize}
+      \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Python
+      \item \verb|views.py|: vistas (código invocado para cada recurso)
+       \item \verb|models.py|: definición de las clases del modelo de datos
+       \item \verb|admin.py|: registro de los modelos que se pueden gestionar vía web
+       \item \verb|apps.py|: 
+       \item \verb|tests.py|: fichero para la implementación de tests
+       \item \verb|migrations/|: versiones (y \emph{migraciones}) de los modelos
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 
@@ -270,10 +271,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('hello', views.say_hello, name='hello'),
-    path('bye/<name>', views.say_bye_to, name='bye'),
-    path('number/<int:number>', views.say_number, name='number'),
+  path('', views.index, name='index'),
+  path('hello', views.say_hello, name='hello'),
+  path('bye/<name>', views.say_bye_to, name='bye'),
+  path('number/<int:number>', views.say_number, name='number'),
 ]
 \end{verbatim}
 \end{itemize}
@@ -283,7 +284,7 @@ urlpatterns = [
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Declaración de URLs: \verb|path()|}
+\frametitle{Declaración de URLs: La función path}
 
 \verb|path(route, view, kwargs=None, name=None)|
 
@@ -339,7 +340,7 @@ def say_number(request, number=0):
   \begin{itemize}
   \item Una clase por cada entidad (tabla) del modelo
   \item Un campo por cada dato (columna) de la entidad
-  \item __str__() da una representación del objeto (p.ej., un campo)
+  \item \_\_str\_\_() da una representación del objeto (p.ej., un campo)
   \item Ejemplo:
 \begin{verbatim}
 from django.db import models
