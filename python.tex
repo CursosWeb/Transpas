@@ -49,7 +49,7 @@ hola mundo
 \end{verbatim}
 \end{footnotesize}
 
-\item A partir de ahora obviaremos generalmente los $>>>$ del intérprete.
+\item A partir de ahora obviaremos los $>>>$ del intérprete.
 
 \end{itemize}
 
@@ -61,97 +61,147 @@ hola mundo
 
 \frametitle{Más ejemplos}
 
+
 \begin{itemize}
-\item Podemos usar Python como calculadora\\
-(ojo: 3/2=1)
 
-\item Verás que Python es sensible mayúsculas
-
-\item En Python hay diferentes tipos de datos
-
-\item Los comentarios se indican con \verb=#=
-
-\end{itemize}
+\item Tenemos varios tipos de datos en Python
 
 \begin{footnotesize}
 \begin{verbatim}
-print("hola mundo")    # esto es un comentario
-euro = 415
-pesetas = euro * 166.386
-print(str(euro) + " euro are "+ str(pesetas) + " pesetas")
+print("Hello world")      # printing a string
+euro = 22                 # integer
+dollar = euro / 0.815563   # a float
+print(str(euro) + " euro are "+ str(dolar) + " U.S. dollar")
 \end{verbatim}
 \end{footnotesize}
 
-\end{frame}
+\item Las variables no se declaran
 
+\item Dinámicamente tipado, pero fuertemente tipado
 
+\item Python es sensible a mayúsculas
 
-\begin{frame}[fragile]
-\frametitle{Sangrado y separadores de sentencias}
+\item Los comentarios en línea empiezan por \verb=#=
 
-\begin{itemize}
-\item ¡En Python NO hay llaves ni \verb|begin-end| para encerrar bloques
-  de código!
-\item Un mayor nivel de sangrado indica que comienza un bloque,
-  y un menor nivel indica que termina un bloque.
-  
-\item Ejemplo:
+\item En Python todo es un objeto
 
-  \begin{footnotesize}
-\begin{verbatim}
-# Two Python functions
-def to_celsius(faren):
-    """Converts farenheit into celsius"""
-    return (faren - 32) * (5.0/9)
-
-
-def to_farenheit(cels):
-    """Converts celsius into farenheit"""
-    return (cels * 1.8) + 32
-\end{verbatim}
-  \end{footnotesize}
 \end{itemize}
+
+
 \end{frame}
 
 
-
-
 \begin{frame}[fragile]
-\frametitle{Condicional}
-
-Sentencia \verb|if|:
-
-\begin{footnotesize}
-\begin{verbatim}
-integer = 3
-if integer:
-     print('True')
-else:
-     print('False')
-\end{verbatim}
-\end{footnotesize}
-Nótese como el caracter \verb|:| introduce cada bloque de sentencias. Si hay \verb|:|, entonces la siguiente línea estará indentada.
-%se pueden poner parentesis en la condición, como en C, pero no necesario
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-\frametitle{Cadenas}
+\frametitle{Cadenas (strings)}
 
 \begin{itemize}
 \item No existe tipo \verb|char|
-\item 
-Comilla simple o doble \\
-\verb|print("hola")|  o \verb|print('hola')|  \\
-\verb|print 'me dijo "hola"'| \\
-más legible que \verb|print('me dijo \'hola\'')|
-\item 
-Puede haber caracteres especiales\\
-\verb|print("hola\nque tal")|   
+
+\begin{footnotesize}
+\begin{verbatim}
+print("hi")     # double quotes
+print('hi')     # single quotes
+
+print('she said \'hi\'')  # booooo! this is ugly!
+print('she said "hi"')    # looks better
+
+print("Oye\n¿cómo va? Mi ritmo") # contains special characters
+
+print(b"These are bytes, not a string") # You've got to convert it to string!
+str(b"These are bytes", 'utf-8')
+\end{verbatim}
+\end{footnotesize}
 
 \item El operador \verb|+| concatena cadenas, y el \verb|*| las repite
   un número entero de veces
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Operaciones sobre cadenas}
+
+\begin{itemize}
+\item \verb|a_string.join(a_list_of_strings)| devuelve una cadena que engloba a todos los elementos de la lista.\\
+\item \verb|a_string.split()| devuelve una lista dividiendo una cadena\\
+\item \verb|a_string.upper()| y \verb|a_string.lower()| devuelve la cadena en mayúsculas/minúsculas\\
+\end{itemize}
+
+Estas funciones de biblioteca, como todas, podemos encontrarlas
+en la \emph{python library reference}: 
+https://docs.python.org/3/library/index.html
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{¡Calentando! Ejercicio \#0}  
+
+Crea un script en Python en consola, que:
+
+\begin{itemize}
+  \item Cree una cadena
+  \item Cree un entero
+  \item Cree un float
+  \item Multiplique el entero por el float
+  \item Cree una cadena de bytes
+  \item Concatene la cadena con los bytes
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Errores en Python}  
+\begin{itemize}
+  
+\item El intérprete puede lanzar un error (y acabar)
+\item Hay familias de errores (p.ej., SyntaxError)
+\item El intérprete te dará una pista de dónde puede estar el error:
+
+\begin{footnotesize}
+\begin{verbatim}
+
+while True print('Hello world')
+File "<stdin>", line 1
+  while True print('Hello world')
+            ^
+SyntaxError: invalid syntax
+
+\end{verbatim}
+\end{footnotesize}
+
+\item Los errores se pueden \emph{capturar} con excepciones (que veremos en breve, no seáis impacientes)
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Funciones predefinidas (\emph{built-in})}  
+
+\begin{itemize}
+  \item \verb|float()|  convierte a float
+  \item \verb|int()|  convierte a int
+  \item \verb|str()|  convierte a string
+  \item \verb|bytes()| convierte a bytes
+  \item \verb|round()|  redondea
+  \item \verb|abs()|   valor absoluto
+  \item \verb|input()|  acepta un valor desde teclado
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Ejercicio \#1}  
+
+Crea un script en Python en el intérprete que...
+
+\begin{itemize}
+  \item Tome dos valores de entrada
+  \item y los sume...
+  \item (¡dando el resultado correcto!)
 \end{itemize}
 \end{frame}
 
@@ -163,7 +213,7 @@ Puede haber caracteres especiales\\
 \item Tipo de datos predefinido en Python, va mucho más allá de los
   arrays
 \item Es un conjunto {\bf indexado} de elementos, no necesariamente homogéneos
-\item Sintaxis:Identificador de lista, mas índice entre corchetes
+\item Sintaxis: Identificador de lista, mas índice entre corchetes
 \item Cada elemento se separa del anterior por un caracter \verb|,|
 \end{itemize}
   \begin{footnotesize}
@@ -233,15 +283,53 @@ print(a_string[-1])
 
 
 \begin{frame}[fragile]
+\frametitle{Sangrado y separadores de sentencias}
 
-\frametitle{ Bucles}
-Sentencia \verb|for|:
+\begin{itemize}
+\item ¡En Python no hay llaves ni \verb|begin-end| para encerrar bloques
+  de código!
+\item Un mayor nivel de sangrado indica que comienza un bloque,
+  y un menor nivel indica que termina un bloque.
 
 \begin{footnotesize}
 \begin{verbatim}
->>> friends = ['ana', 'jacinto', 'guillermo', 'jennifer']
->>> for invited in friends:
-...     print(invited, len(invited))
+integer = 3
+if integer:
+     print('true')
+else:
+     print('false')
+\end{verbatim}
+\end{footnotesize}
+
+
+  \item Para enteros: todo lo que no sea cero es True
+  \item Nótese como el caracter \verb|:| introduce cada bloque de sentencias. Si hay \verb|:|, entonces la siguiente línea estará indentada.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+
+\frametitle{Bucles}
+Un bucle \verb|for| (\emph{foreach} en Java):
+
+\begin{footnotesize}
+\begin{verbatim}
+for item_variable in iterable_variable:
+    pass     # really, do something here.
+             # Usually with the item_variable
+
+\end{verbatim}
+\end{footnotesize}
+
+Ejemplo \emph{real}:
+
+\begin{footnotesize}
+\begin{verbatim}
+friends = ['ana', 'jacinto', 'guillermo', 'jennifer']
+for invited in friends:
+...  print(invited, len(invited))
 ... 
 ana 3
 jacinto 7
@@ -250,14 +338,21 @@ jennifer 8
 \end{verbatim}
 \end{footnotesize}
 
-%>>> a = ['had', 'a', 'little', 'lamb']
-%>>> for i in range(len(a)):
-%...     print(i, a[i])
-%... 
-%0 had
-%1 a
-%2 little
-%3 lamb
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Ejercicio \#2}  
+
+Crea un script en Python en la consola que...
+
+\begin{itemize}
+  \item Cree una lista con todos los días de la semana ('Lun', 'Mar'...)
+  \item Imprima sólo los que son días laborales (en tres líneas... o incluso dos)
+  \item Imprima sólo los que tengan al menos una 'a'
+\end{itemize}
 
 
 \end{frame}
@@ -306,53 +401,19 @@ countries.clear()  # removes all entries in the dictionary
 \end{frame}
 
 
-\begin{frame}[fragile]
-\frametitle{Sobre los diccionarios}  
-
-  \begin{itemize}
-  \item Asignar valor a una clave existente reemplaza el antiguo 
-  \item Una clave de tipo cadena es sensible a mayúsculas/minúsculas
-  \item Pueden añadirse entradas nuevas al diccionario
-  \item Los diccionarios se mantienen desordenados
-\item Los valores de un diccionario pueden ser de cualquier tipo
-\item Las claves pueden ser enteros, cadenas y algún otro tipo
-\item Pueden borrarse un elemento del diccionario con \verb|del|
-\item Pueden borrarse todos los elementos del diccionario con \verb|clear()|
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Python - Características principales}
-
-Parémonos a ver las características de Python. Python es:
-\begin{itemize}
-\item de alto nivel
-\item interpretado (no compilado)
-\item orientado a objetos (todo son objetos)
-\item dinámicamente tipado (frente a estáticamente tipado)
-\item fuertemente tipado (frente a débilmente tipado)
-\item sensible a mayúsculas/minúsculas
-\end{itemize}
-
-\end{frame}
-
-
 
 \begin{frame}[fragile]
 \frametitle{Utilizando un editor o un IDE (I)}
 
 \begin{itemize}
   \item Usar el intérprete de Python para programar es tedioso
-  \item Es mejor utilizar cualquier editor de texto (p.ej., gedit) o un IDE (como Eclipse)
+  \item Es mejor utilizar cualquier editor de texto (p.ej., gedit) o un IDE (como Eclipse, Atom...)
   \item Lo que crearemos son ficheros de texto plano.
-  \item Se puede añadir información en la parte superior del fichero para indicar a la shell que es un fichero en Python y con caracteres UTF-8 (y así añadir eñes y tildes, p.ej.).
 \end{itemize}
 
 \begin{footnotesize}
 \begin{verbatim}
 #!-/usr/bin/python3
-# -*- coding: utf-8 -*-
 
 print("¡Hola Mundo!")
 
@@ -396,11 +457,128 @@ $ ./hola.py
 
 
 
+
+\begin{frame}[fragile]
+\frametitle{Ejercicio \#3}  
+
+Crea un script en Python en tu IDE que...
+
+\begin{itemize}
+  \item Cree un diccionario con cinco entradas: 
+  \begin{itemize}
+    \item las llaves son las palabras en inglés
+    \item los valores su traducción al español
+  \end{itemize}
+  \item Imprima todas las duplas llave-valor en un bucle
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Usando bibliotecas (módulos)}
+
+\begin{itemize}
+\item Python viene con las baterías incluidas
+\item Hay muchos módulos (estándar) que vienen con la biblioteca estándar
+\item (Y podemos instalar muchos más módulos externos)
+\item Al importar un módulo, importamos su fucionalidad (clases, funciones, variables) \\
+
+\item Si quieres funcionalidad de tiempo, usa \emph{time}
+
+  \begin{footnotesize}
+\begin{verbatim}
+#!/usr/bin/python3
+import time
+time.time()    # Gives the seconds since Jan 1st 1970
+\end{verbatim}
+  \end{footnotesize}
+  
+ \item Mira la documentación de la \emph{Python library reference}.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Usando bibliotecas (y II)}
+  
+
+\begin{itemize}
+
+
+\item Si quieres hacer cálculos, usa \emph{math}
+
+  \begin{footnotesize}
+\begin{verbatim}
+#!/usr/bin/python3
+import math
+radius = 2
+circumference = 2 * math.pi * radius    # math.pi is a variable
+area = 5
+radius = math.sqrt(area / math.pi)     # math.sqrt is a function
+\end{verbatim}
+\end{footnotesize}
+ 
+
+\item Si quieres coger parámetros desde la línea de \emph{shell}, usa la lista \emph{argv} de \emph{sys}
+
+  \begin{footnotesize}
+\begin{verbatim}
+#!/usr/bin/python3
+import sys
+print(sys.argv[1:])
+\end{verbatim}
+  \end{footnotesize}
+  
+\end{itemize}
+  
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Ejercicio \#4}  
+
+Crea un script Python que...
+
+\begin{itemize}
+  \item Tome como entrada el nombre de usuario de Twitter 
+  \item Se descargue la página de twitter del usuario
+  \item Imprima la página
+  \item Avanzado: ¿podrías imprimirla en bonito?
+  \item Pista: Mira en urllib.request
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Importar módulos}
+
+Hay varias maneras:
+
+\begin{itemize}
+\item \verb|import nombre-módulo               | \\permite acceder a los
+  símbolos del módulo con la sintaxis \verb|nombre-módulo.X|
+\item \verb|from nombre-módulo import a, b, c  | \\incorpora
+  los símbolos a, b, c al espacio de nombres, siendo accesibles
+  directamente (sin cualificarlos con el nombre del módulo)
+\item \verb|from nombre-módulo import *        | \\incorpora los
+  símbolos del módulo al espacio de nombres, siendo accesibles
+  directamente (sin cualificarlos con el nombre del módulo). No recomendada.
+\end{itemize}
+\end{frame}
+
+
+
+
 \begin{frame}[fragile]
 \frametitle{Ficheros}
 \begin{itemize}
   
-\item \verb|open(nombre_fichero,modo)| devuelve un objeto fichero
+\item \verb|open(nombre_fichero,modo)| devuelve un objeto fichero (fd)
 
 modo:
 \begin{itemize}
@@ -412,12 +590,15 @@ modo:
 
 \end{itemize}
 
-\item \verb|write(string)| escribe la cadena en el fichero  
-\item \verb|read()| devuelve el contenido del fichero
-\item \verb|readlines()| devuelve una lista con cada línea del fichero
-\item \verb|close()| cierra el fichero
+\item \verb|fd.write(string)| escribe la cadena en el fichero  
+\item \verb|fd.read()| devuelve el contenido del fichero
+\item \verb|fd.readline()| devuelve la siguiente línea del fichero
+\item \verb|fd.readlines()| devuelve una lista con cada línea del fichero
+\item \verb|fd.close()| cierra el fichero
 
 \end{itemize}
+
+La apertura y cierre de un fichero pueden meterse en un \emph{contexto} con \emph{with}
 \end{frame}
 
 
@@ -426,25 +607,94 @@ modo:
 
 \begin{footnotesize}
 \begin{verbatim}
-#!-/usr/bin/python3
-fich = open("/tmp/prueba", "w")
-fich.write("lunes\n")
+#!/usr/bin/python3
+myfile = open('/tmp/test', 'w')
+myfile.write("Monday\n")
+myfile.close()
+
+myfile = open('/tmp/test', 'a')
+myfile.write("Tuesday\n")
+myfile.close()
+
+myfile = open('/etc/hosts', 'r')
+machines = myfile.readlines()
 fich.close()
 
-fich = open("/tmp/prueba", "a")
-fich.write("martes\n")
-fich.close()
-
-fich = open("/etc/hosts", "r")
-maquinas = fich.readlines()
-fich.close()
-
-for maquina in maquinas:
-    print(maquina,)
+for machine in machines:
+    print(machine)
 
 \end{verbatim}
 \end{footnotesize}
 \end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Ejercicio \#5}  
+
+Crea un script en Python que...
+
+\begin{itemize}
+  \item Abra el fichero \emph{/etc/passwd}
+  \item Tome el nombre de usuario y su respectiva \emph{shell}
+  \item Lo imprima por pantalla
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Funciones / Métodos / Definiciones}
+
+\begin{itemize}
+\item Las funciones se definen con \emph{def} (y se usa identación):
+\end{itemize}
+
+  \begin{footnotesize}
+\begin{verbatim}
+# An example of two Python functions
+def to_cent(faren):
+    """Converts Fahrenheit to Celsius - Docstring comment"""
+    return (faren - 32) * (5.0/9)
+
+def to_faren(cels):
+    """Converts Celsius to Fahrenheit"""
+    return (cels * 1.8) + 32
+\end{verbatim}
+  \end{footnotesize}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{El atributo \_\_name\_\_ de un módulo}
+
+Los módulos son objetos, con ciertos atributos predefinidos.
+
+El atributo \verb|__name__|:
+\begin{itemize}
+  \item si el módulo es importado (con \verb|import|), contiene el
+  nombre del fichero, sin trayecto ni extensión
+  \item si el módulo es un programa que se ejecuta sólo, contiene el
+  valor \verb|__main__|
+\end{itemize}
+
+Puede escribirse ejecución condicionada a cómo se use el módulo:
+\begin{footnotesize}
+\begin{verbatim}
+if __name__ == "__main__": 
+    ...
+\end{verbatim}
+\end{footnotesize}
+  
+\end{frame}
+
+
+
+
 
 
 
@@ -461,9 +711,9 @@ def sum(sumando1, sumando2):
     return sumando1 + sumando2
 
 if __name__ == "__main__":
-    primero = int(raw_input("Please enter an integer/float: "))
-    segundo = int(raw_input("Please enter another integer/float: "))
-    print(sum(primero, segundo)) 
+    first = int(input("Please enter an integer/float: "))
+    second = int(input("Please enter another integer/float: "))
+    print(sum(first, second)) 
 
 \end{verbatim}
 \end{footnotesize}
@@ -478,45 +728,111 @@ Ejecución:
 \end{frame}
 
 
-
 \begin{frame}[fragile]
-\frametitle{El atributo \_\_name\_\_ de un módulo}
+\frametitle{Ejercicio \#6}  
 
-Los módulos son objetos, con ciertos atributos predefinidos.
+Crea un script en Python que...
 
-El atributo \verb|__name__|:
 \begin{itemize}
-\item si el módulo es importado (con \verb|import|), contiene el
-  nombre del fichero, sin trayecto ni extensión
-\item si el módulo es un programa que se ejecuta sólo, contiene el
-  valor \verb|__main__|
+  \item Haga lo mismo que el ejercicio \#5
+  \item Pero con un \_\_main\_\_
 \end{itemize}
 
-Puede escribirse ejecución condicionada a cómo se use el módulo:
-\begin{footnotesize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Excepciones}
+\begin{itemize}
+\item Un programa sintácticamente correcto puede dar errores de ejecución
+\end{itemize}
+
+  \begin{footnotesize}
 \begin{verbatim}
-if __name__ == "__main__": 
-    ...
+
+#!/usr/bin/python3
+while 1:
+    x=int(input("Give me a number"))
+    print(x)
+
 \end{verbatim}
-\end{footnotesize}
-  
+  \end{footnotesize}
+
 \end{frame}
+
+
 
 
 \begin{frame}[fragile]
-\frametitle{Importar módulos}
+\frametitle{Excepciones (y II)}
 
 \begin{itemize}
-\item \verb|import nombre-módulo               | \\permite acceder a los
-  símbolos del módulo con la sintaxis \verb|nombre-módulo.X|
-\item \verb|from nombre-módulo import a, b, c  | \\incorpora
-  los símbolos a, b, c al espacio de nombres, siendo accesibles
-  directamente (sin cualificarlos con el nombre del módulo)
-\item \verb|from nombre-módulo import *        | \\incorpora los
-  símbolos del módulo al espacio de nombres, siendo accesibles
-  directamente (sin cualificarlos con el nombre del módulo).
+\item  Definimos una acción para determinada excepción
 \end{itemize}
+
+  \begin{footnotesize}
+\begin{verbatim}
+
+#!-/usr/bin/python3
+while 1:
+    try:
+        x=int(input("Introduce un nº:"))
+        print(x)
+    except ValueError:
+        print("Número incorrecto")
+
+\end{verbatim}
+  \end{footnotesize}
+
+
 \end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Excepciones (y III)}
+
+\begin{itemize}
+\item Se puede indicar una acción para cualquier excepción\\
+      pero es \emph{muy} desaconsejable (enmascara otros errores)
+\item  El programador puede levantar excepciones
+\end{itemize}
+
+  \begin{footnotesize}
+\begin{verbatim}
+
+#!-/usr/bin/python3
+try:
+    x=int(input("Give me a number:"))
+    print(x)
+except:     # for anything that is not a number. Not recommended!
+    print("Hey, this was not a number")
+
+raise SystemExit
+print("this never runs")
+\end{verbatim}
+  \end{footnotesize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Ejercicio \#7}  
+
+Crea un script en Python que...
+
+\begin{itemize}
+  \item Haga lo que hacíamos en el ejercicio \#6
+  \item Y nos de exclusivamente la shell de los usuario \emph{root} e \emph{imaginario}
+  \item Añada excepciones
+\end{itemize}
+
+\end{frame}
+
 
 
 
@@ -763,26 +1079,7 @@ Utilidad de las tuplas:
 
 
 
-\begin{frame}[fragile]
-\frametitle{Funciones predefinidas}  
-\begin{itemize}
-  
-\item 
-\verb|abs()|   valor absoluto
-\item 
-\verb|float()|  convierte a float
-\item 
-\verb|int()|  convierte a int
-\item 
-\verb|str()|  convierte a string
-\item 
-\verb|round()|  redondea
-\item 
-\verb|raw_input()|  acepta un valor desde teclado
 
-
-\end{itemize}
-\end{frame}
 
 
 
@@ -850,21 +1147,7 @@ adi
 \end{frame}
 
 
-\begin{frame}[fragile]
-\frametitle{Operaciones sobre cadenas}
 
-\begin{itemize}
-\item \verb|join()| devuelve una cadena que engloba a todos los elementos de la lista.\\
-\item \verb|split()| devuelve una lista dividiendo una cadena\\
-\item \verb|upper()| devuelve la cadena en mayúsculas\\
-\item \verb|lower()| devuelve la cadena en minúsculas\\
-\end{itemize}
-
-Estas funciones de biblioteca, como todas, podemos encontrarlas
-en la \emph{python library reference}
-(disponible en el web en muchos formatos)
-
-\end{frame}
 
 
 
@@ -1423,80 +1706,6 @@ en la \\\emph{python library reference}
 
 
 
-
-
-\begin{frame}[fragile]
-\frametitle{Excepciones}
-\begin{itemize}
-\item Un programa sintácticamente correcto puede dar errores de ejecución
-\end{itemize}
-
-  \begin{footnotesize}
-\begin{verbatim}
-
-#!/usr/bin/python3
-while 1:
-    x=int(raw_input("Introduce un nº"))
-    print(x)
-
-\end{verbatim}
-  \end{footnotesize}
-
-\end{frame}
-
-
-
-
-\begin{frame}[fragile]
-
-\begin{itemize}
-\item  Definimos una acción para determinada excepción
-\end{itemize}
-
-  \begin{footnotesize}
-\begin{verbatim}
-
-#!-/usr/bin/python3
-while 1:
-    try:
-        x=int(raw_input("Introduce un nº:"))
-        print(x)
-    except ValueError:
-        print("Número incorrecto")
-
-\end{verbatim}
-  \end{footnotesize}
-
-
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-
-\begin{itemize}
-\item Se puede indicar una acción para cualquier excepción\\
-      pero es \emph{muy} desaconsejable (enmascara otros errores)
-\item  El programador puede levantar excepciones
-\end{itemize}
-
-  \begin{footnotesize}
-\begin{verbatim}
-
-#!-/usr/bin/python3
-try:
-    x=int(raw_input("Introduce un nº:"))
-    print(x)
-except :     # para cualquier excepción
-    print("Número incorrecto")
-
-raise SystemExit
-print("nunca se ejecuta")
-\end{verbatim}
-  \end{footnotesize}
-
-
-\end{frame}
 
 
 
