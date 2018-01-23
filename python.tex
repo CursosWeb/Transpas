@@ -108,7 +108,7 @@ print('she said "hi"')    # looks better
 print("Oye\n¿cómo va? Mi ritmo") # contains special characters
 
 print(b"These are bytes, not a string") # You've got to convert it to string!
-str(b"These are bytes", 'utf-8')
+str(b"These are bytes", 'utf-8') # utf-8 is the encoding
 \end{verbatim}
 \end{footnotesize}
 
@@ -123,9 +123,9 @@ str(b"These are bytes", 'utf-8')
 \frametitle{Operaciones sobre cadenas}
 
 \begin{itemize}
-\item \verb|a_string.join(a_list_of_strings)| devuelve una cadena que engloba a todos los elementos de la lista.\\
 \item \verb|a_string.split()| devuelve una lista dividiendo una cadena\\
 \item \verb|a_string.upper()| y \verb|a_string.lower()| devuelve la cadena en mayúsculas/minúsculas\\
+\item \verb|a_string.join(a_list_of_strings)| devuelve una cadena que engloba a todos los elementos de la lista.\\
 \end{itemize}
 
 Estas funciones de biblioteca, como todas, podemos encontrarlas
@@ -156,21 +156,19 @@ Crea un script en Python en consola, que:
 \begin{itemize}
   
 \item El intérprete puede lanzar un error (y acabar)
-\item Hay familias de errores (p.ej., SyntaxError)
 \item El intérprete te dará una pista de dónde puede estar el error:
 
 \begin{footnotesize}
 \begin{verbatim}
 
-while True print('Hello world')
-File "<stdin>", line 1
-  while True print('Hello world')
-            ^
-SyntaxError: invalid syntax
-
+  File "<stdin>", line 1
+    hola ="Hello World
+                      ^
+SyntaxError: EOL while scanning string literals
 \end{verbatim}
 \end{footnotesize}
 
+\item Hay familias de errores (p.ej., SyntaxError)
 \item Los errores se pueden \emph{capturar} con excepciones (que veremos en breve, no seáis impacientes)
 
 \end{itemize}
@@ -187,7 +185,7 @@ SyntaxError: invalid syntax
   \item \verb|bytes()| convierte a bytes
   \item \verb|round()|  redondea
   \item \verb|abs()|   valor absoluto
-  \item \verb|input()|  acepta un valor desde teclado
+  \item \verb|input()|  acepta un valor (string) desde teclado
 \end{itemize}
 
 \end{frame}
@@ -273,7 +271,7 @@ print(a_list[:-2]) # [0, 1, 2]
 
   \begin{footnotesize}
 \begin{verbatim}
-a_string = "tortilla"
+a_string = "un pincho de tortilla"
 print(a_string[-1])
 \end{verbatim}
   \end{footnotesize}
@@ -295,14 +293,17 @@ print(a_string[-1])
 \begin{verbatim}
 integer = 3
 if integer:
-     print('true')
+     print('This is true')
+     print('And this gets also printed')
 else:
      print('false')
+     print('This only gets printed if false')
+print('This is after the if and always get printed')
 \end{verbatim}
 \end{footnotesize}
 
 
-  \item Para enteros: todo lo que no sea cero es True
+  \item Para enteros: todo lo que no sea cero es \emph{True}
   \item Nótese como el caracter \verb|:| introduce cada bloque de sentencias. Si hay \verb|:|, entonces la siguiente línea estará indentada.
 \end{itemize}
 \end{frame}
@@ -389,7 +390,7 @@ extensions['txt'] = 'plain text'
 extensions['ps'] = 'PostScript'
 
 for tld in countries: # iterating through the dictionary
-   print(country, countries[tld])
+   print(tld, countries[tld])
 
 del countries['fr']   # removes the key (and its value)
 print(len(countries)) # returns the number of elements in the dict
@@ -413,7 +414,7 @@ countries.clear()  # removes all entries in the dictionary
 
 \begin{footnotesize}
 \begin{verbatim}
-#!-/usr/bin/python3
+#!/usr/bin/python3
 
 print("¡Hola Mundo!")
 
@@ -473,6 +474,78 @@ Crea un script en Python en tu IDE que...
 \end{itemize}
 
 \end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Ficheros}
+\begin{itemize}
+  
+\item \verb|open(nombre_fichero,modo)| devuelve un objeto fichero (fd)
+
+modo:
+\begin{itemize}
+  
+\item \verb|w|: Escritura. Destruye contenido anterior
+\item \verb|r|: Lectura. Modo por defecto
+\item \verb|r+|: Lectura y Escritura
+\item \verb|a|: Append
+
+\end{itemize}
+
+\item \verb|fd.write(string)| escribe la cadena en el fichero  
+\item \verb|fd.read()| devuelve el contenido del fichero
+\item \verb|fd.readline()| devuelve la siguiente línea del fichero
+\item \verb|fd.readlines()| devuelve una lista con cada línea del fichero
+\item \verb|fd.close()| cierra el fichero
+
+\end{itemize}
+
+La apertura y cierre de un fichero pueden meterse en un \emph{contexto} con \emph{with}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Ejemplos de uso de ficheros}
+
+\begin{footnotesize}
+\begin{verbatim}
+#!/usr/bin/python3
+myfile = open('/tmp/test', 'w')
+myfile.write("Monday\n")
+myfile.close()
+
+myfile = open('/tmp/test', 'a')
+myfile.write("Tuesday\n")
+myfile.close()
+
+myfile = open('/etc/hosts', 'r')
+machines = myfile.readlines()
+fich.close()
+
+for machine in machines:
+    print(machine)
+
+\end{verbatim}
+\end{footnotesize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Ejercicio \#4}  
+
+Crea un script en Python que...
+
+\begin{itemize}
+  \item Abra el fichero \emph{/etc/passwd}
+  \item Tome el nombre de usuario y su respectiva \emph{shell}
+  \item Lo imprima por pantalla
+\end{itemize}
+
+\end{frame}
+
 
 
 
@@ -539,7 +612,7 @@ print(sys.argv[1:])
 
 
 \begin{frame}[fragile]
-\frametitle{Ejercicio \#4}  
+\frametitle{Ejercicio \#5}  
 
 Crea un script Python que...
 
@@ -571,76 +644,6 @@ Hay varias maneras:
 \end{itemize}
 \end{frame}
 
-
-
-
-\begin{frame}[fragile]
-\frametitle{Ficheros}
-\begin{itemize}
-  
-\item \verb|open(nombre_fichero,modo)| devuelve un objeto fichero (fd)
-
-modo:
-\begin{itemize}
-  
-\item \verb|w|: Escritura. Destruye contenido anterior
-\item \verb|r|: Lectura. Modo por defecto
-\item \verb|r+|: Lectura y Escritura
-\item \verb|a|: Append
-
-\end{itemize}
-
-\item \verb|fd.write(string)| escribe la cadena en el fichero  
-\item \verb|fd.read()| devuelve el contenido del fichero
-\item \verb|fd.readline()| devuelve la siguiente línea del fichero
-\item \verb|fd.readlines()| devuelve una lista con cada línea del fichero
-\item \verb|fd.close()| cierra el fichero
-
-\end{itemize}
-
-La apertura y cierre de un fichero pueden meterse en un \emph{contexto} con \emph{with}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Ejemplos de uso de ficheros}
-
-\begin{footnotesize}
-\begin{verbatim}
-#!/usr/bin/python3
-myfile = open('/tmp/test', 'w')
-myfile.write("Monday\n")
-myfile.close()
-
-myfile = open('/tmp/test', 'a')
-myfile.write("Tuesday\n")
-myfile.close()
-
-myfile = open('/etc/hosts', 'r')
-machines = myfile.readlines()
-fich.close()
-
-for machine in machines:
-    print(machine)
-
-\end{verbatim}
-\end{footnotesize}
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-\frametitle{Ejercicio \#5}  
-
-Crea un script en Python que...
-
-\begin{itemize}
-  \item Abra el fichero \emph{/etc/passwd}
-  \item Tome el nombre de usuario y su respectiva \emph{shell}
-  \item Lo imprima por pantalla
-\end{itemize}
-
-\end{frame}
 
 
 
@@ -774,7 +777,7 @@ while 1:
   \begin{footnotesize}
 \begin{verbatim}
 
-#!-/usr/bin/python3
+#!/usr/bin/python3
 while 1:
     try:
         x=int(input("Introduce un nº:"))
@@ -802,7 +805,7 @@ while 1:
   \begin{footnotesize}
 \begin{verbatim}
 
-#!-/usr/bin/python3
+#!/usr/bin/python3
 try:
     x=int(input("Give me a number:"))
     print(x)
@@ -882,7 +885,7 @@ Las variable declaradas fuera de una función son globales
 %    """Ejemplo para hablar del ámbito"""
   \begin{footnotesize}
 \begin{verbatim}
-#!-/usr/bin/python3
+#!/usr/bin/python3
 numero = 5
 def f(parametro):
     return parametro + numero
@@ -898,7 +901,7 @@ Las variable declaradas dentro de una función son locales
 %02
   \begin{footnotesize}
 \begin{verbatim}
-#!-/usr/bin/python3
+#!/usr/bin/python3
 def f(parametro):
     numero = 5
     return parametro + numero
@@ -922,7 +925,7 @@ pero no modificar
 %03
   \begin{footnotesize}
 \begin{verbatim}
-#!-/usr/bin/python3
+#!/usr/bin/python3
 numero = 5
 def f(parametro):
     numero = numero - 1    #ERROR: no se puede modificar variable global
@@ -942,7 +945,7 @@ A menos que se use la sentencia \verb|global|
  %04 
   \begin{footnotesize}
 \begin{verbatim}
-#!-/usr/bin/python3
+#!/usr/bin/python3
 numero = 5
 def f(parametro):
     global numero   # permite modificar una variable global
@@ -1136,7 +1139,7 @@ asignado un valor.
 \end{itemize}
 \begin{footnotesize}
 \begin{verbatim}
-#!-/usr/bin/python3
+#!/usr/bin/python3
 sum_elementos = 3 + 4 + 17
 media = suma_elementos / 3    # deletreamos mal la variable
 print(media)   # y el compilador nos avisa con un error
@@ -1157,7 +1160,7 @@ adi
 
   \begin{footnotesize}
 \begin{verbatim}
-#!-/usr/bin/python3
+#!/usr/bin/python3
 
 cadena = "más vale pájaro en mano"
 print(cadena.split())
@@ -1234,7 +1237,7 @@ print(lista.join())
 
 \begin{footnotesize}
 \begin{verbatim}
-#!-/usr/bin/python3
+#!/usr/bin/python3
 entero = int(raw_input("Please enter an integer: "))
 if entero < 0:
      entero = 0
@@ -1628,7 +1631,7 @@ en la \\\emph{python library reference}
 
 %  \begin{footnotesize}
 %\begin{verbatim}
-%#!-/usr/bin/python3
+%#!/usr/bin/python3
 %import pickle
 
 %cp={28:'madrid',08:'barcelona',33:'asturias'}
