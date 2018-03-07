@@ -160,7 +160,7 @@ $ python3 manage.py runserver
   \end{itemize}
   \item Proyecto : \verb|myproject/|:
   \begin{itemize}
-    \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Python
+    \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Pythons
     \item \verb|settings.py|: configuración del proyecto
     \item \verb|urls.py|: URLs del proyecto
     \item \verb|wsgi.py|: fichero para servir Django mediante WSGI (p.ej. con Apache)
@@ -230,14 +230,21 @@ INSTALLED_APPS = (
 \item Ejemplo:
 
 \begin{verbatim}
-from django.urls import include, path
+from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    path('myfirstapp/', include('myfirstapp.urls')),
-    path('admin/', admin.site.urls),
+    url('^myfirstapp/', include('myfirstapp.urls')),
+    url('^admin/', include(admin.site.urls)),
 ]
 \end{verbatim}
+%from django.urls import include, path
+%django2
+%urlpatterns = [
+%    path('myfirstapp/', include('myfirstapp.urls')),
+%    path('admin/', admin.site.urls),
+%]
+
 
 \item \verb|include()| permite añadir otros \verb|urls.py| de aplicaciones
 \item 
@@ -265,30 +272,41 @@ urlpatterns = [
 
 \item Ejemplo:
 \begin{verbatim}
-from django.urls import path
+from django.conf.urls import url
 
 from . import views
 
 urlpatterns = [
-  path('', views.index, name='index'),
-  path('hello', views.say_hello, name='hello'),
-  path('bye/<name>', views.say_bye_to, name='bye'),
-  path('number/<int:number>', views.say_number, name='number'),
+    url(r'^articles/2003/$', views.special_case_2003),
+    url(r'^articles/([0-9]{4})/$', views.year_archive),
+    url(r'^articles/([0-9]{4})/([0-9]{2})/$', views.month_archive),
+    url(r'^articles/([0-9]{4})/([0-9]{2})/([0-9]+)/$', views.article_detail),
 ]
 \end{verbatim}
+
+
+%django2
+%from django.urls import path
+%urlpatterns = [
+%  path('', views.index, name='index'),
+%  path('hello', views.say_hello, name='hello'),
+%  path('bye/<name>', views.say_bye_to, name='bye'),
+%  path('number/<int:number>', views.say_number, name='number'),
+%]
+
+
 \end{itemize}
 
 \end{frame}
 
-
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Declaración de URLs: La función path}
+\frametitle{Declaración de URLs: La función \emph{url}}
 
-\verb|path(route, view, kwargs=None, name=None)|
+\verb|url(regex, view, kwargs=None, name=None, prefix='')|
 
 \begin{itemize}
-  \item \verb|route|: patrón de la URL.
+  \item \verb|regex|: expresión regular.
   \begin{itemize}
     \item No tiene en cuenta si la petición es GET o POST, o el dominio
     \item Se ejecuta la primera que se encuentra (i.e., el orden importa)
@@ -300,9 +318,33 @@ urlpatterns = [
   \end{itemize} 
   \item \verb|kwargs|: diccionario con parámetros adicionales a la vista.
   \item \verb|name|: nombre de la URL (muy útil para plantillas).
+  \item \verb|prefix|: deprecated a partir de Django 1.8
 \end{itemize}
 
 \end{frame}
+
+%%---------------------------------------------------------------
+%\begin{frame}[fragile]
+%\frametitle{Declaración de URLs: La función path}
+%
+%\verb|path(route, view, kwargs=None, name=None)|
+%
+%\begin{itemize}
+%  \item \verb|route|: patrón de la URL.
+%  \begin{itemize}
+%    \item No tiene en cuenta si la petición es GET o POST, o el dominio
+%    \item Se ejecuta la primera que se encuentra (i.e., el orden importa)
+%  \end{itemize} 
+%  \item \verb|view|: función \emph{vista} a la que se llama, pasándole:
+%  \begin{itemize}
+%    \item Como primer parámetro un objeto HttpRequest con la petición
+%    \item Otros posibles parámetros como argumentos
+%  \end{itemize} 
+%  \item \verb|kwargs|: diccionario con parámetros adicionales a la vista.
+%  \item \verb|name|: nombre de la URL (muy útil para plantillas).
+%\end{itemize}
+%
+%\end{frame}
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
@@ -423,7 +465,7 @@ Versión simple:
 \begin{verbatim}
 from django.contrib import admin
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('^admin/', include(admin.site.urls)),
 ]    
 \end{verbatim}
 \end{itemize}
