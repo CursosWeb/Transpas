@@ -78,8 +78,26 @@
 \frametitle{Preparativos}
 
 \begin{itemize}
-\item Usaremos una versión de Django 1.8 instalada en los laboratorios, ya que se trata de una versión \emph{LTS} (\emph{Long Term Support})
+\item Usaremos una versión de Django 2.1.7, instalándola vía pip.
 \item Disponible para Linux, *BSD, Windows, MacOS, etc.
+\item Creación de entorno virtual:
+
+\begin{verbatim}
+% python3 -m venv django-venv    
+\end{verbatim}
+
+\item Activación del entorno virtual:
+
+\begin{verbatim}
+% source django-venv/bin/activate
+\end{verbatim}
+
+\item Instalación de Django en el entorno virtual:
+
+\begin{verbatim}
+% pip install django==2.1.7
+\end{verbatim}
+
 %\item Descarga e instalación en \$DJANGO
 %\item Descompresión desde la \emph{shell}:
 %\begin{verbatim}
@@ -92,9 +110,9 @@
 %}
 %\end{flushright}
 
-\item Comprobación (debe responder 1.8.*):
+\item Comprobación (debe responder 2.1.7):
 \begin{verbatim}
-django-admin.py --version
+% django-admin --version
 \end{verbatim}
 \end{itemize}
 
@@ -212,7 +230,7 @@ DATABASES = {
 \item Aplicaciones instaladas
 \begin{verbatim}
 INSTALLED_APPS = (
-    'myfirstapp',
+    ...,
 )
 \end{verbatim}
 \item Otros: zona horaria, codificación, directorio de plantillas...
@@ -230,24 +248,17 @@ INSTALLED_APPS = (
 \item Ejemplo:
 
 \begin{verbatim}
-from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
-    url('^myfirstapp/', include('myfirstapp.urls')),
-    url('^admin/', include(admin.site.urls)),
+    path('myfirstapp/', include('myfirstapp.urls')),
+    path('admin/', admin.site.urls),
 ]
 \end{verbatim}
-%from django.urls import include, path
-%django2
-%urlpatterns = [
-%    path('myfirstapp/', include('myfirstapp.urls')),
-%    path('admin/', admin.site.urls),
-%]
 
 
 \item \verb|include()| permite añadir otros \verb|urls.py| de aplicaciones
-\item 
 
 \end{itemize}
 
@@ -267,84 +278,68 @@ urlpatterns = [
 \begin{frame}[fragile]
 \frametitle{Declaración de URLs (aplicación)}
 
-\begin{itemize}
-\item En el fichero urls.py (de la aplicación): \verb|myfirstapp/urls.py|
+En el fichero urls.py (de la aplicación): \verb|myfirstapp/urls.py|
 
-\item Ejemplo:
 \begin{verbatim}
-from django.conf.urls import url
-
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    url(r'^articles/2003/$', views.special_case_2003),
-    url(r'^articles/([0-9]{4})/$', views.year_archive),
-    url(r'^articles/([0-9]{4})/([0-9]{2})/$', views.month_archive),
-    url(r'^articles/([0-9]{4})/([0-9]{2})/([0-9]+)/$', views.article_detail),
+    path('', views.index, name='index'),
+    path('hello', views.say_hello, name='hello'),
+    path('bye/<name>', views.say_bye_to, name='bye'),
+    path('number/<int:number>', views.say_number, name='number')
 ]
 \end{verbatim}
 
-
-%django2
-%from django.urls import path
-%urlpatterns = [
-%  path('', views.index, name='index'),
-%  path('hello', views.say_hello, name='hello'),
-%  path('bye/<name>', views.say_bye_to, name='bye'),
-%  path('number/<int:number>', views.say_number, name='number'),
-%]
-
-
-\end{itemize}
-
 \end{frame}
 
 %%---------------------------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Declaración de URLs: La función \emph{url}}
+%% \begin{frame}[fragile]
+%% \frametitle{Declaración de URLs: La función \emph{url}}
 
-\verb|url(regex, view, kwargs=None, name=None, prefix='')|
+%% \verb|url(regex, view, kwargs=None, name=None, prefix='')|
+
+%% \begin{itemize}
+%%   \item \verb|regex|: expresión regular.
+%%   \begin{itemize}
+%%     \item No tiene en cuenta si la petición es GET o POST, o el dominio
+%%     \item Se ejecuta la primera que se encuentra (i.e., el orden importa)
+%%   \end{itemize} 
+%%   \item \verb|view|: función \emph{vista} a la que se llama, pasándole:
+%%   \begin{itemize}
+%%     \item Como primer parámetro un objeto HttpRequest con la petición
+%%     \item Otros posibles parámetros como argumentos
+%%   \end{itemize} 
+%%   \item \verb|kwargs|: diccionario con parámetros adicionales a la vista.
+%%   \item \verb|name|: nombre de la URL (muy útil para plantillas).
+%%   \item \verb|prefix|: deprecated a partir de Django 1.8
+%% \end{itemize}
+
+%% \end{frame}
+
+---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Declaración de URLs: La función path}
+
+\verb|path(route, view, kwargs=None, name=None)|
 
 \begin{itemize}
-  \item \verb|regex|: expresión regular.
-  \begin{itemize}
-    \item No tiene en cuenta si la petición es GET o POST, o el dominio
-    \item Se ejecuta la primera que se encuentra (i.e., el orden importa)
-  \end{itemize} 
-  \item \verb|view|: función \emph{vista} a la que se llama, pasándole:
-  \begin{itemize}
-    \item Como primer parámetro un objeto HttpRequest con la petición
-    \item Otros posibles parámetros como argumentos
-  \end{itemize} 
-  \item \verb|kwargs|: diccionario con parámetros adicionales a la vista.
-  \item \verb|name|: nombre de la URL (muy útil para plantillas).
-  \item \verb|prefix|: deprecated a partir de Django 1.8
+ \item \verb|route|: patrón de la URL.
+ \begin{itemize}
+   \item No tiene en cuenta si la petición es GET o POST, o el dominio
+   \item Se ejecuta la primera que se encuentra (i.e., el orden importa)
+ \end{itemize} 
+ \item \verb|view|: función \emph{vista} a la que se llama, pasándole:
+ \begin{itemize}
+   \item Como primer parámetro un objeto HttpRequest con la petición
+   \item Otros posibles parámetros como argumentos
+ \end{itemize} 
+ \item \verb|kwargs|: diccionario con parámetros adicionales a la vista.
+ \item \verb|name|: nombre de la URL (muy útil para plantillas).
 \end{itemize}
 
 \end{frame}
-
-%%---------------------------------------------------------------
-%\begin{frame}[fragile]
-%\frametitle{Declaración de URLs: La función path}
-%
-%\verb|path(route, view, kwargs=None, name=None)|
-%
-%\begin{itemize}
-%  \item \verb|route|: patrón de la URL.
-%  \begin{itemize}
-%    \item No tiene en cuenta si la petición es GET o POST, o el dominio
-%    \item Se ejecuta la primera que se encuentra (i.e., el orden importa)
-%  \end{itemize} 
-%  \item \verb|view|: función \emph{vista} a la que se llama, pasándole:
-%  \begin{itemize}
-%    \item Como primer parámetro un objeto HttpRequest con la petición
-%    \item Otros posibles parámetros como argumentos
-%  \end{itemize} 
-%  \item \verb|kwargs|: diccionario con parámetros adicionales a la vista.
-%  \item \verb|name|: nombre de la URL (muy útil para plantillas).
-%\end{itemize}
-%
-%\end{frame}
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
