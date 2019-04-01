@@ -201,7 +201,7 @@ $ python3 manage.py runserver
       \item \verb|views.py|: vistas (código invocado para cada recurso)
        \item \verb|models.py|: definición de las clases del modelo de datos
        \item \verb|admin.py|: registro de los modelos que se pueden gestionar vía web
-       \item \verb|apps.py|: 
+       \item \verb|apps.py|: configuración de la app
        \item \verb|tests.py|: fichero para la implementación de tests
        \item \verb|migrations/|: versiones (y \emph{migraciones}) de los modelos
     \end{itemize}
@@ -605,17 +605,18 @@ def vista(request):
 \item En views.py:
 \begin{verbatim}
 def show_content(request, resource):
-  if request.user.is_authenticated():
+  if request.user.is_authenticated:
     logged = 'Logged in as ' + request.user.username
   else:
     logged = 'Not logged in.'
 \end{verbatim}
-\item Para logout, utilizamos view predefinida. En urls.py:
+\item Para logout, utilizamos función. En views.py:
 \begin{verbatim}
-from django.contrib.auth.views import logout
-urlpatterns = [
-    url(r'^logout', logout),
-]
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect("/")
 \end{verbatim}
 \end{itemize}
 \end{frame}
