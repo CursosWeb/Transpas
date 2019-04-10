@@ -781,26 +781,44 @@ Fuente: \url{http://archive.cloudera.com/cdh4/cdh/4/hue/sdk/sdk.html}
 \begin{frame}[fragile]
 \frametitle{Plantillas: uso en vistas}
 
-Directorios con plantillas: lista DIRS en variable TEMPLATES en settings.py
+Directorios con plantillas:
+\begin{itemize}
+  \item directorio templates en directorio de la app
+  \item lista DIRS en variable TEMPLATES en settings.py
+\end{itemize}
  
 \begin{verbatim}
-from django.template.loader import get_template
-from django.template import Context
+from django.shortcuts import render
 
-def show_annotated_content(request, resource):
+def view (request):
     ...
-    template = get_template("annotated.html")
-    return HttpResponse(template.render(
-      Context({'user': user,
-               'resource': resource,
-               'page': page})))
+    return(render(request, 'template.html',
+                  {'title': title,
+                   'content': content}))
 \end{verbatim}
 \end{frame}
 
+%%---------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Plantillas: uso en vistas (2)}
+
+ 
+\begin{verbatim}
+from django.template import loader
+
+def view (request):
+    ...
+    template = loader.get_template('template.html')
+    html = template.render({'title': title,
+                            'content': content},
+                           request)
+    return(HttpResponse(html, status=status))
+\end{verbatim}
+\end{frame}
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Plantillas (avanzado): etiquetas (2)}
+\frametitle{Plantillas (avanzado): etiquetas}
 
 \begin{itemize}
 \item ifequal, ifnotequal
