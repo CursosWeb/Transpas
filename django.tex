@@ -78,7 +78,7 @@
 \frametitle{Preparativos}
 
 \begin{itemize}
-\item Usaremos una versión de Django 2.1.7, instalándola vía pip.
+\item Usaremos una versión de Django 2.1.7, instalándola vía pip3.
 \item Disponible para Linux, *BSD, Windows, MacOS, etc.
 \item Creación de entorno virtual:
 
@@ -95,7 +95,7 @@
 \item Instalación de Django en el entorno virtual:
 
 \begin{verbatim}
-% pip install django==2.1.7
+% pip3 install django==3.0.3
 \end{verbatim}
 
 %\item Descarga e instalación en \$DJANGO
@@ -110,7 +110,7 @@
 %}
 %\end{flushright}
 
-\item Comprobación (debe responder 2.1.7):
+\item Comprobación (debe responder 3.0.3):
 \begin{verbatim}
 % django-admin --version
 \end{verbatim}
@@ -178,10 +178,11 @@ $ python3 manage.py runserver
   \end{itemize}
   \item Proyecto : \verb|myproject/|:
   \begin{itemize}
-    \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Pythons
+    \item \verb|__init__.py|: fichero vacío, directorio debe ser considerado un paquete Python
     \item \verb|settings.py|: configuración del proyecto
     \item \verb|urls.py|: URLs del proyecto
     \item \verb|wsgi.py|: fichero para servir Django mediante WSGI (p.ej. con Apache)
+    \item \verb|asgi.py|: fichero para servir Django mediante ASGI (servidor asíncrono)
   \end{itemize}
 \end{itemize}
 
@@ -229,9 +230,9 @@ DATABASES = {
 \end{verbatim}
 \item Aplicaciones instaladas
 \begin{verbatim}
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     ...,
-)
+]
 \end{verbatim}
 \item Otros: zona horaria, codificación, directorio de plantillas...
 \end{itemize}
