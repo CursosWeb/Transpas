@@ -34,21 +34,43 @@
 \begin{itemize}
 \item REST: REpresentational State Transfer
 
+  \begin{quote}
+  ``Conjunto de recursos web (máquina de estados), \\
+  en el que se realizan acciones seleccionando recursos \\
+  a los que se les aplican operaciones (transiciones de estado), \\
+  obteniendo representaciones de ese estado \\
+  (que recibe el navegador).''
+  \end{quote}
+  
 \item Estilo arquitectural para sistemas distribuidos
   \begin{itemize}
   \item Ampliamente extendido en la web estática (ficheros y directorios)
   \item Parcialmente extendido en la web programática (aplicaciones y servicios web)
   \end{itemize}
-\item Basado en un conjunto de normas...
 \end{itemize}
 
 \end{frame}
-%%---------------------------------------------------------------
 
+%%---------------------------------------------------------------
 
 %%---------------------------------------------------------------
 \begin{frame}
-\frametitle{REST: 1. Cada recurso debe tener una URL}
+\frametitle{Principios REST}
+
+\begin{itemize}
+\item Cliente (interfaz de usuario) - servidor (lógica de negocio, datos)
+\item Sin estado: cada petitición lleva todo su contexto
+\item Cacheable: cada respuesta es marcada como cacheable, o no
+\item Interfaz uniforme (recurso, urls, métodos, representaciones...)
+\item Sistema por capas: cada componente sólo ``ve'' la capa que invoca
+\item Código en el cliente (sobre todo, para interfaz de usuario)
+\end{itemize}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Interfaz: Cada recurso debe tener una URL}
 
 Un recurso puede ser cualquier tipo de información que quiere hacerse visible en la web: documentos, imágenes, servicios, gente
 
@@ -74,7 +96,7 @@ Un recurso puede ser cualquier tipo de información que quiere hacerse visible en
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{REST: 1. Cada recurso debe tener una URL}
+\frametitle{Interfaz: Cada recurso debe tener una URL}
 
 Dos tipos de recursos:
 
@@ -91,7 +113,7 @@ una colección o un elemento.
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{REST: 2. Los recursos tienen hiperenlaces a otros recursos}
+\frametitle{Interfaz: Los recursos tienen hiperenlaces a otros recursos}
 
 Los formatos más usados (XHTML, Atom, ...) ya lo permiten.
 También aplica a los formatos inventados por nosotros mismos
@@ -114,7 +136,7 @@ También aplica a los formatos inventados por nosotros mismos
 
 %%---------------------------------------------------------------
 \begin{frame}
-\frametitle{REST: 3. Conjunto limitado y estándar de métodos}
+\frametitle{Interfaz: Conjunto limitado y estándar de métodos}
 
 \begin{itemize}
 \item GET:  Obtener información (quizá de caché)
@@ -141,7 +163,7 @@ También aplica a los formatos inventados por nosotros mismos
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{REST: 4. Múltiples representaciones por recurso}
+\frametitle{Interfaz: Múltiples representaciones por recurso}
 
 Las representaciones muestran el estado actual del recurso en un formato dado
 
@@ -166,18 +188,16 @@ Accept: application/mi-vocabulario-propio+xml
 
 %%---------------------------------------------------------------
 \begin{frame}
-\frametitle{REST: 5. Comunicación sin estado}
+\frametitle{Interfaz: Comunicación sin estado}
 
 \begin{itemize}
-\item En REST hay estado, pero sólo en los recursos, no en la aplicación (o sesión). 
+\item En REST se mantiene estado, pero sólo en los recursos, no en la aplicación (o sesión). 
 
-\item Una petición del cliente al servidor debe contener TODA la información necesaria para entender la misma. 
+\item Una petición del cliente al servidor debe contener todo el contexto necesario (no puede basarse en información previa asociada a la comunicación). 
 
-\item No puede basarse en información previa asociada a la comunicación (por ejemplo, información de sesión). 
+\item No hay datos que permitan identificar sesión en el servidor. El servidor sólo guarda y maneja el estado de los recursos que aloja. 
 
-\item No puede haber datos de sesiones del cliente en el servidor. El servidor sólo guarda y maneja el estado de los recursos que aloja. 
-
-\item Es el cliente el que debe guardar su estado (y enviárselo al servidor). Sin embargo, las cookies no son una buena implementación desde el punto de vista REST.
+\item El cliente puede guardar identificación de sesión (y enviárselo al servidor), por ejemplo en forma de cookies.
 
 \item Esto permite escalabilidad (servidores más sencillos). Implica mayor ancho de banda, pero facilita las \emph{cachés}.
 \end{itemize}
@@ -392,12 +412,13 @@ Content-Length: 16850
 \frametitle{Referencias}
 
 \begin{itemize}
+\item ``Chapter 5: Representational State Transfer (REST)'', Fielding, Roy Thomas, en ``Architectural Styles and the Design of Network-based Software Architectures'' (PhD thesis) University of California, Irvine 2000.
 \item ``RESTful Web Services'',  Leonard Richardson, Sam Ruby, O'Reilly Press
 \item ``Architectural Styles and the Design of Network-based Software Architectures'' (Capítulo 5) \\
-  \url{http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}
+  {\footnotesize \url{http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}}
 \item ``Best Practices for Designing a Pragmatic RESTful API'', 
   Vinay Sahni \\
-  \url{http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api}
+  {\footnotesize \url{http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api}}
 \item Atom Publishing Protocol: \\
   \url{http://tools.ietf.org/html/rfc5023}
 \end{itemize}
