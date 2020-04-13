@@ -1103,6 +1103,95 @@ class LatestEntries(Feed):
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
+\frametitle{Tests}
+
+\begin{itemize}
+\item Pruebas de comportamiento del programa
+\item Pruebas ``internas'' (vía llamadas directas) \\
+  Usando \verb|django.test| (que extiende \verb|unittest|)
+\item Pruebas ``externas'' (via API HTTP) \\
+  Usando el ``Django test client''
+\item Permite probar también plantillas, formularios, modelos...
+\item Normalmente, en fichero \verb|tests.py|
+\end{itemize}
+
+{\small
+\begin{verbatim}
+% ./manage.py test
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.022s
+
+OK
+Destroying test database for alias 'default'...
+\end{verbatim}
+}
+
+\begin{flushright}
+\url{https://docs.djangoproject.com/en/3.0/topics/testing/}
+\end{flushright}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Tests (pruebas internas)}
+
+{\small
+\begin{verbatim}
+from django.test import TestCase
+from . import views
+
+class TestViews(TestCase):
+
+    def setUp(self):
+        """Ejecutado antes de los tests"""
+        ...
+
+    def test_simple(self):
+        """Test de la función aux"""
+        result = views.aux(...)
+        self.assertEqual(result, expected)
+\end{verbatim}
+}
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Tests (pruebas API HTTP)}
+
+{\small
+\begin{verbatim}
+from django.test import SimpleTestCase
+from . import views
+
+class TestHTTP(SimpleTestCase):
+    """Tests of HTTP API"""
+
+    def setUp(self):
+        """Ejecutado antes de los tests"""
+        ...
+
+    def test_get_ok(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.resolver_match.func, views.main)
+        self.assertInHTML("<h1>Title</h1>",
+                response.content.decode(encoding='UTF-8'))
+\end{verbatim}
+}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
 \frametitle{Internacionalización}
 
 \begin{itemize}
