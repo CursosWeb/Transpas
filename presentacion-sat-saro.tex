@@ -1,4 +1,6 @@
 
+%% --------------------------------------------------------------
+%% --------------------------------------------------------------
 
 \section{Presentación de la asignatura}
 
@@ -16,8 +18,8 @@
 \item Grupo de Sistemas y Comunicaciones (GSyC)
 \item Despachos: 101 y 110 Departamental III
 \item Horario: \horario
-\item Tutoría: Horario por definir (en los Laboratorios)
-\item Laboratorio 209 Laboratorios III
+\item Tutoría: Horario por definir (via videoconferencia)
+%\item Laboratorio 209 Laboratorios III
 \end{itemize}
 
 \begin{flushright}
@@ -114,7 +116,9 @@
   TIOBE (enero 2020) ~~~~ GitHub (noviembre 2019) \\
 \end{center}
 
-
+\begin{flushright}
+  \url{https://www.youtube.com/watch?v=UNSoPa-XQN0}
+\end{flushright}
 \end{frame}
 \usebackgroundtemplate{}
 
@@ -137,25 +141,60 @@
 \end{frame}
 \usebackgroundtemplate{}
 
+%-----------------------    ---------------------------------
+
+\begin{frame}
+\frametitle{Plataforma: Django (2)}
+
+{\large Algunas referencias a principales marcos de desarrollo web (2021):}
+
+\vspace{0.5cm}
+
+\begin{itemize}
+\item ``10 Best Web Development Frameworks'' \\
+  {\small \url{https://hackr.io/blog/web-development-frameworks}}
+\item ``10 Popular Web Frameworks for Web App Development in 2021'' \\
+  {\small \url{https://www.monocubed.com/10-most-popular-web-frameworks/}}
+\item ``Top 10 In-Demand Web Development Frameworks in 2021'' \\
+\item ``Top 10 Frameworks for Web Application Development'' \\
+  {\small \url{https://www.decipherzone.com/blog-detail/top-web-frameworks}}
+  {\small \url{https://towardsdatascience.com/top-10-in-demand-web-development-frameworks-in-2021-8a5b668be0d6}}
+\end{itemize}
+
+\vspace{1cm}
+{\large Suele ser el preferido en Python, y uno de los 10 principales.}
+
+\end{frame}
+
 %%---------------------------------------------------------------
 
 \begin{frame}
 \frametitle{Metodología}
 
 {\Large
+  \begin{center}
+    Objetivo principal: \\
+    conceptos básicos de construcción de sitios web modernos \\
+  \end{center}
+
+  \vspace{0.5cm}
 \begin{itemize}
-\item Objetivo principal: conceptos básicos de construcción de sitios web modernos
 \item Clases de teoría y de prácticas, pero...
 \item Teoría en prácticas, prácticas en teoría
 \item Uso de resolución de problemas para aprender
-\item Fundamentalmente, entender lo fundamental
+\item Construcción de un proyecto a lo largo del curso
 \end{itemize}
+
+  \vspace{0.5cm}
+
+\begin{center}
+  Fundamentalmente, entender lo fundamental
+\end{center}
 }
 \end{frame}
 
 %-----------------------    ---------------------------------
-\usebackgroundtemplate{\includegraphics[width=13cm]{figs/africa.jpg}}
-% http://www.funlearningcompany.com/wp-content/themes/smallbiz/images/Map100.jpg
+\usebackgroundtemplate{\includegraphics[width=13cm]{figs/toys.jpg}}
 
 \begin{frame}
 \frametitle{Fundamentos de la asignatura}
@@ -163,12 +202,26 @@
 \vspace{5.4cm}
 
 \begin{center}
-\Huge Aprender no puede ser aburrido
+  \Huge Aprender no puede ser aburrido
 \end{center}
 
 \end{frame}
 \usebackgroundtemplate{}
 
+%-----------------------    ---------------------------------
+\usebackgroundtemplate{\includegraphics[width=13cm]{figs/code.jpg}}
+
+\begin{frame}
+\frametitle{Fundamentos de la asignatura(2)}
+
+\vspace{5.4cm}
+
+\begin{center}
+  \Huge La letra con código entra
+\end{center}
+
+\end{frame}
+\usebackgroundtemplate{}
 %%---------------------------------------------------------------
 
 \begin{frame}
@@ -176,16 +229,16 @@
 
 \begin{itemize}
   \item Empezamos en punto
-  \item 10 minutos con un tema motivacional
+  \item A veces: 5--10 min. de Frikiminutos
   \begin{itemize}
     \item Gadgets tecnológicos
     \item Aplicaciones
     \item Cuestiones interesantes
     \item \dots
   \end{itemize}
-  \item Generalmente, explicación de los conceptos más importantes y luego
-realización de ejercicios
-  \item No hay descanso
+  \item A veces, explicación de los conceptos más importantes y luego
+    realización de ejercicios
+  \item A veces, al revés
   \item Ejercicios para hacer fuera de clase (y entregar)
 \end{itemize}
 
@@ -209,6 +262,31 @@ realización de ejercicios
 \end{frame}
 \usebackgroundtemplate{}
 
+%-----------------------    ---------------------------------
+\usebackgroundtemplate{\includegraphics[width=13.5cm]{figs/labo.jpg}}
+\begin{frame}
+\frametitle{Laboratorio}
+
+~
+\vspace{1cm}
+
+\begin{itemize}
+\item Laboratorios Linux de la ETSIT
+\item Este curso, a distancia: vía VNC, vía ssh...
+\item \url{https://labs.etsit.urjc.es}
+\end{itemize}
+
+\vspace{1cm}
+
+Software (fundamental) que utilizaremos:
+
+\begin{itemize}
+\item Ubuntu
+\item Python, Django
+\item Pycharm
+\end{itemize}
+\end{frame}
+\usebackgroundtemplate{}
 
 
 %%---------------------------------------------------------------
@@ -219,13 +297,14 @@ realización de ejercicios
 \begin{itemize}
 \item Microprácticas diarias (entrega foro/GitLab): 0 a 1
 \item Miniprácticas preparatorias: 0 a 1
-\item Práctica final (obligatorio): 0 a 2.
+\item Proyecto final (obligatorio): 0 a 2.
 \item Opciones y mejoras práctica final: 0 a 3
-\item Teoría (obligatorio): 0 a 5.
+\item Teoría (obligatorio): 0 a 5. \\
+  \hspace{.5cm} Ojo: teoría fuertemente relacionada con prácticas
 \item Nota final: Suma de notas, moderada por la interpretación del profesor
 \item Mínimo para aprobar:
       \begin{itemize}
-      \item Aprobado en teoría (2.5) y práctica final (1), y
+      \item Aprobado en teoría (2.5) y proyecto final (1), y
       \item 5 puntos de nota final en total
       \end{itemize}
 \end{itemize}
@@ -238,25 +317,25 @@ realización de ejercicios
 \frametitle{Evaluación (2)}
 
 \begin{itemize}
-\item Evaluación teoría: prueba escrita
+\item Evaluación teoría: prueba escrita (quizás en ordenador)
 \item Microprácticas diarias y miniprácticas incrementales:
       \begin{itemize}
       \item es muy recomendable hacerlas
       \end{itemize}
-\item Evaluación práctica final
+\item Evaluación proyecto final
       \begin{itemize}
-      \item posibilidad de examen presencial para práctica final
+      \item posibilidad de examen presencial para proyecto final
       \item ¡tiene que funcionar en el laboratorio!
       \item enunciado mínimo obligatorio supone 1, se llega a 2 sólo con calidad y cuidado en los detalles
       \end{itemize}
-\item Opciones y mejoras práctica final:
+\item Opciones y mejoras proyecto final:
       \begin{itemize}
-      \item permiten subir la nota mucho
+      \item permiten subir mucho la nota
       \end{itemize}
 \item Evaluación extraordinaria:
   \begin{itemize}
   \item prueba escrita (si no se aprobó la ordinaria)
-  \item nueva práctica final (si no se aprobó la ordinaria)
+  \item nuevo proyecto final (si no se aprobó el ordinario)
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -265,7 +344,7 @@ realización de ejercicios
 %%---------------------------------------------------------------
 
 \begin{frame}
- \frametitle{Prácticas finales}
+ \frametitle{Proyecto final}
 
 Ejemplos del pasado:
 
@@ -280,6 +359,19 @@ Ejemplos del pasado:
 
 \end{frame}
 
+%%---------------------------------------------------------------
+
+\begin{frame}
+ \frametitle{Proyecto final}
+
+Este curso...
+
+\vspace{1cm}
+
+\begin{center}
+  \Huge Red social
+\end{center}
+\end{frame}
 
 
 %%---------------------------------------------------------------
