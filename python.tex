@@ -420,7 +420,8 @@ $ ./hola.py
 \frametitle{Ficheros}
 \begin{itemize}
   
-\item \verb|open(nombre_fichero: str, modo: str, encoding: str) -> TextIO | devuelve un objeto fichero
+\item \verb|open(fichero: str, modo: str, encoding: str) -> TextIO|
+devuelve un objeto fichero
 
 modo:
 \begin{itemize}
@@ -450,16 +451,18 @@ codificación (opcional): Por ejemplo, encoding='utf-8'
 \begin{footnotesize}
 \begin{verbatim}
 #!/usr/bin/python3
-fich=open('/tmp/prueba','w')
+from typing import TextIO
+
+fich: TextIO = open('/tmp/prueba','w')
 fich.write("lunes\n")
 fich.close()
 
-fich=open('/tmp/prueba','a')
+fich: TextIO = open('/tmp/prueba','a')
 fich.write("martes\n")
 fich.close()
 
-fich=open('/etc/hosts','r')
-maquinas=fich.readlines()
+fich: TextIO = open('/etc/hosts','r')
+maquinas: list = fich.readlines()
 fich.close()
 
 for maquina in maquinas:
@@ -484,8 +487,8 @@ def sum(sumando1: float, sumando2: float) -> float:
     return sumando1 + sumando2
 
 if __name__ == "__main__":
-    primero = int(raw_input("Please enter an integer/float: "))
-    segundo = int(raw_input("Please enter another integer/float: "))
+    primero: int = int(input("Please enter an integer/float: "))
+    segundo: int = int(input("Please enter another integer/float: "))
     print(sum(primero, segundo))
 
 \end{verbatim}
@@ -569,8 +572,8 @@ Las variable declaradas fuera de una función son globales
   \begin{footnotesize}
 \begin{verbatim}
 #!/usr/bin/python3
-numero = 5
-def f(parametro):
+numero: int = 5
+def f(parametro: int) -> int:
     return parametro + numero
 print(f(3))    # 8
 \end{verbatim}
@@ -585,8 +588,8 @@ Las variable declaradas dentro de una función son locales
   \begin{footnotesize}
 \begin{verbatim}
 #!/usr/bin/python3
-def f(parametro):
-    numero = 5
+def f(parametro: int) -> int:
+    numero: int = 5
     return parametro + numero
 print(f(3))
 print(numero)    # ERROR: numero es de ambito local
@@ -609,9 +612,9 @@ pero no modificar
   \begin{footnotesize}
 \begin{verbatim}
 #!/usr/bin/python3
-numero = 5
-def f(parametro):
-    numero = numero-1    #ERROR: no se puede modificar variable global
+numero: int = 5
+def f(parametro: int) -> int:
+    numero: int = numero-1  # ERROR: no se puede modificar variable global
     return paramentro + numero
     
 print(f(3))
@@ -629,10 +632,10 @@ A menos que se use la sentencia \verb|global|
   \begin{footnotesize}
 \begin{verbatim}
 #!/usr/bin/python3
-numero = 5
-def f(parametro):
-    global numero   #permite modificar una variable global
-    numero = numero-1   
+numero: int = 5
+def f(parametro: int) -> int:
+    global numero  # permite modificar una variable global
+    numero = numero-1 # Nota que no se puede anotar el tipo ahora   
     return parametro + numero
     
 print(f(3))    #7
@@ -656,14 +659,13 @@ print(numero)  #4
  %06 
 \begin{verbatim}
 #!/usr/bin/python3
-numero = 5
-def f(parametro):
-    numero = 4   # ahora numero es variable local
+numero: int = 5
+def f(parametro: int) -> int:
+    numero: int = 4   # ahora numero es variable local
     return parametro + numero
     
 print(f(3))   # 7
 print(numero) # 5
-
 \end{verbatim}
   \end{footnotesize}
 
@@ -730,7 +732,8 @@ Sí puede comprobarse la existencia con el operador \verb|in|.
 
 \begin{footnotesize}
 \begin{verbatim}
->>> tupla = ("a", "b", "mpilgrim", "z", "example") 
+>>> from typing import Tuple
+>>> tupla: Tuple[str] = ("a", "b", "mpilgrim", "z", "example") 
 >>> tupla[0]                                       
 'a'
 >>> 'a' in tupla
