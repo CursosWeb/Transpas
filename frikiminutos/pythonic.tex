@@ -1,0 +1,165 @@
+\section{Pythonic}
+
+\begin{frame}[fragile]
+\frametitle{Esto es Python... ¿de verdad?}
+
+\begin{verbatim}
+countriesWithA = []
+i = 0
+while i < len(countryList):
+   if "a" in countryList[i]:
+      countriesWithA.append(countryList[i])
+   i += 1
+\end{verbatim}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Python... ¿mejor?}
+
+\begin{verbatim}
+countriesWithA = []
+    
+for i in range(len(countryList)):
+   if "a" in countryList[i]:
+      countriesWithA.append(countryList[i])
+\end{verbatim}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Todavía más Pitónico}
+
+\begin{verbatim}
+countriesWithA = []
+
+for country in countryList:
+   if "a" in coutry:
+      countriesWithA.append(country)
+\end{verbatim}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Definitivamente Pitónico}
+
+\begin{verbatim}
+countriesWithA = [country for country in countryList 
+                  if "a" in country]
+\end{verbatim}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Pitónico Avanzado}
+
+\begin{verbatim}
+countriesWithA = (country for country in countryList
+                  if "a" in country)
+\end{verbatim}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{¿Qué es Pitónico?}
+
+\begin{center}
+{\Huge
+
+\emph{Pitónico}
+
+significa algo así como
+
+\vspace{.3cm}
+
+\emph{Python idiomático}.
+}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{¿Qué es Python idiomático?}
+
+{\Large
+
+A medida que el lenguaje Python evoluciona y la comunidad crece, han surgido muchas ideas sobre cómo usar Python {\bf de  manera correcta}. 
+
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Pitónico es cultural}
+
+{\Large
+
+El lenguaje Python fomenta activamente una gran cantidad de modismos para realizar una serie de tareas {\bf (``una única forma de hacerlo'')}. 
+
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Python idioms}
+
+Hay cientos de \emph{idioms} en Python
+
+Aquí, algunas de las \emph{familias} de \emph{idioms}:
+
+  \begin{columns}[T]
+    \begin{column}{.5\textwidth}
+     \begin{block}{}
+
+\begin{itemize}
+  \item \{List, Dictionary, Set\} comprehensions
+  \item Magic methods
+  \item Keyword arguments
+  \item Properties
+  \item Lambda functions
+  \item Context managers
+  \item Decorators
+\end{itemize}
+
+    \end{block}
+    \end{column}
+    \begin{column}{.5\textwidth}
+    \begin{block}{}
+
+
+\begin{itemize}
+  \item Estructuras definidas en \texttt{collections}
+  \item Static methods y classes
+  \item Class methods
+  \item Generators
+  \item Uso de métodos específicos
+  \item ...    
+  \item ...
+\end{itemize}
+
+    \end{block}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Resumiendo...}
+
+\begin{enumerate}
+  \item Hay una cultura tras el lenguaje de Python
+  \item El lenguaje de Python evoluciona siguiendo esta cultura
+  \item Sabes algo de Python, pero el que sabes es poco pitónico
+\end{enumerate}
+
+\end{frame}
+
+
