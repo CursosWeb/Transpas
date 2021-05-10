@@ -182,25 +182,6 @@ CSS 2.1 incluye una docena de tipos diferentes de selectores, que permiten selec
 
 \end{frame}
 
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Selector Universal}
-
-\begin{itemize}
-  \item No se utiliza habitualmente
-  \item Generalmente es equivalente para poner estilo a $<body>$
-  \item Se suele combinar con otros selectores y además, forma parte de algunos hacks muy utilizados
-\end{itemize}
-
-\begin{verbatim}
-* {
-  margin: 0;
-  padding: 0;
-}
-\end{verbatim}
-
-\end{frame}
 
 %%---------------------------------------------------------------
 
@@ -226,6 +207,72 @@ h2 { font-size: 1.5em; }
 h3 { font-size: 1.2em; }
 \end{verbatim}
 }
+
+\end{frame}
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Selector de clase más específico}
+
+\begin{itemize}
+  \item Combinando el selector de tipo y el selector de clase, se obtiene un selector mucho más específico.
+\end{itemize}
+
+{\footnotesize
+\begin{verbatim}
+p.destacado { color: red }
+[...]
+  <p class="destacado">Lorem ipsum dolor sit amet...</p>
+  <p>Nunc sed lacus et <a href="#" class="destacado">est
+adipiscing</a> accumsan...</p>
+  <p>Class aptent taciti <em class="destacado">sociosqu
+ad</em> litora...</p>
+\end{verbatim}
+}
+
+\end{frame}
+
+
+%%---------------------------------------------------------------
+%%---------------------------------------------------------------
+
+
+
+\subsection*{CSS: Consideraciones adicionales}
+
+\begin{frame}[fragile]
+\frametitle{CSS: Consideraciones adicionales}
+
+\begin{center}
+{\Huge CSS \\ Consideraciones Adicionales}
+
+{\footnotesize (transparencias de referencia)}
+
+\end{center}
+
+
+\end{frame}
+
+
+
+%%---------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Selector Universal}
+
+\begin{itemize}
+  \item No se utiliza habitualmente
+  \item Generalmente es equivalente para poner estilo a $<body>$
+  \item Se suele combinar con otros selectores y además, forma parte de algunos hacks muy utilizados
+\end{itemize}
+
+\begin{verbatim}
+* {
+  margin: 0;
+  padding: 0;
+}
+\end{verbatim}
 
 \end{frame}
 
@@ -296,28 +343,6 @@ ad</em> litora...</p>
 
 \end{frame}
 
-%%---------------------------------------------------------------
-
-\begin{frame}[fragile]
-\frametitle{Selector de clase más específico}
-
-\begin{itemize}
-  \item Combinando el selector de tipo y el selector de clase, se obtiene un selector mucho más específico.
-\end{itemize}
-
-{\footnotesize
-\begin{verbatim}
-p.destacado { color: red }
-[...]
-  <p class="destacado">Lorem ipsum dolor sit amet...</p>
-  <p>Nunc sed lacus et <a href="#" class="destacado">est
-adipiscing</a> accumsan...</p>
-  <p>Class aptent taciti <em class="destacado">sociosqu
-ad</em> litora...</p>
-\end{verbatim}
-}
-
-\end{frame}
 
 %%---------------------------------------------------------------
 
@@ -693,27 +718,6 @@ La notación {1, 4} de la definición anterior significa que la propiedad margin a
 
 \end{frame}
 
-
-
-%%---------------------------------------------------------------
-%%---------------------------------------------------------------
-
-
-
-\subsection*{CSS: Consideraciones adicionales}
-
-\begin{frame}[fragile]
-\frametitle{CSS: Consideraciones adicionales}
-
-\begin{center}
-{\Huge CSS \\ Consideraciones Adicionales}
-
-{\footnotesize (transparencias de referencia)}
-
-\end{center}
-
-
-\end{frame}
 
 
 %%---------------------------------------------------------------
