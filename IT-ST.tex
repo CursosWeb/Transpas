@@ -9,7 +9,6 @@
 % Los gráficos pueden suministrarse en PNG, JPG, TIF, PDF, MPS
 % Los EPS deben convertirse a PDF (usar epstopdf)
 %
-
 \documentclass{beamer}
 \usetheme{Warsaw}
 \beamertemplatenavigationsymbolsempty
@@ -22,12 +21,16 @@
 \usepackage{amssymb} % Simbolos matematicos
 \usepackage{multirow}
 
-\newcommand{\asignatura}{Servicios y Aplicaciones en Redes de Ordenadores}
-\newcommand{\grado}{Grado en Ingeniería de Sistemas de Telecomunicación (URJC)}
+\newcommand{\asignatura}{Servicios Telemáticas}
+\newcommand{\grado}{Grado en Ingeniería Telemática (URJC)}
 \newcommand{\curso}{2021-22}
-\newcommand{\horario}{M (9:00-11:00) y J (9:00-11:00)}
-\newcommand{\labo}{207}
+\newcommand{\horario}{L (11:00-13:00) y J (11:00-13:00)}
+\newcommand{\labo}{208}
 
+%\definecolor{libresoftgreen}{RGB}{162,190,43}
+%\definecolor{libresoftblue}{RGB}{0,98,143}
+
+%\setbeamercolor{titlelike}{bg=libresoftgreen}
 
 %% Metadatos del PDF.
 \hypersetup{
@@ -38,6 +41,7 @@
   pdfsubject={\asignatura~\curso},
 }
 %%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -70,6 +74,7 @@
 %\includeonly{sql}
 %\includeonly{django}
 
+
 \AtBeginSection[]
 {
 \begin{frame}<beamer>
@@ -80,22 +85,17 @@
 }
 
 
-% Si el titulo o el autor se quieren acortar para los pies de página
-% se pueden redefinir aquí:
-%\title{Titulo corto}
-%\author{Autores abreviado}
-
-
 \begin{document}
 
 \title[\asignatura~\curso]{\asignatura~(\curso)}
 \subtitle{\grado}
 \author[GSyC]{Jesús M. González Barahona, Gregorio Robles Martínez, \\
-  Francisco Servant}
+Francisco Servant}
 \institute[http://cursosweb.github.io/]{\url{http://cursosweb.github.io} \\
 GSyC, Universidad Rey Juan Carlos}
 
 %\date{Enero 2015}
+
 
 \frame{
 \maketitle
@@ -104,6 +104,13 @@ GSyC, Universidad Rey Juan Carlos}
 \includegraphics[width=6cm]{format/gsyc-urjc}
 \end{center}
 }
+
+
+% Si el titulo o el autor se quieren acortar para los pies de página
+% se pueden redefinir aquí:
+%\title{Titulo corto}
+%\author{Autores abreviado}
+
 
 \frame{
 \tableofcontents
