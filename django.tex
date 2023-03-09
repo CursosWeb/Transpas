@@ -32,6 +32,7 @@
 
 \end{frame}
 
+
 %%---------------------------------------------------------------
 \begin{frame}
 \frametitle{¿Qué es Django?}
@@ -47,8 +48,29 @@
 \end{itemize}
 
 \begin{flushright}
-\url{http://docs.djangoproject.com/en/dev}
+\url{http://docs.djangoproject.com/}
 \end{flushright}
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+\frametitle{Otras plataformas Python similares a Django}
+
+Flask: \url{https://flask.palletsprojects.com/}
+\begin{itemize}
+\item Aproximación minimalista, centrada en la simplicidad
+\item Con extensiones, funcionalidad similar a Django
+\end{itemize}
+
+\vspace{0.5cm}
+
+FastAPI: \url{https://fastapi.tiangolo.com/}:
+
+\begin{itemize}
+\item Especialmente orientada a APIs HTTP
+\item Se apoya en el tipado de Python
+\end{itemize}
+
 \end{frame}
 
 %%---------------------------------------------------------------
@@ -78,7 +100,7 @@
 \frametitle{Preparativos}
 
 \begin{itemize}
-\item Usaremos una versión de Django 4.0.3, instalándola vía pip3.
+\item Usaremos una versión de Django 4.1.7, instalándola vía pip3.
 \item Disponible para Linux, *BSD, Windows, MacOS, etc.
 \item Creación de entorno virtual:
 
@@ -95,22 +117,10 @@
 \item Instalación de Django en el entorno virtual:
 
 \begin{verbatim}
-% pip3 install django==4.0.3
+% pip3 install django==4.1.7
 \end{verbatim}
 
-%\item Descarga e instalación en \$DJANGO
-%\item Descompresión desde la \emph{shell}:
-%\begin{verbatim}
-%tar xvzf Django-1.7.5.tar.gz
-%\end{verbatim}
-%\begin{flushright}
-%{\small
-%\url{http://docs.djangoproject.com/en/dev/topics/install/}
-%\url{http://www.djangoproject.com/download/1.7.5/tarball/}
-%}
-%\end{flushright}
-
-\item Comprobación (debe responder 4.0.3):
+\item Comprobación (debe responder 4.1.7):
 \begin{verbatim}
 % django-admin --version
 \end{verbatim}
@@ -319,7 +329,7 @@ urlpatterns = [
 
 %% \end{frame}
 
----------------------------------------------------------------
+%---------------------------------------------------------------
 \begin{frame}[fragile]
 \frametitle{Declaración de URLs: La función path}
 
