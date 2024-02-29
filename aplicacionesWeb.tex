@@ -1,0 +1,136 @@
+% $Id$
+%
+
+%% --------------------------------------------------------------
+%% --------------------------------------------------------------
+
+\section{Aplicaciones Web}
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Servidores de aplicaciones y Aplicaciones web}	
+	\begin{itemize}		
+		\item Los servidores de aplicaciones son programas informáticos que proporcionan un entorno de ejecución para aplicaciones web. Estos servidores están diseñados para manejar las solicitudes de los clientes, ejecutar el código de la aplicación y devolver las respuestas adecuadas.
+		\item Las aplicaciones web suelen seguir una estructura general que incluye varios componentes clave que trabajan juntos para proporcionar funcionalidades y servicios a los usuarios a través de Internet. 		
+	\end{itemize}
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Servidores de aplicaciones}
+	
+	\begin{itemize}
+		\item \textbf{Entorno de ejecución:} Los servidores de aplicaciones proporcionan un entorno de ejecución donde las aplicaciones web pueden ser desplegadas y ejecutadas. Esto incluye un conjunto de recursos como memoria, CPU, bibliotecas y otros componentes necesarios para ejecutar las aplicaciones.				
+		\item \textbf{Gestión de solicitudes y respuestas:} Los servidores de aplicaciones manejan las solicitudes HTTP entrantes de los clientes y generan las respuestas correspondientes. Esto implica interpretar la solicitud del cliente, ejecutar el código de la aplicación y generar una respuesta HTTP para enviar de vuelta al cliente.
+		
+	\end{itemize}	
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Servidores de aplicaciones}
+	
+	\begin{itemize}
+		\item \textbf{Soporte para tecnologías específicas:} Los servidores de aplicaciones pueden proporcionar soporte integrado para tecnologías específicas, como Java EE, .NET, Node.js, Python, entre otras. Esto significa que pueden ejecutar código escrito en diferentes lenguajes de programación y utilizar diferentes frameworks y librerías.		
+		\item \textbf{Gestión de sesiones y estados:} Muchos servidores de aplicaciones ofrecen capacidades para gestionar sesiones de usuario y estados de aplicaciones. Esto permite mantener la coherencia y la persistencia de los datos a través de múltiples solicitudes del mismo usuario.		
+	\end{itemize}	
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Servidores de aplicaciones}
+	
+	\begin{itemize}
+		\item \textbf{Escalabilidad y tolerancia a fallos:} Los servidores de aplicaciones suelen ser escalables y pueden distribuir la carga de trabajo entre varios servidores para manejar grandes volúmenes de tráfico. Además, pueden proporcionar mecanismos para la tolerancia a fallos, como la recuperación automática y la redundancia de los servidores.
+		
+	\end{itemize}	
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Aplicaciones web Frontend (Cliente)}
+	
+	\begin{itemize}
+		\item \textbf{Interfaz de usuario (UI):} El frontend de una aplicación web incluye la interfaz de usuario con la que interactúan los usuarios. Esto puede ser una combinación de HTML, CSS y JavaScript que define la apariencia y el comportamiento de la aplicación en el navegador web del usuario.		
+		\item \textbf{Lógica del cliente:} También puede haber lógica del cliente escrita en JavaScript que se ejecuta en el navegador del usuario. Esta lógica se utiliza para manejar eventos de usuario, validar datos y realizar acciones interactivas sin necesidad de comunicarse con el servidor.		
+	\end{itemize}
+\end{frame}
+
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Aplicaciones web Backend (Servidor)}
+	
+	\begin{itemize}
+		\item \textbf{Servidor web:} El backend de una aplicación web consta de un servidor web que recibe y procesa las solicitudes HTTP de los clientes. Este servidor puede ser implementado utilizando diferentes tecnologías como Node.js, Python (con frameworks como Flask o Django), Ruby on Rails, Java (con frameworks como Spring Boot) o PHP, entre otros.
+		
+		\item \textbf{Lógica de la aplicación:} La lógica de la aplicación se encarga de manejar las solicitudes del cliente, procesar datos, realizar operaciones en la base de datos y generar respuestas adecuadas. Esta lógica puede estar dividida en diferentes componentes como controladores, servicios, modelos, entre otros, dependiendo de la arquitectura de la aplicación.
+		
+	\end{itemize}	
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Aplicaciones web Backend II (Servidor)}
+	
+	\begin{itemize}
+		\item \textbf{Base de datos:} La mayoría de las aplicaciones web interactúan con una base de datos para almacenar y recuperar datos. Esto puede ser cualquier tipo de base de datos como SQL (por ejemplo, MySQL, PostgreSQL) o NoSQL (por ejemplo, MongoDB, Firebase).
+		
+	\end{itemize}	
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Aplicaciones web Comunicación entre el frontend y el backend}
+	
+	\begin{itemize}
+		\item \textbf{API} \textbf{(Interfaz de programación de aplicaciones):} La comunicación entre el frontend y el backend se realiza a través de una API que define cómo interactuar con la aplicación y qué datos se pueden solicitar o enviar. Esto puede ser una API RESTful que utiliza solicitudes HTTP estándar (GET, POST, PUT, DELETE) para operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en recursos de la aplicación.
+		
+		\item \textbf{Formato de intercambio de datos:} Los datos intercambiados entre el frontend y el backend suelen estar en formato JSON (JavaScript Object Notation) o XML (eXtensible Markup Language) para facilitar el procesamiento y la interoperabilidad entre diferentes sistemas.
+		
+	\end{itemize}	
+\end{frame}
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Aplicaciones web Despliegue y hospedaje}
+	
+	\begin{itemize}
+		\item\textbf{ Servidores y entornos de ejecución:} Una aplicación web se despliega en servidores que están configurados para ejecutar el software necesario para su funcionamiento. Estos servidores pueden estar ubicados en la nube (por ejemplo, AWS, Azure, Google Cloud) o en infraestructuras locales.
+		
+		\item \textbf{Nombres de dominio y DNS:} Las aplicaciones web suelen tener un nombre de dominio asociado que permite a los usuarios acceder a ellas a través de Internet. Este nombre de dominio se asocia con una dirección IP mediante registros DNS (Sistema de Nombres de Dominio).
+		
+	\end{itemize}	
+\end{frame}
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Gestión del path en aplicaciones}
+	
+	\begin{itemize}
+		\item \textbf{Enrutamiento de solicitudes:} El path en una URL especifica la ubicación de un recurso dentro de la aplicación. Un servidor de aplicaciones debe ser capaz de interpretar el path de una solicitud entrante y enrutarla correctamente al recurso correspondiente. Por ejemplo, si un cliente solicita "/productos" en la URL, el servidor debe dirigir la solicitud al controlador o función encargada de manejar la lógica relacionada con los productos.
+		
+		\item \textbf{Organización de la aplicación:} Gestionar el path de manera adecuada permite organizar la aplicación de forma estructurada y coherente. Al utilizar una estructura de paths lógica y consistente, es más fácil para los desarrolladores y administradores de sistemas comprender y mantener la aplicación. Esto facilita la adición de nuevas funcionalidades, la depuración de errores y la realización de tareas de mantenimiento.
+		
+	\end{itemize}	
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Gestión del path en aplicaciones}
+	
+	\begin{itemize}
+		\item\textbf{ Seguridad:} Gestionar el path correctamente también es importante desde el punto de vista de la seguridad. Un servidor de aplicaciones puede implementar controles de acceso basados en el path para restringir el acceso a ciertos recursos o funcionalidades a usuarios autorizados. Por ejemplo, se pueden aplicar reglas de autorización basadas en el path para garantizar que solo los usuarios autenticados puedan acceder a ciertas partes de la aplicación.
+		
+	\end{itemize}	
+\end{frame}
+
+%%---------------------------------------------------------------
+\begin{frame}
+	\frametitle{Gestión del path en aplicaciones}
+	
+	\begin{itemize}
+		\item \textbf{SEO (Optimización para motores de búsqueda):} La estructura del path en una URL también puede afectar el SEO de una aplicación web. Los motores de búsqueda suelen dar preferencia a las URLs que son descriptivas y significativas. Por lo tanto, gestionar el path de manera que refleje la estructura y el contenido de la aplicación puede ayudar a mejorar su visibilidad en los resultados de búsqueda.
+		
+	\end{itemize}	
+\end{frame}
