@@ -20,7 +20,7 @@
 \item Forma de almacenar datos en el lado del cliente
 \item Dos versiones principales:
   \begin{itemize}
-  \item VersiÛn 0 (Netscape)
+  \item Versi√≥n 0 (Netscape)
   \item Version 1 (RFC 2109 / RFC 2965)
   \end{itemize}
 \end{itemize}
@@ -42,7 +42,7 @@
 \begin{itemize}
 \item Nombre de la cookie: statusmessages
 \item Valor: "deleted"
-\item Path: / (todo el sitio del que se recibiÛ)
+\item Path: / (todo el sitio del que se recibi√≥)
 \item Expira: 31-Dec-97 23:59:59 GMT
 \end{itemize}
 
@@ -70,19 +70,19 @@ RFC 2965 (version 1) tiene: ``Cookie'', ``Cookie2'' y ``Set-Cookie2''
 \item Nombre y valor (obligatorios)
   \begin{itemize}
   \item Uso normal: ``nombre=valor''
-  \item TambiÈn valor nulo: ``nombre=''
+  \item Tambi√©n valor nulo: ``nombre=''
 \end{itemize}
-\item Fecha de expiraciÛn
+\item Fecha de expiraci√≥n
   \begin{itemize}
   \item ``Expires=fecha''
-  \item Si no tiene, cookie no persistente (sÛlo en memoria)
+  \item Si no tiene, cookie no persistente (s√≥lo en memoria)
   \end{itemize}
-\item Path: camino para el que es v·lida
+\item Path: camino para el que es v√°lida
   \begin{itemize}
   \item ``Path=/camino''
-  \item Prefijo de caminos v·lidos
+  \item Prefijo de caminos v√°lidos
   \end{itemize}
-\item Domain: dominio para el que es v·lida
+\item Domain: dominio para el que es v√°lida
   \begin{itemize}
   \item El servidor ha de estar en el dominio indicado
   \item Si no se indica, servidor que sirve la cookie
@@ -102,9 +102,9 @@ RFC 2965 (version 1) tiene: ``Cookie'', ``Cookie2'' y ``Set-Cookie2''
 \begin{itemize}
 \item Lista de pares nombre - valor
 \item Cada par corresponde a un ``Set-Cookie''
-\item Se envÌan las cookies v·lidas para el dominio y el path de la peticiÛn HTTP
-\item Si no se especificÛ dominio en ``Set-Cookie'', el del servidor
-\item Si no se especificÛ camino en ``Set-Cookie'', todo
+\item Se env√≠an las cookies v√°lidas para el dominio y el path de la petici√≥n HTTP
+\item Si no se especific√≥ dominio en ``Set-Cookie'', el del servidor
+\item Si no se especific√≥ camino en ``Set-Cookie'', todo
 \end{itemize}
 
 \begin{verbatim}
@@ -115,11 +115,11 @@ Cookie: user=jgb; last=5; edited=False
 
 %%---------------------------------------------------------------
 \begin{frame}
-\frametitle{LÌmites para las cookies}
+\frametitle{L√≠mites para las cookies}
 
 \begin{itemize}
 \item Originalmente: 20 cookies del mismo dominio
-\item La mayorÌa de los navegadores: 30 o 50 cookies del mismo dominio
+\item La mayor√≠a de los navegadores: 30 o 50 cookies del mismo dominio
 \item Cada cookie: como mucho 4 Kbytes
 \end{itemize}
 
@@ -128,16 +128,16 @@ Cookie: user=jgb; last=5; edited=False
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{GestiÛn de sesiÛn en HTTP}
+\frametitle{Gesti√≥n de sesi√≥n en HTTP}
 
 \begin{itemize}
-\item Mediante cookies: normalmente, identificador de sesiÛn en la cookie
+\item Mediante cookies: normalmente, identificador de sesi√≥n en la cookie
 
 \begin{verbatim}
 Set-Cookie: session=ab34cd-34fd3a-ef2365
 \end{verbatim}
 
-\item Reescritura de urls: se aÒade identificador a la url
+\item Reescritura de urls: se a√±ade identificador a la url
 
 \begin{verbatim}
 http://sitio.com/path;session=ab34cd-34fd3a-ef2365
@@ -164,7 +164,7 @@ http://sitio.com/path;session=ab34cd-34fd3a-ef2365
 
 \begin{itemize}
 \item Persistent Client State HTTP Cookies \\
-  (especificaciÛn original de Netscape) \\
+  (especificaci√≥n original de Netscape) \\
   \url{http://curl.haxx.se/rfc/cookie_spec.html}
 \item RFC 2109: HTTP State Management Mechanism \\
   \url{http://tools.ietf.org/html/rfc2109}

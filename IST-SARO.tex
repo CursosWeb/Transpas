@@ -17,14 +17,14 @@
 \useoutertheme{infolines}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{format/libresoft-bg-soft.png}}
 \usepackage[spanish]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{graphics}
 \usepackage{amssymb} % Simbolos matematicos
 \usepackage{multirow}
 
 \newcommand{\asignatura}{Servicios y Aplicaciones en Redes de Ordenadores}
 \newcommand{\grado}{Grado en Ingeniería de Sistemas de Telecomunicación (URJC)}
-\newcommand{\curso}{2022-23}
+\newcommand{\curso}{2023-24}
 \newcommand{\horario}{M (9:00-11:00) y J (9:00-11:00)}
 \newcommand{\labo}{209}
 
@@ -32,7 +32,7 @@
 %% Metadatos del PDF.
 \hypersetup{
   pdftitle={\asignatura~\curso},
-  pdfauthor={Jesús M. González Barahona, Gregorio Robles, Iván Bernabé},
+  pdfauthor={Jesús M. González Barahona, Gregorio Robles, David Cortés Polo, Iván Bernabé},
   pdfcreator={GSyC, Universidad Rey Juan Carlos},
   pdfproducer=PDFLaTeX,
   pdfsubject={\asignatura~\curso},
@@ -44,7 +44,7 @@
 % include-only                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\includeonly{presentacion-saro-sat-st,cookies,rest,mvc,xml,css,ajax,python,django,bootstrap,aplicacionesWeb,final}
+\includeonly{presentacion-saro-sat-st,cookies,rest,mvc,xml,css,ajax,python,aplicacionesWeb,django,bootstrap,final}
 %\includeonly{presentacion-saro-sat-st,final}
 %\includeonly{cookies}
 %\includeonly{rest}
@@ -91,7 +91,7 @@
 \title[\asignatura~\curso]{\asignatura~(\curso)}
 \subtitle{\grado}
 \author[GSyC]{Jesús M. González Barahona, Gregorio Robles Martínez, \\
-  Iván Bernabé Sánchez}
+  David Cortés Polo,  Iván Bernabé Sánchez}
 \institute[http://cursosweb.github.io/]{\url{http://cursosweb.github.io} \\
 GSyC, Universidad Rey Juan Carlos}
 
@@ -123,10 +123,15 @@ GSyC, Universidad Rey Juan Carlos}
 
 \include{python}
 \include{sql}
+\include{aplicacionesWeb}
 \include{django}
 \include{css}
 \include{bootstrap}
-\include{aplicacionesWeb}
 \include{final}
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

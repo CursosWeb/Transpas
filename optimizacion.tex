@@ -1,7 +1,7 @@
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
 
-\section{OptimizaciÛn}
+\section{Optimizaci√≥n}
 
 %%---------------------------------------------------------------
 %
@@ -37,14 +37,14 @@
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{øPor quÈ optimizar?}
+\frametitle{¬øPor qu√© optimizar?}
 
 \begin{itemize}
-  \item Se ha realizado mucho trabajo de optimizaciÛn en las m·quinas de Javascript de los navegadores en los ˙ltimos aÒos.
-  \item Sin embargo, JavaScript requiere que el desarrollador realiza optimizaciones que en otros lenguajes harÌa el compilador.
+  \item Se ha realizado mucho trabajo de optimizaci√≥n en las m√°quinas de Javascript de los navegadores en los √∫ltimos a√±os.
+  \item Sin embargo, JavaScript requiere que el desarrollador realiza optimizaciones que en otros lenguajes har√≠a el compilador.
   \item Cada vez que se encuentra una etiqueta $<script>$, el navegador se para, descarga
-el cÛdigo JavaScript (si fuera necesario), y se ejecuta antes de procesar el resto
-de la p·gina. 
+el c√≥digo JavaScript (si fuera necesario), y se ejecuta antes de procesar el resto
+de la p√°gina. 
 \end{itemize}
 
 \end{frame}
@@ -53,18 +53,18 @@ de la p·gina.
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Carga y ejecuciÛn de JavaScript}
+\frametitle{Carga y ejecuci√≥n de JavaScript}
 
 \begin{itemize}
-  \item Pon todos los $<script>$ al final de la p·gina, antes del $</body>$. De esta manera, hay contenido que se muestra que no tiene que esperar.
-  \item Agrupa los scripts. Cuantos menos $<script>$s tiene una p·gina, antes cargar· y se volver· interactiva. 
-  \item Utiliza tÈcnicas para descargar JavaScript de manera no bloqueante:
+  \item Pon todos los $<script>$ al final de la p√°gina, antes del $</body>$. De esta manera, hay contenido que se muestra que no tiene que esperar.
+  \item Agrupa los scripts. Cuantos menos $<script>$s tiene una p√°gina, antes cargar√° y se volver√° interactiva. 
+  \item Utiliza t√©cnicas para descargar JavaScript de manera no bloqueante:
   \begin{itemize}
-    \item Utilizando el atributo \texttt{defer} de $<script>$ (sÛlo IE y Firefox 3.5+)
-    \item Crea elementos $<script>$ din·micos
-    \item Descarga cÛdigo JavaScript utilizando AJAX y luego inyecta el cÛdigo en la p·gina.
+    \item Utilizando el atributo \texttt{defer} de $<script>$ (s√≥lo IE y Firefox 3.5+)
+    \item Crea elementos $<script>$ din√°micos
+    \item Descarga c√≥digo JavaScript utilizando AJAX y luego inyecta el c√≥digo en la p√°gina.
   \end{itemize}
-  \item Maximiza el uso de la cachÈ (y CDN) para scripts en JavaScript.
+  \item Maximiza el uso de la cach√© (y CDN) para scripts en JavaScript.
 \end{itemize}
 
 
@@ -76,8 +76,8 @@ de la p·gina.
 \frametitle{Trabajando con el DOM}
 
 \begin{itemize}
-  \item El acceso al DOM es caro. Minimiza el acceso al DOM. Intenta trabajar al m·ximo en JavaScript.
-  \item Realiza todos los cambios en una ˙nica vez. TambiÈn (o especialmente) con los cambios de estilos.
+  \item El acceso al DOM es caro. Minimiza el acceso al DOM. Intenta trabajar al m√°ximo en JavaScript.
+  \item Realiza todos los cambios en una √∫nica vez. Tambi√©n (o especialmente) con los cambios de estilos.
   \item Para accesos repetidos al DOM, utiliza variables locales.
   \item Utiliza \texttt{document.getElementById} o el identificador en JQuery
 \end{itemize}
@@ -91,9 +91,9 @@ de la p·gina.
 \frametitle{Algoritmos y control de flujo}
 
 \begin{itemize}
-  \item Los bucles \texttt{for}, \texttt{while} y \texttt{do-while} tienen caracterÌsticas de potencia similares y ninguno es significativamente m·s r·pido que los dem·s.
-  \item Se han de evitar los bucles \texttt{for-in}, a menos de que desconozcamos el n˙mero de propiedades de un objeto.
-  \item En general, \texttt{switch} es m·s eficiente que \texttt{if-else}, aunque no siempre es la mejor soluciÛn.
+  \item Los bucles \texttt{for}, \texttt{while} y \texttt{do-while} tienen caracter√≠sticas de potencia similares y ninguno es significativamente m√°s r√°pido que los dem√°s.
+  \item Se han de evitar los bucles \texttt{for-in}, a menos de que desconozcamos el n√∫mero de propiedades de un objeto.
+  \item En general, \texttt{switch} es m√°s eficiente que \texttt{if-else}, aunque no siempre es la mejor soluci√≥n.
 \end{itemize}
 
 \end{frame}
@@ -107,9 +107,9 @@ de la p·gina.
 \frametitle{Manteniendo la responsividad del interfaz}
 
 \begin{itemize}
-  \item Ning˙n cÛdigo de JavaScript es tan importante como para afectar negativamente la experiencia de usuario
-  \item Ning˙n script de JavaScript deberÌa llevar m·s de 20 segundos.
-  \item Utiliza \texttt{Web workers} para ejecutar cÛdigo JavaScript fuera el hilo de interfaz de usuario, evitando asÌ su bloqueo
+  \item Ning√∫n c√≥digo de JavaScript es tan importante como para afectar negativamente la experiencia de usuario
+  \item Ning√∫n script de JavaScript deber√≠a llevar m√°s de 20 segundos.
+  \item Utiliza \texttt{Web workers} para ejecutar c√≥digo JavaScript fuera el hilo de interfaz de usuario, evitando as√≠ su bloqueo
 \end{itemize}
 
 \end{frame}
@@ -121,7 +121,7 @@ de la p·gina.
 \frametitle{Herramientas para optimizar}
 
 \begin{itemize}
-  \item Firebug Profiler: recoge informaciÛn de cada funciÛn de JavaScript y de cu·nto tiempo ha llevado su ejecuciÛn
+  \item Firebug Profiler: recoge informaci√≥n de cada funci√≥n de JavaScript y de cu√°nto tiempo ha llevado su ejecuci√≥n
   \item JSLint: \url{http://www.jslint.com/lint.html}
   \item Closure Tools: \url{https://developers.google.com/closure/compiler/}
   \item YUI Compressor: \url{http://yui.github.io/yuicompressor/}

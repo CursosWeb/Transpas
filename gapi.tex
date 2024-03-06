@@ -12,7 +12,7 @@
   \item Google ofrece una API para acceder a muchos servicios
   \item Algunas APIs son de pago
   \item Otras tienen limitaciones de uso gratuito
-  \item Hay peticiones que requieren autenticaciÛn y autorizaciÛn
+  \item Hay peticiones que requieren autenticaci√≥n y autorizaci√≥n
 \end{itemize}
 
 \end{frame}
@@ -25,10 +25,10 @@
 Google ofrece un servicio para explorar sus APIs, el API Explorer:
 
 \begin{itemize}
-  \item Permite conocer los mÈtodos de las APIs
+  \item Permite conocer los m√©todos de las APIs
   \item Permite probarlos mediante un formulario web
-  \item A veces requieren autorizaciÛn/autenticaciÛn
-  \item Incluyen un enlace a la documentaciÛn completa
+  \item A veces requieren autorizaci√≥n/autenticaci√≥n
+  \item Incluyen un enlace a la documentaci√≥n completa
 \end{itemize}
 
 APIs Explorer: https://developers.google.com/apis-explorer/\#p/
@@ -58,8 +58,8 @@ Utilicemos el API Explorer para el servicio de acortadores de URLs de Google.
 
 \begin{itemize}
   \item En el campo \emph{shortUrl}, introduce \emph{http://goo.gl/JCHYE}
-  \item Pulsa el botÛn Execute
-  \item Observa la peticiÛn: es una peticiÛn HTTP REST
+  \item Pulsa el bot√≥n Execute
+  \item Observa la petici√≥n: es una petici√≥n HTTP REST
   \item Observa la respuesta: es en formato JSON
 \end{itemize}
 
@@ -75,8 +75,8 @@ Permite:
 
 \begin{itemize}
   \item Activar APIs
-  \item Obtener la llave (\emph{project key}) que se envÌa al utilizar la API, gestionar autenticaciÛn y autorizaciÛn
-  \item Obtener informaciÛn de tr·fico (y ver las cuotas de uso)
+  \item Obtener la llave (\emph{project key}) que se env√≠a al utilizar la API, gestionar autenticaci√≥n y autorizaci√≥n
+  \item Obtener informaci√≥n de tr√°fico (y ver las cuotas de uso)
   \item Gestionar cobros
   \item Gestionar miembros del equipo
 \end{itemize}
@@ -93,13 +93,13 @@ Crea un proyecto para utilizar la Google API Console.
 
 \begin{itemize}
   \item Selecciona los servicios de Google+ API y URL Shortener API
-  \item ObtÈn tu \emph{project key}
-  \item AÒade como \emph{referer} http://watson.gsyc.es/
-  \item Incluye informaciÛn de autorizaciÛn vÌa OAuth2.0, tambiÈn para http://watson.gsyc.es/
-  \item …chale un ojo a los men˙s de \emph{Reports} y \emph{Quotas}
+  \item Obt√©n tu \emph{project key}
+  \item A√±ade como \emph{referer} http://watson.gsyc.es/
+  \item Incluye informaci√≥n de autorizaci√≥n v√≠a OAuth2.0, tambi√©n para http://watson.gsyc.es/
+  \item √âchale un ojo a los men√∫s de \emph{Reports} y \emph{Quotas}
 \end{itemize}
 
-Nota: Para realizar este ejercicio (y los siguientes), necesitar·s tener
+Nota: Para realizar este ejercicio (y los siguientes), necesitar√°s tener
 una cuenta en Google.
 
 \end{frame}
@@ -141,7 +141,7 @@ de datos JSON:
   \item Moments
 \end{itemize}
 
-M·s informaciÛn: https://developers.google.com/+/api/latest/
+M√°s informaci√≥n: https://developers.google.com/+/api/latest/
 
 \end{frame}
 
@@ -151,7 +151,7 @@ M·s informaciÛn: https://developers.google.com/+/api/latest/
 \begin{frame}
 \frametitle{Recursos}
 
-Cada recurso cuenta con una serie de mÈtodos. Por ejempo, el recurso
+Cada recurso cuenta con una serie de m√©todos. Por ejempo, el recurso
 People tiene:
 
 \begin{itemize}
@@ -161,7 +161,7 @@ People tiene:
   \item list
 \end{itemize}
 
-M·s informaciÛn: https://developers.google.com/+/api/latest/people\#resource
+M√°s informaci√≥n: https://developers.google.com/+/api/latest/people\#resource
 
 \end{frame}
 
@@ -175,8 +175,8 @@ M·s informaciÛn: https://developers.google.com/+/api/latest/people\#resource
   \item Se carga la biblioteca JavaScript
   \item Se indican los credenciales de acceso
   \item Se carga la API del servicio con el que queremos trabajar
-  \item Se inicializa un objeto que encampsula la peticiÛn
-  \item Se ejecuta el objeto peticiÛn
+  \item Se inicializa un objeto que encampsula la petici√≥n
+  \item Se ejecuta el objeto petici√≥n
   \item Se procesa el resultado
 \end{enumerate}
 
@@ -197,7 +197,7 @@ M·s informaciÛn: https://developers.google.com/+/api/latest/people\#resource
 \end{footnotesize}
 
 \begin{enumerate}
-  \item Al producirse el evento, llama a la funciÛn \emph{callback} que se indica
+  \item Al producirse el evento, llama a la funci√≥n \emph{callback} que se indica
 \end{enumerate}
 
 
@@ -218,7 +218,7 @@ Hay dos tipos de acceso:
   \end{itemize}
   \item Autorizada:
   \begin{itemize}
-    \item Llamadas que leen o escriben datos privados o de la propia aplicaciÛn
+    \item Llamadas que leen o escriben datos privados o de la propia aplicaci√≥n
     \item Hace falta un credencial OAuth 2.0
   \end{itemize}
 \end{enumerate}
@@ -254,8 +254,8 @@ gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true},
 \end{verbatim}
 \end{footnotesize}
 
-\texttt{callback\_function} es la funciÛn que se ejecutar· una vez se haya obtenido
-la autorizaciÛn.
+\texttt{callback\_function} es la funci√≥n que se ejecutar√° una vez se haya obtenido
+la autorizaci√≥n.
 
 \end{frame}
 
@@ -272,11 +272,11 @@ donde:
 
 \begin{itemize}
   \item API\_NAME es el nombre de la API
-  \item API\_VERSION es la versiÛn de la API
-  \item CALLBACK es una funciÛn opcional a ejecutar cuando se haya cargado
+  \item API\_VERSION es la versi√≥n de la API
+  \item CALLBACK es una funci√≥n opcional a ejecutar cuando se haya cargado
 \end{itemize}
 
-Para cargar la versiÛn 1 de la API de Google+:
+Para cargar la versi√≥n 1 de la API de Google+:
 
 \begin{verbatim}
 gapi.client.load('plus', 'v1', function() {
@@ -290,7 +290,7 @@ gapi.client.load('plus', 'v1', function() {
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{4. Objeto que encampsula peticiÛn}
+\frametitle{4. Objeto que encampsula petici√≥n}
 
 \begin{verbatim}
 var ApiRequest = gapi.client.METHOD_NAME(PARAMETERS_OBJECT);
@@ -299,12 +299,12 @@ var ApiRequest = gapi.client.METHOD_NAME(PARAMETERS_OBJECT);
 donde:
 
 \begin{itemize}
-  \item METHOD\_NAME es un mÈtodo de la API del servicio
-  \item PARAMETERS\_OBJECT es un objeto con par·metros que depender·n 
-del mÈtodo utilizado
+  \item METHOD\_NAME es un m√©todo de la API del servicio
+  \item PARAMETERS\_OBJECT es un objeto con par√°metros que depender√°n 
+del m√©todo utilizado
 \end{itemize}
 
-Por ejemplo, la siguiente llamada busca actividades cuyo tÌtulo sea Google+:
+Por ejemplo, la siguiente llamada busca actividades cuyo t√≠tulo sea Google+:
 
 \begin{verbatim}
 var request = gapi.client.plus.activities.search(
@@ -319,7 +319,7 @@ var request = gapi.client.plus.activities.search(
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{5. EjecuciÛn del objeto peticiÛn}
+\frametitle{5. Ejecuci√≥n del objeto petici√≥n}
 
 \begin{verbatim}
 ApiRequest.execute(callback);
@@ -328,8 +328,8 @@ ApiRequest.execute(callback);
 donde:
 
 \begin{itemize}
-  \item ApiRequest es un objeto que encapsula la peticiÛn (ver paso 4.)
-  \item callback es la funciÛn que tratar· la respuesta 
+  \item ApiRequest es un objeto que encapsula la petici√≥n (ver paso 4.)
+  \item callback es la funci√≥n que tratar√° la respuesta 
 \end{itemize}
 
 Por ejemplo:
@@ -347,14 +347,14 @@ request.execute(function(resp) { console.log(resp); });
 \frametitle{6. Procesar el resultado}
 
 \begin{itemize}
-  \item La API devuelve dos objetos a la funciÛn callback:
+  \item La API devuelve dos objetos a la funci√≥n callback:
   \begin{enumerate}
     \item jsonResp: un objeto JSON
     \item rawResp: un string con la respuesta HTTP
   \end{enumerate}
 \end{itemize}
 
-Cuando la respuesta no pueda ofrecerse como JSON, el valor de jsonResp ser· \emph{false}; pero rawResp seguir· ofreciendo la respuesta HTTP completa como string.
+Cuando la respuesta no pueda ofrecerse como JSON, el valor de jsonResp ser√° \emph{false}; pero rawResp seguir√° ofreciendo la respuesta HTTP completa como string.
 
 
 \end{frame}

@@ -2,12 +2,12 @@
 %
 
 
-\section{IntroducciÛn a XML}
+\section{Introducci√≥n a XML}
 
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{IntroducciÛn}
+\frametitle{Introducci√≥n}
 
 
 \begin{itemize}
@@ -16,7 +16,7 @@
 \item Es un dialecto simplificado de SGML (Standarized General Markup
   Language)
 \item Pretende ser razonablemente simple
-\item Se est· usando en varios nuevos est·ndares: MathML, SMIL,
+\item Se est√° usando en varios nuevos est√°ndares: MathML, SMIL,
   (Synchronized Multimedia Integration Language), DocBook/XML, 
   XHTML, RSS, etc.
 \end{itemize}
@@ -26,14 +26,14 @@
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{CaracterÌsticas}
+\frametitle{Caracter√≠sticas}
 
 \begin{itemize}
-\item Lenguaje de marcado: etiquetas de componentes seg˙n su sem·ntica
+\item Lenguaje de marcado: etiquetas de componentes seg√∫n su sem√°ntica
 \item Puede especificarse que un documento ha de estar organizado de
   cierta forma
-\item Estructura jer·rquica
-\item Sintaxis b·sica:
+\item Estructura jer√°rquica
+\item Sintaxis b√°sica:
   \begin{itemize}
   \item Marcas: 
 \begin{verbatim}
@@ -67,7 +67,7 @@ Este es el documento
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{Ejemplo m·s complejo}
+\frametitle{Ejemplo m√°s complejo}
 
 Estructura muy simplificada de DocBook:
 
@@ -92,34 +92,34 @@ Estructura muy simplificada de DocBook:
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{DefiniciÛn y validaciÛn}
+\frametitle{Definici√≥n y validaci√≥n}
 
 \begin{itemize}
-\item XML ofrece la posibilidad de definir lenguajes (tambiÈn llamados vocabularios) de etiquetas
-\item La definiciÛn de un lenguaje XML especifica:
+\item XML ofrece la posibilidad de definir lenguajes (tambi√©n llamados vocabularios) de etiquetas
+\item La definici√≥n de un lenguaje XML especifica:
   \begin{itemize}
   \item Elementos del lenguaje
   \item Anidamiento de los elementos
   \item Atributos para cada elemento
   \item Atributos por defecto, atributos obligatorios
   \end{itemize}
-\item El objetivo es poder validar que un documento XML tiene la informaciÛn que se espera y con la estructura correcta.
+\item El objetivo es poder validar que un documento XML tiene la informaci√≥n que se espera y con la estructura correcta.
 \end{itemize}
 
 \end{frame}
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{DefiniciÛn y validaciÛn}
+\frametitle{Definici√≥n y validaci√≥n}
 
 \begin{itemize}
 \item Sistemas de definir lenguajes XML
   \begin{itemize}
-  \item DTD (Document Type Definition): Est·ndar cl·sico
-  \item XML Schema: Nuevo est·ndar. Muy completo y complejo
-  \item RelaxNG: Alternativa al nuevo est·ndar. M·s sencillo
+  \item DTD (Document Type Definition): Est√°ndar cl√°sico
+  \item XML Schema: Nuevo est√°ndar. Muy completo y complejo
+  \item RelaxNG: Alternativa al nuevo est√°ndar. M√°s sencillo
   \end{itemize}
-\item Cada documento XML debe tener una referencia a su definiciÛn al principio del fichero (si tiene una)
+\item Cada documento XML debe tener una referencia a su definici√≥n al principio del fichero (si tiene una)
 \end{itemize}
 
 \end{frame}
@@ -152,7 +152,7 @@ LaEspiral Document:
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{EspecificaciÛn (ejemplo)}
+\frametitle{Especificaci√≥n (ejemplo)}
 
 \begin{verbatim}
 <?xml version="1.0" encoding="ISO-8859-1" ?>
@@ -183,17 +183,17 @@ Tipos de bibliotecas disponibles:
 \item DOM
   \begin{itemize}
   \item Document Object Model
-  \item Lee todo el documento, y permite recorrer el ·rbol de
+  \item Lee todo el documento, y permite recorrer el √°rbol de
     elementos
   \item Permite modificar el documento XML
   \end{itemize}
 \item SAX
   \begin{itemize}
   \item Standard API for XML
-  \item Procesa el documento seg˙n est· disponible
-  \item Es my r·pido y requiere menos memoria, pero es sÛlo para lectura
+  \item Procesa el documento seg√∫n est√° disponible
+  \item Es my r√°pido y requiere menos memoria, pero es s√≥lo para lectura
   \end{itemize}
-\item Otras: variantes de DOM y SAX m·s sencillas pero no est·ndar
+\item Otras: variantes de DOM y SAX m√°s sencillas pero no est√°ndar
 \end{itemize}
 
 \end{frame}
@@ -201,15 +201,15 @@ Tipos de bibliotecas disponibles:
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Usos tÌpicos de XML en aplicaciones web}
+\frametitle{Usos t√≠picos de XML en aplicaciones web}
 
-GestiÛn de interfaz de usuario en navegador:
+Gesti√≥n de interfaz de usuario en navegador:
 
 \begin{itemize}
-\item ManipulaciÛn de ·rbol DOM de la p·gina HTML
+\item Manipulaci√≥n de √°rbol DOM de la p√°gina HTML
 \item Realizada normalmente mediante JavaScript
-\item Interfaces de usuario mucho m·s ricas
-\item Normalmente: combinaciÛn con cÛdigo de aplicaciÛn web
+\item Interfaces de usuario mucho m√°s ricas
+\item Normalmente: combinaci√≥n con c√≥digo de aplicaci√≥n web
 \end{itemize}
 
 Intercambio de datos entre aplicaciones web:
@@ -219,7 +219,7 @@ Intercambio de datos entre aplicaciones web:
   (ej: documentos en Docbook servidos en HTML, ePub, etc.)
 \item Canales (feeds) de una web
 \item Interfaz para bases de datos (XPath, etc.)
-\item Web sem·ntica (RDF, RDFa)
+\item Web sem√°ntica (RDF, RDFa)
 \end{itemize}
 \end{frame}
 
@@ -231,7 +231,7 @@ Intercambio de datos entre aplicaciones web:
 \begin{itemize}
 \item node.parentNode: nodo padre
 \item node.childNodes[1]: segundo nodo hijo
-\item node.firstChild, x.lastChild: primer, ˙ltimo nodo hijo
+\item node.firstChild, x.lastChild: primer, √∫ltimo nodo hijo
 \item document.getElementsByTagName(tag): \\
   vector con todos los elementos con etiqueta tag \\
   $<tag>XXX</tag>$
@@ -256,7 +256,7 @@ Intercambio de datos entre aplicaciones web:
 \item document.createTextNode \\
   crear nodo con texto
 \item node.appendChild(newnode) \\
-  aÒade newnode como hijo de node
+  a√±ade newnode como hijo de node
 \item node.removeChild(remnode) \\
   elimina hijo remnode de node
 \end{itemize}
@@ -328,7 +328,7 @@ Intercambio de datos entre aplicaciones web:
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{PreparaciÛn de documentos}
+\frametitle{Preparaci√≥n de documentos}
 
 \begin{itemize}
 \item Los documentos se escriben en un lenguaje XML (por ejemplo 
@@ -337,10 +337,10 @@ Intercambio de datos entre aplicaciones web:
   pueden obtenerse diversos formatos
 \item Ventajas
   \begin{itemize}
-  \item Ayuda en la estructuraciÛn del texto
-  \item Simplifica el tratamiento autom·tico
-  \item Simplifica la validaciÛn
-  \item Se separa el contenido de la presentaciÛn
+  \item Ayuda en la estructuraci√≥n del texto
+  \item Simplifica el tratamiento autom√°tico
+  \item Simplifica la validaci√≥n
+  \item Se separa el contenido de la presentaci√≥n
   \end{itemize}
 \end{itemize}
 
@@ -376,15 +376,15 @@ Intercambio de datos entre aplicaciones web:
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
 <channel>
-  <title>MenÈame: publicadas</title>
+  <title>Men√©ame: publicadas</title>
 	
   <link>http://meneame.net</link>
   <image>
-    <title>MenÈame: publicadas</title>
+    <title>Men√©ame: publicadas</title>
     <link>http://meneame.net</link>
     <url>http://meneame.net/img/mnm/eli-rss.png</url>
   </image>
-  <description>Sitio colaborativo de publicaciÛn y comunicaciÛn entre 
+  <description>Sitio colaborativo de publicaci√≥n y comunicaci√≥n entre 
    blogs</description>
 \end{verbatim}
 
@@ -398,7 +398,7 @@ Intercambio de datos entre aplicaciones web:
 \begin{verbatim}
   <pubDate>Sat, 22 Nov 2008 13:45:02 +0000</pubDate>
   <item>
-    <title>øQuÈ pasa cuando un familiar te pide que le montes un 
+    <title>¬øQu√© pasa cuando un familiar te pide que le montes un 
       PC?</title>
     <link>http://feedproxy.google.com/...-montes-pc</link>
     <pubDate>Sat, 22 Nov 2008 12:55:03 +0000</pubDate>
@@ -418,15 +418,15 @@ Intercambio de datos entre aplicaciones web:
 \frametitle{Atom}
 
 \begin{itemize}
-\item Creado como evoluciÛn de RSS 2.0
+\item Creado como evoluci√≥n de RSS 2.0
 \item Mejoras que introduce:
   \begin{itemize}
-  \item IdentificaciÛn del tipo de contenido de los elementos summary y content
+  \item Identificaci√≥n del tipo de contenido de los elementos summary y content
   \item Incorpora XML namespaces para permitir extender Atom con otros vocabularios XML
   \end{itemize}
-\item Mucho m·s apropiado para su interpretaciÛn por parte de programas:
+\item Mucho m√°s apropiado para su interpretaci√≥n por parte de programas:
   \begin{itemize}
-  \item Esto est· provocando su uso habitual en servicios web RESTful
+  \item Esto est√° provocando su uso habitual en servicios web RESTful
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -494,19 +494,19 @@ Intercambio de datos entre aplicaciones web:
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{Web sem·ntica: RDF}
+\frametitle{Web sem√°ntica: RDF}
 
 \begin{itemize}
 \item RDF: Resource Description Framework
   \begin{itemize}
-  \item Mecanismo uniforme para especificar la sem·ntica de un recurso
-    web, y su relaciÛn con otros.
+  \item Mecanismo uniforme para especificar la sem√°ntica de un recurso
+    web, y su relaci√≥n con otros.
   \item Cada documento RDF es una serie de tripletes.
   \end{itemize}
 \item Modelo de metadatos basado en declaraciones sobre recursos
-\item Sujeto (recurso), predicado (relaciÛn o aserciÛn entre sujeto y
+\item Sujeto (recurso), predicado (relaci√≥n o aserci√≥n entre sujeto y
   objeto) y objeto (o valor)
-\item Una colecciÛn de declaraciones RDF constituyen un grafo
+\item Una colecci√≥n de declaraciones RDF constituyen un grafo
   orientado y etiquetado
 \item Es habitual que el recurso sea un URI, el objeto una cadena
   Unicode, y el predicado un URI
@@ -517,12 +517,12 @@ Intercambio de datos entre aplicaciones web:
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Otras tecnologÌas de la familia XML}
+\frametitle{Otras tecnolog√≠as de la familia XML}
 
 \begin{itemize}
 \item XLink: enlaces entre documentos XML
-\item XSLT: conversiÛn autom·tica de XML a otros formatos
-\item XPath: localizaciÛn dentro de un documento (``query'' sobre XML)
+\item XSLT: conversi√≥n autom√°tica de XML a otros formatos
+\item XPath: localizaci√≥n dentro de un documento (``query'' sobre XML)
 
 \end{itemize}
 \end{frame}
@@ -533,7 +533,7 @@ Intercambio de datos entre aplicaciones web:
 \frametitle{XML Namespaces}
 
 \begin{itemize}
-\item Permiten agrupar varios vocabularios XML en un ˙nico documento
+\item Permiten agrupar varios vocabularios XML en un √∫nico documento
 \item Resuelven el problema de colisiones entre etiquetas con el mismo nombre
 \end{itemize}
 
@@ -544,11 +544,11 @@ Intercambio de datos entre aplicaciones web:
 \begin{frame}
 \frametitle{Ejemplo: Problema}
 
-Introducir en el canal de una web informaciÛn geogr·fica
+Introducir en el canal de una web informaci√≥n geogr√°fica
 \begin{itemize}
-\item Existen dos lenguajes XML distintos para cada informaciÛn:
+\item Existen dos lenguajes XML distintos para cada informaci√≥n:
   \begin{itemize}
-  \item RSS o Atom: Permiten dar informaciÛn del canal y sus items
+  \item RSS o Atom: Permiten dar informaci√≥n del canal y sus items
   \item geoRSS: Permite especificar longitud y latitud
   \end{itemize}
 \end{itemize}
@@ -558,15 +558,15 @@ Introducir en el canal de una web informaciÛn geogr·fica
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{Ejemplo: SoluciÛn}
+\frametitle{Ejemplo: Soluci√≥n}
 
 \begin{verbatim}
 <rss xmlns:georss="http://www.georss.org/georss" 
      version="2.0">
 <channel>
   <item>
-    <title>En M·laga colocar publicidad en los parabrisas de
-     los coches se multar· con hasta 750 euros</title>
+    <title>En M√°laga colocar publicidad en los parabrisas de
+     los coches se multar√° con hasta 750 euros</title>
      <georss:point>36.7196745 -4.4200359</georss:point>
      ...
 \end{verbatim}
@@ -576,14 +576,14 @@ Introducir en el canal de una web informaciÛn geogr·fica
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Uso de Namespaces en la pr·ctica}
+\frametitle{Uso de Namespaces en la pr√°ctica}
 
 \begin{itemize}
-\item El parser empleado debe soportar namespaces: la mayorÌa lo hacen ya
-\item Problema: el mecanismo de validaciÛn original de XML, los DTDs, no 
-  proporciona ninguna soluciÛn para validar documentos XML con namespaces
+\item El parser empleado debe soportar namespaces: la mayor√≠a lo hacen ya
+\item Problema: el mecanismo de validaci√≥n original de XML, los DTDs, no 
+  proporciona ninguna soluci√≥n para validar documentos XML con namespaces
   \begin{itemize}
-  \item SoluciÛn: usar XML Schema o RelaxNG
+  \item Soluci√≥n: usar XML Schema o RelaxNG
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -599,7 +599,7 @@ Introducir en el canal de una web informaciÛn geogr·fica
 \item Definido en RFC 4627
 \item Internet media type: application/json.
 \item Permite representar estructuras de datos
-\item EspecÌficamente pensado para aplicaciones AJAX
+\item Espec√≠ficamente pensado para aplicaciones AJAX
 \item Es un subconjunto de JavaScript (y de Python)
 \end{itemize}
 \end{frame}
@@ -631,13 +631,13 @@ Introducir en el canal de una web informaciÛn geogr·fica
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Uso en la pr·ctica de JSON}
+\frametitle{Uso en la pr√°ctica de JSON}
 
-Existen intÈrpretes para casi cualquier lenguaje:
+Existen int√©rpretes para casi cualquier lenguaje:
 \begin{itemize}
-\item JavaScript: La funciÛn eval() es capaz de intÈrpretarlo directamente. \\
-  Pero mejor usar el mÛdulo JSON
-\item Python: mÛdulo json
+\item JavaScript: La funci√≥n eval() es capaz de int√©rpretarlo directamente. \\
+  Pero mejor usar el m√≥dulo JSON
+\item Python: m√≥dulo json
 \item Java: JSON Tools, xstream, Restlet, ...
 \item   ...
 \end{itemize}
@@ -645,7 +645,7 @@ Existen intÈrpretes para casi cualquier lenguaje:
 Extensiones:
 \begin{itemize}
 \item JSONT: Equivalente a XSLT para JSON
-\item JSONP: convierte el contenido en activo al incluir la invocaciÛn a una funciÛn JavaScript.
+\item JSONP: convierte el contenido en activo al incluir la invocaci√≥n a una funci√≥n JavaScript.
 \end{itemize}
 \end{frame}
 
@@ -657,14 +657,14 @@ Extensiones:
 
 Ventajas
 \begin{itemize}
-\item Requiere menos caractereres para la misma informaciÛn (consume menos ancho de banda)
-\item Es f·cil escribir un intÈrprete r·pido (incluso en un navegador)
-\item F·cil de leer por personas
+\item Requiere menos caractereres para la misma informaci√≥n (consume menos ancho de banda)
+\item Es f√°cil escribir un int√©rprete r√°pido (incluso en un navegador)
+\item F√°cil de leer por personas
 \end{itemize}
 
 Inconvenientes
 \begin{itemize}
-\item No tiene mecanismos de definiciÛn de lenguajes y validaciÛn
+\item No tiene mecanismos de definici√≥n de lenguajes y validaci√≥n
 \item No hay equivalentes a Atom, XSLT, ...
 \end{itemize}
 \end{frame}
@@ -676,11 +676,11 @@ Inconvenientes
 \frametitle{Referencias}
 
 \begin{itemize}
-\item IntroducciÛn al XML, por Jaime Villate: \\
+\item Introducci√≥n al XML, por Jaime Villate: \\
   \url{http://gsyc.escet.urjc.es/actividades/linuxprog/xml/xml-notas.html}
-\item EspecificaciÛn de XML: \\
+\item Especificaci√≥n de XML: \\
   \url{http://www.w3.org/TR/xml-spec.html}
-\item EspecificaciÛn anotada de XML: \\
+\item Especificaci√≥n anotada de XML: \\
   \url{http://www.xml.com/xml/pub/axml/axmlintro.html}
 \item Python and XML Processing: \\
   \url{http://pyxml.sourceforge.net/topics/}
@@ -718,11 +718,11 @@ Inconvenientes
   \url{http://www.xml.com/pub/a/2000/11/29/schemas/part1.html}
 \item XSL Transformations (XSLT): \\
   \url{http://www.w3.org/TR/xslt}
-\item P·gina DOM del W3C: \\
+\item P√°gina DOM del W3C: \\
   \url{http://www.w3.org/DOM/}
-\item P·gina de SAX:
+\item P√°gina de SAX:
   \url{http://www.megginson.com/SAX/}
-\item P·gina de RDF:
+\item P√°gina de RDF:
   \url{http://www.w3.org/RDF/}
 \item RSS 1.0: \\
   \url{http://groups.yahoo.com/group/rss-dev/files/specification.html}

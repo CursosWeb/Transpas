@@ -6,12 +6,12 @@
 %%---------------------------------------------------------------
 
 \begin{frame}
-\frametitle{¿Qué es Firefox OS?}
+\frametitle{Â¿QuÃ© es Firefox OS?}
 
 \begin{itemize}
   \item Sistema operativo basado en Linux para \emph{smartphones} y tabletas
-  \item Promovido por Mozilla (y otros \emph{partners} industriales, entre ellos Telefónica)
-  \item Basado completamente en estándares abiertos: HTML5, CSS3 y JavaScript
+  \item Promovido por Mozilla (y otros \emph{partners} industriales, entre ellos TelefÃ³nica)
+  \item Basado completamente en estÃ¡ndares abiertos: HTML5, CSS3 y JavaScript
   \item Incluye un modelo de privilegios y una API web abierta para comunicarse con el hardware del dispositivo
 \end{itemize}
 
@@ -46,8 +46,8 @@ Source: http://kumar303.github.io/mozilla-apps-talk/images/firefox-os-stack.png
 \frametitle{El manifiesto}
 
 \begin{enumerate}
-  \item El archivo \texttt{manifest.webapp} proporciona información importante sobre la aplicación
-  \item Sólo el nombre y la descripción son obligatorios.
+  \item El archivo \texttt{manifest.webapp} proporciona informaciÃ³n importante sobre la aplicaciÃ³n
+  \item SÃ³lo el nombre y la descripciÃ³n son obligatorios.
 \end{enumerate}
 
 \begin{footnotesize}
@@ -80,7 +80,7 @@ Source: http://kumar303.github.io/mozilla-apps-talk/images/firefox-os-stack.png
 \begin{verbatim}
   "locales": {
     "es": {
-      "description": "Su nueva aplicación impresionante Open Web",
+      "description": "Su nueva aplicaciÃ³n impresionante Open Web",
       "developer": {
         "url": "http://yourawesomeapp.com"
       }
@@ -105,8 +105,8 @@ Source: http://kumar303.github.io/mozilla-apps-talk/images/firefox-os-stack.png
 \frametitle{Tipos de Aplicaciones en Firefox OS}
 
 \begin{enumerate}
-  \item Empaquetadas: archivos .zip  conteniendo todos los archivos necesarios: HTML, CSS, JavaScript, imágenes, \texttt{manifest}, etc.
-  \item Alojadas: en un servidor (con su URL). Requieren también un \texttt{manifest}.
+  \item Empaquetadas: archivos .zip  conteniendo todos los archivos necesarios: HTML, CSS, JavaScript, imÃ¡genes, \texttt{manifest}, etc.
+  \item Alojadas: en un servidor (con su URL). Requieren tambiÃ©n un \texttt{manifest}.
 \end{enumerate}
 
 \end{frame}
@@ -159,13 +159,13 @@ if('vibrate' in navigator) {
 \begin{frame}
 \frametitle{Permisos}
 
-Hay tres tipos de APIs, según el tipo de permisos que hacen falta para ser ejecutadas, que
+Hay tres tipos de APIs, segÃºn el tipo de permisos que hacen falta para ser ejecutadas, que
 dan lugar a tres tipos de aplicaciones diferentes:
 
 \begin{enumerate}
-   \item Normales: APIs que no necesitan ningún tipo de permisos de acceso especiales.
-   \item Privilegiadas: APIs disponibles para los desarrolladores para su uso en aplicaciones. Han de indicar los permisos de acceso en el manifiesto, y han de distribuirse a través de una fuente (\emph{app store}) de confianza.
-   \item Certificadas: APIs que controlan funciones críticas en un dispositivo, como el marcador de llamadas y los servicios de mensajería. Estos por lo general no están disponibles para desarrolladores terceros.
+   \item Normales: APIs que no necesitan ningÃºn tipo de permisos de acceso especiales.
+   \item Privilegiadas: APIs disponibles para los desarrolladores para su uso en aplicaciones. Han de indicar los permisos de acceso en el manifiesto, y han de distribuirse a travÃ©s de una fuente (\emph{app store}) de confianza.
+   \item Certificadas: APIs que controlan funciones crÃ­ticas en un dispositivo, como el marcador de llamadas y los servicios de mensajerÃ­a. Estos por lo general no estÃ¡n disponibles para desarrolladores terceros.
 \end{enumerate}
 
 \end{frame}
@@ -181,7 +181,7 @@ dan lugar a tres tipos de aplicaciones diferentes:
     \url{https://marketplace.firefox.com/developers/docs/firefox_os_simulator}
   \item App Manager: permite conectar Firefox a un dispositivo compatible con Firefox OS y enviar las aplicaciones para probarlas \\  
      \url{https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Using_the_App_Manager}
-  \item A partir de Firefox 33, \texttt{App Manaer} está siendo reemplazado por \texttt{WebIDE} \\
+  \item A partir de Firefox 33, \texttt{App Manaer} estÃ¡ siendo reemplazado por \texttt{WebIDE} \\
     \url{https://developer.mozilla.org/en-US/docs/Tools/WebIDE}
   \item Tests unitarios: QUnit (\url{http://qunitjs.com/})
 \end{itemize}

@@ -11,16 +11,16 @@
 
 %\begin{itemize}
 %\item Servicio web (\emph{web service}): \\
-%      conjunto de protocolos y est·ndares 
+%      conjunto de protocolos y est√°ndares 
 %      que sirven para intercambiar datos entre aplicaciones.
 
 %\item Enfoques sobre servicios web:
 
 %\begin{itemize}
-%\item Tradicional: Basado en est·ndares como SOAP, WS-*, ...
+%\item Tradicional: Basado en est√°ndares como SOAP, WS-*, ...
 %\item Informal (POX, STRESTful): Arquitectura ad-hoc usando XML, JSON, ...
 %\item RESTful: siguen las restricciones del estilo arquitectural de la web. 
-%   Emplean XML, JSON y cualquier tipo MIME que sea ˙til
+%   Emplean XML, JSON y cualquier tipo MIME que sea √∫til
 %\end{itemize}
 %\end{itemize}
 
@@ -35,7 +35,7 @@
 \item REST: REpresentational State Transfer
 
   \begin{quote}
-  ``Conjunto de recursos web (m·quina de estados), \\
+  ``Conjunto de recursos web (m√°quina de estados), \\
   en el que se realizan acciones seleccionando recursos \\
   a los que se les aplican operaciones (transiciones de estado), \\
   obteniendo representaciones de ese estado \\
@@ -44,8 +44,8 @@
   
 \item Estilo arquitectural para sistemas distribuidos
   \begin{itemize}
-  \item Ampliamente extendido en la web est·tica (ficheros y directorios)
-  \item Parcialmente extendido en la web program·tica (aplicaciones y servicios web)
+  \item Ampliamente extendido en la web est√°tica (ficheros y directorios)
+  \item Parcialmente extendido en la web program√°tica (aplicaciones y servicios web)
   \end{itemize}
 \end{itemize}
 
@@ -58,12 +58,12 @@
 \frametitle{Principios REST}
 
 \begin{itemize}
-\item Cliente (interfaz de usuario) - servidor (lÛgica de negocio, datos)
-\item Sin estado: cada peticiÛn lleva todo su contexto
+\item Cliente (interfaz de usuario) - servidor (l√≥gica de negocio, datos)
+\item Sin estado: cada petici√≥n lleva todo su contexto
 \item Cacheable: cada respuesta es marcada como cacheable, o no
-\item Interfaz uniforme (recurso, urls, mÈtodos, representaciones...)
-\item Sistema por capas: cada componente sÛlo ``ve'' la capa que invoca
-\item CÛdigo en el cliente (sobre todo, para interfaz de usuario)
+\item Interfaz uniforme (recurso, urls, m√©todos, representaciones...)
+\item Sistema por capas: cada componente s√≥lo ``ve'' la capa que invoca
+\item C√≥digo en el cliente (sobre todo, para interfaz de usuario)
 \end{itemize}
 
 \end{frame}
@@ -72,7 +72,7 @@
 \begin{frame}
 \frametitle{Interfaz: Cada recurso debe tener una URL}
 
-Un recurso puede ser cualquier tipo de informaciÛn que quiere hacerse visible en la web: documentos, im·genes, servicios, gente
+Un recurso puede ser cualquier tipo de informaci√≥n que quiere hacerse visible en la web: documentos, im√°genes, servicios, gente
 
 ~
 
@@ -105,8 +105,8 @@ Dos tipos de recursos:
   \item Elementos, como http://example.com/resources/142
 \end{itemize}
 
-Los mÈtodos tienen un significado ligeramente diferente se trate de
-una colecciÛn o un elemento.
+Los m√©todos tienen un significado ligeramente diferente se trate de
+una colecci√≥n o un elemento.
 
 \end{frame}
 
@@ -115,16 +115,16 @@ una colecciÛn o un elemento.
 \begin{frame}[fragile]
 \frametitle{Interfaz: Los recursos tienen hiperenlaces a otros recursos}
 
-Los formatos m·s usados (XHTML, Atom, ...) ya lo permiten.
-TambiÈn aplica a los formatos inventados por nosotros mismos
+Los formatos m√°s usados (XHTML, Atom, ...) ya lo permiten.
+Tambi√©n aplica a los formatos inventados por nosotros mismos
 
 \begin{verbatim}
 <profiles self="http://example.com/profiles">
  <profile type="moderator" 
        self="http://example.com/profiles/123">
-  <name>Pepito PÈrez</name>
+  <name>Pepito P√©rez</name>
   <company ref="http://example.com/companies/321">
-    CompaÒÌa XYZ</company>
+    Compa√±√≠a XYZ</company>
   </profile>
 ...
 </profiles>
@@ -136,10 +136,10 @@ TambiÈn aplica a los formatos inventados por nosotros mismos
 
 %%---------------------------------------------------------------
 \begin{frame}
-\frametitle{Interfaz: Conjunto limitado y est·ndar de mÈtodos}
+\frametitle{Interfaz: Conjunto limitado y est√°ndar de m√©todos}
 
 \begin{itemize}
-\item GET:  Obtener informaciÛn (quiz· de cachÈ)
+\item GET:  Obtener informaci√≥n (quiz√° de cach√©)
   \begin{itemize}
   \item No cambia estado, idempotente
   \end{itemize}
@@ -163,7 +163,7 @@ TambiÈn aplica a los formatos inventados por nosotros mismos
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Interfaz: M˙ltiples representaciones por recurso}
+\frametitle{Interfaz: M√∫ltiples representaciones por recurso}
 
 Las representaciones muestran el estado actual del recurso en un formato dado
 
@@ -188,18 +188,18 @@ Accept: application/mi-vocabulario-propio+xml
 
 %%---------------------------------------------------------------
 \begin{frame}
-\frametitle{Interfaz: ComunicaciÛn sin estado}
+\frametitle{Interfaz: Comunicaci√≥n sin estado}
 
 \begin{itemize}
-\item En REST se mantiene estado, pero sÛlo en los recursos, no en la aplicaciÛn (o sesiÛn). 
+\item En REST se mantiene estado, pero s√≥lo en los recursos, no en la aplicaci√≥n (o sesi√≥n). 
 
-\item Una peticiÛn del cliente al servidor debe contener todo el contexto necesario (no puede basarse en informaciÛn previa asociada a la comunicaciÛn). 
+\item Una petici√≥n del cliente al servidor debe contener todo el contexto necesario (no puede basarse en informaci√≥n previa asociada a la comunicaci√≥n). 
 
-\item No hay datos que permitan identificar sesiÛn en el servidor. El servidor sÛlo guarda y maneja el estado de los recursos que aloja. 
+\item No hay datos que permitan identificar sesi√≥n en el servidor. El servidor s√≥lo guarda y maneja el estado de los recursos que aloja. 
 
-\item El cliente puede guardar identificaciÛn de sesiÛn (y envi·rselo al servidor), por ejemplo en forma de cookies.
+\item El cliente puede guardar identificaci√≥n de sesi√≥n (y envi√°rselo al servidor), por ejemplo en forma de cookies.
 
-\item Esto permite escalabilidad (servidores m·s sencillos). Implica mayor ancho de banda, pero facilita las \emph{cachÈs}.
+\item Esto permite escalabilidad (servidores m√°s sencillos). Implica mayor ancho de banda, pero facilita las \emph{cach√©s}.
 \end{itemize}
 
 \end{frame}
@@ -211,26 +211,26 @@ Accept: application/mi-vocabulario-propio+xml
 \frametitle{REST: Ventajas de REST}
 
 \begin{itemize}
-\item Maximiza la reutilizaciÛn
+\item Maximiza la reutilizaci√≥n
   \begin{itemize}
-  \item Todos los recursos tienen identificadores = hacen m·s grande la Web
-  \item La visibilidad de los recursos que forman una aplicaciÛn/servicio permite usos no previstos
+  \item Todos los recursos tienen identificadores = hacen m√°s grande la Web
+  \item La visibilidad de los recursos que forman una aplicaci√≥n/servicio permite usos no previstos
   \end{itemize}
-\item Minimiza el acoplamiento y permite la evoluciÛn
+\item Minimiza el acoplamiento y permite la evoluci√≥n
   \begin{itemize}
-  \item La interfaz uniforme esconde detalles de implementaciÛn
-  \item El uso de hipertexto permite que sÛlo la primera URL usada para acceder acople un sistema a otro
+  \item La interfaz uniforme esconde detalles de implementaci√≥n
+  \item El uso de hipertexto permite que s√≥lo la primera URL usada para acceder acople un sistema a otro
   \end{itemize}
 \item Elimina condiciones de fallo parcial
   \begin{itemize}
   \item Fallo del servidor no afecta al cliente
   \item El estado siempre puede ser recuperado como un recurso
   \end{itemize}
-\item Escalado sin lÌmites
+\item Escalado sin l√≠mites
   \begin{itemize}
   \item Los servicios pueden ser replicados en cluster, cacheados y ayudados por sistemas intermediarios
   \end{itemize}
-\item Unifica los mundos de las aplicaciones web y servicios web. El mismo cÛdigo puede servir para los dos fines.
+\item Unifica los mundos de las aplicaciones web y servicios web. El mismo c√≥digo puede servir para los dos fines.
 \end{itemize}
 
 \end{frame}
@@ -241,11 +241,11 @@ Accept: application/mi-vocabulario-propio+xml
 \frametitle{Funcionalidades de HTTP no tan conocidas}
 
 \begin{itemize}
-\item CÛdigos de respuesta estandarizados: los entiende un navegador, los proxies, o nuestras propias aplicaciones
+\item C√≥digos de respuesta estandarizados: los entiende un navegador, los proxies, o nuestras propias aplicaciones
   \begin{itemize}
   \item Information: 1xx, Success 2xx, Redirection 3xx, Client Error 4xx, Server Error 5xx
   \end{itemize}
-\item NegociaciÛn de contenido: la misma URL puede mandar la representaciÛn m·s adecuada al cliente (HTML, Atom, texto)
+\item Negociaci√≥n de contenido: la misma URL puede mandar la representaci√≥n m√°s adecuada al cliente (HTML, Atom, texto)
 \item Redirecciones
 \item Cacheado (incluyendo mecanismos para especificar el periodo de validez y expiraciones)
   \begin{itemize}
@@ -262,15 +262,15 @@ Accept: application/mi-vocabulario-propio+xml
 \frametitle{Funcionalidades de HTTP no tan conocidas (2)}
 
 \begin{itemize}
-\item CompresiÛn
-\item DivisiÛn de la respuesta en partes (Chunking)
-\item GET condicional (sÛlo se envÌa la respuesta si ha habido cambios)
+\item Compresi√≥n
+\item Divisi√≥n de la respuesta en partes (Chunking)
+\item GET condicional (s√≥lo se env√≠a la respuesta si ha habido cambios)
   \begin{itemize}
   \item Permite ahorrar ancho de banda, procesado en el cliente y (posiblemente) procesado en el servidor
   \item Dos mecanismos:
     \begin{itemize}
-    \item ETag y If-None-Match: identificador asociado al estado de un recurso. Ejemplo: hash de la representaciÛn en un formato dado
-    \item Last-Modifed y If-Modified-Since: fecha de ˙ltima actualizaciÛn
+    \item ETag y If-None-Match: identificador asociado al estado de un recurso. Ejemplo: hash de la representaci√≥n en un formato dado
+    \item Last-Modifed y If-Modified-Since: fecha de √∫ltima actualizaci√≥n
     \end{itemize}
   \end{itemize}
 \end{itemize}
@@ -281,7 +281,7 @@ Accept: application/mi-vocabulario-propio+xml
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Ejemplo de interacciÛn HTTP: PeticiÛn}
+\frametitle{Ejemplo de interacci√≥n HTTP: Petici√≥n}
 
 \begin{verbatim}
 GET / HTTP/1.1
@@ -307,7 +307,7 @@ Cache-Control: max-age=0
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Ejemplo de interacciÛn HTTP: Respuesta}
+\frametitle{Ejemplo de interacci√≥n HTTP: Respuesta}
 
 \begin{verbatim}
 HTTP/1.x 200 OK
@@ -328,13 +328,13 @@ Content-Length: 16850
 \frametitle{Mecanismos de seguridad}
 
 \begin{itemize}
-\item AutenticaciÛn:
+\item Autenticaci√≥n:
   \begin{itemize}
   \item HTTP Basic
   \item HTTP Digest
   \item OAuth
   \end{itemize}
-\item Importante: los mecanismos de autenticaciÛn de HTTP son extensibles
+\item Importante: los mecanismos de autenticaci√≥n de HTTP son extensibles
 \item Cifrado y firma digital: SSL
 \end{itemize}
 
@@ -344,15 +344,15 @@ Content-Length: 16850
 
 %%---------------------------------------------------------------
 \begin{frame}
-\frametitle{LÌmites actuales de REST en la web}
+\frametitle{L√≠mites actuales de REST en la web}
 
 \begin{itemize}
 \item Obliga a los desarrolladores a pensar diferente
 \item Carencia de soporte de PUT y DELETE en navegadores y cortado en cortafuegos
-\item Mecanismos de seguridad limitados (en comparaciÛn con WS-Security): est· mejorando r·pidamente
-\item La negociaciÛn de contenidos no funciona del todo bien en la pr·ctica
-\item Algunos piden un mÈtodo m·s: PATCH
-\item Poca documentaciÛn
+\item Mecanismos de seguridad limitados (en comparaci√≥n con WS-Security): est√° mejorando r√°pidamente
+\item La negociaci√≥n de contenidos no funciona del todo bien en la pr√°ctica
+\item Algunos piden un m√©todo m√°s: PATCH
+\item Poca documentaci√≥n
 \end{itemize}
 
 \end{frame}
@@ -365,12 +365,12 @@ Content-Length: 16850
 \begin{itemize}
 \item En la web  
   \begin{itemize}
-  \item Todos los sitios web est·ticos
-  \item Servicios web de sÛlo lectura
+  \item Todos los sitios web est√°ticos
+  \item Servicios web de s√≥lo lectura
   \item Servicios web Google (GData)
   \item Aplicaciones web hechas con Ruby Rails 1.2+
   \end{itemize}
-\item Est·ndares basados en REST
+\item Est√°ndares basados en REST
   \begin{itemize}
   \item Atom Publishing Protocol
   \item WebDAV
@@ -391,11 +391,11 @@ Content-Length: 16850
 \item REST es un estilo arquitectural para aplicaciones distribuidas
 \item Introduce restricciones que producen propiedades deseables a cambio
   \begin{itemize}
-  \item Estas propiedades han permitido la expansiÛn con Èxito de la web
-  \item Las restricciones tambiÈn pueden aplicarse a las aplicaciones y servicios web desarrollados para mantener las propiedades
+  \item Estas propiedades han permitido la expansi√≥n con √©xito de la web
+  \item Las restricciones tambi√©n pueden aplicarse a las aplicaciones y servicios web desarrollados para mantener las propiedades
   \end{itemize}
 \item Los protocolos de la web, HTTP y URL, facilitan el desarrollo de arquitecturas RESTful y permiten explotar sus propiedades
-\item REST no es el ˙nico estilo arquitectural
+\item REST no es el √∫nico estilo arquitectural
   \begin{itemize}
   \item Es posible eliminar restricciones si no nos importa perder propiedades
   \item Hay otros estilos arquitecturales con otras propiedades. Ejemplo: RPC
@@ -414,7 +414,7 @@ Content-Length: 16850
 \begin{itemize}
 \item ``Chapter 5: Representational State Transfer (REST)'', Fielding, Roy Thomas, en ``Architectural Styles and the Design of Network-based Software Architectures'' (PhD thesis) University of California, Irvine 2000.
 \item ``RESTful Web Services'',  Leonard Richardson, Sam Ruby, O'Reilly Press
-\item ``Architectural Styles and the Design of Network-based Software Architectures'' (CapÌtulo 5) \\
+\item ``Architectural Styles and the Design of Network-based Software Architectures'' (Cap√≠tulo 5) \\
   {\footnotesize \url{http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}}
 \item ``Best Practices for Designing a Pragmatic RESTful API'', 
   Vinay Sahni \\

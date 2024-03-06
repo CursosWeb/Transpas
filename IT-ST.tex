@@ -1,12 +1,12 @@
 % main.tex
-% Fichero principal de transparencias (incluye a todos los dem·s).
+% Fichero principal de transparencias (incluye a todos los dem√°s).
 
 % Compilar a .pdf con LaTeX (pdflatex)
 % Es necesario instalar Beamer (paquete latex-beamer en Debian)
 %
 
-% Gr·ficos:
-% Los gr·ficos pueden suministrarse en PNG, JPG, TIF, PDF, MPS
+% Gr√°ficos:
+% Los gr√°ficos pueden suministrarse en PNG, JPG, TIF, PDF, MPS
 % Los EPS deben convertirse a PDF (usar epstopdf)
 %
 \documentclass{beamer}
@@ -16,14 +16,14 @@
 \useoutertheme{infolines}
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{format/libresoft-bg-soft.png}}
 \usepackage[spanish]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{graphics}
 \usepackage{amssymb} % Simbolos matematicos
 \usepackage{multirow}
 
-\newcommand{\asignatura}{Servicios Telem·ticas}
-\newcommand{\grado}{Grado en IngenierÌa Telem·tica (URJC)}
-\newcommand{\curso}{2022-23}
+\newcommand{\asignatura}{Servicios Telem√°ticos}
+\newcommand{\grado}{Grado en Ingenier√≠a Telem√°tica (URJC)}
+\newcommand{\curso}{2023-24}
 \newcommand{\horario}{L (11:00-13:00) y J (11:00-13:00)}
 \newcommand{\labo}{209 y 208}
 
@@ -35,7 +35,7 @@
 %% Metadatos del PDF.
 \hypersetup{
   pdftitle={\asignatura~\curso},
-  pdfauthor={Jes˙s M. Gonz·lez Barahona, Gregorio Robles, David CortÈs Polo},
+  pdfauthor={Jes√∫s M. Gonz√°lez Barahona, Gregorio Robles, David Cort√©s Polo, Iv√°n Bernab√©},
   pdfcreator={GSyC, Universidad Rey Juan Carlos},
   pdfproducer=PDFLaTeX,
   pdfsubject={\asignatura~\curso},
@@ -48,7 +48,7 @@
 % include-only                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\includeonly{presentacion-saro-sat-st,cookies,rest,mvc,xml,css,ajax,python,django,bootstrap,final}
+\includeonly{presentacion-saro-sat-st,cookies,rest,mvc,xml,css,ajax,python,aplicacionesWeb,django,bootstrap,final}
 %\includeonly{presentacion-saro-sat-st,final}
 %\includeonly{cookies}
 %\includeonly{rest}
@@ -69,7 +69,7 @@
 %\includeonly{security-intro,security-ipsec,security-ssl}
 %\includeonly{webdav,security-ssl}
 
-%% Pr·cticas
+%% Pr√°cticas
 %\includeonly{python}
 %\includeonly{sql}
 %\includeonly{django}
@@ -89,8 +89,8 @@
 
 \title[\asignatura~\curso]{\asignatura~(\curso)}
 \subtitle{\grado}
-\author[GSyC]{Jes˙s M. Gonz·lez Barahona, Gregorio Robles MartÌnez, \\
-  David CortÈs Polo}
+\author[GSyC]{Jes√∫s M. Gonz√°lez Barahona, Gregorio Robles Mart√≠nez, \\
+  David Cort√©s Polo, Iv√°n Bernab√©}
 \institute[http://cursosweb.github.io/]{\url{http://cursosweb.github.io} \\
 GSyC, Universidad Rey Juan Carlos}
 
@@ -106,8 +106,8 @@ GSyC, Universidad Rey Juan Carlos}
 }
 
 
-% Si el titulo o el autor se quieren acortar para los pies de p·gina
-% se pueden redefinir aquÌ:
+% Si el titulo o el autor se quieren acortar para los pies de p√°gina
+% se pueden redefinir aqu√≠:
 %\title{Titulo corto}
 %\author{Autores abreviado}
 
@@ -130,9 +130,15 @@ GSyC, Universidad Rey Juan Carlos}
 
 \include{python}
 \include{sql}
+\include{aplicacionesWeb}
 \include{django}
 \include{css}
 \include{bootstrap}
 \include{final}
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

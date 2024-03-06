@@ -3,7 +3,7 @@
 
 %%---------------------------------------------------------------
 %%---------------------------------------------------------------
-\section{Pr·cticas: IntroducciÛn a Django}
+\section{Pr√°cticas: Introducci√≥n a Django}
 
 %%---------------------------------------------------------------
 \begin{frame}
@@ -26,7 +26,7 @@
   \begin{itemize}
   \item CMS: Joomla, Drupal...
   \item Portal: Plone/Zope, Liferay Portal...
-  \item Plataformas de propÛsito especÌfico: Moodle, Wordpress...
+  \item Plataformas de prop√≥sito espec√≠fico: Moodle, Wordpress...
   \end{itemize}
 \end{itemize}
 
@@ -35,16 +35,16 @@
 
 %%---------------------------------------------------------------
 \begin{frame}
-\frametitle{øQuÈ es Django?}
+\frametitle{¬øQu√© es Django?}
 
 \begin{itemize}
 \item Entorno integrado de desarrollo de aplicaciones web
-\item Herramientas para gestionar la aplicaciÛn
-\item Framework (armazÛn) para presentaciÛn de la aplicaciÛn
+\item Herramientas para gestionar la aplicaci√≥n
+\item Framework (armaz√≥n) para presentaci√≥n de la aplicaci√≥n
 \item Acceso a base de datos (correspondencia objeto-relacional)
 \item Seguridad (XSS, SQL Injection, ...)
-\item Componentes listos para usar (gestiÛn de usuarios, sesiones, interfaz administraciÛn,...)
-\item \emph{CachÈ}, internacionalizaciÛn, plantillas, etc.
+\item Componentes listos para usar (gesti√≥n de usuarios, sesiones, interfaz administraci√≥n,...)
+\item \emph{Cach√©}, internacionalizaci√≥n, plantillas, etc.
 \end{itemize}
 
 \begin{flushright}
@@ -58,7 +58,7 @@
 
 Flask: \url{https://flask.palletsprojects.com/}
 \begin{itemize}
-\item AproximaciÛn minimalista, centrada en la simplicidad
+\item Aproximaci√≥n minimalista, centrada en la simplicidad
 \item Con extensiones, funcionalidad similar a Django
 \end{itemize}
 
@@ -78,17 +78,17 @@ FastAPI: \url{https://fastapi.tiangolo.com/}:
 \frametitle{Django: conceptos principales}
 
 \begin{itemize}
-\item Objetivo principal: desarrollo muy r·pido
+\item Objetivo principal: desarrollo muy r√°pido
   \begin{itemize}
   \item Entorno integrado y completo
   \item Cambios en caliente
   \item Descripciones de error muy descriptivas
-  \item Convenciones preferible a configuraciÛn
-  \item Evitar duplicaciÛn a toda costa (DRY, don't repeat yourself)
+  \item Convenciones preferible a configuraci√≥n
+  \item Evitar duplicaci√≥n a toda costa (DRY, don't repeat yourself)
   \end{itemize}
 \item Desarrollo dirigido por el modelo
   \begin{itemize}
-  \item Se comienza por el diseÒo del modelo de datos
+  \item Se comienza por el dise√±o del modelo de datos
   \end{itemize}
 \end{itemize}
 
@@ -100,27 +100,27 @@ FastAPI: \url{https://fastapi.tiangolo.com/}:
 \frametitle{Preparativos}
 
 \begin{itemize}
-\item Usaremos una versiÛn de Django 4.1.7, instal·ndola vÌa pip3.
+\item Usaremos una versi√≥n de Django 4.1.7, instal√°ndola v√≠a pip3.
 \item Disponible para Linux, *BSD, Windows, MacOS, etc.
-\item CreaciÛn de entorno virtual:
+\item Creaci√≥n de entorno virtual:
 
 \begin{verbatim}
 % python3 -m venv django-venv    
 \end{verbatim}
 
-\item ActivaciÛn del entorno virtual:
+\item Activaci√≥n del entorno virtual:
 
 \begin{verbatim}
 % source django-venv/bin/activate
 \end{verbatim}
 
-\item InstalaciÛn de Django en el entorno virtual:
+\item Instalaci√≥n de Django en el entorno virtual:
 
 \begin{verbatim}
 % pip3 install django==4.1.7
 \end{verbatim}
 
-\item ComprobaciÛn (debe responder 4.1.7):
+\item Comprobaci√≥n (debe responder 4.1.7):
 \begin{verbatim}
 % django-admin --version
 \end{verbatim}
@@ -135,7 +135,7 @@ FastAPI: \url{https://fastapi.tiangolo.com/}:
 %\frametitle{Preparativos (y II)}
 
 %\begin{itemize}
-%\item PreparaciÛn de entorno (necesario si no se ha instalado en path ``habituales'', como p.ej. en el laboratorio):
+%\item Preparaci√≥n de entorno (necesario si no se ha instalado en path ``habituales'', como p.ej. en el laboratorio):
 %\begin{verbatim}
 %export DJANGO=/home/al-..-../..../.../Django-1.7.5/
 %   # Camino al directorio con fuentes descomprimidas
@@ -150,25 +150,25 @@ FastAPI: \url{https://fastapi.tiangolo.com/}:
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{ArmazÛn para proyecto y aplicaciÛn}
+\frametitle{Armaz√≥n para proyecto y aplicaci√≥n}
 
 \begin{itemize}
-\item CreaciÛn (primero proyecto, luego aplicaciÛn)
+\item Creaci√≥n (primero proyecto, luego aplicaci√≥n)
 \begin{verbatim}
 $ cd dir-practica
 $ django-admin startproject myproject
 $ cd myproject
 $ python3 manage.py startapp myfirstapp
 \end{verbatim}
-\item M·s opciones de manage.py
+\item M√°s opciones de manage.py
 \begin{verbatim}
 $ python3 manage.py --help
 \end{verbatim}
-\item EjecuciÛn de la aplicaciÛn (\url{http://localhost:8000})
+\item Ejecuci√≥n de la aplicaci√≥n (\url{http://localhost:8000})
 \begin{verbatim}
 $ python3 manage.py runserver
 \end{verbatim}
-%\item CreaciÛn de las bases de datos:
+%\item Creaci√≥n de las bases de datos:
 %\begin{verbatim}
 %$ python3 manage.py migrate
 %\end{verbatim}
@@ -182,17 +182,17 @@ $ python3 manage.py runserver
 \frametitle{Ficheros creados para un proyecto}
 
 \begin{itemize}
-  \item RaÌz:
+  \item Ra√≠z:
   \begin{itemize}
     \item \verb|manage.py|: herramienta para gestionar el proyecto
   \end{itemize}
   \item Proyecto : \verb|myproject/|:
   \begin{itemize}
-    \item \verb|__init__.py|: fichero vacÌo, directorio debe ser considerado un paquete Python
-    \item \verb|settings.py|: configuraciÛn del proyecto
+    \item \verb|__init__.py|: fichero vac√≠o, directorio debe ser considerado un paquete Python
+    \item \verb|settings.py|: configuraci√≥n del proyecto
     \item \verb|urls.py|: URLs del proyecto
     \item \verb|wsgi.py|: fichero para servir Django mediante WSGI (p.ej. con Apache)
-    \item \verb|asgi.py|: fichero para servir Django mediante ASGI (servidor asÌncrono)
+    \item \verb|asgi.py|: fichero para servir Django mediante ASGI (servidor as√≠ncrono)
   \end{itemize}
 \end{itemize}
 
@@ -200,26 +200,26 @@ $ python3 manage.py runserver
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Ficheros creados para una aplicaciÛn}
+\frametitle{Ficheros creados para una aplicaci√≥n}
 
 
 \begin{itemize}
-\item RaÌz:
+\item Ra√≠z:
   \begin{itemize}
-  \item AplicaciÛn (\verb|myfirstapp/|):
+  \item Aplicaci√≥n (\verb|myfirstapp/|):
     \begin{itemize}
-      \item \verb|__init__.py|: fichero vacÌo, directorio debe ser considerado un paquete Python
-      \item \verb|views.py|: vistas (cÛdigo invocado para cada recurso)
-       \item \verb|models.py|: definiciÛn de las clases del modelo de datos
-       \item \verb|admin.py|: registro de los modelos que se pueden gestionar vÌa web
-       \item \verb|apps.py|: configuraciÛn de la app
-       \item \verb|tests.py|: fichero para la implementaciÛn de tests
+      \item \verb|__init__.py|: fichero vac√≠o, directorio debe ser considerado un paquete Python
+      \item \verb|views.py|: vistas (c√≥digo invocado para cada recurso)
+       \item \verb|models.py|: definici√≥n de las clases del modelo de datos
+       \item \verb|admin.py|: registro de los modelos que se pueden gestionar v√≠a web
+       \item \verb|apps.py|: configuraci√≥n de la app
+       \item \verb|tests.py|: fichero para la implementaci√≥n de tests
        \item \verb|migrations/|: versiones (y \emph{migraciones}) de los modelos
     \end{itemize}
   \end{itemize}
 \end{itemize}
 
-Generalmente, tambiÈn se crea un \verb|urls.py|, con las URLs de la aplicaciÛn.
+Generalmente, tambi√©n se crea un \verb|urls.py|, con las URLs de la aplicaci√≥n.
 
 \end{frame}
 
@@ -228,8 +228,8 @@ Generalmente, tambiÈn se crea un \verb|urls.py|, con las URLs de la aplicaciÛn.
 \frametitle{Fichero settings.py}
 
 \begin{itemize}
-\item Fichero de configuraciÛn, en Python
-\item ConfiguraciÛn de la base de datos (usaremos SQLite3)
+\item Fichero de configuraci√≥n, en Python
+\item Configuraci√≥n de la base de datos (usaremos SQLite3)
 \begin{verbatim}
 DATABASES = {
     'default': {
@@ -244,7 +244,7 @@ INSTALLED_APPS = [
     ...,
 ]
 \end{verbatim}
-\item Otros: zona horaria, codificaciÛn, directorio de plantillas...
+\item Otros: zona horaria, codificaci√≥n, directorio de plantillas...
 \end{itemize}
 
 \end{frame}
@@ -252,7 +252,7 @@ INSTALLED_APPS = [
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{DeclaraciÛn de URLs (proyecto)}
+\frametitle{Declaraci√≥n de URLs (proyecto)}
 
 \begin{itemize}
 \item En el fichero urls.py (del proyecto): \verb|myproject/urls.py|
@@ -269,7 +269,7 @@ urlpatterns = [
 \end{verbatim}
 
 
-\item \verb|include()| permite aÒadir otros \verb|urls.py| de aplicaciones
+\item \verb|include()| permite a√±adir otros \verb|urls.py| de aplicaciones
 
 \end{itemize}
 
@@ -287,9 +287,9 @@ urlpatterns = [
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{DeclaraciÛn de URLs (aplicaciÛn)}
+\frametitle{Declaraci√≥n de URLs (aplicaci√≥n)}
 
-En el fichero urls.py (de la aplicaciÛn): \verb|myfirstapp/urls.py|
+En el fichero urls.py (de la aplicaci√≥n): \verb|myfirstapp/urls.py|
 
 \begin{verbatim}
 from django.urls import path
@@ -307,23 +307,23 @@ urlpatterns = [
 
 %%---------------------------------------------------------------
 %% \begin{frame}[fragile]
-%% \frametitle{DeclaraciÛn de URLs: La funciÛn \emph{url}}
+%% \frametitle{Declaraci√≥n de URLs: La funci√≥n \emph{url}}
 
 %% \verb|url(regex, view, kwargs=None, name=None, prefix='')|
 
 %% \begin{itemize}
-%%   \item \verb|regex|: expresiÛn regular.
+%%   \item \verb|regex|: expresi√≥n regular.
 %%   \begin{itemize}
-%%     \item No tiene en cuenta si la peticiÛn es GET o POST, o el dominio
+%%     \item No tiene en cuenta si la petici√≥n es GET o POST, o el dominio
 %%     \item Se ejecuta la primera que se encuentra (i.e., el orden importa)
 %%   \end{itemize} 
-%%   \item \verb|view|: funciÛn \emph{vista} a la que se llama, pas·ndole:
+%%   \item \verb|view|: funci√≥n \emph{vista} a la que se llama, pas√°ndole:
 %%   \begin{itemize}
-%%     \item Como primer par·metro un objeto HttpRequest con la peticiÛn
-%%     \item Otros posibles par·metros como argumentos
+%%     \item Como primer par√°metro un objeto HttpRequest con la petici√≥n
+%%     \item Otros posibles par√°metros como argumentos
 %%   \end{itemize} 
-%%   \item \verb|kwargs|: diccionario con par·metros adicionales a la vista.
-%%   \item \verb|name|: nombre de la URL (muy ˙til para plantillas).
+%%   \item \verb|kwargs|: diccionario con par√°metros adicionales a la vista.
+%%   \item \verb|name|: nombre de la URL (muy √∫til para plantillas).
 %%   \item \verb|prefix|: deprecated a partir de Django 1.8
 %% \end{itemize}
 
@@ -331,23 +331,23 @@ urlpatterns = [
 
 %---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{DeclaraciÛn de URLs: La funciÛn path}
+\frametitle{Declaraci√≥n de URLs: La funci√≥n path}
 
 \verb|path(route, view, kwargs=None, name=None)|
 
 \begin{itemize}
- \item \verb|route|: patrÛn de la URL.
+ \item \verb|route|: patr√≥n de la URL.
  \begin{itemize}
-   \item No tiene en cuenta si la peticiÛn es GET o POST, o el dominio
+   \item No tiene en cuenta si la petici√≥n es GET o POST, o el dominio
    \item Se ejecuta la primera que se encuentra (i.e., el orden importa)
  \end{itemize} 
- \item \verb|view|: funciÛn \emph{vista} a la que se llama, pas·ndole:
+ \item \verb|view|: funci√≥n \emph{vista} a la que se llama, pas√°ndole:
  \begin{itemize}
-   \item Como primer par·metro un objeto HttpRequest con la peticiÛn
-   \item Otros posibles par·metros como argumentos
+   \item Como primer par√°metro un objeto HttpRequest con la petici√≥n
+   \item Otros posibles par√°metros como argumentos
  \end{itemize} 
- \item \verb|kwargs|: diccionario con par·metros adicionales a la vista.
- \item \verb|name|: nombre de la URL (muy ˙til para plantillas).
+ \item \verb|kwargs|: diccionario con par√°metros adicionales a la vista.
+ \item \verb|name|: nombre de la URL (muy √∫til para plantillas).
 \end{itemize}
 
 \end{frame}
@@ -357,9 +357,9 @@ urlpatterns = [
 \frametitle{Views}
 
 \begin{itemize}
-\item CÛdigo invocado para una URL o conjunto de URLs
-\item Debe ser un mÈtodo (o un objeto)
-\item Los mÈtodos se definen en el fichero \verb|myfirstapp/views.py|
+\item C√≥digo invocado para una URL o conjunto de URLs
+\item Debe ser un m√©todo (o un objeto)
+\item Los m√©todos se definen en el fichero \verb|myfirstapp/views.py|
 \item Ejemplo:
 \begin{verbatim}
 from django.http import HttpResponse
@@ -379,15 +379,15 @@ def say_number(request, number=0):
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{GestiÛn de datos persistentes}
+\frametitle{Gesti√≥n de datos persistentes}
 
 \begin{itemize}
 \item Django hace corresponder un objeto Python con cada tabla
-\item Cada aplicaciÛn tiene su models.py
+\item Cada aplicaci√≥n tiene su models.py
   \begin{itemize}
   \item Una clase por cada entidad (tabla) del modelo
   \item Un campo por cada dato (columna) de la entidad
-  \item \_\_str\_\_() da una representaciÛn del objeto (p.ej., un campo)
+  \item \_\_str\_\_() da una representaci√≥n del objeto (p.ej., un campo)
   \item Ejemplo:
 \begin{verbatim}
 from django.db import models
@@ -400,7 +400,7 @@ class MyFirstAppData(models.Model):
         return self.name
 \end{verbatim}
   \end{itemize}
-\item CreaciÛn de tablas
+\item Creaci√≥n de tablas
 \begin{verbatim}
 $ python manage.py makemigrations
 $ python manage.py migrate
@@ -412,7 +412,7 @@ $ python manage.py migrate
 
 %%---------------------------------------------------------------
 \begin{frame}
-\frametitle{DefiniciÛn del modelo}
+\frametitle{Definici√≥n del modelo}
 
 \begin{itemize}
 \item Tipos de campos:
@@ -439,14 +439,14 @@ $ python manage.py migrate
 \begin{frame}
 \frametitle{Migraciones de datos}
 
-Cuando se modifica el modelo, puede existir una inconsistencia con los datos en la base de datos. °Peligro: se pueden perder datos!
+Cuando se modifica el modelo, puede existir una inconsistencia con los datos en la base de datos. ¬°Peligro: se pueden perder datos!
 
 \begin{itemize}
-  \item El proceso de migraciones se encarga de la propagaciÛn de modificaciones en el modelo (p.ej., aÒadir/borrar un campo)
-  \item \texttt{makemigrations}: crea nuevas migraciones, bas·ndose en los cambios a los modelos.
-  \item \texttt{migrate}: aplica la migraciÛn, adem·s de listar el estado.
-%  \item \texttt{sqlmigrate}: muestra las instrucciones SQL de la migraciÛn.
-  \item Los archivos para las migraciones se encuentran en el directorio \texttt{migrations} de las aplicaciones. Se crean autom·ticamente con \texttt{makemigrations}, aunque (luego) se pueden modificar a mano.
+  \item El proceso de migraciones se encarga de la propagaci√≥n de modificaciones en el modelo (p.ej., a√±adir/borrar un campo)
+  \item \texttt{makemigrations}: crea nuevas migraciones, bas√°ndose en los cambios a los modelos.
+  \item \texttt{migrate}: aplica la migraci√≥n, adem√°s de listar el estado.
+%  \item \texttt{sqlmigrate}: muestra las instrucciones SQL de la migraci√≥n.
+  \item Los archivos para las migraciones se encuentran en el directorio \texttt{migrations} de las aplicaciones. Se crean autom√°ticamente con \texttt{makemigrations}, aunque (luego) se pueden modificar a mano.
   \item \texttt{createsuperuser}: crea un usuario superusuario para poder entrar en el interfaz de admin admin
 \end{itemize}
 
@@ -457,7 +457,7 @@ Cuando se modifica el modelo, puede existir una inconsistencia con los datos en 
 \begin{frame}[fragile]
 \frametitle{Admin site}
 
-VersiÛn simple:
+Versi√≥n simple:
 
 \begin{itemize}
 \item INSTALLED\_APPS (en settings.py) ha de incluir:
@@ -484,15 +484,15 @@ urlpatterns = [
 Ahora, proporcionemos interfaz para nuestra tabla Pages:
 
 \begin{itemize}
-\item Crea en el directorio de la aplicaciÛn Django de gestiÛn de contenidos el fichero admin.py
-\item Registra en Èl los modelos a manejar:
+\item Crea en el directorio de la aplicaci√≥n Django de gesti√≥n de contenidos el fichero admin.py
+\item Registra en √©l los modelos a manejar:
 \begin{verbatim}
 from django.contrib import admin
 from .models import Pages
 
 admin.site.register(Pages)
 \end{verbatim}
-\item Prueba que ahora puedes manejar esta tabla desde el sitio de administraciÛn
+\item Prueba que ahora puedes manejar esta tabla desde el sitio de administraci√≥n
 \end{itemize}
 \end{frame}
 
@@ -503,16 +503,16 @@ admin.site.register(Pages)
 \frametitle{Consultas a la base de datos}
 
 \begin{itemize}
-\item MÈtodos para realizar consultas a la base de datos
+\item M√©todos para realizar consultas a la base de datos
 \item Acceso a entradas de la base de datos mediante el objeto 'objects' \\
   (ej. MyFirstAppData.objects)
-\item MÈtodos:
+\item M√©todos:
 \begin{itemize}
 \item MyFirstAppData.save()
 \item MyFirstAppData.objects.all()
 \item MyFirstAppData.objects.filter(campo=valor)
 \item MyFirstAppData.objects.get(campo=valor) \\
-  ExcepciÛn si no lo encuentra
+  Excepci√≥n si no lo encuentra
 \end{itemize}
 \end{itemize}
 
@@ -522,7 +522,7 @@ admin.site.register(Pages)
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{Modelos: relaciÛn muchos a uno (ForeignKey)}
+\frametitle{Modelos: relaci√≥n muchos a uno (ForeignKey)}
 
 \begin{verbatim}
 class Manufacturer(models.Model):
@@ -575,10 +575,10 @@ def show_content(request, resource):
 \frametitle{Seguridad}
 
 \begin{itemize}
-  \item Django viene con alguna protecciÛn de seguridad por defecto
-  \item Por ejemplo, CSRF: \emph{Cross-site request forgery} o falsificaciÛn de peticiÛn en sitios cruzados
+  \item Django viene con alguna protecci√≥n de seguridad por defecto
+  \item Por ejemplo, CSRF: \emph{Cross-site request forgery} o falsificaci√≥n de petici√≥n en sitios cruzados
   \item Si el POST/PUT no incluye un csrf\_token creado con anterioridad por el servidor, da un error de seguridad
-  \item Se evita con el @csrf\_exempt para un mÈtodo concreto en views.py
+  \item Se evita con el @csrf\_exempt para un m√©todo concreto en views.py
 \end{itemize}
 
 \begin{verbatim}
@@ -609,10 +609,10 @@ def vista(request):
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Acceso a informaciÛn de usuario y logout}
+\frametitle{Acceso a informaci√≥n de usuario y logout}
 
 \begin{itemize}
-\item Accedemos a informaciÛn del objeto User, que tenemos en HTTPRequest
+\item Accedemos a informaci√≥n del objeto User, que tenemos en HTTPRequest
 \item En views.py:
 \begin{verbatim}
 def show_content(request, resource):
@@ -621,7 +621,7 @@ def show_content(request, resource):
   else:
     logged = 'Not logged in.'
 \end{verbatim}
-\item Para logout, utilizamos funciÛn. En views.py:
+\item Para logout, utilizamos funci√≥n. En views.py:
 \begin{verbatim}
 from django.contrib.auth import logout
 
@@ -656,7 +656,7 @@ TEMPLATES = [
   },
 ]
 \end{verbatim}
-  \item CreaciÛn de templates/registration/login.html
+  \item Creaci√≥n de templates/registration/login.html
   \end{itemize}
 \end{itemize}
 
@@ -728,9 +728,9 @@ Fuente: \url{http://archive.cloudera.com/cdh4/cdh/4/hue/sdk/sdk.html}
 \item Contienen:
   \begin{itemize}
   \item Texto (que queda igual)
-  \item Variables (reemplazadas por su valor cuando se eval˙an)
-  \item Filtros (modifican variables cuando se eval˙an)
-  \item Etiquetas (controlan la lÛgica de la evaluaciÛn de la plantilla)
+  \item Variables (reemplazadas por su valor cuando se eval√∫an)
+  \item Filtros (modifican variables cuando se eval√∫an)
+  \item Etiquetas (controlan la l√≥gica de la evaluaci√≥n de la plantilla)
   \item Comentarios \{\# Comentario \#\}
   \end{itemize}
 \item Pueden extender (heredar de) otras plantillas
@@ -842,7 +842,7 @@ def view (request):
 {% endifnotequal %}
 \end{verbatim}
 \item block: Indica bloques a redefinir en plantillas que hereden
-\item extends: Hereda de plantilla madre (sÛlo hace falta redefinir
+\item extends: Hereda de plantilla madre (s√≥lo hace falta redefinir
  \emph{blocks} que se quieren modificar)
 \end{itemize}
 \end{frame}
@@ -902,7 +902,7 @@ def view (request):
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{Modelos: relaciÛn muchos a muchos (ManyToManyField)}
+\frametitle{Modelos: relaci√≥n muchos a muchos (ManyToManyField)}
 
 \begin{verbatim}
 class Topping(models.Model):
@@ -917,7 +917,7 @@ class Pizza(models.Model):
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{Modelos: relaciÛn muchos a muchos (ManyToManyField) (2)}
+\frametitle{Modelos: relaci√≥n muchos a muchos (ManyToManyField) (2)}
 
 \begin{verbatim}
 pb = Pizza(name='Barbecue')
@@ -940,10 +940,10 @@ Pizza.objects.filter(toppings__name='Mozzarela')
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{Ficheros est·ticos con Django}
+\frametitle{Ficheros est√°ticos con Django}
 
 \begin{itemize}
-\item Los ficheros est·ticos no se deberÌan servir con Django...
+\item Los ficheros est√°ticos no se deber√≠an servir con Django...
 \item (lo hace mucho mejor un servidor web como Apache o Cherokee)
 \item ...pero se pueden servir
 \item django.views.static.serve()
@@ -984,10 +984,10 @@ urlpatterns = [
 
 %%---------------------------------------------------------------
 \begin{frame}[fragile]
-\frametitle{Otras acciones de gestiÛn del proyecto}
+\frametitle{Otras acciones de gesti√≥n del proyecto}
 
 \begin{itemize}
-\item EjecuciÛn en el contexto de Python con acceso al cÛdigo de la aplicaciÛn
+\item Ejecuci√≥n en el contexto de Python con acceso al c√≥digo de la aplicaci√≥n
 \begin{verbatim}
 % python manage.py shell
 \end{verbatim}
@@ -995,11 +995,11 @@ urlpatterns = [
 \begin{verbatim}
 % python manage.py validate
 \end{verbatim}
-\item ExportaciÛn de datos de la base de datos
+\item Exportaci√≥n de datos de la base de datos
 \begin{verbatim}
 % python manage.py dumpdata
 \end{verbatim}
-\item ImportaciÛn de datos en la base de datos
+\item Importaci√≥n de datos en la base de datos
 \begin{verbatim}
 % python manage.py loaddata
 \end{verbatim}
@@ -1064,7 +1064,7 @@ u'Jesus'
 \frametitle{Generador de canales}
 
 \begin{itemize}
-\item Django viene con mÛdulos para generar canales RSS y Atom
+\item Django viene con m√≥dulos para generar canales RSS y Atom
 \item View de alto nivel que genera el canal (feed):
 
 \begin{verbatim}
@@ -1105,7 +1105,7 @@ class LatestEntries(Feed):
         return Pages.objects.order_by('-pub_date')[:5]
 \end{verbatim}
 
-\item TambiÈn hay que definir plantillas (templates) para $<$title$>$ y $<$description$>$ de cada item del canal RSS
+\item Tambi√©n hay que definir plantillas (templates) para $<$title$>$ y $<$description$>$ de cada item del canal RSS
 \end{itemize}
 
 \end{frame}
@@ -1117,11 +1117,11 @@ class LatestEntries(Feed):
 
 \begin{itemize}
 \item Pruebas de comportamiento del programa
-\item Pruebas ``internas'' (vÌa llamadas directas) \\
+\item Pruebas ``internas'' (v√≠a llamadas directas) \\
   Usando \verb|django.test| (que extiende \verb|unittest|)
 \item Pruebas ``externas'' (via API HTTP) \\
   Usando el ``Django test client''
-\item Permite probar tambiÈn plantillas, formularios, modelos...
+\item Permite probar tambi√©n plantillas, formularios, modelos...
 \item Normalmente, en fichero \verb|tests.py|
 \end{itemize}
 
@@ -1162,7 +1162,7 @@ class TestViews(TestCase):
         ...
 
     def test_simple(self):
-        """Test de la funciÛn aux"""
+        """Test de la funci√≥n aux"""
         result = views.aux(...)
         self.assertEqual(result, expected)
 \end{verbatim}
@@ -1202,10 +1202,10 @@ class TestHTTP(SimpleTestCase):
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{InternacionalizaciÛn}
+\frametitle{Internacionalizaci√≥n}
 
 \begin{itemize}
-\item Cadenas de traducciÛn en cÛdigo Python
+\item Cadenas de traducci√≥n en c√≥digo Python
 
 \begin{verbatim}
 from django.utils.translation import ugettext as _
@@ -1227,10 +1227,10 @@ def my_view(request, m, d):
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{InternacionalizaciÛn (2)}
+\frametitle{Internacionalizaci√≥n (2)}
 
 \begin{itemize}
-\item Cadenas de traducciÛn en plantillas
+\item Cadenas de traducci√≥n en plantillas
 
 \begin{verbatim}
 <title>{% trans "This is the title." %}</title>
@@ -1247,7 +1247,7 @@ This string will have {{ value }} inside.
 %%---------------------------------------------------------------
 
 \begin{frame}[fragile]
-\frametitle{InternacionalizaciÛn (3)}
+\frametitle{Internacionalizaci√≥n (3)}
 
 \begin{itemize}
 \item Traducciones en los lenguajes requeridos
@@ -1275,13 +1275,13 @@ MIDDLEWARE_CLASSES = (
 \frametitle{Referencias}
 
 \begin{itemize}
-\item DocumentaciÛn de Django \\
+\item Documentaci√≥n de Django \\
   \url{http://docs.djangoproject.com/en/dev}
 \item Libro de Django \\
   \url{http://www.djangobook.com}
-\item DocumentaciÛn de Python \\
+\item Documentaci√≥n de Python \\
   \url{http://www.python.org/doc/}
-\item Tutorial sobre Django (e introducciÛn a Django) \\
+\item Tutorial sobre Django (e introducci√≥n a Django) \\
 \url{http://docs.djangoproject.com/en/dev/intro}
 \end{itemize}
 
