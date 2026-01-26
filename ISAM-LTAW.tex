@@ -1,0 +1,144 @@
+% main.tex
+% Fichero principal de transparencias (incluye a todos los demás).
+
+% Compilar a .pdf con LaTeX (pdflatex)
+% Es necesario instalar Beamer (paquete latex-beamer en Debian)
+%
+
+% Gráficos:
+% Los gráficos pueden suministrarse en PNG, JPG, TIF, PDF, MPS
+% Los EPS deben convertirse a PDF (usar epstopdf)
+%
+\documentclass{beamer}
+\usetheme{Warsaw}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{headline}{}
+\useoutertheme{infolines}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{format/libresoft-bg-soft.png}}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{amssymb} % Simbolos matematicos
+\usepackage{multirow}
+
+\newcommand{\asignatura}{Laboratorio de Tecnologías Audiovisuales en la Web}
+\newcommand{\grado}{Grado en Ingeniería en Sistemas Audiovisuales y Multimedia (URJC)}
+\newcommand{\curso}{2025-26}
+\newcommand{\horario}{L (11:00-13:00) y ; (13:00-15:00)}
+\newcommand{\labo}{L2103}
+
+%\definecolor{libresoftgreen}{RGB}{162,190,43}
+%\definecolor{libresoftblue}{RGB}{0,98,143}
+
+%\setbeamercolor{titlelike}{bg=libresoftgreen}
+
+%% Metadatos del PDF.
+\hypersetup{
+  pdftitle={\asignatura~\curso},
+  pdfauthor={Jesús M. González Barahona, Gregorio Robles, David Moreno, Juan González Gómez},
+  pdfcreator={GSyC, Universidad Rey Juan Carlos},
+  pdfproducer=PDFLaTeX,
+  pdfsubject={\asignatura~\curso},
+}
+%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include-only                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\includeonly{presentacion-saro-sat-st,cookies,rest,mvc,xml,css,ajax,python,aplicacionesWeb,django,bootstrap,final}
+\includeonly{presentacion-ltaw,final}
+%\includeonly{cookies}
+%\includeonly{rest}
+%\includeonly{mvc}
+%\includeonly{xml}
+%\includeonly{css}
+%\includeonly{ajax}
+%\includeonly{www-applications}
+%\includeonly{caso-comunidades}
+%\includeonly{complex-www-sites}
+%\includeonly{ldap,webdav}
+%\includeonly{webdav}
+%\includeonly{xml,webdav}
+%\includeonly{streaming}
+%\includeonly{streaming, sdp}
+%\includeonly{streaming,smil}
+%\includeonly{smil}
+%\includeonly{security-intro,security-ipsec,security-ssl}
+%\includeonly{webdav,security-ssl}
+
+%% Prácticas
+%\includeonly{python}
+%\includeonly{sql}
+%\includeonly{aplicacionesWeb}
+%\includeonly{django}
+
+
+\AtBeginSection[]
+{
+\begin{frame}<beamer>
+\begin{center}
+{\Huge \insertsection}
+\end{center}
+\end{frame}
+}
+
+
+\begin{document}
+
+\title[\asignatura~\curso]{\asignatura~(\curso)}
+\subtitle{\grado}
+\author[GSyC]{Jesús M. González Barahona, Gregorio Robles, David Moreno, \\ Alberto Rodríguez, Alberto García, Sergio Montes}
+\institute[http://cursosweb.github.io/]{\url{http://cursosweb.github.io} \\
+GSyC, Universidad Rey Juan Carlos}
+
+%\date{Enero 2015}
+
+
+\frame{
+\maketitle
+
+\begin{center}
+\includegraphics[width=6cm]{format/gsyc-urjc}
+\end{center}
+}
+
+
+% Si el titulo o el autor se quieren acortar para los pies de página
+% se pueden redefinir aquí:
+%\title{Titulo corto}
+%\author{Autores abreviado}
+
+
+\frame{
+\tableofcontents
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% lista de temas                                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{presentacion-ltaw}
+\include{cookies}
+\include{rest}
+\include{mvc}
+\include{xml}
+\include{ajax}
+
+\include{python}
+\include{aplicacionesWeb}
+\include{django}
+\include{sql}
+\include{css}
+\include{bootstrap}
+\include{final}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
