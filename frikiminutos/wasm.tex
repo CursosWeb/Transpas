@@ -1,0 +1,60 @@
+\section{WebAssembly}
+
+% Transparencia 1: ¿Qué es WebAssembly?
+\begin{frame}{¿Qué es WebAssembly?}
+    \begin{itemize}
+        \item \textbf{Definición:} Formato de instrucciones binarias para una máquina virtual basada en stack.
+        \item \textbf{Objetivo:} Ejecutar código a velocidad cercana a nativa ($near-native\ speed$) en el navegador.
+        \item \textbf{Complemento, no sustituto:} Diseñado para trabajar junto a JavaScript, no para reemplazarlo.
+        \item \textbf{Portabilidad:} Formato abierto y estándar del W3C compatible con todos los navegadores modernos.
+    \end{itemize}
+\end{frame}
+
+% Transparencia 1: ¿Qué es WebAssembly?
+\begin{frame}{WebAssembly Visualmente}
+
+\begin{figure}[h] % [h] sugiere que se coloque "aquí" (here)
+    \centering
+    \includegraphics[width=10cm]{figs/wasm.png}
+    \caption{Diagrama de arquitectura WebAssembly} % Opcional
+    \label{fig:wasm_diagram} % Opcional para hacer referencias
+\end{figure}
+
+\end{frame}
+
+% Transparencia 2: ¿Cómo funciona? El Pipeline
+\begin{frame}{El flujo de trabajo de Wasm}
+    WebAssembly permite que lenguajes de alto nivel se ejecuten en la web:
+    \vspace{0.3cm}
+    \begin{enumerate}
+        \item \textbf{Compilación:} Lenguajes como C++, Rust o Go se compilan a un archivo \texttt{.wasm}.
+        \item \textbf{Carga:} El navegador descarga el binario (mucho más ligero que un JS equivalente).
+        \item \textbf{Validación y Ejecución:} Se ejecuta en un entorno de \textit{sandbox} seguro.
+    \end{enumerate}
+    
+\end{frame}
+
+% Transparencia 3: Ventajas Clave
+\begin{frame}{¿Por qué es revolucionario?}
+    \begin{block}{Rendimiento}
+        Decodificación y ejecución mucho más rápida que el parseo de JavaScript.
+    \end{block}
+    \begin{block}{Seguridad}
+        Ejecución en un entorno aislado (\textit{sandboxed}) que respeta las políticas de seguridad del navegador.
+    \end{block}
+    \begin{block}{Ecosistema}
+        Permite reutilizar bibliotecas complejas (FFmpeg, AutoCAD, motores de juegos como Unity) directamente en la web.
+    \end{block}
+\end{frame}
+
+% Transparencia 4: Tendencia 2026 - Wasm fuera de la Web
+\begin{frame}{El futuro: Wasm + WASI}
+    En 2026, Wasm ha saltado del navegador al servidor:
+    \begin{itemize}
+        \item \textbf{WASI (WebAssembly System Interface):} Una interfaz estándar para que Wasm interactúe con el sistema operativo (archivos, red).
+        \item \textbf{Microservicios:} Alternativa a Docker; más ligero, inicio en milisegundos y mayor densidad de cómputo.
+        \item \textbf{Edge Computing:} Ejecución de lógica cerca del usuario en redes CDN de forma ultrarrápida.
+    \end{itemize}
+    
+\end{frame}
+
